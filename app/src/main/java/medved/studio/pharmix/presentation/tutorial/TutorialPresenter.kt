@@ -33,7 +33,7 @@ class TutorialPresenter(
     private val authorizationResources
         get() = listOf(
             TutorialEntity(
-                R.drawable.ic_search_medicines,
+                R.drawable.ic_tutorial_1,
                 R.string.app_name,
                 R.string.app_name
             ),

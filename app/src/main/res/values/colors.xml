@@ -3,22 +3,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="back_blue">#0C1F5D</color>
+
     <color name="transparent">#00000000</color>
     <color name="manatee">#888A94</color>
     <color name="mine_shaft">#333333</color>
-    <color name="mine_shaft_2">#323232</color>
     <color name="dodger_blue">#309CF4</color>
-    <color name="athens_gray">#F1F2F6</color>
-    <color name="athens_gray_2">#F2F3F5</color>
-    <color name="malibu">#6EBCFD</color>
-    <color name="titan_white">#E7ECFF</color>
-    <color name="semi_titan_white">#80E7ECFF</color>
-    <color name="carnation_pink">#FF8FC0</color>
-    <color name="pink">#FF62A6</color>
-    <color name="red">#FF7C7C</color>
     <color name="ghost">#C7CBDB</color>
-    <color name="gray">#63646A</color>
-    <color name="light_blue">#ECF3FE</color>
     <color name="background_toast">#E6333333</color>
 
 

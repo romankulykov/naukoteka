@@ -6,7 +6,6 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.transition.DrawableCrossFadeFactory
 import medved.studio.pharmix.GlideApp
-import medved.studio.pharmix.R
 
 fun ImageView.load(
     model: Any?,
@@ -32,12 +31,3 @@ fun ImageView.load(
         }
         .into(this)
 }
-
-fun ImageView.loadWithPlaceHolder(
-    model: Any?,
-    withAnimation: Boolean = true,
-    requestOptions: RequestOptions? = null,
-    @DrawableRes placeholder: Int? = R.drawable.ic_thumbnail,
-    @DrawableRes error: Int? = placeholder
-
-) = load(model, withAnimation, requestOptions, placeholder, error)

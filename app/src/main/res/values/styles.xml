@@ -6,62 +6,23 @@
     <style name="TextViewStyle" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">?attr/design_hintColor</item>
-        <item name="android:fontFamily">@font/montserrat_regular</item>
-    </style>
-
-    <style name="TextViewStyle.DefaultTextColor">
-        <item name="android:textColor">?attr/design_textColor</item>
-    </style>
-
-    <style name="TextViewStyle.SemiBold">
-        <item name="android:textColor">?attr/design_textColor</item>
-        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
-    </style>
-
-    <style name="TextViewStyle.Hint">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">?attr/design_hintColor</item>
-        <item name="android:fontFamily">@font/montserrat_light</item>
+        <item name="android:fontFamily">@font/golos_black</item>
     </style>
 
     <style name="TextViewStyle.Header">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">32sp</item>
         <item name="android:textColor">?attr/design_textColor</item>
-        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+        <item name="android:fontFamily">@font/golos_black</item>
     </style>
 
     <style name="TextViewStyle.Usual">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">?attr/design_textColor</item>
-        <item name="android:fontFamily">@font/montserrat_light</item>
+        <item name="android:fontFamily">@font/golos_black</item>
     </style>
 
     <style name="TextViewStyle.Usual.Regular">
-        <item name="android:fontFamily">@font/montserrat_regular</item>
-    </style>
-
-    <style name="TextViewStyle.Usual.SemiBold">
-        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
-    </style>
-
-    <style name="TextViewStyle.Usual.Medium">
-        <item name="android:fontFamily">@font/montserrat_medium</item>
-    </style>
-
-    <style name="TextViewStyle.Subtitle">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">?attr/design_textColor</item>
-        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
-    </style>
-
-    <style name="TextViewStyle.Subtitle.Item">
-        <item name="android:fontFamily">@font/montserrat_regular</item>
-    </style>
-
-    <style name="FlexBox">
-        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
-        <item name="android:textColor">@color/dodger_blue</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/golos_black</item>
     </style>
 
     <style name="Button" parent="Widget.AppCompat.Button">
@@ -72,31 +33,15 @@
         <item name="android:paddingTop">15dp</item>
         <item name="paddingStart">16dp</item>
         <item name="paddingEnd">16dp</item>
-        <item name="android:fontFamily">@font/montserrat_medium</item>
+        <item name="android:fontFamily">@font/golos_black</item>
         <item name="android:paddingBottom">15dp</item>
         <item name="android:gravity">center</item>
-    </style>
-
-    <style name="TextAppearance" parent="@android:style/TextAppearance.Small">
-        <item name="android:fontFamily">@font/montserrat_medium</item>
-        <item name="android:textAllCaps">true</item>
-    </style>
-
-    <style name="TabLayout">
-        <item name="tabIndicatorColor">@color/dodger_blue</item>
-        <item name="tabSelectedTextColor">@color/dodger_blue</item>
     </style>
 
 
     <style name="FadeInFadeOutAnimation" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/fade_in</item>
         <item name="android:windowExitAnimation">@anim/fade_out</item>
-    </style>
-
-    <style name="Base.TextAppearance" parent="@style/TextAppearance.AppCompat">
-        <item name="android:fontFamily">@font/montserrat_regular</item>
-        <item name="fontFamily">@font/montserrat_regular</item>
-        <item name="android:textSize">12sp</item>
     </style>
 
 </resources>
