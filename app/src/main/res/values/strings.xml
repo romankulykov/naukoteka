@@ -3,4 +3,5 @@
     <string name="errors_timeout_error">Timeout</string>
     <string name="errors_network_error">Network is disabled</string>
     <string name="errors_something_went_wrong">Something went wrong</string>
+    <string name="next">Дальше</string>
 </resources>
