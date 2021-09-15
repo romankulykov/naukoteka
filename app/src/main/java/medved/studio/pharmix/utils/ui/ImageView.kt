@@ -1,0 +1,43 @@
+package medved.studio.pharmix.utils.ui
+
+import android.widget.ImageView
+import androidx.annotation.DrawableRes
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.transition.DrawableCrossFadeFactory
+import medved.studio.pharmix.GlideApp
+import medved.studio.pharmix.R
+
+fun ImageView.load(
+    model: Any?,
+    withAnimation: Boolean = true,
+    requestOptions: RequestOptions? = null,
+    @DrawableRes placeholder: Int? = android.R.color.transparent,
+    @DrawableRes error: Int? = placeholder
+
+) {
+    GlideApp.with(this).load(model)
+        .placeholder(placeholder ?: 0)
+        .error(error ?: 0)
+        .apply(requestOptions ?: RequestOptions())
+        .apply {
+            if (withAnimation) {
+                transition(
+                    DrawableTransitionOptions.withCrossFade(
+                        DrawableCrossFadeFactory.Builder()
+                            .setCrossFadeEnabled(true).build()
+                    )
+                )
+            }
+        }
+        .into(this)
+}
+
+fun ImageView.loadWithPlaceHolder(
+    model: Any?,
+    withAnimation: Boolean = true,
+    requestOptions: RequestOptions? = null,
+    @DrawableRes placeholder: Int? = R.drawable.ic_thumbnail,
+    @DrawableRes error: Int? = placeholder
+
+) = load(model, withAnimation, requestOptions, placeholder, error)

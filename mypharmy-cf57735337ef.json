@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "mypharmy",
+  "private_key_id": "cf57735337efbeca56989ec2c0e2bb245ab68bc3",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCREpBqsxcQKMcX\nrjGs2Z+via2omf6rjBHac0LUiO1dQKS862rlgN6zx9nu6T7qOKsWnVZQWvYx1tnz\n3rjZWi2/IDE0wYgx7a6mlVgeMNVl9YpYUAE461bGrlPq8btaSwXSGK8xy93K0S06\n04X+VbuVXn4+PBoIL9fIGJRtzwTqQdvNnfz2zJbL1oJUU5Dp+KvWoLfroqJDV4tY\nvPNBBVLO4eTDnAK0Xd1WMgT58/6EzRMmfZrKZ5MZ9vPM0Meq0qKGmjTpTMDh44il\nWIZWYj3JfLmUMIXvh7BNJnn0QjE/CJnE1GRqY1uzvL+0+J32Ts19mFshbpUnD8xp\nxrN00HklAgMBAAECggEAQyqDp4r0LhybFOknAZ6eUrDdMJbftH/80hWURv+AWjDw\nNLGQQ+K2+SiZy4W9Bccn2ygMStbabnfJYCHplmQskvUuIv1Jd8hSGLlDW3MDkhmt\nLDcaYcZ/3ivfGYNC2Uqrzrpz/oujS+At3zMIshjyaPUfYOQFr22rK27J5c83uNcD\nmz0mMNmlc6k+5Jj2zy19DQhh0P84K186S9XGGPrgQhyKu8N0eHPW4A08li0XZSmj\n3O9OPxsl/MCzfpYSj/oOsIcsIMc8NUPyP2QzDpwi1589ihoZ0zzls37WnRoEpXaA\nQrT9osAXJpucj83ur56mMDj0Qfw0zYG6AFHsP00fLwKBgQDDv5+QZtO/NpBoNvoD\n8iAgSxYllRPR6mcJWTSfo2M9qICkOtLQqa6LU07rDuDSwSD/fx7ElEkb/8bEq+b8\n5ju0oPgU1NTc3eqfP+YyXXKp1QJOSDZ2Q8xfbNPPuhfkVMXvYDXXQMGCDaL5l/oE\nnHXC6t0+DASjioplu7j8g6xguwKBgQC9udQKlVkIvjM6W6Zf6Lp8f1vbb/lb9236\nNl9cfUXwpKD4PlG73plOMLL6xhXlP/hbBqtWe/c3Kcp3JPvJdbPXbbPNwq1Hu4fk\nxAajcTVBYk5pCo0CXfUcJmrRtoI//nQB8BxMRpg2NJQXnHx6s/1/znfMkMe11m2j\nYBeOSmFfnwKBgBeBpWmzz23A4aqCH5fltZHrMmek9VJZ8bGfssAQ4NQAriIKplJE\nbh9xC6MSkFD+vDWyUEGPBRCFsJrhgcWQ6E6SnffybvVu+MPS6pPVwPVADRzVcyTU\nk3BKI01orYHP5E0QoqaMsjAp7w5F/9IZ79JOXe8bhlsVQfVhi59XOJYNAoGAalz0\noB5MNNeUlqHs6xXo/oTT9XiX/lP/pue2nH5qqFdTGvitD7rijXBF1ssYWVZ8oGNj\nyO9kj9tw80ybj7zZ3utUgwUh6fYbYEf5RMXhyk8XkFHm7a3JDUgIWJuN99xqIu/+\nnVByYuklIPuM2alwc6dHiDqei7Wz74SekBno7xcCgYEAotmkxqelLBZ9lKJL1Goy\nKvTNuawuKWndbAPErtLLYFMAgQeONEx+bpXRHQBgH/qtzWXyhMOMi6L6K//j8WPm\nbdEj9yVXc1dh8fVasoP8oW6ALiNI0gQGfxQCWw1yoFTqXahMJ3htnI5CWXAvLOiW\nH92dAiNKlTGx9X+BpeqOgHg=\n-----END PRIVATE KEY-----\n",
+  "client_email": "developer@mypharmy.iam.gserviceaccount.com",
+  "client_id": "102499085016859118660",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/developer%40mypharmy.iam.gserviceaccount.com"
+}

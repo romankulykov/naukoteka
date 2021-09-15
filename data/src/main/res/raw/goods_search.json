@@ -1,0 +1,3387 @@
+{
+  "status_code": 200,
+  "data": {
+    "goods": {
+      "count": 100,
+      "elements": [
+        {
+          "id": 80472,
+          "combined_inns": "",
+          "average_price": 40108,
+          "composite_name": "Мумие (Шиладжит) 265 мг 100 шт. капсулы",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/5/4d/54dc7268414da603deca38acbd7c9e17.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5386,
+            "name": "Фионда"
+          },
+          "country": null,
+          "amount": {
+            "id": 275,
+            "name": "100"
+          },
+          "dosage": {
+            "id": 3786,
+            "value": "265 мг"
+          },
+          "form": {
+            "id": 4509,
+            "name": "капсулы"
+          },
+          "category": {
+            "id": 978,
+            "name": "БАД для костей и суставов",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 80550,
+          "combined_inns": "",
+          "average_price": 118642,
+          "composite_name": "Solgar Кангавитес c мультивитаминами и минералами 60 шт. таблетки для детей",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/b/23/b23f696cc08b42bf68dac9db3ae67cb4.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5425,
+            "name": "Solgar"
+          },
+          "country": null,
+          "amount": {
+            "id": 274,
+            "name": "60"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4456,
+            "name": "таблетки для детей"
+          },
+          "category": {
+            "id": 1031,
+            "name": "БАД для детей и кормящих мам",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 80593,
+          "combined_inns": "",
+          "average_price": 4656,
+          "composite_name": "Мумие алтайское 200 мг 20 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/5/78/578f1c6f1e05d9d3b34b5a2e7ee2abcc.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5432,
+            "name": "Нарине"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "amount": {
+            "id": 205,
+            "name": "20"
+          },
+          "dosage": {
+            "id": 3771,
+            "value": "200 мг"
+          },
+          "form": {
+            "id": 4512,
+            "name": "таблетки"
+          },
+          "category": {
+            "id": 978,
+            "name": "БАД для костей и суставов",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 80696,
+          "combined_inns": "",
+          "average_price": 25416,
+          "composite_name": "Бэби Формула Мишки Мультивитамины 30 шт. пастилки жевательные",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/f/56/f56666277f8145cc4c96cfab42b34c09.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5413,
+            "name": "Эвалар"
+          },
+          "country": null,
+          "amount": {
+            "id": 278,
+            "name": "30"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4492,
+            "name": "пастилки жевательные"
+          },
+          "category": {
+            "id": 1031,
+            "name": "БАД для детей и кормящих мам",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 80697,
+          "combined_inns": "",
+          "average_price": 23586,
+          "composite_name": "Мумие золотое мумие алтайское очищенное 0.2 г 60 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/7/bf/7bfa2d3b2bd4ead73bf3a203595d53d5.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5413,
+            "name": "Эвалар"
+          },
+          "country": null,
+          "amount": {
+            "id": 274,
+            "name": "60"
+          },
+          "dosage": {
+            "id": 3796,
+            "value": "0.2 г"
+          },
+          "form": {
+            "id": 4512,
+            "name": "таблетки"
+          },
+          "category": {
+            "id": 978,
+            "name": "БАД для костей и суставов",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 80826,
+          "combined_inns": "",
+          "average_price": 13356,
+          "composite_name": "Мультифлора Эвалар Феми 533,741 мг 15 шт. капсулы",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/f/d0/fd0ab3e2892f8898391d0c7a67235a21.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5493,
+            "name": "AB-Biotics"
+          },
+          "country": null,
+          "amount": {
+            "id": 270,
+            "name": "15"
+          },
+          "dosage": {
+            "id": 3885,
+            "value": "533,741 мг"
+          },
+          "form": {
+            "id": 4509,
+            "name": "капсулы"
+          },
+          "category": {
+            "id": 1046,
+            "name": "БАД для женского здоровья",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 80828,
+          "combined_inns": "",
+          "average_price": 13366,
+          "composite_name": "Мультифлора Эвалар Дента 934.52 мг 15 шт. таблетки для рассасывания",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/e/99/e99c89acf8495a1131346386203e2d05.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5493,
+            "name": "AB-Biotics"
+          },
+          "country": null,
+          "amount": {
+            "id": 270,
+            "name": "15"
+          },
+          "dosage": {
+            "id": 3876,
+            "value": "934.52 мг"
+          },
+          "form": {
+            "id": 4505,
+            "name": "таблетки для рассасывания"
+          },
+          "category": {
+            "id": 980,
+            "name": "БАД для пищеварения",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 80829,
+          "combined_inns": "",
+          "average_price": 13392,
+          "composite_name": "Мультифлора Эвалар Дерма 535.74 мг 15 шт. капсулы",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/2/1f/21f8f78a9598d0186204474d7fc69d12.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5493,
+            "name": "AB-Biotics"
+          },
+          "country": null,
+          "amount": {
+            "id": 270,
+            "name": "15"
+          },
+          "dosage": {
+            "id": 3894,
+            "value": "535.74 мг"
+          },
+          "form": {
+            "id": 4509,
+            "name": "капсулы"
+          },
+          "category": {
+            "id": 977,
+            "name": "БАД для кожи и волос",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 80876,
+          "combined_inns": "",
+          "average_price": 150152,
+          "composite_name": "Мультидофилус плюс 60 шт. капсулы",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/e/1f/e1f6551b05322e751c655af8fd23e25e.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5425,
+            "name": "Solgar"
+          },
+          "country": {
+            "id": 159,
+            "name": "США"
+          },
+          "amount": {
+            "id": 274,
+            "name": "60"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4509,
+            "name": "капсулы"
+          },
+          "category": {
+            "id": 980,
+            "name": "БАД для пищеварения",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 81177,
+          "combined_inns": "",
+          "average_price": 4886,
+          "composite_name": "Verbena Мультипо карамель с начинкой 60 г 1 шт. леденцы",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/9/a6/9a6f57a4c54663b9054ab02423e03610.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5366,
+            "name": "I.D.C. Holding"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4508,
+            "name": "леденцы"
+          },
+          "category": {
+            "id": 982,
+            "name": "БАД в сезон простуд",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 81248,
+          "combined_inns": "",
+          "average_price": 50894,
+          "composite_name": "Доппельгерц Актив Мультивитамины для детей 60 шт. пастилки жевательные",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/f/29/f291f38a1c323b0d68e33ace79e914c2.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1318,
+            "name": "от гиповитаминоза"
+          },
+          "manufacturer": {
+            "id": 5451,
+            "name": "Queisser Pharma"
+          },
+          "country": null,
+          "amount": {
+            "id": 274,
+            "name": "60"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4641,
+            "name": "пастилки жевательные"
+          },
+          "category": {
+            "id": 1031,
+            "name": "БАД для детей и кормящих мам",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 81411,
+          "combined_inns": "",
+          "average_price": 101696,
+          "composite_name": "Ренессанс. Мужское долголетие 60+ 30 шт. набор (2 таблетки+2 капсулы)",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/3/51/351bd078cf75d9ad1d1dd9f333ae7d8c.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5397,
+            "name": "Марбиофарм"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "amount": {
+            "id": 278,
+            "name": "30"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4620,
+            "name": "набор (2 таблетки+2 капсулы)"
+          },
+          "category": {
+            "id": 1005,
+            "name": "БАД для мужского здоровья",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 81554,
+          "combined_inns": "",
+          "average_price": 13294,
+          "composite_name": "Мультифлора Эвалар Холестерол 535.74 мг 15 шт. капсулы",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/c/f2/cf2f8ef823691c99b1724c8d4d1bb1bc.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5493,
+            "name": "AB-Biotics"
+          },
+          "country": null,
+          "amount": {
+            "id": 270,
+            "name": "15"
+          },
+          "dosage": {
+            "id": 3894,
+            "value": "535.74 мг"
+          },
+          "form": {
+            "id": 4509,
+            "name": "капсулы"
+          },
+          "category": {
+            "id": 981,
+            "name": "БАД для сердца и сосудов",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 81557,
+          "combined_inns": "",
+          "average_price": 13380,
+          "composite_name": "Мужская сила 50 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/2/ca/2cafd75c571da90348e14c0f2f03afec.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5171,
+            "name": "Mustika Ratu"
+          },
+          "country": null,
+          "amount": {
+            "id": 273,
+            "name": "50"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4512,
+            "name": "таблетки"
+          },
+          "category": {
+            "id": 1005,
+            "name": "БАД для мужского здоровья",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 81763,
+          "combined_inns": "Хондроитина сульфат + Глюкозамин",
+          "average_price": 104904,
+          "composite_name": "Мукосат капсулы 577 мг 80 шт. капсулы",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/0/e1/0e1aad9a1d02b51d1efa732503f16921.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1296,
+            "name": "восстановление хрящевой ткани"
+          },
+          "manufacturer": {
+            "id": 5353,
+            "name": "ДИАМЕД-фарма"
+          },
+          "country": null,
+          "amount": {
+            "id": 291,
+            "name": "80"
+          },
+          "dosage": {
+            "id": 3564,
+            "value": "577 мг"
+          },
+          "form": {
+            "id": 4509,
+            "name": "капсулы"
+          },
+          "category": {
+            "id": 978,
+            "name": "БАД для костей и суставов",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 81787,
+          "combined_inns": "",
+          "average_price": 50018,
+          "composite_name": "Мультифлора 0.5 г 30 шт. капсулы",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/6/07/6076c666d4a694fc99794fa937da15a4.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5413,
+            "name": "Эвалар"
+          },
+          "country": null,
+          "amount": {
+            "id": 278,
+            "name": "30"
+          },
+          "dosage": {
+            "id": 3774,
+            "value": "0.5 г"
+          },
+          "form": {
+            "id": 4509,
+            "name": "капсулы"
+          },
+          "category": {
+            "id": 980,
+            "name": "БАД для пищеварения",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 81871,
+          "combined_inns": "",
+          "average_price": 13286,
+          "composite_name": "Минисан Мультивитамин Мама 90 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/3/99/3995588a34c8d23060cb8ca08c060451.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5243,
+            "name": "OY Verman AB"
+          },
+          "country": null,
+          "amount": {
+            "id": 269,
+            "name": "90"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4512,
+            "name": "таблетки"
+          },
+          "category": {
+            "id": 1031,
+            "name": "БАД для детей и кормящих мам",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 82083,
+          "combined_inns": "",
+          "average_price": 6272,
+          "composite_name": "Мумие 0.2 г 30 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/c/7d/c7d0c943c901a28877ab574116474f99.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5504,
+            "name": "Фармгрупп"
+          },
+          "country": null,
+          "amount": {
+            "id": 278,
+            "name": "30"
+          },
+          "dosage": {
+            "id": 3796,
+            "value": "0.2 г"
+          },
+          "form": {
+            "id": 4512,
+            "name": "таблетки"
+          },
+          "category": {
+            "id": 979,
+            "name": "БАД для обмена веществ",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 82116,
+          "combined_inns": "",
+          "average_price": 16190,
+          "composite_name": "Мумие (Шиладжит) 265 мг 50 шт. капсулы",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/0/96/09680ebc10585c3405ce075784d0ad96.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5386,
+            "name": "Фионда"
+          },
+          "country": null,
+          "amount": {
+            "id": 273,
+            "name": "50"
+          },
+          "dosage": {
+            "id": 3786,
+            "value": "265 мг"
+          },
+          "form": {
+            "id": 4509,
+            "name": "капсулы"
+          },
+          "category": {
+            "id": 978,
+            "name": "БАД для костей и суставов",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 82160,
+          "combined_inns": "",
+          "average_price": 88286,
+          "composite_name": "Флорадикс Мультивиталь 250 мл 1 шт. жидкость для приема внутрь",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/1/6f/16f2570f7690ca19d12d6c68013b24d1.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5511,
+            "name": "Арнебия"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4513,
+            "name": "жидкость для приема внутрь"
+          },
+          "category": {
+            "id": 979,
+            "name": "БАД для обмена веществ",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 82172,
+          "combined_inns": "",
+          "average_price": 5952,
+          "composite_name": "Oleos мука семени льна 300 г 1 шт.",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/7/2f/72f7fcbe804f72f151eb981ba9274aa0.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5387,
+            "name": "Олеос"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": null,
+          "category": {
+            "id": 980,
+            "name": "БАД для пищеварения",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 82351,
+          "combined_inns": "",
+          "average_price": 7566,
+          "composite_name": "Мумие золотое мумие алтайское очищенное 0.2 г 20 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/0/d3/0d3dfb376aecfc6afccca438f1bb7051.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1282,
+            "name": "общеукрепляющее"
+          },
+          "manufacturer": {
+            "id": 5413,
+            "name": "Эвалар"
+          },
+          "country": null,
+          "amount": {
+            "id": 205,
+            "name": "20"
+          },
+          "dosage": {
+            "id": 3796,
+            "value": "0.2 г"
+          },
+          "form": {
+            "id": 4512,
+            "name": "таблетки"
+          },
+          "category": {
+            "id": 978,
+            "name": "БАД для костей и суставов",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 82357,
+          "combined_inns": "",
+          "average_price": 13132,
+          "composite_name": "Now Eve Мультивитамины Ева 90 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/0/37/03789c7916a44b1e7342243216e04255.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5441,
+            "name": "NOW International"
+          },
+          "country": null,
+          "amount": {
+            "id": 269,
+            "name": "90"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4512,
+            "name": "таблетки"
+          },
+          "category": {
+            "id": 1033,
+            "name": "Витамины БАД",
+            "parent_id": 780
+          }
+        },
+        {
+          "id": 82367,
+          "combined_inns": "",
+          "average_price": 12878,
+          "composite_name": "Арнебия Мультивитамин 4.5 г 20 шт. таблетки шипучие",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/1/4f/14fe379b860750469d4ed53fd66248e8.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1318,
+            "name": "от гиповитаминоза"
+          },
+          "manufacturer": {
+            "id": 5511,
+            "name": "Арнебия"
+          },
+          "country": {
+            "id": 208,
+            "name": "Германия"
+          },
+          "amount": {
+            "id": 205,
+            "name": "20"
+          },
+          "dosage": {
+            "id": 3878,
+            "value": "4.5 г"
+          },
+          "form": {
+            "id": 4497,
+            "name": "таблетки шипучие"
+          },
+          "category": {
+            "id": 1033,
+            "name": "Витамины БАД",
+            "parent_id": 780
+          }
+        },
+        {
+          "id": 82387,
+          "combined_inns": "",
+          "average_price": 8900,
+          "composite_name": "Блок Глюкоза с мультивитаминами «Экзотика» 18 шт. таблетки жевательные",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/2/cc/2cc6cdb1e0f2a6e8560d0750f7f13e0d.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1318,
+            "name": "от гиповитаминоза"
+          },
+          "manufacturer": {
+            "id": 5257,
+            "name": "Dr. Schmidgall"
+          },
+          "country": {
+            "id": 236,
+            "name": "Австрия"
+          },
+          "amount": {
+            "id": 271,
+            "name": "18"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4324,
+            "name": "таблетки жевательные"
+          },
+          "category": {
+            "id": 1033,
+            "name": "Витамины БАД",
+            "parent_id": 780
+          }
+        },
+        {
+          "id": 82431,
+          "combined_inns": "",
+          "average_price": 302316,
+          "composite_name": "Solgar мультивитаминный и минеральный комплекс для женщин 60 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/d/c4/dc428447166698e85490a9aae43c24f7.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5425,
+            "name": "Solgar"
+          },
+          "country": {
+            "id": 159,
+            "name": "США"
+          },
+          "amount": {
+            "id": 274,
+            "name": "60"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4512,
+            "name": "таблетки"
+          },
+          "category": {
+            "id": 1033,
+            "name": "Витамины БАД",
+            "parent_id": 780
+          }
+        },
+        {
+          "id": 82568,
+          "combined_inns": "",
+          "average_price": 15634,
+          "composite_name": "Мультифорт 14 шт. таблетки шипучие",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/6/c4/6c44180231596252001c55af8873ae36.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5798,
+            "name": "Сантэфарм"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "amount": {
+            "id": 302,
+            "name": "14"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4497,
+            "name": "таблетки шипучие"
+          },
+          "category": {
+            "id": 1033,
+            "name": "Витамины БАД",
+            "parent_id": 780
+          }
+        },
+        {
+          "id": 82570,
+          "combined_inns": "",
+          "average_price": 44822,
+          "composite_name": "Фруттилар Мультивитамины 4 г 30 шт. пастилки жевательные",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/6/5f/65fd0a9ffd653aa3b357a12820865e75.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5413,
+            "name": "Эвалар"
+          },
+          "country": null,
+          "amount": {
+            "id": 278,
+            "name": "30"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4504,
+            "name": "пастилки жевательные"
+          },
+          "category": {
+            "id": 1033,
+            "name": "Витамины БАД",
+            "parent_id": 780
+          }
+        },
+        {
+          "id": 82577,
+          "combined_inns": "",
+          "average_price": 17352,
+          "composite_name": "СупраВит МультиВит 4 г 20 шт. таблетки шипучие",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/5/5a/55aae78ab173e1cfaa88614025f6a2f1.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1318,
+            "name": "от гиповитаминоза"
+          },
+          "manufacturer": {
+            "id": 5206,
+            "name": "Kendy"
+          },
+          "country": {
+            "id": 207,
+            "name": "Болгария"
+          },
+          "amount": {
+            "id": 205,
+            "name": "20"
+          },
+          "dosage": {
+            "id": 3730,
+            "value": "4 г"
+          },
+          "form": {
+            "id": 4497,
+            "name": "таблетки шипучие"
+          },
+          "category": {
+            "id": 1033,
+            "name": "Витамины БАД",
+            "parent_id": 780
+          }
+        },
+        {
+          "id": 82620,
+          "combined_inns": "",
+          "average_price": 35326,
+          "composite_name": "Мультивитамины мармеладные ягоды 30 шт. пастилки жевательные",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/5/ba/5ba52a6f07edfd70fce1c7de2ddd1b7f.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1318,
+            "name": "от гиповитаминоза"
+          },
+          "manufacturer": {
+            "id": 5413,
+            "name": "Эвалар"
+          },
+          "country": null,
+          "amount": {
+            "id": 278,
+            "name": "30"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4504,
+            "name": "пастилки жевательные"
+          },
+          "category": {
+            "id": 1033,
+            "name": "Витамины БАД",
+            "parent_id": 780
+          }
+        },
+        {
+          "id": 82716,
+          "combined_inns": "",
+          "average_price": 43588,
+          "composite_name": "Ми-ми-мишки Актив Мультивитамин 90 шт. пастилки жевательные",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/f/54/f54e15954b2cfdf615cb219e7c70178a.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1318,
+            "name": "от гиповитаминоза"
+          },
+          "manufacturer": {
+            "id": 5458,
+            "name": "Guangdong Yichao Biological Co"
+          },
+          "country": null,
+          "amount": {
+            "id": 269,
+            "name": "90"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4492,
+            "name": "пастилки жевательные"
+          },
+          "category": {
+            "id": 1033,
+            "name": "Витамины БАД",
+            "parent_id": 780
+          }
+        },
+        {
+          "id": 82733,
+          "combined_inns": "",
+          "average_price": 13356,
+          "composite_name": "Здравсити Мультивитамин 4 г 20 шт. таблетки шипучие",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/0/5e/05e98c42e75b91e949ef60b0282693b9.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5390,
+            "name": "Pez Production Europe Kft."
+          },
+          "country": null,
+          "amount": {
+            "id": 205,
+            "name": "20"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4524,
+            "name": "таблетки шипучие"
+          },
+          "category": {
+            "id": 1033,
+            "name": "Витамины БАД",
+            "parent_id": 780
+          }
+        },
+        {
+          "id": 82768,
+          "combined_inns": "",
+          "average_price": 13486,
+          "composite_name": "Мультидэй с экстрактом зеленого чая Витаминный комплекс 1630 50 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/3/70/370cebf0fd648f9b87f800645d2af6e5.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1318,
+            "name": "от гиповитаминоза"
+          },
+          "manufacturer": {
+            "id": 5425,
+            "name": "Solgar"
+          },
+          "country": null,
+          "amount": {
+            "id": 273,
+            "name": "50"
+          },
+          "dosage": {
+            "id": 3644,
+            "value": "1630"
+          },
+          "form": {
+            "id": 4512,
+            "name": "таблетки"
+          },
+          "category": {
+            "id": 1033,
+            "name": "Витамины БАД",
+            "parent_id": 780
+          }
+        },
+        {
+          "id": 82782,
+          "combined_inns": "",
+          "average_price": 17160,
+          "composite_name": "VitaStars мультивитаминный комплекс 3 г 30 шт. пастилки жевательные",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/b/95/b95dcb0f8bf02f7550fd6238a49e52d1.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5388,
+            "name": "Полярис"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "amount": {
+            "id": 278,
+            "name": "30"
+          },
+          "dosage": {
+            "id": 3799,
+            "value": "3 г"
+          },
+          "form": {
+            "id": 4243,
+            "name": "пастилки жевательные"
+          },
+          "category": {
+            "id": 1033,
+            "name": "Витамины БАД",
+            "parent_id": 780
+          }
+        },
+        {
+          "id": 82784,
+          "combined_inns": "",
+          "average_price": 11392,
+          "composite_name": "Арнебия Мультивитамин + Минералы 4.5 г 20 шт. таблетки шипучие",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/e/ed/eedb2e72467783c0d7710e7d64b56982.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1318,
+            "name": "от гиповитаминоза"
+          },
+          "manufacturer": {
+            "id": 5511,
+            "name": "Арнебия"
+          },
+          "country": {
+            "id": 208,
+            "name": "Германия"
+          },
+          "amount": {
+            "id": 205,
+            "name": "20"
+          },
+          "dosage": {
+            "id": 3878,
+            "value": "4.5 г"
+          },
+          "form": {
+            "id": 4497,
+            "name": "таблетки шипучие"
+          },
+          "category": {
+            "id": 1033,
+            "name": "Витамины БАД",
+            "parent_id": 780
+          }
+        },
+        {
+          "id": 82804,
+          "combined_inns": "",
+          "average_price": 5198,
+          "composite_name": "НАТУРЕТТО мультивитамины 2300 мг 17 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/0/2f/02f01c641267f36300f27b2addaf2ea9.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1318,
+            "name": "от гиповитаминоза"
+          },
+          "manufacturer": {
+            "id": 5249,
+            "name": "Bausch Health"
+          },
+          "country": {
+            "id": 229,
+            "name": "Венгрия"
+          },
+          "amount": {
+            "id": 225,
+            "name": "17"
+          },
+          "dosage": {
+            "id": 3698,
+            "value": "2300 мг"
+          },
+          "form": {
+            "id": 4277,
+            "name": "таблетки"
+          },
+          "category": {
+            "id": 1033,
+            "name": "Витамины БАД",
+            "parent_id": 780
+          }
+        },
+        {
+          "id": 83309,
+          "combined_inns": "",
+          "average_price": 3066,
+          "composite_name": "Ola! Light стринг-мультиформ прокладки ежедневные 20 шт. прокладки гигиенические",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/a/4c/a4c7a83276a706addff14aa24f7ddc6b.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5829,
+            "name": "Олтекс"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "amount": {
+            "id": 205,
+            "name": "20"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4360,
+            "name": "прокладки гигиенические"
+          },
+          "category": {
+            "id": 1041,
+            "name": "Прокладки женские гигиенические",
+            "parent_id": 782
+          }
+        },
+        {
+          "id": 83386,
+          "combined_inns": "",
+          "average_price": 5006,
+          "composite_name": "Ola! Light стринг-мультиформ прокладки ежедневные Нежная лилия 20 шт. прокладки гигиенические",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/4/5b/45b080a7afa6db377b37ef3accb99beb.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5829,
+            "name": "Олтекс"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "amount": {
+            "id": 205,
+            "name": "20"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4934,
+            "name": "прокладки гигиенические"
+          },
+          "category": {
+            "id": 1041,
+            "name": "Прокладки женские гигиенические",
+            "parent_id": 782
+          }
+        },
+        {
+          "id": 83707,
+          "combined_inns": "",
+          "average_price": 13348,
+          "composite_name": "Mosquitall защита от мух липкая лента 4 шт. лента липкая",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/b/2b/b2ba044e5d58dd3e539e83ffdc0bf2b9.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5828,
+            "name": "Биогард"
+          },
+          "country": null,
+          "amount": {
+            "id": 292,
+            "name": "4"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4959,
+            "name": "лента липкая"
+          },
+          "category": {
+            "id": 1042,
+            "name": "Репелленты",
+            "parent_id": 783
+          }
+        },
+        {
+          "id": 83782,
+          "combined_inns": "",
+          "average_price": 129024,
+          "composite_name": "Муважель 5 мл 4 шт. гель для местного применения",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/e/af/eaf99677edb306f94880a9c09809e834.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5855,
+            "name": "Laboratoires Envencia Sarl"
+          },
+          "country": null,
+          "amount": {
+            "id": 292,
+            "name": "4"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4386,
+            "name": "гель для местного применения"
+          },
+          "category": {
+            "id": 1017,
+            "name": "Гели для интимной гигиены",
+            "parent_id": 782
+          }
+        },
+        {
+          "id": 83853,
+          "combined_inns": "",
+          "average_price": 27256,
+          "composite_name": "Lactacyd Мусс для интимной гигиены 150 мл 1 шт. мусс",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/8/38/83804dabc618a9153a34b12f6699c953.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5766,
+            "name": "Omega Pharma"
+          },
+          "country": {
+            "id": 227,
+            "name": "Бельгия"
+          },
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4913,
+            "name": "мусс"
+          },
+          "category": {
+            "id": 972,
+            "name": "Жидкое мыло для интимной гигиены",
+            "parent_id": 782
+          }
+        },
+        {
+          "id": 84352,
+          "combined_inns": "",
+          "average_price": 13254,
+          "composite_name": "Мультипласт Набор бактерицидных лейкопластырей 20 шт. сильная фиксация",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/e/64/e645810d30ae08487505ea7cb2f1b62c.jpg",
+          "available_count_in_pharmacies": 100,
+          "atc": null,
+          "manufacturer": {
+            "id": 5549,
+            "name": "Новосибхимфарм"
+          },
+          "country": null,
+          "amount": {
+            "id": 205,
+            "name": "20"
+          },
+          "dosage": null,
+          "form": {
+            "id": 5047,
+            "name": "сильная фиксация"
+          },
+          "category": {
+            "id": 1003,
+            "name": "Бактерицидный пластырь",
+            "parent_id": 802
+          }
+        },
+        {
+          "id": 84559,
+          "combined_inns": "",
+          "average_price": 26952,
+          "composite_name": "Warwick Sasco Утка мужская 1 л 1 шт.",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/1/61/161c758767171c27a3fc0890b2179159.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5878,
+            "name": "Warwick"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": {
+            "id": 4077,
+            "value": "1 л"
+          },
+          "form": null,
+          "category": {
+            "id": 1100,
+            "name": "Мочеприемники",
+            "parent_id": 795
+          }
+        },
+        {
+          "id": 84730,
+          "combined_inns": "",
+          "average_price": 6944,
+          "composite_name": "Мультипласт Лейкопластырь мозольный 10 шт. набор",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/3/0e/30e658e6e16c62f05217a5bf240f915c.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5549,
+            "name": "Новосибхимфарм"
+          },
+          "country": null,
+          "amount": {
+            "id": 276,
+            "name": "10"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4494,
+            "name": "набор"
+          },
+          "category": {
+            "id": 994,
+            "name": "Мозольный пластырь",
+            "parent_id": 802
+          }
+        },
+        {
+          "id": 84731,
+          "combined_inns": "",
+          "average_price": 8178,
+          "composite_name": "Мультипласт Набор бактерицидных лейкопластырей 20 шт. набор",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/c/38/c38a839139d12e4fccbc9898afc22cb0.jpg",
+          "available_count_in_pharmacies": 150,
+          "atc": null,
+          "manufacturer": {
+            "id": 5549,
+            "name": "Новосибхимфарм"
+          },
+          "country": null,
+          "amount": {
+            "id": 205,
+            "name": "20"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4993,
+            "name": "набор"
+          },
+          "category": {
+            "id": 1003,
+            "name": "Бактерицидный пластырь",
+            "parent_id": 802
+          }
+        },
+        {
+          "id": 84732,
+          "combined_inns": "",
+          "average_price": 0,
+          "composite_name": "Мультипласт Набор бактерицидных лейкопластырей 20 шт. набор",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/9/44/94442ca5fcc69c49039dbfd02540dcea.jpg",
+          "available_count_in_pharmacies": 0,
+          "atc": null,
+          "manufacturer": {
+            "id": 5549,
+            "name": "Новосибхимфарм"
+          },
+          "country": null,
+          "amount": {
+            "id": 205,
+            "name": "20"
+          },
+          "dosage": null,
+          "form": {
+            "id": 5016,
+            "name": "набор"
+          },
+          "category": {
+            "id": 1003,
+            "name": "Бактерицидный пластырь",
+            "parent_id": 802
+          }
+        },
+        {
+          "id": 84736,
+          "combined_inns": "",
+          "average_price": 4902,
+          "composite_name": "Мультипласт лейкопластырь фиксирующий 1 шт. пластырь медицинский",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/9/27/92732f3c387648eebebc759be1a3410d.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5549,
+            "name": "Новосибхимфарм"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": {
+            "id": 5041,
+            "name": "пластырь медицинский"
+          },
+          "category": {
+            "id": 1102,
+            "name": "Фиксирующий пластырь",
+            "parent_id": 802
+          }
+        },
+        {
+          "id": 84811,
+          "combined_inns": "",
+          "average_price": 0,
+          "composite_name": "Мультипласт Набор бактерицидных лейкопластырей 20 шт. набор",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/4/06/406447967c88774a9483ffb8507b4447.jpg",
+          "available_count_in_pharmacies": 0,
+          "atc": null,
+          "manufacturer": {
+            "id": 5549,
+            "name": "Новосибхимфарм"
+          },
+          "country": null,
+          "amount": {
+            "id": 205,
+            "name": "20"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4494,
+            "name": "набор"
+          },
+          "category": {
+            "id": 1003,
+            "name": "Бактерицидный пластырь",
+            "parent_id": 802
+          }
+        },
+        {
+          "id": 84821,
+          "combined_inns": "",
+          "average_price": 3284,
+          "composite_name": "Мультипласт лейкопластырь фиксирующий 2х500 1 шт. пластырь медицинский",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/5/b4/5b4936a3c08f2494133ec84146af10b1.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5549,
+            "name": "Новосибхимфарм"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": {
+            "id": 4222,
+            "value": "2х500"
+          },
+          "form": {
+            "id": 5041,
+            "name": "пластырь медицинский"
+          },
+          "category": {
+            "id": 1102,
+            "name": "Фиксирующий пластырь",
+            "parent_id": 802
+          }
+        },
+        {
+          "id": 84834,
+          "combined_inns": "",
+          "average_price": 7050,
+          "composite_name": "Мультипласт лейкопластырь фиксирующий 5х500 1 шт. пластырь медицинский",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/f/80/f80c8268e10149fae9f074f15a97d940.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5549,
+            "name": "Новосибхимфарм"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": {
+            "id": 4120,
+            "value": "5х500"
+          },
+          "form": {
+            "id": 4999,
+            "name": "пластырь медицинский"
+          },
+          "category": {
+            "id": 1102,
+            "name": "Фиксирующий пластырь",
+            "parent_id": 802
+          }
+        },
+        {
+          "id": 84873,
+          "combined_inns": "",
+          "average_price": 13330,
+          "composite_name": "Мочеприемник мужской полимерный типа «Утка» 1 шт.",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/f/b6/fb6ddee9cbfc097ad5f2a9a87a4751e4.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5737,
+            "name": "Медполимерторг"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": null,
+          "category": {
+            "id": 1100,
+            "name": "Мочеприемники",
+            "parent_id": 795
+          }
+        },
+        {
+          "id": 84933,
+          "combined_inns": "",
+          "average_price": 26024,
+          "composite_name": "Аптечка первой помощи автомобильная «Фэст» Муссон 1 шт.",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/c/e0/ce0a035298e8d65ca73e1f5b5dc276b8.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5623,
+            "name": "ФЭСТ"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": null,
+          "category": {
+            "id": 998,
+            "name": "Аптечки",
+            "parent_id": 792
+          }
+        },
+        {
+          "id": 84997,
+          "combined_inns": "",
+          "average_price": 21832,
+          "composite_name": "Тест на наркотики NarcoCheck мультипанель 5 видов наркотиков 1 шт. тест-система",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/9/20/92060eba203a6b7934293af909b037b2.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5635,
+            "name": "IND Diagnostic"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4715,
+            "name": "тест-система"
+          },
+          "category": {
+            "id": 1094,
+            "name": "Тесты на наркотики",
+            "parent_id": 796
+          }
+        },
+        {
+          "id": 85207,
+          "combined_inns": "",
+          "average_price": 0,
+          "composite_name": "Мультипласт Набор бактерицидных лейкопластырей 20 шт. сильная фиксация",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/9/0f/90f36672262204d142487f38fe54c76a.jpg",
+          "available_count_in_pharmacies": 0,
+          "atc": null,
+          "manufacturer": {
+            "id": 5549,
+            "name": "Новосибхимфарм"
+          },
+          "country": null,
+          "amount": {
+            "id": 205,
+            "name": "20"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4744,
+            "name": "сильная фиксация"
+          },
+          "category": {
+            "id": 1003,
+            "name": "Бактерицидный пластырь",
+            "parent_id": 802
+          }
+        },
+        {
+          "id": 85457,
+          "combined_inns": "",
+          "average_price": 13174,
+          "composite_name": "Nivea Make-up Expert Мусс мицеллярный 150 мл 1 шт. мусс",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/d/f9/df9cac6dd36b1b450c0884a49f95fcac.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5838,
+            "name": "Beiersdorf"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4913,
+            "name": "мусс"
+          },
+          "category": {
+            "id": 859,
+            "name": "Средства для умывания",
+            "parent_id": 798
+          }
+        },
+        {
+          "id": 85680,
+          "combined_inns": "",
+          "average_price": 21988,
+          "composite_name": "Nivea Мусс для душа шелковый Малиновый смузи 200 мл 1 шт. мусс",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/b/1a/b1a4ddc6243b9739b95af6d218f73d7d.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5838,
+            "name": "Beiersdorf"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4913,
+            "name": "мусс"
+          },
+          "category": {
+            "id": 1057,
+            "name": "Гели для душа",
+            "parent_id": 779
+          }
+        },
+        {
+          "id": 85785,
+          "combined_inns": "",
+          "average_price": 72062,
+          "composite_name": "Weleda Крем увлажняющий мужской 30 мл 1 шт. крем для лица",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/f/76/f766e917a4de7d23ce641d8313eb92b2.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5214,
+            "name": "Weleda"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4737,
+            "name": "крем для лица"
+          },
+          "category": {
+            "id": 851,
+            "name": "Крем для лица мужской",
+            "parent_id": 754
+          }
+        },
+        {
+          "id": 85804,
+          "combined_inns": "",
+          "average_price": 53770,
+          "composite_name": "Weleda мужской дезодорант 24 часа 50 мл 1 шт.",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/5/dd/5dd49bc218177e2170127c72ca33db85.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5214,
+            "name": "Weleda"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": null,
+          "category": {
+            "id": 1050,
+            "name": "Дезодоранты и антиперспиранты",
+            "parent_id": 800
+          }
+        },
+        {
+          "id": 85875,
+          "combined_inns": "",
+          "average_price": 13216,
+          "composite_name": "Lierac Body Slim концентрат для тела разглаживающий мультиактивный 200 мл 1 шт. концентрат",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/f/35/f35bb8d4a018fe3f957ce1eb21593f47.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5685,
+            "name": "Laboratoires Lierac"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4687,
+            "name": "концентрат"
+          },
+          "category": {
+            "id": 924,
+            "name": "Кремы для тела",
+            "parent_id": 779
+          }
+        },
+        {
+          "id": 86045,
+          "combined_inns": "",
+          "average_price": 7556,
+          "composite_name": "Мукофитин 50 мл 1 шт. крем",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/9/bc/9bcccb308978e72faee8824e19fec702.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1385,
+            "name": "разогревающее"
+          },
+          "manufacturer": {
+            "id": 4666,
+            "name": "Инфарма"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4868,
+            "name": "крем"
+          },
+          "category": {
+            "id": 1052,
+            "name": "Космецевтика",
+            "parent_id": 800
+          }
+        },
+        {
+          "id": 86190,
+          "combined_inns": "",
+          "average_price": 7756,
+          "composite_name": "Акулий жир и Муравьиная кислота с Сабельником 75 мл 1 шт. крем для тела",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/7/56/7560a13cf5a5fb437fed7871a3549041.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5319,
+            "name": "ТВИНС Тэк"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4983,
+            "name": "крем для тела"
+          },
+          "category": {
+            "id": 1052,
+            "name": "Космецевтика",
+            "parent_id": 800
+          }
+        },
+        {
+          "id": 86349,
+          "combined_inns": "",
+          "average_price": 13362,
+          "composite_name": "STYX Масло эфирное Мускатный орех 10 мл 1 шт. масло эфирное",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/3/52/352f351615c776d61d80421fd7002e3b.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5687,
+            "name": "Styx-Naturcosmetics"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4731,
+            "name": "масло эфирное"
+          },
+          "category": {
+            "id": 1084,
+            "name": "Эфирные масла",
+            "parent_id": 801
+          }
+        },
+        {
+          "id": 87487,
+          "combined_inns": "",
+          "average_price": 14096,
+          "composite_name": "Oleos Мускатный орех Масло эфирное 5 мл 1 шт.",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/f/7c/f7c4324d9a3831226604ecc07a232ef4.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5387,
+            "name": "Олеос"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": null,
+          "category": {
+            "id": 1084,
+            "name": "Эфирные масла",
+            "parent_id": 801
+          }
+        },
+        {
+          "id": 87580,
+          "combined_inns": "",
+          "average_price": 13166,
+          "composite_name": "Масло эфирное «Мускатный орех» 5 мл 1 шт. масло эфирное",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/f/49/f495f7c29f737dcbde48adfa0da5cbbf.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5679,
+            "name": "Аспера"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4731,
+            "name": "масло эфирное"
+          },
+          "category": {
+            "id": 1084,
+            "name": "Эфирные масла",
+            "parent_id": 801
+          }
+        },
+        {
+          "id": 87604,
+          "combined_inns": "",
+          "average_price": 7748,
+          "composite_name": "Пчела и муравей бальзам-гель 44 г 1 шт. гель-бальзам",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/8/50/850a24cac448b27f188290c679ab82b5.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 4634,
+            "name": "Шустер Фармасьюитикл"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4356,
+            "name": "гель-бальзам"
+          },
+          "category": {
+            "id": 1052,
+            "name": "Космецевтика",
+            "parent_id": 800
+          }
+        },
+        {
+          "id": 87838,
+          "combined_inns": "",
+          "average_price": 148388,
+          "composite_name": "Filorga Mousse мусс для снятия макияжа 150 мл 1 шт. мусс",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/e/fe/efe1f68a96670ddcd043a1a76ff308ed.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 4679,
+            "name": "Laboratoires Filorga"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4913,
+            "name": "мусс"
+          },
+          "category": {
+            "id": 859,
+            "name": "Средства для умывания",
+            "parent_id": 798
+          }
+        },
+        {
+          "id": 87858,
+          "combined_inns": "",
+          "average_price": 446002,
+          "composite_name": "Filorga Time Zero сыворотка-мультикорректор 30 мл 1 шт. сыворотка",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/4/d8/4d8839ad0c34c58f6c1545acc7dff442.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 4679,
+            "name": "Laboratoires Filorga"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4701,
+            "name": "сыворотка"
+          },
+          "category": {
+            "id": 1079,
+            "name": "Сыворотки для лица",
+            "parent_id": 798
+          }
+        },
+        {
+          "id": 88114,
+          "combined_inns": "",
+          "average_price": 74970,
+          "composite_name": "Librederm Муцин улитки Сыворотка регенерирующая 20 мл 1 шт. сыворотка",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/7/73/7731857948fb5c9af08cc64fbef10a0f.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5671,
+            "name": "Дина+"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4701,
+            "name": "сыворотка"
+          },
+          "category": {
+            "id": 1079,
+            "name": "Сыворотки для лица",
+            "parent_id": 798
+          }
+        },
+        {
+          "id": 88501,
+          "combined_inns": "",
+          "average_price": 453130,
+          "composite_name": "Filorga NCEF-Night Mask мультикорректирующая ночная маска 50 мл 1 шт. маска для лица",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/8/c4/8c4c2356a43f14ac6647536a793cea5e.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 4679,
+            "name": "Laboratoires Filorga"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4738,
+            "name": "маска для лица"
+          },
+          "category": {
+            "id": 1055,
+            "name": "Маски для лица",
+            "parent_id": 798
+          }
+        },
+        {
+          "id": 88686,
+          "combined_inns": "",
+          "average_price": 19934,
+          "composite_name": "Belweder Бальзам-желе для губ мультивитаминный 5 мл 1 шт.",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/4/d4/4d45064bac71c24df2934067d25714cf.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 4655,
+            "name": "Belweder"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": null,
+          "category": {
+            "id": 1085,
+            "name": "Бальзамы для губ",
+            "parent_id": 764
+          }
+        },
+        {
+          "id": 88784,
+          "combined_inns": "",
+          "average_price": 6386,
+          "composite_name": "Масло эфирное шалфея мускатного 10 мл 1 шт. масло эфирное",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/5/f2/5f262239967bd558e4ff820eeb814378.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 4671,
+            "name": "Рино био"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4731,
+            "name": "масло эфирное"
+          },
+          "category": {
+            "id": 1084,
+            "name": "Эфирные масла",
+            "parent_id": 801
+          }
+        },
+        {
+          "id": 89166,
+          "combined_inns": "Лизаты бактерий",
+          "average_price": 105102,
+          "composite_name": "Бронхо-мунал П 3.5 мг 30 шт. капсулы",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/c/1b/c1b453932749fde1841d356077d8f919.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1243,
+            "name": "для профилактики и лечения простуды и гриппа"
+          },
+          "manufacturer": {
+            "id": 5346,
+            "name": "Sandoz"
+          },
+          "country": {
+            "id": 232,
+            "name": "Словения"
+          },
+          "amount": {
+            "id": 278,
+            "name": "30"
+          },
+          "dosage": {
+            "id": 3914,
+            "value": "3.5 мг"
+          },
+          "form": {
+            "id": 4509,
+            "name": "капсулы"
+          },
+          "category": {
+            "id": 816,
+            "name": "Простуда и грипп",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 90872,
+          "combined_inns": "Алтея лекарственного травы экстракт",
+          "average_price": 4436,
+          "composite_name": "Мукалтин 50 мг 20 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/8/9d/89ddeadfbbe0205266c32238001759da.jpg",
+          "available_count_in_pharmacies": 150,
+          "atc": {
+            "id": 1303,
+            "name": "отхаркивающее"
+          },
+          "manufacturer": {
+            "id": 5405,
+            "name": "Обновление ПФК"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "amount": {
+            "id": 205,
+            "name": "20"
+          },
+          "dosage": {
+            "id": 3863,
+            "value": "50 мг"
+          },
+          "form": {
+            "id": 4512,
+            "name": "таблетки"
+          },
+          "category": {
+            "id": 816,
+            "name": "Простуда и грипп",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 90950,
+          "combined_inns": "Ацетилцистеин",
+          "average_price": 24262,
+          "composite_name": "Мукоцил Солюшн Таблетс 200 мг 20 шт. таблетки диспергируемые",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/2/15/215ae8fdd84268587091f652b244f0ae.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1303,
+            "name": "отхаркивающее"
+          },
+          "manufacturer": {
+            "id": 5300,
+            "name": "Озон"
+          },
+          "country": null,
+          "amount": {
+            "id": 205,
+            "name": "20"
+          },
+          "dosage": {
+            "id": 3771,
+            "value": "200 мг"
+          },
+          "form": {
+            "id": 3468,
+            "name": "таблетки диспергируемые"
+          },
+          "category": {
+            "id": 816,
+            "name": "Простуда и грипп",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 91132,
+          "combined_inns": "Ацетилцистеин",
+          "average_price": 27282,
+          "composite_name": "Мукоцил Солюшн Таблетс 600 мг 10 шт. таблетки диспергируемые",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/a/8b/a8b924e91d54e50603efef242f574798.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1303,
+            "name": "отхаркивающее"
+          },
+          "manufacturer": {
+            "id": 5300,
+            "name": "Озон"
+          },
+          "country": null,
+          "amount": {
+            "id": 276,
+            "name": "10"
+          },
+          "dosage": {
+            "id": 3766,
+            "value": "600 мг"
+          },
+          "form": {
+            "id": 3468,
+            "name": "таблетки диспергируемые"
+          },
+          "category": {
+            "id": 816,
+            "name": "Простуда и грипп",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 91931,
+          "combined_inns": "Карбоцистеин",
+          "average_price": 53890,
+          "composite_name": "Либексин Муко 50 мг/мл 125 мл 1 шт. сироп",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/f/6d/f6dbaacdf0be1d09f41320171ac1d101.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1303,
+            "name": "отхаркивающее"
+          },
+          "manufacturer": {
+            "id": 5615,
+            "name": "Sanofi"
+          },
+          "country": {
+            "id": 203,
+            "name": "Франция"
+          },
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": {
+            "id": 3685,
+            "value": "50 мг/мл"
+          },
+          "form": {
+            "id": 3376,
+            "name": "сироп"
+          },
+          "category": {
+            "id": 816,
+            "name": "Простуда и грипп",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 92100,
+          "combined_inns": "Алтея лекарственного травы экстракт",
+          "average_price": 0,
+          "composite_name": "Мукалтин 50 мг 20 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/1/12/1124796bd1f4809628f0035ddce67bfc.jpg",
+          "available_count_in_pharmacies": 0,
+          "atc": {
+            "id": 1303,
+            "name": "отхаркивающее"
+          },
+          "manufacturer": {
+            "id": 5385,
+            "name": "Фармстандарт"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "amount": {
+            "id": 205,
+            "name": "20"
+          },
+          "dosage": {
+            "id": 3863,
+            "value": "50 мг"
+          },
+          "form": {
+            "id": 4512,
+            "name": "таблетки"
+          },
+          "category": {
+            "id": 816,
+            "name": "Простуда и грипп",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 92123,
+          "combined_inns": "Лизаты бактерий",
+          "average_price": 150508,
+          "composite_name": "Бронхо-мунал 7 мг 30 шт. капсулы",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/b/3a/b3a730a26249be2d9a3d943c58ce631b.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1315,
+            "name": "для повышения иммунитета"
+          },
+          "manufacturer": {
+            "id": 5346,
+            "name": "Sandoz"
+          },
+          "country": {
+            "id": 232,
+            "name": "Словения"
+          },
+          "amount": {
+            "id": 278,
+            "name": "30"
+          },
+          "dosage": {
+            "id": 3821,
+            "value": "7 мг"
+          },
+          "form": {
+            "id": 4509,
+            "name": "капсулы"
+          },
+          "category": {
+            "id": 816,
+            "name": "Простуда и грипп",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 92413,
+          "combined_inns": "Алтея лекарственного травы экстракт",
+          "average_price": 13314,
+          "composite_name": "Мукалтин 50 мг 30 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/7/2b/72b8895c3ad415afd1e3fd15c7c09181.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1303,
+            "name": "отхаркивающее"
+          },
+          "manufacturer": {
+            "id": 5304,
+            "name": "Медисорб"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "amount": {
+            "id": 278,
+            "name": "30"
+          },
+          "dosage": {
+            "id": 3863,
+            "value": "50 мг"
+          },
+          "form": {
+            "id": 4512,
+            "name": "таблетки"
+          },
+          "category": {
+            "id": 816,
+            "name": "Простуда и грипп",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 92416,
+          "combined_inns": "Алтея лекарственного травы экстракт",
+          "average_price": 3755,
+          "composite_name": "Мукалтин 50 мг 10 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/4/b0/4b05020ab73eab33c60ce5fae7e784a3.jpg",
+          "available_count_in_pharmacies": 200,
+          "atc": {
+            "id": 1303,
+            "name": "отхаркивающее"
+          },
+          "manufacturer": {
+            "id": 4478,
+            "name": "Авексима"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "amount": {
+            "id": 276,
+            "name": "10"
+          },
+          "dosage": {
+            "id": 3863,
+            "value": "50 мг"
+          },
+          "form": {
+            "id": 4512,
+            "name": "таблетки"
+          },
+          "category": {
+            "id": 816,
+            "name": "Простуда и грипп",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 92893,
+          "combined_inns": "Алтея лекарственного травы экстракт",
+          "average_price": 0,
+          "composite_name": "Мукалтин 50 мг 10 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/5/6a/56a82f16c08375f99b64a1a0e547fbb5.jpg",
+          "available_count_in_pharmacies": 0,
+          "atc": {
+            "id": 1303,
+            "name": "отхаркивающее"
+          },
+          "manufacturer": {
+            "id": 5529,
+            "name": "ВИФИТЕХ"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "amount": {
+            "id": 276,
+            "name": "10"
+          },
+          "dosage": {
+            "id": 3863,
+            "value": "50 мг"
+          },
+          "form": {
+            "id": 4512,
+            "name": "таблетки"
+          },
+          "category": {
+            "id": 816,
+            "name": "Простуда и грипп",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 94764,
+          "combined_inns": "Подорожника овального семян оболочка",
+          "average_price": 46380,
+          "composite_name": "Мукофальк 5 г 20 шт. гранулы для приготовления суспензии для приема внутрь",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/9/a9/9a99aa067da4e1b204782ca8d756b702.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1067,
+            "name": "от запора"
+          },
+          "manufacturer": {
+            "id": 5107,
+            "name": "Losan Pharma"
+          },
+          "country": {
+            "id": 208,
+            "name": "Германия"
+          },
+          "amount": {
+            "id": 205,
+            "name": "20"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4181,
+            "name": "гранулы для приготовления суспензии для приема внутрь"
+          },
+          "category": {
+            "id": 866,
+            "name": "Желудочно-кишечные средства",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 95089,
+          "combined_inns": "Алтея лекарственного травы экстракт",
+          "average_price": 0,
+          "composite_name": "Мукалтин 50 мг 20 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/8/a1/8a1c0b862c4bdcbee82e413ba73a6005.jpg",
+          "available_count_in_pharmacies": 0,
+          "atc": {
+            "id": 1303,
+            "name": "отхаркивающее"
+          },
+          "manufacturer": {
+            "id": 5293,
+            "name": "Уралбиофарм"
+          },
+          "country": null,
+          "amount": {
+            "id": 205,
+            "name": "20"
+          },
+          "dosage": {
+            "id": 3863,
+            "value": "50 мг"
+          },
+          "form": {
+            "id": 4512,
+            "name": "таблетки"
+          },
+          "category": {
+            "id": 816,
+            "name": "Простуда и грипп",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 95671,
+          "combined_inns": "Карбоцистеин",
+          "average_price": 26930,
+          "composite_name": "Либексин Муко 20 мг/мл 125 мл 1 шт. сироп для детей",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/8/75/875c401e227af996c0cf738688a6055f.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1303,
+            "name": "отхаркивающее"
+          },
+          "manufacturer": {
+            "id": 5615,
+            "name": "Sanofi"
+          },
+          "country": {
+            "id": 203,
+            "name": "Франция"
+          },
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": {
+            "id": 3959,
+            "value": "20 мг/мл"
+          },
+          "form": {
+            "id": 4486,
+            "name": "сироп для детей"
+          },
+          "category": {
+            "id": 816,
+            "name": "Простуда и грипп",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 95908,
+          "combined_inns": "Лизаты бактерий",
+          "average_price": 55024,
+          "composite_name": "Бронхо-мунал 7 мг 10 шт. капсулы",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/8/84/88439e7534a94af90b1541dec3d93c81.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1315,
+            "name": "для повышения иммунитета"
+          },
+          "manufacturer": {
+            "id": 5346,
+            "name": "Sandoz"
+          },
+          "country": {
+            "id": 232,
+            "name": "Словения"
+          },
+          "amount": {
+            "id": 276,
+            "name": "10"
+          },
+          "dosage": {
+            "id": 3821,
+            "value": "7 мг"
+          },
+          "form": {
+            "id": 4509,
+            "name": "капсулы"
+          },
+          "category": {
+            "id": 816,
+            "name": "Простуда и грипп",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 96091,
+          "combined_inns": "Подорожника овального семян оболочка",
+          "average_price": 13182,
+          "composite_name": "Мукофальк 300 г 1 шт. гранулы для приготовления суспензии для приема внутрь",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/b/d4/bd4b9018c962c01bda68e30ef6b2303b.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1067,
+            "name": "от запора"
+          },
+          "manufacturer": {
+            "id": 4529,
+            "name": "Doctor Falk Pharma"
+          },
+          "country": {
+            "id": 208,
+            "name": "Германия"
+          },
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4181,
+            "name": "гранулы для приготовления суспензии для приема внутрь"
+          },
+          "category": {
+            "id": 866,
+            "name": "Желудочно-кишечные средства",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 96366,
+          "combined_inns": "Алтея лекарственного травы экстракт",
+          "average_price": 0,
+          "composite_name": "Мукалтин 50 мг 10 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/0/38/038f3424b08a2a28d2ee495e53640ba4.jpg",
+          "available_count_in_pharmacies": 0,
+          "atc": {
+            "id": 1303,
+            "name": "отхаркивающее"
+          },
+          "manufacturer": {
+            "id": 5385,
+            "name": "Фармстандарт"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "amount": {
+            "id": 276,
+            "name": "10"
+          },
+          "dosage": {
+            "id": 3863,
+            "value": "50 мг"
+          },
+          "form": {
+            "id": 4512,
+            "name": "таблетки"
+          },
+          "category": {
+            "id": 816,
+            "name": "Простуда и грипп",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 96691,
+          "combined_inns": "Алтея лекарственного травы экстракт",
+          "average_price": 0,
+          "composite_name": "Мукалтин 50 мг 10 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/b/9a/b9a7b380806d74b787d6f1f42d9fdd5f.jpg",
+          "available_count_in_pharmacies": 0,
+          "atc": {
+            "id": 1303,
+            "name": "отхаркивающее"
+          },
+          "manufacturer": {
+            "id": 4456,
+            "name": "Татхимфармпрепараты"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "amount": {
+            "id": 276,
+            "name": "10"
+          },
+          "dosage": {
+            "id": 3863,
+            "value": "50 мг"
+          },
+          "form": {
+            "id": 4512,
+            "name": "таблетки"
+          },
+          "category": {
+            "id": 816,
+            "name": "Простуда и грипп",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 97688,
+          "combined_inns": "Лизаты бактерий",
+          "average_price": 41094,
+          "composite_name": "Бронхо-мунал П 3.5 мг 10 шт. капсулы",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/4/df/4df17818d89a031ec2b99fdf70af6605.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1315,
+            "name": "для повышения иммунитета"
+          },
+          "manufacturer": {
+            "id": 5346,
+            "name": "Sandoz"
+          },
+          "country": {
+            "id": 232,
+            "name": "Словения"
+          },
+          "amount": {
+            "id": 276,
+            "name": "10"
+          },
+          "dosage": {
+            "id": 3914,
+            "value": "3.5 мг"
+          },
+          "form": {
+            "id": 4509,
+            "name": "капсулы"
+          },
+          "category": {
+            "id": 816,
+            "name": "Простуда и грипп",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 99669,
+          "combined_inns": "",
+          "average_price": 13292,
+          "composite_name": "9 месяцев Очищающий мусс для интимной гигиены 160 мл 1 шт. мусс",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/d/63/d638d252e87496d432feb91252e1e2e7.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5485,
+            "name": "Валента Фарм"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4913,
+            "name": "мусс"
+          },
+          "category": {
+            "id": 953,
+            "name": "Гели для интимной гигиены беременных",
+            "parent_id": 766
+          }
+        },
+        {
+          "id": 99966,
+          "combined_inns": "",
+          "average_price": 66858,
+          "composite_name": "Bioderma ABCDerm Мусс 200 мл 1 шт. мусс",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/0/b8/0b80652ed90aae9a5b12a643e66cf2b2.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5169,
+            "name": "Laboratoire Bioderma"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": {
+            "id": 4913,
+            "name": "мусс"
+          },
+          "category": {
+            "id": 836,
+            "name": "Гель для купания детский",
+            "parent_id": 759
+          }
+        },
+        {
+          "id": 100176,
+          "combined_inns": "",
+          "average_price": 13236,
+          "composite_name": "Nutrilon Безмолочная мультизлаковая каша 180 г 1 шт.",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/9/74/9742e755f3c3467d42f6a899535a1efc.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 4829,
+            "name": "Nutricia"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": null,
+          "category": {
+            "id": 956,
+            "name": "Каши",
+            "parent_id": 760
+          }
+        },
+        {
+          "id": 100622,
+          "combined_inns": "40% Шерсть, 30% Ангора, 30% Акрил",
+          "average_price": 13290,
+          "composite_name": "Relaxsan Трико мужское с ангорой и шерстью р. 5 1 шт.",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/2/0b/20b17a0fd2faa58c4342a3174345db4c.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 4812,
+            "name": "Calze G.T.S.R."
+          },
+          "country": {
+            "id": 216,
+            "name": "Италия"
+          },
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": {
+            "id": 3202,
+            "value": "р. 5"
+          },
+          "form": null,
+          "category": {
+            "id": 925,
+            "name": "Термобелье",
+            "parent_id": 770
+          }
+        },
+        {
+          "id": 100623,
+          "combined_inns": "40% Шерсть, 30% Ангора, 30% Акрил",
+          "average_price": 13184,
+          "composite_name": "Relaxsan Трико мужское с ангорой и шерстью р. 4 1 шт.",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/2/0b/20b17a0fd2faa58c4342a3174345db4c.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 4812,
+            "name": "Calze G.T.S.R."
+          },
+          "country": {
+            "id": 216,
+            "name": "Италия"
+          },
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": {
+            "id": 3228,
+            "value": "р. 4"
+          },
+          "form": null,
+          "category": {
+            "id": 925,
+            "name": "Термобелье",
+            "parent_id": 770
+          }
+        },
+        {
+          "id": 100635,
+          "combined_inns": "54% Шерсть, 26% Акрил, 14% Хлопок, 6% Эластан.",
+          "average_price": 13300,
+          "composite_name": "Relaxsan Футболка мужская полушерстяная компрессионная р. 6 1 шт.",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/6/47/647024fc8d2edc551917a37b085fbda5.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 4812,
+            "name": "Calze G.T.S.R."
+          },
+          "country": {
+            "id": 216,
+            "name": "Италия"
+          },
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": {
+            "id": 3222,
+            "value": "р. 6"
+          },
+          "form": null,
+          "category": {
+            "id": 925,
+            "name": "Термобелье",
+            "parent_id": 770
+          }
+        },
+        {
+          "id": 100636,
+          "combined_inns": "54% Шерсть, 26% Акрил, 14% Хлопок, 6% Эластан.",
+          "average_price": 13374,
+          "composite_name": "Relaxsan Футболка мужская полушерстяная компрессионная р. 4 1 шт.",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/6/47/647024fc8d2edc551917a37b085fbda5.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 4812,
+            "name": "Calze G.T.S.R."
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": {
+            "id": 3228,
+            "value": "р. 4"
+          },
+          "form": null,
+          "category": {
+            "id": 925,
+            "name": "Термобелье",
+            "parent_id": 770
+          }
+        },
+        {
+          "id": 100733,
+          "combined_inns": "",
+          "average_price": 58650,
+          "composite_name": "Scholl GelActiv стельки для активной работы мужские 2 шт.",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/5/e9/5e938f108fa446626f0a229ad55389fe.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5809,
+            "name": "Reckitt Benckiser"
+          },
+          "country": null,
+          "amount": {
+            "id": 265,
+            "name": "2"
+          },
+          "dosage": null,
+          "form": null,
+          "category": {
+            "id": 890,
+            "name": "Стельки",
+            "parent_id": 770
+          }
+        },
+        {
+          "id": 100741,
+          "combined_inns": "",
+          "average_price": 13316,
+          "composite_name": "Эласма Гольфы мужские 1 класс компрессии р. 2 пара 1 шт.",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/2/3c/23c8d50353a1b7164e473b0d6d6469b6.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5708,
+            "name": "Тонус"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": {
+            "id": 3198,
+            "value": "р. 2"
+          },
+          "form": null,
+          "category": {
+            "id": 895,
+            "name": "Гольфы",
+            "parent_id": 771
+          }
+        },
+        {
+          "id": 100797,
+          "combined_inns": "54% Шерсть, 26% Акрил, 14% Хлопок, 6% Эластан.",
+          "average_price": 13246,
+          "composite_name": "Relaxsan Футболка мужская полушерстяная компрессионная р. 3 1 шт.",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/6/47/647024fc8d2edc551917a37b085fbda5.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 4812,
+            "name": "Calze G.T.S.R."
+          },
+          "country": {
+            "id": 216,
+            "name": "Италия"
+          },
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": {
+            "id": 3199,
+            "value": "р. 3"
+          },
+          "form": null,
+          "category": {
+            "id": 925,
+            "name": "Термобелье",
+            "parent_id": 770
+          }
+        },
+        {
+          "id": 101321,
+          "combined_inns": "",
+          "average_price": 0,
+          "composite_name": "Мультилор Устройство для комплексной терапии 1 шт.",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/3/6c/36cac271190f547ef28d6f8297381808.jpg",
+          "available_count_in_pharmacies": 0,
+          "atc": null,
+          "manufacturer": {
+            "id": 5655,
+            "name": "Елатомский приборный завод"
+          },
+          "country": null,
+          "amount": {
+            "id": 279,
+            "name": "1"
+          },
+          "dosage": null,
+          "form": null,
+          "category": {
+            "id": 914,
+            "name": "Облучатели медицинские",
+            "parent_id": 775
+          }
+        }
+      ]
+    },
+    "filter": null
+  }
+}

@@ -1,0 +1,61 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext {
+        COMPILE_SDK_VERSION = 30
+        BUILD_TOOLS_VERSION = "30.0.2"
+        MIN_SDK_VERSION = 19
+        TARGET_SDK_VERSION = 30
+
+        application_id = "ru.renewal.mypharmy"
+
+        kotlin_version = '1.5.10'
+    }
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        apply from: 'dependencies.gradle'
+        apply from: 'versioning.gradle'
+
+        classpath "com.android.tools.build:gradle:4.1.3"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.3.5'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.4.1'
+        classpath 'com.google.firebase:firebase-appdistribution-gradle:2.0.1'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+        maven { url "http://maven.google.com/" }
+        google()
+        jcenter()
+    }
+}
+
+task incrementVersionCode {
+    doLast {
+        def propFile = new File("${project.projectDir}/version.properties")
+        def versionProps = new Properties()
+        versionProps.load(new FileInputStream(propFile))
+        def updatedVersionCode = setupNewVersionCode()
+
+        def updatedCode = updatedVersionCode.getVersionCode()
+        println('Version code has been incremented to ' + updatedCode)
+        versionProps['VERSION_MAJOR'] = updatedVersionCode.majorVersion.toString()
+        versionProps['VERSION_MINOR'] = updatedVersionCode.majorMinor.toString()
+        versionProps['VERSION_PATCH'] = updatedVersionCode.majorPatch.toString()
+        versionProps['VERSION_BUILD'] = updatedVersionCode.majorBuild.toString()
+        versionProps.store(propFile.newWriter(), null)
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

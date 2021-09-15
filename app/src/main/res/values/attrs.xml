@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="SearchView">
+        <attr name="startDrawable" format="reference" />
+        <attr name="hint" format="string|integer" />
+    </declare-styleable>
+
+</resources>

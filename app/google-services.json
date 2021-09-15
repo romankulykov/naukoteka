@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "67246061394",
+    "project_id": "mypharmy",
+    "storage_bucket": "mypharmy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:67246061394:android:e6188850c2f37910bd6c8b",
+        "android_client_info": {
+          "package_name": "ru.renewal.mypharmy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "67246061394-ck3pc8vp5q1cgfa5sp9df604o7r1mm80.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6LRbWq-7Q12MMIES_BhrIbZkbXYAT1yc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "67246061394-ck3pc8vp5q1cgfa5sp9df604o7r1mm80.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

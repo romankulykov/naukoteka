@@ -1,0 +1,2206 @@
+{
+  "status_code": 200,
+  "data": {
+    "goods": {
+      "count": 87,
+      "elements": [
+        {
+          "id": 80336,
+          "average_price": 1316200.0,
+          "composite_name": "Файн Гиалурон и Коллаген Плюс 50 мл 10 шт. жидкость для приема внутрь",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/5/95/595b8b132d335da68027e96e1c675b88.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5437,
+            "name": "Центр японского дизайна"
+          },
+          "country": null,
+          "category": {
+            "id": 977,
+            "name": "БАД для кожи и волос",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 80340,
+          "average_price": 89623200.0,
+          "composite_name": "Файн Экстракт Пальмы Сереноа 75 шт. капсулы",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/3/65/365bf2df836efaf72006493c238abf90.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5434,
+            "name": "Fine Japan Co."
+          },
+          "country": null,
+          "category": {
+            "id": 1005,
+            "name": "БАД для мужского здоровья",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 80341,
+          "average_price": 1323400.0,
+          "composite_name": "Файн Докозагексаеновая кислота 250 мг 150 шт. капсулы",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/e/31/e31d766e7d05ed3408754325d8bac463.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5437,
+            "name": "Центр японского дизайна"
+          },
+          "country": null,
+          "category": {
+            "id": 1007,
+            "name": "БАД для нервной системы",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 80344,
+          "average_price": 88021400.0,
+          "composite_name": "Файн Экстракт жемчуга Коикс 250 мг 680 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/6/f8/6f87be5d63813f47af5c058b8b5915ee.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5437,
+            "name": "Центр японского дизайна"
+          },
+          "country": null,
+          "category": {
+            "id": 978,
+            "name": "БАД для костей и суставов",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 80347,
+          "average_price": 1318000.0,
+          "composite_name": "Файн Хлорелла 200 мг 1800 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/8/c7/8c7d63136ef48dfb64608abf85716ee9.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5434,
+            "name": "Fine Japan Co."
+          },
+          "country": null,
+          "category": {
+            "id": 980,
+            "name": "БАД для пищеварения",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 80470,
+          "average_price": 20183400.0,
+          "composite_name": "Геладринк Фаст 600 мг 360 шт. капсулы",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/b/55/b55cf569deb81b098c8d695c947c6ea9.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5433,
+            "name": "Orling"
+          },
+          "country": {
+            "id": 212,
+            "name": "Чешская Республика"
+          },
+          "category": {
+            "id": 978,
+            "name": "БАД для костей и суставов",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 80546,
+          "average_price": 7652200.0,
+          "composite_name": "Solgar Липотропный фактор 50 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/1/91/1910d1c0a74631ea9362adf9b7784999.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5425,
+            "name": "Solgar"
+          },
+          "country": {
+            "id": 159,
+            "name": "США"
+          },
+          "category": {
+            "id": 980,
+            "name": "БАД для пищеварения",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 80588,
+          "average_price": 1321400.0,
+          "composite_name": "Блокатор калорий три фазы 450 мг 40 шт. капсулы",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/9/93/9935064717ac4ff104c0a8ef67e98b7e.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5446,
+            "name": "Фарм-Про"
+          },
+          "country": null,
+          "category": {
+            "id": 983,
+            "name": "БАД для похудения",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 80605,
+          "average_price": 31333600.0,
+          "composite_name": "Геладринк Фаст Экстра 420 г 1 шт. порошок",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/8/6e/86edcb21331a27a530b9da68fc5497dd.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5433,
+            "name": "Orling"
+          },
+          "country": {
+            "id": 212,
+            "name": "Чешская Республика"
+          },
+          "category": {
+            "id": 978,
+            "name": "БАД для костей и суставов",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 80708,
+          "average_price": 26704600.0,
+          "composite_name": "Фамвиталь 90 шт. набор капсул",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/2/a9/2a965b586b35bba54535826380904cf9.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1289,
+            "name": "для кожи, ногтей и волос"
+          },
+          "manufacturer": {
+            "id": 5470,
+            "name": "Besins Healthcare"
+          },
+          "country": {
+            "id": 203,
+            "name": "Франция"
+          },
+          "category": {
+            "id": 977,
+            "name": "БАД для кожи и волос",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 80758,
+          "average_price": 1873800.0,
+          "composite_name": "Мумие Алтай-Фарм 0.2 г 60 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/2/ff/2ff7b5cb80a6939f771b8e876f6ad5b3.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5460,
+            "name": "Алтай-Фарм"
+          },
+          "country": null,
+          "category": {
+            "id": 978,
+            "name": "БАД для костей и суставов",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 80896,
+          "average_price": 85202800.0,
+          "composite_name": "Файн Гранат в таблетках 150 мг 450 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/8/b2/8b237fb68438df6c6e2090ab539f990d.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5437,
+            "name": "Центр японского дизайна"
+          },
+          "country": null,
+          "category": {
+            "id": 1046,
+            "name": "БАД для женского здоровья",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 80924,
+          "average_price": 1333200.0,
+          "composite_name": "Файн Инозитол 250 мг 540 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/7/7a/77af491acd165ca7c79c2ac220e321e4.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5437,
+            "name": "Центр японского дизайна"
+          },
+          "country": null,
+          "category": {
+            "id": 1007,
+            "name": "БАД для нервной системы",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 80942,
+          "average_price": 1328400.0,
+          "composite_name": "Файн Акулий хрящ в таблетках 125 мг 520 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/d/9d/d9d72cb95d72581a36ed987ba0e46795.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5437,
+            "name": "Центр японского дизайна"
+          },
+          "country": null,
+          "category": {
+            "id": 978,
+            "name": "БАД для костей и суставов",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 81350,
+          "average_price": 720000.0,
+          "composite_name": "Черника форте с лютеином «Фарм-про» 200 мг 45 шт. капсулы",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/f/85/f851f5947431d9e4c6d14bc1aa34fba7.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5446,
+            "name": "Фарм-Про"
+          },
+          "country": null,
+          "category": {
+            "id": 1029,
+            "name": "БАД для зрения и слуха",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 81820,
+          "average_price": 107085800.0,
+          "composite_name": "Файн Коллаген с витамином C 210 г 1 шт. порошок для приема внутрь",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/1/73/173de6a47d19686efcb73207b4fdb08c.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5437,
+            "name": "Центр японского дизайна"
+          },
+          "country": null,
+          "category": {
+            "id": 977,
+            "name": "БАД для кожи и волос",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 81822,
+          "average_price": 1318600.0,
+          "composite_name": "Файн Натто Киназа 250 мг 240 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/c/de/cde81b4ccf7d9eee77e4cf6a3cf54899.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5437,
+            "name": "Центр японского дизайна"
+          },
+          "country": null,
+          "category": {
+            "id": 981,
+            "name": "БАД для сердца и сосудов",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 81987,
+          "average_price": 2501400.0,
+          "composite_name": "Тайм-Фактор 60 шт. капсулы",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/7/31/7314c6d62ceff7a3fd282aa5b0d612a8.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5417,
+            "name": "Внешторг Фарма"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "category": {
+            "id": 1046,
+            "name": "БАД для женского здоровья",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 81993,
+          "average_price": 5835000.0,
+          "composite_name": "Липотропный фактор 1.2 г 60 шт. таблетки",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/1/6d/16df144df68cc762058dc60c2254226c.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5413,
+            "name": "Эвалар"
+          },
+          "country": null,
+          "category": {
+            "id": 979,
+            "name": "БАД для обмена веществ",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 82027,
+          "average_price": 1327000.0,
+          "composite_name": "Файн Коэнзим Q10-30 с витамином B1 390 мг 60 шт. капсулы",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/3/10/3105c283a175ca6d86818ac5ec14eb15.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5437,
+            "name": "Центр японского дизайна"
+          },
+          "country": null,
+          "category": {
+            "id": 981,
+            "name": "БАД для сердца и сосудов",
+            "parent_id": 753
+          }
+        },
+        {
+          "id": 82376,
+          "average_price": 633400.0,
+          "composite_name": "Аскорбиновая кислота-ФАРМСТАНДАРТ 25 мг 200 шт. драже",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/7/ef/7efab75410dc9ec791f7eaa2219632fb.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1318,
+            "name": "от гиповитаминоза"
+          },
+          "manufacturer": {
+            "id": 5385,
+            "name": "Фармстандарт"
+          },
+          "country": null,
+          "category": {
+            "id": 1033,
+            "name": "Витамины БАД",
+            "parent_id": 780
+          }
+        },
+        {
+          "id": 84118,
+          "average_price": 9547000.0,
+          "composite_name": "Фагодент Гель с бактериофагами для десен 50 мл 1 шт. гель для местного применения",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/2/d4/2d400d272e831f18a3a2d84fbca8554e.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5747,
+            "name": "МикроМир НПЦ"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "category": {
+            "id": 974,
+            "name": "Гели для полости рта",
+            "parent_id": 781
+          }
+        },
+        {
+          "id": 84124,
+          "average_price": 9614000.0,
+          "composite_name": "Фагогин Гель с бактериофагами 50 мл 1 шт. гель для местного применения",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/c/5d/c5d46c518a434838fa628bdec7f36c6b.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5747,
+            "name": "МикроМир НПЦ"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "category": {
+            "id": 1017,
+            "name": "Гели для интимной гигиены",
+            "parent_id": 782
+          }
+        },
+        {
+          "id": 84599,
+          "average_price": 1080800.0,
+          "composite_name": "Тест на овуляцию ИХА-ЛГ-ФАКТОР 5 шт. тест-полоска",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/9/f4/9f4901676926d73eee40c8d5a0e1e546.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5558,
+            "name": "Фактор-Мед"
+          },
+          "country": null,
+          "category": {
+            "id": 1048,
+            "name": "Тесты на овуляцию",
+            "parent_id": 796
+          }
+        },
+        {
+          "id": 85793,
+          "average_price": 907800.0,
+          "composite_name": "Novosvit Жидкий тальк ФАРНЕЗОЛ Защита от пота и запаха Антигрибковый 50 мл 1 шт. крем-дезодорант для ног",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/7/6e/76e7dcfaf69c15a8a3c12492bb204449.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5844,
+            "name": "Народные Промыслы"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "category": {
+            "id": 1050,
+            "name": "Дезодоранты и антиперспиранты",
+            "parent_id": 800
+          }
+        },
+        {
+          "id": 86392,
+          "average_price": 2333600.0,
+          "composite_name": "Лак для ногтей Porcelain розовый фарфор «Бельведер» 8 мл 1 шт. лак для ногтей",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/3/91/391cf36975cf30f3dc9c42686bfe434d.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 4673,
+            "name": "Внешопт"
+          },
+          "country": null,
+          "category": {
+            "id": 860,
+            "name": "Лаки для ногтей",
+            "parent_id": 755
+          }
+        },
+        {
+          "id": 89403,
+          "average_price": 3567400.0,
+          "composite_name": "Фамотидин 20 мг 5 мл 5 шт. лиофилизат для приготовления раствора для внутривенного введения",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/8/88/8887d7e8b3adab63af151ad351ba3274.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1109,
+            "name": "от язвы желудка и 12-перстной кишки"
+          },
+          "manufacturer": {
+            "id": 4465,
+            "name": "Фермент Фирма"
+          },
+          "country": null,
+          "category": {
+            "id": 866,
+            "name": "Желудочно-кишечные средства",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 89404,
+          "average_price": 304200.0,
+          "composite_name": "Фамотидин 20 мг 20 шт. таблетки, покрытые пленочной оболочкой",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/d/bf/dbfe3cac0aa9008b4b4996d4137b2df4.jpg",
+          "available_count_in_pharmacies": 100,
+          "atc": {
+            "id": 1109,
+            "name": "от язвы желудка и 12-перстной кишки"
+          },
+          "manufacturer": {
+            "id": 5300,
+            "name": "Озон"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "category": {
+            "id": 866,
+            "name": "Желудочно-кишечные средства",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 89580,
+          "average_price": 7993600.0,
+          "composite_name": "Фамилар 500 мг 3 шт. таблетки, покрытые пленочной оболочкой",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/6/9a/69a0a09d45641cc0c246d9d5ae284783.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1342,
+            "name": "от герпеса"
+          },
+          "manufacturer": {
+            "id": 4523,
+            "name": "АРС"
+          },
+          "country": {
+            "id": 211,
+            "name": "Индия"
+          },
+          "category": {
+            "id": 818,
+            "name": "Противовирусные препараты",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 89733,
+          "average_price": 1325200.0,
+          "composite_name": "Солпадеин Фаст 65 мг+500 мг 24 шт. таблетки, покрытые пленочной оболочкой",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/c/88/c88e338366b356ab3355021bc6288ce8.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5259,
+            "name": "GlaxoSmithKline"
+          },
+          "country": {
+            "id": 221,
+            "name": "Ирландия"
+          },
+          "category": {
+            "id": 874,
+            "name": "Обезболивающие средства",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 89882,
+          "average_price": 314800.0,
+          "composite_name": "Глицин-Био Фармаплант 100 мг 50 шт. таблетки подъязычные",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/d/5f/d5f7b25885a32f59807bb35243356a9c.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1298,
+            "name": "успокаивающее"
+          },
+          "manufacturer": {
+            "id": 5300,
+            "name": "Озон"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "category": {
+            "id": 822,
+            "name": "Нервная система",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 89954,
+          "average_price": 1053000.0,
+          "composite_name": "Фамотидин 40 мг 20 шт. таблетки, покрытые пленочной оболочкой",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/6/ab/6ab61cbecfe01f7c01dcb1183e99e207.jpg",
+          "available_count_in_pharmacies": 100,
+          "atc": {
+            "id": 1109,
+            "name": "от язвы желудка и 12-перстной кишки"
+          },
+          "manufacturer": {
+            "id": 5416,
+            "name": "STADA"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "category": {
+            "id": 866,
+            "name": "Желудочно-кишечные средства",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 90137,
+          "average_price": 1329600.0,
+          "composite_name": "Гликлазид МВ Фармстандарт 60 мг 30 шт. таблетки с пролонгированным высвобождением",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/3/23/3238d5224007de0c9cde5e693ad7758d.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1340,
+            "name": "от сахарного диабета 2 типа"
+          },
+          "manufacturer": {
+            "id": 5385,
+            "name": "Фармстандарт"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "category": {
+            "id": 869,
+            "name": "Диабет",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 90184,
+          "average_price": 1636400.0,
+          "composite_name": "Гликлазид МВ Фармстандарт 30 мг 60 шт. таблетки с пролонгированным высвобождением",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/8/9e/89efc495f42e4d21746055b23739d7b8.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1340,
+            "name": "от сахарного диабета 2 типа"
+          },
+          "manufacturer": {
+            "id": 5385,
+            "name": "Фармстандарт"
+          },
+          "country": null,
+          "category": {
+            "id": 869,
+            "name": "Диабет",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 90211,
+          "average_price": 1328800.0,
+          "composite_name": "Файкомпа 6 мг 28 шт. таблетки, покрытые пленочной оболочкой",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/4/75/47597abdfc008ac569e2f5683dd5e3d3.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1398,
+            "name": "от эпилепсии"
+          },
+          "manufacturer": {
+            "id": 5048,
+            "name": "Eisai Europe"
+          },
+          "country": {
+            "id": 210,
+            "name": "Великобритания"
+          },
+          "category": {
+            "id": 822,
+            "name": "Нервная система",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 90298,
+          "average_price": 1229400.0,
+          "composite_name": "Эдас-126 Фарингол 25 мл 1 шт. капли для приема внутрь гомеопатические",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/d/db/ddb63ccd24f00e7db1a71b860a05438f.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1064,
+            "name": "от ангины"
+          },
+          "manufacturer": {
+            "id": 5341,
+            "name": "Эдас"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "category": {
+            "id": 807,
+            "name": "Гомеопатия",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 90811,
+          "average_price": 621400.0,
+          "composite_name": "Глицин-Био Фармаплант 100 мг 150 шт. таблетки подъязычные",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": null,
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1298,
+            "name": "успокаивающее"
+          },
+          "manufacturer": {
+            "id": 5300,
+            "name": "Озон"
+          },
+          "country": null,
+          "category": {
+            "id": 822,
+            "name": "Нервная система",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 91370,
+          "average_price": 18392800.0,
+          "composite_name": "Фарестон 20 мг 30 шт. таблетки",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/5/1d/51dc665dd7df78d21d3307b0b23b95c6.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1406,
+            "name": "противоопухолевое"
+          },
+          "manufacturer": {
+            "id": 5199,
+            "name": "Orion Corporation"
+          },
+          "country": {
+            "id": 220,
+            "name": "Финляндия"
+          },
+          "category": {
+            "id": 873,
+            "name": "Онкология",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 91435,
+          "average_price": 1202800.0,
+          "composite_name": "Фазостабил 150 мг+30.39 мг 50 шт. таблетки, покрытые пленочной оболочкой",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/c/2c/c2c6237357368de930426b46f9076817.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1399,
+            "name": "для профилактики тромбозов"
+          },
+          "manufacturer": {
+            "id": 5300,
+            "name": "Озон"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "category": {
+            "id": 870,
+            "name": "Кровь и кровообращение",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 91484,
+          "average_price": 12239000.0,
+          "composite_name": "Фавирокс 250 мг 21 шт. таблетки",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": null,
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1342,
+            "name": "от герпеса"
+          },
+          "manufacturer": {
+            "id": 5018,
+            "name": "Specifer"
+          },
+          "country": {
+            "id": 178,
+            "name": "Греция"
+          },
+          "category": {
+            "id": 818,
+            "name": "Противовирусные препараты",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 91513,
+          "average_price": 20207800.0,
+          "composite_name": "Фавирокс 500 мг 21 шт. таблетки",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/d/db/ddbf3ca77de06cd6d6d76f670f04337c.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1342,
+            "name": "от герпеса"
+          },
+          "manufacturer": {
+            "id": 5018,
+            "name": "Specifer"
+          },
+          "country": {
+            "id": 178,
+            "name": "Греция"
+          },
+          "category": {
+            "id": 818,
+            "name": "Противовирусные препараты",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 91662,
+          "average_price": 5912200.0,
+          "composite_name": "Фавирокс 500 мг 7 шт. таблетки",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": null,
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1342,
+            "name": "от герпеса"
+          },
+          "manufacturer": {
+            "id": 5018,
+            "name": "Specifer"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "category": {
+            "id": 818,
+            "name": "Противовирусные препараты",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 91668,
+          "average_price": 1524240.0,
+          "composite_name": "Фарингосепт 10 мг 20 шт. таблетки для рассасывания",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/e/27/e27a0b7d37addd287ffd289985d7535c.jpg",
+          "available_count_in_pharmacies": 250,
+          "atc": {
+            "id": 1114,
+            "name": "противомикробное для горла и полости рта"
+          },
+          "manufacturer": {
+            "id": 5009,
+            "name": "SC Terapia"
+          },
+          "country": {
+            "id": 217,
+            "name": "Румыния"
+          },
+          "category": {
+            "id": 816,
+            "name": "Простуда и грипп",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 92020,
+          "average_price": 627600.0,
+          "composite_name": "Аира корневища Фармацвет 75 г 1 шт. сырье растительное измельченное",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/4/8a/48a5968248b4f54b671acb7803deec39.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1279,
+            "name": "противовоспалительное"
+          },
+          "manufacturer": {
+            "id": 5465,
+            "name": "Красногорсклексредства"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "category": {
+            "id": 844,
+            "name": "Лекарственные травы",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 92361,
+          "average_price": 1333000.0,
+          "composite_name": "Фазлодекс 250 мг/5 мл 5 мл 2 шт. раствор для внутримышечного введения",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/2/41/241d7c991fdd7b69419295dcc83cadac.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1333,
+            "name": "от рака молочной железы"
+          },
+          "manufacturer": {
+            "id": 4427,
+            "name": "AstraZeneca"
+          },
+          "country": {
+            "id": 208,
+            "name": "Германия"
+          },
+          "category": {
+            "id": 873,
+            "name": "Онкология",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 92362,
+          "average_price": 1328600.0,
+          "composite_name": "Фарморубицин быстрорастворимый 50 мг 1 шт. лиофилизат для приготовления раствора для внутрисосудистого и внутрипузырного введения",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/b/15/b15759e7f070c9f5bcc0060252ba3486.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1406,
+            "name": "противоопухолевое"
+          },
+          "manufacturer": {
+            "id": 5420,
+            "name": "Pfizer"
+          },
+          "country": {
+            "id": 216,
+            "name": "Италия"
+          },
+          "category": {
+            "id": 873,
+            "name": "Онкология",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 92368,
+          "average_price": 0.0,
+          "composite_name": "Фамотидин 40 мг 20 шт. таблетки, покрытые пленочной оболочкой",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/4/2e/42e712cead9a5624c7b0b662080fbe40.jpg",
+          "available_count_in_pharmacies": 0,
+          "atc": {
+            "id": 1109,
+            "name": "от язвы желудка и 12-перстной кишки"
+          },
+          "manufacturer": {
+            "id": 5300,
+            "name": "Озон"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "category": {
+            "id": 866,
+            "name": "Желудочно-кишечные средства",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 92376,
+          "average_price": 1335000.0,
+          "composite_name": "Фамотидин 20 мг 30 шт. таблетки, покрытые пленочной оболочкой",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/4/de/4def7eddecaa6484f58dd8d82380e402.jpg",
+          "available_count_in_pharmacies": 100,
+          "atc": {
+            "id": 1109,
+            "name": "от язвы желудка и 12-перстной кишки"
+          },
+          "manufacturer": {
+            "id": 5300,
+            "name": "Озон"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "category": {
+            "id": 866,
+            "name": "Желудочно-кишечные средства",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 92588,
+          "average_price": 242600.0,
+          "composite_name": "Тригексифенидил-Фармстандарт 2 мг 50 шт. таблетки",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": null,
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1103,
+            "name": "от болезни Паркинсона"
+          },
+          "manufacturer": {
+            "id": 5385,
+            "name": "Фармстандарт"
+          },
+          "country": null,
+          "category": {
+            "id": 822,
+            "name": "Нервная система",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 92803,
+          "average_price": 15671400.0,
+          "composite_name": "Фамвир 125 мг 10 шт. таблетки, покрытые оболочкой",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/9/30/93091be50df05c2771e584881a830114.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1342,
+            "name": "от герпеса"
+          },
+          "manufacturer": {
+            "id": 4484,
+            "name": "Novartis"
+          },
+          "country": {
+            "id": 204,
+            "name": "Испания"
+          },
+          "category": {
+            "id": 818,
+            "name": "Противовирусные препараты",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 92940,
+          "average_price": 1503600.0,
+          "composite_name": "Солпадеин Фаст 65 мг+500 мг 8 шт. таблетки растворимые",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/c/5e/c5e886ea4e9cf3df228d98079e16388b.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5259,
+            "name": "GlaxoSmithKline"
+          },
+          "country": {
+            "id": 178,
+            "name": "Греция"
+          },
+          "category": {
+            "id": 874,
+            "name": "Обезболивающие средства",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 93098,
+          "average_price": 931600.0,
+          "composite_name": "Фамотидин 40 мг 30 шт. таблетки, покрытые пленочной оболочкой",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/3/fe/3fe2011ddf31bbbf10d0417a6312bf53.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1109,
+            "name": "от язвы желудка и 12-перстной кишки"
+          },
+          "manufacturer": {
+            "id": 5416,
+            "name": "STADA"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "category": {
+            "id": 866,
+            "name": "Желудочно-кишечные средства",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 93198,
+          "average_price": 4799800.0,
+          "composite_name": "Фавирокс 125 мг 10 шт. таблетки",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/2/ea/2ea0d23bc4cbeb90cc448b58420f2af8.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1342,
+            "name": "от герпеса"
+          },
+          "manufacturer": {
+            "id": 5018,
+            "name": "Specifer"
+          },
+          "country": {
+            "id": 178,
+            "name": "Греция"
+          },
+          "category": {
+            "id": 818,
+            "name": "Противовирусные препараты",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 93287,
+          "average_price": 909400.0,
+          "composite_name": "Фарингомед 20 шт. таблетки для рассасывания",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/8/be/8be423dc21f6b2bba85027604d5464c0.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1311,
+            "name": "от боли в горле"
+          },
+          "manufacturer": {
+            "id": 4419,
+            "name": "Материа Медика Холдинг НПФ"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "category": {
+            "id": 807,
+            "name": "Гомеопатия",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 93296,
+          "average_price": 67122800.0,
+          "composite_name": "Файкомпа 8 мг 28 шт. таблетки, покрытые пленочной оболочкой",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/4/74/4747c8db4659a0923339001b2d8bdf44.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1398,
+            "name": "от эпилепсии"
+          },
+          "manufacturer": {
+            "id": 5048,
+            "name": "Eisai Europe"
+          },
+          "country": {
+            "id": 210,
+            "name": "Великобритания"
+          },
+          "category": {
+            "id": 822,
+            "name": "Нервная система",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 93343,
+          "average_price": 4830600.0,
+          "composite_name": "Файкомпа 2 мг 7 шт. таблетки, покрытые пленочной оболочкой",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/9/9c/99cfeb5f0c8e12fa9ac2b07b60c96307.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1398,
+            "name": "от эпилепсии"
+          },
+          "manufacturer": {
+            "id": 5048,
+            "name": "Eisai Europe"
+          },
+          "country": {
+            "id": 210,
+            "name": "Великобритания"
+          },
+          "category": {
+            "id": 822,
+            "name": "Нервная система",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 93559,
+          "average_price": 1325600.0,
+          "composite_name": "Фарматекс 18.9 мг 6 шт. капсулы вагинальные",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/b/7f/b7f5a507411edb347f7503179ece4e9a.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5724,
+            "name": "Laboratoire Innotech International"
+          },
+          "country": {
+            "id": 203,
+            "name": "Франция"
+          },
+          "category": {
+            "id": 823,
+            "name": "Контрацепция",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 93723,
+          "average_price": 1129000.0,
+          "composite_name": "Фаспик 400 мг 3 г 12 шт. гранулы для приготовления раствора для приема внутрь",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/2/ce/2cee5e5554f4d06ed89ef56fa1ced36f.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1336,
+            "name": "обезболивающее"
+          },
+          "manufacturer": {
+            "id": 5852,
+            "name": "Zambon"
+          },
+          "country": {
+            "id": 235,
+            "name": "Швейцария"
+          },
+          "category": {
+            "id": 810,
+            "name": "Противовоспалительные препараты",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 94008,
+          "average_price": 751600.0,
+          "composite_name": "Фазостабил 75 мг+15.2 мг 100 шт. таблетки, покрытые пленочной оболочкой",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/6/18/6188f905042814dc83f5b7442a3411c7.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1399,
+            "name": "для профилактики тромбозов"
+          },
+          "manufacturer": {
+            "id": 5300,
+            "name": "Озон"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "category": {
+            "id": 870,
+            "name": "Кровь и кровообращение",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 94110,
+          "average_price": 634000.0,
+          "composite_name": "Аира корневища Фармацвет 1.5 г 20 шт. сырье растительное-порошок",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/2/4f/24f81daf2bf4a5d9363c2cfbae070f0c.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1279,
+            "name": "противовоспалительное"
+          },
+          "manufacturer": {
+            "id": 5465,
+            "name": "Красногорсклексредства"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "category": {
+            "id": 844,
+            "name": "Лекарственные травы",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 94501,
+          "average_price": 0.0,
+          "composite_name": "Фарингосепт 10 мг 20 шт. таблетки для рассасывания",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/8/58/858344afd6081c52b03e826aed9642c9.jpg",
+          "available_count_in_pharmacies": 0,
+          "atc": {
+            "id": 1290,
+            "name": "для лечения воспалительных заболеваний полости рта и горла"
+          },
+          "manufacturer": {
+            "id": 5009,
+            "name": "SC Terapia"
+          },
+          "country": {
+            "id": 217,
+            "name": "Румыния"
+          },
+          "category": {
+            "id": 816,
+            "name": "Простуда и грипп",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 94691,
+          "average_price": 2150800.0,
+          "composite_name": "Фарматекс 18.9 мг 10 шт. суппозитории вагинальные",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/e/a7/ea70b3f1ce4724d944e98a873c7bf64b.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5724,
+            "name": "Laboratoire Innotech International"
+          },
+          "country": {
+            "id": 203,
+            "name": "Франция"
+          },
+          "category": {
+            "id": 823,
+            "name": "Контрацепция",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 94692,
+          "average_price": 584800.0,
+          "composite_name": "Арфазетин-Э Фармацвет 2 г 20 шт. сбор измельченный",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/4/f4/4f455dfcdcb99d78753a5738ba8859dc.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1340,
+            "name": "от сахарного диабета 2 типа"
+          },
+          "manufacturer": {
+            "id": 5465,
+            "name": "Красногорсклексредства"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "category": {
+            "id": 844,
+            "name": "Лекарственные травы",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 94812,
+          "average_price": 1394000.0,
+          "composite_name": "Фарингосепт 10 мг 10 шт. таблетки для рассасывания",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/0/0a/00a881318b6d95593dddc59ec902088e.jpg",
+          "available_count_in_pharmacies": 100,
+          "atc": {
+            "id": 1290,
+            "name": "для лечения воспалительных заболеваний полости рта и горла"
+          },
+          "manufacturer": {
+            "id": 5009,
+            "name": "SC Terapia"
+          },
+          "country": {
+            "id": 217,
+            "name": "Румыния"
+          },
+          "category": {
+            "id": 816,
+            "name": "Простуда и грипп",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 95040,
+          "average_price": 27117000.0,
+          "composite_name": "Фамилар 250 мг 21 шт. таблетки, покрытые пленочной оболочкой",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/8/7c/87c113a69cf1910002dc83c5199ee523.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1342,
+            "name": "от герпеса"
+          },
+          "manufacturer": {
+            "id": 4523,
+            "name": "АРС"
+          },
+          "country": {
+            "id": 211,
+            "name": "Индия"
+          },
+          "category": {
+            "id": 818,
+            "name": "Противовирусные препараты",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 95247,
+          "average_price": 1963000.0,
+          "composite_name": "Солпадеин Фаст 65 мг+500 мг 12 шт. таблетки растворимые",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/7/be/7bea7f7f33e6e1c450e7cfa8d73769a8.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5259,
+            "name": "GlaxoSmithKline"
+          },
+          "country": {
+            "id": 178,
+            "name": "Греция"
+          },
+          "category": {
+            "id": 874,
+            "name": "Обезболивающие средства",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 95373,
+          "average_price": 421800.0,
+          "composite_name": "Арфазетин-Э Фармацвет 50 г 1 шт. сбор измельченный",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/1/eb/1eb92ad1665cca958bf04ab2f3e88116.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1340,
+            "name": "от сахарного диабета 2 типа"
+          },
+          "manufacturer": {
+            "id": 5465,
+            "name": "Красногорсклексредства"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "category": {
+            "id": 844,
+            "name": "Лекарственные травы",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 95757,
+          "average_price": 4162600.0,
+          "composite_name": "Фарматекс 1.2% 72 г 1 шт. крем вагинальный",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/a/6a/a6ab856772a75dfbc28493ffbdae81eb.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5724,
+            "name": "Laboratoire Innotech International"
+          },
+          "country": {
+            "id": 203,
+            "name": "Франция"
+          },
+          "category": {
+            "id": 823,
+            "name": "Контрацепция",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 95950,
+          "average_price": 2575800.0,
+          "composite_name": "Фастум 2.5% 30 г 1 шт. гель для наружного применения",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/1/2c/12c9f1cf640bf7765078531aeed2d063.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1336,
+            "name": "обезболивающее"
+          },
+          "manufacturer": {
+            "id": 5279,
+            "name": "Berlin-Chemie/Menarini Group"
+          },
+          "country": {
+            "id": 216,
+            "name": "Италия"
+          },
+          "category": {
+            "id": 810,
+            "name": "Противовоспалительные препараты",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 96298,
+          "average_price": 0.0,
+          "composite_name": "Фамотидин 20 мг 20 шт. таблетки, покрытые пленочной оболочкой",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/e/e1/ee1c697e5da669e8ab6129a139a73b00.jpg",
+          "available_count_in_pharmacies": 0,
+          "atc": {
+            "id": 1109,
+            "name": "от язвы желудка и 12-перстной кишки"
+          },
+          "manufacturer": {
+            "id": 5806,
+            "name": "Hemofarm"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "category": {
+            "id": 866,
+            "name": "Желудочно-кишечные средства",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 96326,
+          "average_price": 12168400.0,
+          "composite_name": "Фамвир 500 мг 3 шт. таблетки, покрытые оболочкой",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/7/76/776ac649fd2460f787763b96f105021a.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1342,
+            "name": "от герпеса"
+          },
+          "manufacturer": {
+            "id": 4484,
+            "name": "Novartis"
+          },
+          "country": {
+            "id": 204,
+            "name": "Испания"
+          },
+          "category": {
+            "id": 818,
+            "name": "Противовирусные препараты",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 96347,
+          "average_price": 0.0,
+          "composite_name": "Фамотидин 20 мг 30 шт. таблетки, покрытые пленочной оболочкой",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/1/4c/14cfa4947c9d759212ef061dfb5a05e5.jpg",
+          "available_count_in_pharmacies": 0,
+          "atc": {
+            "id": 1109,
+            "name": "от язвы желудка и 12-перстной кишки"
+          },
+          "manufacturer": {
+            "id": 5416,
+            "name": "STADA"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "category": {
+            "id": 866,
+            "name": "Желудочно-кишечные средства",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 96745,
+          "average_price": 0.0,
+          "composite_name": "Фарингосепт 10 мг 20 шт. таблетки для рассасывания",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/f/d4/fd494c7c116bb58b6aa4909861741bee.jpg",
+          "available_count_in_pharmacies": 0,
+          "atc": {
+            "id": 1114,
+            "name": "противомикробное для горла и полости рта"
+          },
+          "manufacturer": {
+            "id": 5009,
+            "name": "SC Terapia"
+          },
+          "country": {
+            "id": 217,
+            "name": "Румыния"
+          },
+          "category": {
+            "id": 816,
+            "name": "Простуда и грипп",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 97061,
+          "average_price": 2395000.0,
+          "composite_name": "Фазостабил 150 мг+30.39 мг 100 шт. таблетки, покрытые пленочной оболочкой",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/c/86/c8620df45eb50183bd729c0c4bba72ee.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1399,
+            "name": "для профилактики тромбозов"
+          },
+          "manufacturer": {
+            "id": 5300,
+            "name": "Озон"
+          },
+          "country": null,
+          "category": {
+            "id": 870,
+            "name": "Кровь и кровообращение",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 97469,
+          "average_price": 2153200.0,
+          "composite_name": "Фарматекс 20 мг 12 шт. таблетки вагинальные",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/b/8d/b8dd02b4812054d14459ac80c1c4409a.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5724,
+            "name": "Laboratoire Innotech International"
+          },
+          "country": {
+            "id": 203,
+            "name": "Франция"
+          },
+          "category": {
+            "id": 823,
+            "name": "Контрацепция",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 97487,
+          "average_price": 2129200.0,
+          "composite_name": "Пантенол Фармстандарт 5% 58 г 1 шт. аэрозоль для наружного применения",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/8/21/82149bd588c35c7568c3e85a30dccecc.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1407,
+            "name": "ранозаживляющее"
+          },
+          "manufacturer": {
+            "id": 5385,
+            "name": "Фармстандарт"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "category": {
+            "id": 817,
+            "name": "Дерматология",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 97590,
+          "average_price": 534400.0,
+          "composite_name": "Солпадеин Фаст 65 мг+500 мг 12 шт. таблетки, покрытые пленочной оболочкой",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/3/7e/37e8eaa764196ab73d8063c893e1379a.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": null,
+          "manufacturer": {
+            "id": 5259,
+            "name": "GlaxoSmithKline"
+          },
+          "country": {
+            "id": 221,
+            "name": "Ирландия"
+          },
+          "category": {
+            "id": 874,
+            "name": "Обезболивающие средства",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 98214,
+          "average_price": 980000.0,
+          "composite_name": "Сальбутамол-Фармстандарт 100 мкг/доза 1 шт. аэрозоль для ингаляций дозированный",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/6/8c/68cf5a04ef8bc7197f0c3f1a80d2c958.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1138,
+            "name": "от бронхоспазма"
+          },
+          "manufacturer": {
+            "id": 5385,
+            "name": "Фармстандарт"
+          },
+          "country": {
+            "id": 215,
+            "name": "Россия"
+          },
+          "category": {
+            "id": 806,
+            "name": "Бронхиальная астма",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 98259,
+          "average_price": 5664800.0,
+          "composite_name": "Фастум 2.5% 100 г 1 шт. гель для наружного применения",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/3/ef/3ef0077d45fd7696fccda3ea0b63bb9b.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1336,
+            "name": "обезболивающее"
+          },
+          "manufacturer": {
+            "id": 5279,
+            "name": "Berlin-Chemie/Menarini Group"
+          },
+          "country": {
+            "id": 216,
+            "name": "Италия"
+          },
+          "category": {
+            "id": 810,
+            "name": "Противовоспалительные препараты",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 98356,
+          "average_price": 0.0,
+          "composite_name": "Фарингосепт 10 мг 20 шт. таблетки для рассасывания",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/2/ec/2ec3a0d56a7d0a4ff1ae58c847b388f5.jpg",
+          "available_count_in_pharmacies": 0,
+          "atc": {
+            "id": 1114,
+            "name": "противомикробное для горла и полости рта"
+          },
+          "manufacturer": {
+            "id": 5009,
+            "name": "SC Terapia"
+          },
+          "country": {
+            "id": 217,
+            "name": "Румыния"
+          },
+          "category": {
+            "id": 816,
+            "name": "Простуда и грипп",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 98497,
+          "average_price": 47150800.0,
+          "composite_name": "Фамвир 250 мг 21 шт. таблетки, покрытые оболочкой",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/5/7f/57f57630161b6aec3652234509696702.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1342,
+            "name": "от герпеса"
+          },
+          "manufacturer": {
+            "id": 4484,
+            "name": "Novartis"
+          },
+          "country": {
+            "id": 204,
+            "name": "Испания"
+          },
+          "category": {
+            "id": 818,
+            "name": "Противовирусные препараты",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 98568,
+          "average_price": 37316800.0,
+          "composite_name": "Файкомпа 4 мг 28 шт. таблетки, покрытые пленочной оболочкой",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/f/45/f45c1db8a759c4fe462d10e9c0ea80dd.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1398,
+            "name": "от эпилепсии"
+          },
+          "manufacturer": {
+            "id": 5048,
+            "name": "Eisai Europe"
+          },
+          "country": {
+            "id": 210,
+            "name": "Великобритания"
+          },
+          "category": {
+            "id": 822,
+            "name": "Нервная система",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 98763,
+          "average_price": 61589800.0,
+          "composite_name": "Фарестон 60 мг 60 шт. таблетки",
+          "is_elect": true,
+          "is_presception": true,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/a/4d/a4d76c287aebce4c6323da775e8ed536.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1406,
+            "name": "противоопухолевое"
+          },
+          "manufacturer": {
+            "id": 5199,
+            "name": "Orion Corporation"
+          },
+          "country": {
+            "id": 220,
+            "name": "Финляндия"
+          },
+          "category": {
+            "id": 873,
+            "name": "Онкология",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 98849,
+          "average_price": 756400.0,
+          "composite_name": "Фаспик 400 мг 6 шт. таблетки, покрытые оболочкой",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/e/07/e07a26816981b0399c470e9611b46a90.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1336,
+            "name": "обезболивающее"
+          },
+          "manufacturer": {
+            "id": 5852,
+            "name": "Zambon"
+          },
+          "country": {
+            "id": 216,
+            "name": "Италия"
+          },
+          "category": {
+            "id": 810,
+            "name": "Противовоспалительные препараты",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 98976,
+          "average_price": 0.0,
+          "composite_name": "Фарингосепт 10 мг 20 шт. таблетки для рассасывания",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/b/8b/b8b4cea3cf154734f505c7ebb555a1e1.jpg",
+          "available_count_in_pharmacies": 0,
+          "atc": {
+            "id": 1290,
+            "name": "для лечения воспалительных заболеваний полости рта и горла"
+          },
+          "manufacturer": {
+            "id": 5009,
+            "name": "SC Terapia"
+          },
+          "country": {
+            "id": 217,
+            "name": "Румыния"
+          },
+          "category": {
+            "id": 816,
+            "name": "Простуда и грипп",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 98989,
+          "average_price": 0.0,
+          "composite_name": "Фарингосепт 10 мг 10 шт. таблетки для рассасывания",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/1/de/1ded5416ca8afcec3f9f1fe0567ff356.jpg",
+          "available_count_in_pharmacies": 0,
+          "atc": {
+            "id": 1114,
+            "name": "противомикробное для горла и полости рта"
+          },
+          "manufacturer": {
+            "id": 5009,
+            "name": "SC Terapia"
+          },
+          "country": {
+            "id": 217,
+            "name": "Румыния"
+          },
+          "category": {
+            "id": 816,
+            "name": "Простуда и грипп",
+            "parent_id": 757
+          }
+        },
+        {
+          "id": 99083,
+          "average_price": 3109000.0,
+          "composite_name": "Фастум 2.5% 50 г 1 шт. гель для наружного применения",
+          "is_elect": true,
+          "is_presception": false,
+          "is_new": true,
+          "main_image": "https://uteka.ru/media/1024/4/5a/45a1e219aa04fd9165ea96d8a2449cdf.jpg",
+          "available_count_in_pharmacies": 50,
+          "atc": {
+            "id": 1336,
+            "name": "обезболивающее"
+          },
+          "manufacturer": {
+            "id": 5279,
+            "name": "Berlin-Chemie/Menarini Group"
+          },
+          "country": {
+            "id": 216,
+            "name": "Италия"
+          },
+          "category": {
+            "id": 810,
+            "name": "Противовоспалительные препараты",
+            "parent_id": 757
+          }
+        }
+      ]
+    },
+    "categories": {
+      "count": 0,
+      "elements": []
+    },
+    "atc": {
+      "count": 0,
+      "elements": []
+    },
+    "inns": {
+      "count": 0,
+      "elements": []
+    }
+  }
+}

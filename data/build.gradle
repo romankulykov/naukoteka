@@ -1,0 +1,14 @@
+apply from: "../default_core_module.gradle"
+
+dependencies {
+
+    implementation data.retrofit
+    implementation data.retrofitRxJava
+    implementation data.gsonConverter
+    implementation data.gson
+
+    implementation ui.gmsPlayServicesLocation
+
+    implementation lib.domain
+
+}
