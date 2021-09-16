@@ -16,11 +16,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_find_a_medicine_in_pharmacies"
+        android:id="@+id/btn_tutorial_search_next"
         style="@style/Button"
         android:layout_marginBottom="24dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:text="@string/next"
         app:layout_constraintBottom_toTopOf="@+id/springDotsIndicator"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,14 +31,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        app:dotsColor="@color/ghost"
-        app:dotsCornerRadius="4dp"
-        app:dotsSize="12dp"
-        app:dotsSpacing="6dp"
-        app:dotsStrokeColor="@color/ghost"
+        app:dotsColor="@color/white"
+        app:dotsCornerRadius="3dp"
+        app:dotsSize="3dp"
+        app:dotsSpacing="4dp"
+        app:dotsStrokeColor="@color/object_main"
         app:dotsStrokeWidth="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_skip"
+        style="@style/TextViewStyle"
+        android:fontFamily="@font/golos_text_regular"
+        android:textColor="@color/object_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/skip"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
