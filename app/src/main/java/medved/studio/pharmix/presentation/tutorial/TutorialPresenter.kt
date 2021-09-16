@@ -34,18 +34,15 @@ class TutorialPresenter(
         get() = listOf(
             TutorialEntity(
                 R.drawable.ic_tutorial_1,
-                R.string.app_name,
-                R.string.app_name
+                R.string.the_best_scientific_works
             ),
             TutorialEntity(
-                R.drawable.ic_group_tutorial_1,
-                R.string.app_name,
-                R.string.app_name
+                R.drawable.ic_tutorial_2,
+                R.string.smart_community
             ),
             TutorialEntity(
-                R.drawable.ic_group_tutorial_2,
-                R.string.app_name,
-                R.string.app_name
+                R.drawable.ic_tutorial_3,
+                R.string.new_ideas
             )
         )
 }

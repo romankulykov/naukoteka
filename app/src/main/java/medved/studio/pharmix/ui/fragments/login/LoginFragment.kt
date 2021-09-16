@@ -36,6 +36,9 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButt
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        contentView.run {
+            tvRegistration.text = context?.getString(R.string.login_registration)?.parseAsHtml()
+        }
     }
 
     override fun onFragmentResult(requestCode: Int, resultCode: Int, data: Intent?) {

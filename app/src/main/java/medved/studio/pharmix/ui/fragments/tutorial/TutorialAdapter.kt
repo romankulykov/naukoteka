@@ -22,7 +22,6 @@ class TutorialAdapter : BaseAdapter<TutorialEntity, TutorialAdapter.ViewHolder>(
             rootView.run {
                 item.run {
                     tvTitle.text = getContext().getString(title)
-                    tvDescription.text = getContext().getString(description)
                     ivImage.setImageResource(image)
                 }
             }
