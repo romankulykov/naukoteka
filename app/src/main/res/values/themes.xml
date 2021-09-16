@@ -10,6 +10,7 @@
         <item name="colorAccent">@color/object_main</item>
         <item name="design_hintColor">@color/manatee</item>
         <item name="design_textColor">@color/white</item>
+        <item name="design_mainTextColor">@color/text_main</item>
         <item name="design_iconColor">@color/black</item>
     </style>
 

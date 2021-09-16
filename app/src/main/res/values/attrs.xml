@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="SearchView">
-        <attr name="startDrawable" format="reference" />
+    <declare-styleable name="CustomizedTextInput">
+        <attr name="typeInput" format="enum">
+            <enum name="type_input_password" value="0"/>
+            <enum name="type_input_email" value="1"/>
+            <enum name="type_input_text" value="2"/>
+        </attr>
         <attr name="hint" format="string|integer" />
     </declare-styleable>
 

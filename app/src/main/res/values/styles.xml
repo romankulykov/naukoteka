@@ -25,6 +25,11 @@
         <item name="android:fontFamily">@font/golos_black</item>
     </style>
 
+    <style name="TextViewStyle.Usual.EditText">
+        <item name="android:textColor">@color/text_main</item>
+        <item name="android:fontFamily">@font/golos_text_medium</item>
+    </style>
+
     <style name="Button" parent="Widget.AppCompat.Button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">64dp</item>
