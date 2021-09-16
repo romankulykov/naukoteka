@@ -18,7 +18,4 @@ Room
 Glide
 Modularization: data, domain, app
 
-
-Author: Kulykov Roman. https://t.me/ramessess
-
-API: https://dev.mypharmy.ru/api/_doc/
+API: https://stage.naukotheka.ru/api/a/swagger-ui/index.html?configUrl=/api/a/api-docs/swagger-config#/custom-controller/isEmailFree

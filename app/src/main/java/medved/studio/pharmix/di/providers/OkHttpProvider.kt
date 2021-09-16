@@ -13,7 +13,7 @@ import javax.inject.Provider
 @InjectConstructor
 class OkHttpProvider(
     private val authInterceptor: AuthInterceptor,
-    private val statusCodeInterceptor: StatusCodeParsingInterceptor,
+    //private val statusCodeInterceptor: StatusCodeParsingInterceptor,
     private val authenticator: RefreshTokenAuthenticator,
 ) : Provider<OkHttpClient> {
     override fun get() = OkHttpClient.Builder()
@@ -24,7 +24,7 @@ class OkHttpProvider(
                 HttpLoggingInterceptor.Level.NONE
             }
         })
-        .addNetworkInterceptor(statusCodeInterceptor)
+        //.addNetworkInterceptor(statusCodeInterceptor)
         .addInterceptor(authInterceptor)
         .authenticator(authenticator)
         .connectTimeout(2, TimeUnit.MINUTES)

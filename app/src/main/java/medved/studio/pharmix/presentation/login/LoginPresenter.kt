@@ -38,6 +38,10 @@ class LoginPresenter(
 
     override fun attachView(view: LoginView?) {
         super.attachView(view)
+        authInteractor.testLogin()
+            .await {
+
+            }
     }
 
 

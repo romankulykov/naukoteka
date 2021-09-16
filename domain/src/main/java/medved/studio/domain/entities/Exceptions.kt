@@ -7,7 +7,7 @@ open class UsualException(override val message: String) : Exception(message)
 open class WtfException(override val message: String) : Exception(message)
 
 data class HttpException(
-    val statusCode: StatusCode,
+    val statusCode: ServerApiError?,
     override val message: String,
     val reason: String?
 ) : UsualException(message)

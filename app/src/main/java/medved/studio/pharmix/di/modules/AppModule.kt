@@ -12,7 +12,6 @@ import medved.studio.data.services.auth.AuthApiService
 import medved.studio.domain.SchedulersProvider
 import medved.studio.domain.repositories.auth.AuthRepository
 import medved.studio.domain.utils.logging.ILogger
-import medved.studio.pharmix.BuildConfig
 import medved.studio.pharmix.di.ServerUrl
 import medved.studio.pharmix.di.providers.*
 import medved.studio.pharmix.di.utils.Logger
@@ -32,7 +31,7 @@ class AppModule(application: Application) : Module() {
         bind(SchedulersProvider::class.java).toInstance(AppSchedulersProvider())
 
         bind(String::class.java).withName(ServerUrl::class.java)
-            .toInstance("https://dev.mypharmy.ru/api/")
+            .toInstance("https://stage.naukotheka.ru/api/a/")
 
         bind(OkHttpClient::class.java).toProvider(OkHttpProvider::class.java).singleton()
         bind(Retrofit::class.java).toProvider(RetrofitProvider::class.java).singleton()
@@ -42,8 +41,8 @@ class AppModule(application: Application) : Module() {
         bind(NavigatorHolder::class.java).toInstance(cicerone.getNavigatorHolder())
 
 
-        bind(AuthApiHolder::class.java).singleton()
         bind(AuthApiService::class.java).toProvider(AuthApiProvider::class.java).singleton()
+        bind(AuthApiHolder::class.java).singleton()
         bind(AuthRepository::class.java).to(AuthRepositoryImpl::class.java)
 
     }
