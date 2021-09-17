@@ -24,20 +24,35 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_illustration" />
 
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/welcome_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.19" />
+
     <TextView
         android:id="@+id/tv_welcome"
         style="@style/TextViewStyle.Header"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="74dp"
         android:layout_marginEnd="32dp"
         android:fontFamily="@font/golos_text_demi_bold"
         android:gravity="start"
         android:text="@string/login_welcome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
+        app:layout_constraintTop_toBottomOf="@+id/welcome_guideline" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/fields_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.37" />
 
     <medved.studio.pharmix.ui.widgets.CustomizedTextInput
         android:id="@+id/cti_email"
@@ -47,7 +62,7 @@
         android:layout_marginTop="3dp"
         android:layout_marginEnd="32dp"
         app:hint="Электронная почта"
-        app:layout_constraintTop_toBottomOf="@id/tv_welcome"
+        app:layout_constraintTop_toBottomOf="@id/fields_guideline"
         app:typeInput="type_input_email" />
 
     <medved.studio.pharmix.ui.widgets.CustomizedTextInput
@@ -95,81 +110,85 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
         android:enabled="false"
         android:text="@string/login_enter"
+        app:layout_constraintBottom_toTopOf="@+id/social_guideline"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_forget_password" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/social_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.84" />
 
     <ImageButton
         android:id="@+id/ib_google"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:background="@drawable/ic_google"
         android:foreground="?selectableItemBackground"
         app:layout_constraintEnd_toStartOf="@+id/ib_facebook"
         app:layout_constraintStart_toStartOf="@id/btn_enter"
-        app:layout_constraintTop_toBottomOf="@id/btn_enter" />
+        app:layout_constraintTop_toBottomOf="@id/social_guideline" />
 
     <ImageButton
         android:id="@+id/ib_facebook"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="15dp"
         android:background="@drawable/ic_facebook"
         android:foreground="?selectableItemBackground"
         app:layout_constraintEnd_toStartOf="@+id/ib_vkontakte"
         app:layout_constraintStart_toEndOf="@+id/ib_google"
-        app:layout_constraintTop_toBottomOf="@id/btn_enter" />
+        app:layout_constraintTop_toBottomOf="@id/social_guideline" />
 
     <ImageButton
         android:id="@+id/ib_vkontakte"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="15dp"
         android:background="@drawable/ic_vkontakte"
         android:foreground="?selectableItemBackground"
         app:layout_constraintEnd_toStartOf="@+id/ib_ok"
         app:layout_constraintStart_toEndOf="@+id/ib_facebook"
-        app:layout_constraintTop_toBottomOf="@id/btn_enter" />
+        app:layout_constraintTop_toBottomOf="@id/social_guideline" />
 
     <ImageButton
         android:id="@+id/ib_ok"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="15dp"
         android:background="@drawable/ic_ok"
         android:foreground="?selectableItemBackground"
         app:layout_constraintEnd_toStartOf="@+id/ib_mail"
         app:layout_constraintStart_toEndOf="@+id/ib_vkontakte"
-        app:layout_constraintTop_toBottomOf="@id/btn_enter" />
+        app:layout_constraintTop_toBottomOf="@id/social_guideline" />
 
     <ImageButton
         android:id="@+id/ib_mail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="15dp"
         android:background="@drawable/ic_mail"
         android:foreground="?selectableItemBackground"
         app:layout_constraintEnd_toEndOf="@id/btn_enter"
         app:layout_constraintStart_toEndOf="@+id/ib_ok"
-        app:layout_constraintTop_toBottomOf="@id/btn_enter" />
+        app:layout_constraintTop_toBottomOf="@id/social_guideline" />
 
     <TextView
         android:id="@+id/tv_registration"
         style="@style/TextViewStyle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
         android:fontFamily="@font/golos_text_regular"
+        android:gravity="center"
         android:text="@string/login_registration"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ib_mail" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

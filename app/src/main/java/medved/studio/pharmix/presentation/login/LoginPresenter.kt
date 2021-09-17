@@ -5,6 +5,7 @@ import io.reactivex.disposables.Disposable
 import medved.studio.data.validator.FieldsValidator
 import medved.studio.domain.interactors.auth.AuthInteractor
 import medved.studio.pharmix.global.base.BasePresenterImpl
+import medved.studio.pharmix.navigation.AppRouter
 import moxy.InjectViewState
 import toothpick.InjectConstructor
 
@@ -15,6 +16,7 @@ class LoginPresenter(
     private val authInteractor: AuthInteractor,
     private val fieldsValidator: FieldsValidator,
     private val context: Context,
+    val router: AppRouter
 ) : BasePresenterImpl<LoginView>() {
 
 
@@ -52,6 +54,10 @@ class LoginPresenter(
             .await {
 
             }
+    }
+
+    fun exit() {
+        router.exit()
     }
 
 

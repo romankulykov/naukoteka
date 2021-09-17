@@ -49,6 +49,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButt
     }
 
     override fun onBackPressed(): Boolean {
+        presenter.exit()
         return true
     }
 
