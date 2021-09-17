@@ -12,6 +12,8 @@
 
     <color name="back_darkgrey">#2D2E41</color>
 
+    <color name="notification_error">#D92E4D</color>
+
     <color name="transparent">#00000000</color>
     <color name="manatee">#888A94</color>
     <color name="mine_shaft">#333333</color>
