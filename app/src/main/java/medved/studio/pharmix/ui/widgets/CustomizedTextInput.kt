@@ -43,7 +43,7 @@ class CustomizedTextInput(context: Context, attrs: AttributeSet) : LinearLayout(
                 if (hasValue(it)) {
                     val resId = getResourceId(it, -1)
                     if (resId != -1) {
-                        val text = getString(resId) ?: ""
+                        val text = getString(it) ?: ""
                         binding.tilEmail.hint = text
                     } else {
                         val text = getString(it) ?: ""
