@@ -38,10 +38,20 @@ class LoginPresenter(
 
     override fun attachView(view: LoginView?) {
         super.attachView(view)
-        /*authInteractor.testLogin()
+    }
+
+    fun isValidFields(email: String, password: String) {
+        viewState.showButtonState(
+            fieldsValidator.isValidEmail(email) &&
+                    fieldsValidator.isNotEmpty(password)
+        )
+    }
+
+    fun enter(email: String, pass: String) {
+        authInteractor.login(email, pass)
             .await {
 
-            }*/
+            }
     }
 
 

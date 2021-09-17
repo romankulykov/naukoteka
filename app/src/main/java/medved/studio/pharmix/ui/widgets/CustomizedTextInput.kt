@@ -14,7 +14,6 @@ import medved.studio.data.validator.FieldsValidator
 import medved.studio.pharmix.R
 import medved.studio.pharmix.databinding.ViewCustomizedTextInputBinding
 import medved.studio.pharmix.di.DI
-import medved.studio.pharmix.utils.ui.dp
 import medved.studio.pharmix.utils.ui.px
 import medved.studio.pharmix.utils.useStyledAttributes
 import toothpick.ktp.KTP
@@ -86,6 +85,11 @@ class CustomizedTextInput(context: Context, attrs: AttributeSet) : LinearLayout(
             }
         }
     }
+
+    fun doAfterTextChange(invoke: (String) -> Unit) =
+        binding.metEmail.doAfterTextChanged { invoke(it.toString()) }
+
+    fun text() = binding.metEmail.text.toString()
 
     private fun toggleEye() {
         isOpenedEye = !isOpenedEye
