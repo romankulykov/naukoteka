@@ -8,11 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import androidx.core.view.isVisible
+import androidx.core.view.updateLayoutParams
 import androidx.core.widget.doAfterTextChanged
 import medved.studio.data.validator.FieldsValidator
 import medved.studio.pharmix.R
 import medved.studio.pharmix.databinding.ViewCustomizedTextInputBinding
 import medved.studio.pharmix.di.DI
+import medved.studio.pharmix.utils.ui.dp
+import medved.studio.pharmix.utils.ui.px
 import medved.studio.pharmix.utils.useStyledAttributes
 import toothpick.ktp.KTP
 import toothpick.ktp.delegate.inject
@@ -72,6 +75,16 @@ class CustomizedTextInput(context: Context, attrs: AttributeSet) : LinearLayout(
         }
         binding.ivEye.setOnClickListener { toggleEye() }
 
+    }
+
+    fun showError(isError: Boolean) {
+        binding.clEditText.updateLayoutParams<MarginLayoutParams> {
+            if (isError) {
+                setMargins(0, 0, 0, 3.px)
+            } else {
+                setMargins(0, 0, 0, 0)
+            }
+        }
     }
 
     private fun toggleEye() {
