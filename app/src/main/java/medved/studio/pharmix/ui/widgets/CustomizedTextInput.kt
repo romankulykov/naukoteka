@@ -14,7 +14,6 @@ import medved.studio.data.validator.FieldsValidator
 import medved.studio.pharmix.R
 import medved.studio.pharmix.databinding.ViewCustomizedTextInputBinding
 import medved.studio.pharmix.di.DI
-import medved.studio.pharmix.utils.ui.dp
 import medved.studio.pharmix.utils.ui.px
 import medved.studio.pharmix.utils.useStyledAttributes
 import toothpick.ktp.KTP
@@ -63,12 +62,15 @@ class CustomizedTextInput(context: Context, attrs: AttributeSet) : LinearLayout(
                         TypeInput.TYPE_INPUT_EMAIL -> InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
                         TypeInput.TYPE_INPUT_TEXT -> InputType.TYPE_CLASS_TEXT
                     }
-                    binding.metEmail.inputType = textInputType
-                    binding.ivEye.isVisible = typeInput == TypeInput.TYPE_INPUT_PASSWORD
-                    binding.metEmail.doAfterTextChanged {
+                    binding.metField.inputType = textInputType
+                    binding.metField.doAfterTextChanged {
                         if (typeInput == TypeInput.TYPE_INPUT_EMAIL) {
                             binding.ivCheck.isVisible = validator.isValidEmail(it.toString())
                         }
+                        if (typeInput == TypeInput.TYPE_INPUT_PASSWORD) {
+                            binding.ivEye.isVisible = it.toString().isNotEmpty()
+                        }
+
                     }
                 }
             }
@@ -87,15 +89,20 @@ class CustomizedTextInput(context: Context, attrs: AttributeSet) : LinearLayout(
         }
     }
 
+    fun doAfterTextChange(invoke: (String) -> Unit) =
+        binding.metField.doAfterTextChanged { invoke(it.toString()) }
+
+    fun text() = binding.metField.text.toString()
+
     private fun toggleEye() {
         isOpenedEye = !isOpenedEye
         binding.run {
             ivEye.setImageResource(if (isOpenedEye) R.drawable.ic_eye else R.drawable.ic_eye_closed)
-            metEmail.inputType =
+            metField.inputType =
                 if (isOpenedEye) InputType.TYPE_CLASS_TEXT else InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-            metEmail.setSelection(metEmail.text.toString().length)
+            metField.setSelection(metField.text.toString().length)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                metEmail.setTextAppearance(R.style.TextViewStyle_Usual_EditText)
+                metField.setTextAppearance(R.style.TextViewStyle_Usual_EditText)
             }
         }
     }
@@ -104,14 +111,14 @@ class CustomizedTextInput(context: Context, attrs: AttributeSet) : LinearLayout(
     private fun setQueryAfterRestore(query: String) {
         Handler(Looper.getMainLooper())
             .postDelayed({
-                binding.metEmail.setText(query)
+                binding.metField.setText(query)
             }, 100L)
     }
 
 
     override fun onSaveInstanceState(): Parcelable? {
         val savedState = super.onSaveInstanceState()?.let { SavedState(it) }
-        savedState?.query = binding.metEmail.text.toString()
+        savedState?.query = binding.metField.text.toString()
         return savedState
     }
 

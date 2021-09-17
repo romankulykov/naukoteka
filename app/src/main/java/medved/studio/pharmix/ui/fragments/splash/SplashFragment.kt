@@ -25,9 +25,9 @@ class SplashFragment : BaseFragment(R.layout.fragment_splash) {
         contentView.rootSplash.run {
             Handler(Looper.getMainLooper()).postDelayed({
                 if (isFirstLaunched.entity) {
-                    router.replaceScreen(Screens.Tutorial())
+                    router.newRootScreen(Screens.Tutorial())
                 } else {
-                    router.replaceScreen(Screens.Login())
+                    router.newRootScreen(Screens.Login())
                 }
             }, 1000L)
         }

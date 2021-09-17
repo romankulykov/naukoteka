@@ -5,6 +5,7 @@ import io.reactivex.disposables.Disposable
 import medved.studio.data.validator.FieldsValidator
 import medved.studio.domain.interactors.auth.AuthInteractor
 import medved.studio.pharmix.global.base.BasePresenterImpl
+import medved.studio.pharmix.navigation.AppRouter
 import moxy.InjectViewState
 import toothpick.InjectConstructor
 
@@ -15,6 +16,7 @@ class LoginPresenter(
     private val authInteractor: AuthInteractor,
     private val fieldsValidator: FieldsValidator,
     private val context: Context,
+    val router: AppRouter
 ) : BasePresenterImpl<LoginView>() {
 
 
@@ -38,10 +40,24 @@ class LoginPresenter(
 
     override fun attachView(view: LoginView?) {
         super.attachView(view)
-        /*authInteractor.testLogin()
+    }
+
+    fun isValidFields(email: String, password: String) {
+        viewState.showButtonState(
+            fieldsValidator.isValidEmail(email) &&
+                    fieldsValidator.isNotEmpty(password)
+        )
+    }
+
+    fun enter(email: String, pass: String) {
+        authInteractor.login(email, pass)
             .await {
 
-            }*/
+            }
+    }
+
+    fun exit() {
+        router.exit()
     }
 
 
