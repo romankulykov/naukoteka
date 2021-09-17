@@ -19,179 +19,151 @@
         android:id="@+id/iv_illustration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_illustration"
         android:layout_marginTop="84dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_illustration" />
 
     <TextView
         android:id="@+id/tv_welcome"
+        style="@style/TextViewStyle.Header"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        style="@style/TextViewStyle.Header"
-        android:gravity="start"
-        android:text="@string/login_welcome"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="74dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
+        android:fontFamily="@font/golos_text_demi_bold"
+        android:gravity="start"
+        android:text="@string/login_welcome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_logo"
-        android:fontFamily="@font/golos_text_demi_bold"/>
+        app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
 
     <medved.studio.pharmix.ui.widgets.CustomizedTextInput
         android:id="@+id/cti_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:typeInput="type_input_email"
         android:layout_marginStart="32dp"
-        android:layout_marginBottom="10dp"
         android:layout_marginEnd="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/cti_pass"
-        />
+        android:layout_marginTop="3dp"
+        app:hint="Электронная почта"
+        app:layout_constraintTop_toBottomOf="@id/tv_welcome"
+        app:typeInput="type_input_email" />
 
     <medved.studio.pharmix.ui.widgets.CustomizedTextInput
         android:id="@+id/cti_pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:typeInput="type_input_password"
         android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/et_email"
-        />
-
-    <EditText
-        android:id="@+id/et_email"
-        style="@style/TextViewStyle.Usual"
-        android:fontFamily="@font/golos_text_regular"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:hint="@string/login_email"
-        android:textColorHint="@color/object_inactive"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
-    <EditText
-        android:id="@+id/et_password"
-        style="@style/TextViewStyle.Usual"
-        android:fontFamily="@font/golos_text_regular"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/login_password"
-        android:inputType="textPassword"
-        android:textColorHint="@color/object_inactive"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
         android:layout_marginTop="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_email"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:layout_marginEnd="32dp"
+        app:hint="Пароль"
+        app:layout_constraintTop_toBottomOf="@id/cti_email"
+        app:typeInput="type_input_password" />
 
     <CheckBox
         android:id="@+id/cb_remember_me"
         style="@style/TextViewStyle.Usual"
-        android:button="@drawable/checkbox_background"
-        android:fontFamily="@font/golos_text_regular"
-        android:text="@string/login_remember_me"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/object_inactive"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
+        android:button="@drawable/checkbox_background"
+        android:fontFamily="@font/golos_text_regular"
         android:paddingStart="8dp"
+        android:text="@string/login_remember_me"
+        android:textColor="@color/object_inactive"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_password"/>
+        app:layout_constraintTop_toBottomOf="@id/cti_pass" />
 
     <TextView
         android:id="@+id/tv_forget_password"
         style="@style/TextViewStyle.Usual"
-        android:fontFamily="@font/golos_text_regular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/object_inactive"
-        android:text="@string/login_forget_password"
-        android:layout_marginEnd="32dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/et_password"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/golos_text_regular"
+        android:text="@string/login_forget_password"
+        android:textColor="@color/object_inactive"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cti_pass" />
 
-     <Button
-         android:id="@+id/btn_enter"
-         style="@style/Button"
-         android:text="@string/login_enter"
-         android:layout_marginStart="32dp"
-         android:layout_marginEnd="32dp"
-         android:layout_marginTop="24dp"
-         app:layout_constraintStart_toStartOf="parent"
-         app:layout_constraintTop_toBottomOf="@id/tv_forget_password"
-         app:layout_constraintEnd_toEndOf="parent"/>
+    <Button
+        android:id="@+id/btn_enter"
+        style="@style/Button"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/login_enter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_forget_password" />
 
     <ImageButton
         android:id="@+id/ib_google"
-        android:background="@drawable/ic_google"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_enter"/>
+        android:layout_marginTop="15dp"
+        android:background="@drawable/ic_google"
+        app:layout_constraintEnd_toStartOf="@+id/ib_facebook"
+        app:layout_constraintStart_toStartOf="@id/btn_enter"
+        app:layout_constraintTop_toBottomOf="@id/btn_enter" />
 
     <ImageButton
         android:id="@+id/ib_facebook"
-        android:background="@drawable/ic_facebook"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@id/ib_google"
-        app:layout_constraintTop_toBottomOf="@id/btn_enter"/>
+        android:layout_marginTop="15dp"
+        android:background="@drawable/ic_facebook"
+        app:layout_constraintEnd_toStartOf="@+id/ib_vkontakte"
+        app:layout_constraintStart_toEndOf="@+id/ib_google"
+        app:layout_constraintTop_toBottomOf="@id/btn_enter" />
 
     <ImageButton
         android:id="@+id/ib_vkontakte"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/ic_vkontakte"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@id/ib_facebook"
-        app:layout_constraintTop_toBottomOf="@id/btn_enter"/>
+        app:layout_constraintEnd_toStartOf="@+id/ib_ok"
+        app:layout_constraintStart_toEndOf="@+id/ib_facebook"
+        app:layout_constraintTop_toBottomOf="@id/btn_enter" />
 
     <ImageButton
-        android:id="@+id/iv_ok"
+        android:id="@+id/ib_ok"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/ic_ok"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@id/ib_vkontakte"
-        app:layout_constraintTop_toBottomOf="@id/btn_enter"/>
+        app:layout_constraintEnd_toStartOf="@+id/ib_mail"
+        app:layout_constraintStart_toEndOf="@+id/ib_vkontakte"
+        app:layout_constraintTop_toBottomOf="@id/btn_enter" />
 
     <ImageButton
-        android:id="@+id/iv_mail"
-        android:background="@drawable/ic_mail"
-        android:layout_width="wrap_content"
+        android:id="@+id/ib_mail"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@id/iv_ok"
-        app:layout_constraintTop_toBottomOf="@id/btn_enter"/>
+        android:layout_marginTop="15dp"
+        android:background="@drawable/ic_mail"
+        app:layout_constraintEnd_toEndOf="@id/btn_enter"
+        app:layout_constraintStart_toEndOf="@+id/ib_ok"
+        app:layout_constraintTop_toBottomOf="@id/btn_enter" />
 
     <TextView
         android:id="@+id/tv_registration"
         style="@style/TextViewStyle"
-        android:fontFamily="@font/golos_text_regular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login_registration"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/golos_text_regular"
+        android:text="@string/login_registration"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_mail"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/ib_mail" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

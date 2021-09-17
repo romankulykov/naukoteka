@@ -16,6 +16,16 @@
     <string name="login_remember_me">Запомнить меня</string>
     <string name="login_forget_password">Забыли пароль?</string>
     <string name="login_enter">Войти</string>
-    <string name="login_registration"><![CDATA[<font color=#8083A0>Нет аккаунта?</font> <b><font color=#2E83D9>Зарегистрируйтесь</font></b>]]></string>
-
+    <string name="login_registration"><![CDATA[<font color=#8083A0>Нет аккаунта?</font> <b><font
+     color=#2E83D9>Зарегистрируйтесь</font></b>]]></string>
+    <string name="registration_third">3</string>
+    <string name="registration_second">2</string>
+    <string name="registration_first">1</string>
+    <string name="registration_new_user">Регистрация нового пользователя</string>
+    <string name="registration_address_for_registration">Ваш адрес электронной почты будет
+        использован для регистрации</string>
+    <string name="registration_agreement"><![CDATA[<font color=#8083A0>Нажимая на кнопку
+    &quot;Дальше&quot;, вы соглашаетесь с</font> <br><b><font color=#2E83D9>Правилами
+    сервиса</font></b> <font color=#8083A0>и подтверждаете</font> <b><font color=#2E83D9>Политику
+    <br> обработки персональных данных</font></b>]]></string>
 </resources>
