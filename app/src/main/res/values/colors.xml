@@ -6,6 +6,8 @@
 
     <color name="back_blue">#0C1F5D</color>
 
+    <color name="color_error">#D92E4D</color>
+
     <color name="object_main">#2E83D9</color>
 
     <color name="object_inactive">#8083A0</color>
