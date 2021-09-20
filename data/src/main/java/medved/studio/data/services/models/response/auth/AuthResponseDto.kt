@@ -1,4 +1,5 @@
 package medved.studio.data.services.models.response.auth
+
 import com.google.gson.annotations.SerializedName
 
 
@@ -13,5 +14,17 @@ data class UserStatusDto(
     @SerializedName("enabled")
     val enabled: Boolean,
     @SerializedName("userActions")
-    val userActions: Any?
+    val userActions: UserActions?
+)
+
+data class UserActions(
+    @SerializedName("actions")
+    val actions: List<ActionDto>
+)
+
+data class ActionDto(
+    @SerializedName("name")
+    val name: String,
+    @SerializedName("uri")
+    val uri: Any? = null
 )

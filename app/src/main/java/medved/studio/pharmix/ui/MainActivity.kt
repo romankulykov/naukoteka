@@ -15,6 +15,7 @@ import medved.studio.pharmix.global.views.InformativeView
 import medved.studio.pharmix.global.views.LoadingView
 import medved.studio.pharmix.navigation.AnimatableAppNavigator
 import medved.studio.pharmix.navigation.AppRouter
+import medved.studio.pharmix.navigation.Screens
 import medved.studio.pharmix.navigation.Screens.Splash
 import medved.studio.pharmix.ui.custom.SquareToast
 import medved.studio.pharmix.utils.ActivityResultListener
@@ -57,6 +58,19 @@ class MainActivity : BaseActivity(), RouterProvider, LoadingView, InformativeVie
             .also { view ->
                 this.progressBar = view.findViewById(R.id.progressBar) as ProgressBar
             }
+    }
+
+    private fun handleDeepLink(newIntent: Intent) {
+        newIntent.getParcelableExtra<IntentKeys.Registration>(IntentKeys.Registration.KEY)
+            ?.let { registration ->
+                // todo pass registration key
+                // router.navigateTo(Screens.EndRegistartion())
+            }
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        handleDeepLink(intent)
     }
 
     override fun onBackPressed() {

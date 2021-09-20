@@ -19,4 +19,17 @@ class AuthInteractor(
             .observeOn(schedulers.ui())
     }
 
+    fun register(login: String, password: String): Completable {
+        return authRepository.register(login, password)
+            .subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
+    }
+
+    fun checkToken(key: String): Completable {
+        return authRepository.checkConfirmRegistration(key)
+            .subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
+    }
+
+
 }

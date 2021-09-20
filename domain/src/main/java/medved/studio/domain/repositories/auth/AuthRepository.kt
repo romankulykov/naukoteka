@@ -1,10 +1,11 @@
 package medved.studio.domain.repositories.auth
 
 import io.reactivex.Completable
-import io.reactivex.Single
 
 interface AuthRepository {
 
-    fun loginEmail(login : String, password : String) : Completable
+    fun loginEmail(login: String, password: String): Completable
+    fun register(login: String, password: String): Completable
+    fun checkConfirmRegistration(key: String): Completable
 
 }
