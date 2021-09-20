@@ -6,6 +6,7 @@ import medved.studio.data.validator.FieldsValidator
 import medved.studio.domain.interactors.auth.AuthInteractor
 import medved.studio.pharmix.global.base.BasePresenterImpl
 import medved.studio.pharmix.navigation.AppRouter
+import medved.studio.pharmix.navigation.Screens
 import moxy.InjectViewState
 import toothpick.InjectConstructor
 
@@ -54,6 +55,10 @@ class LoginPresenter(
             .await {
 
             }
+    }
+
+    fun finishLogin() {
+        router.newRootScreen(Screens.RegistrationFirstStep())
     }
 
     fun exit() {
