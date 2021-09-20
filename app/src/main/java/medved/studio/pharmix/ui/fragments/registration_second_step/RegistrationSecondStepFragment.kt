@@ -32,6 +32,7 @@ class RegistrationSecondStepFragment : BaseFragment(R.layout.fragment_registrati
             ivBack.setOnClickListener { onBackPressed() }
             ctiPass.doAfterTextChange { checkValidFields() }
             ctiPassConfirmation.doAfterTextChange { checkValidFields() }
+            btnRegistrationNext.setOnClickListener { presenter.nextStep() }
         }
     }
 

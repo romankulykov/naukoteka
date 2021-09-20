@@ -30,4 +30,8 @@ class RegistrationSecondStepPresenter(
     fun exit() {
         router.exit()
     }
+
+    fun nextStep() {
+        router.navigateTo(Screens.RegistrationThirdStep())
+    }
 }

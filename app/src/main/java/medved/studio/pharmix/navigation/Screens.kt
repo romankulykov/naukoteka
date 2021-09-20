@@ -5,6 +5,7 @@ import medved.studio.pharmix.ui.fragments.tutorial.TutorialFragment
 import medved.studio.pharmix.ui.fragments.login.LoginFragment
 import medved.studio.pharmix.ui.fragments.registration_first_step.RegistrationFirstStepFragment
 import medved.studio.pharmix.ui.fragments.registration_second_step.RegistrationSecondStepFragment
+import medved.studio.pharmix.ui.fragments.registration_third_step.RegistrationThirdStepFragment
 import java.io.Serializable
 import medved.studio.pharmix.ui.fragments.splash.SplashFragment
 
@@ -17,6 +18,7 @@ object Screens {
     const val SPLASH_SCREEN = "splashFragment"
     const val REGISTRATION_FIRST_STEP = "registrationFirstStepFragment"
     const val REGISTRATION_SECOND_STEP = "registrationSecondStepFragment"
+    const val REGISTRATION_THIRD_STEP = "registrationThirdStepFragment"
 
 
     fun Splash() = FragmentScreen(SPLASH_SCREEN) { SplashFragment() }
@@ -29,6 +31,9 @@ object Screens {
 
     fun RegistrationSecondStep() =
         FragmentScreen(REGISTRATION_SECOND_STEP) { RegistrationSecondStepFragment() }
+
+    fun RegistrationThirdStep() =
+        FragmentScreen(REGISTRATION_THIRD_STEP) { RegistrationThirdStepFragment() }
 
 
 }
