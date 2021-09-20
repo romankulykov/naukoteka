@@ -15,7 +15,6 @@ import medved.studio.pharmix.global.views.InformativeView
 import medved.studio.pharmix.global.views.LoadingView
 import medved.studio.pharmix.navigation.AnimatableAppNavigator
 import medved.studio.pharmix.navigation.AppRouter
-import medved.studio.pharmix.navigation.Screens
 import medved.studio.pharmix.navigation.Screens.Splash
 import medved.studio.pharmix.ui.custom.SquareToast
 import medved.studio.pharmix.utils.ActivityResultListener
@@ -117,19 +116,14 @@ class MainActivity : BaseActivity(), RouterProvider, LoadingView, InformativeVie
 
     }
 
-    override fun showInfoMessage(message: String?) {
-        if (message.isNullOrBlank()) return
-        SquareToast.getInstance(this).show(message)
-    }
-
     override fun showInfoMessage(message: Int?) {
         if (message == null) return
         showInfoMessage(getString(message))
     }
 
-    override fun showActionMessage(message: String?, action: String, invoker: () -> Unit) {
+    override fun showInfoMessage(message: String?) {
         if (message.isNullOrBlank()) return
-        SquareToast.getInstance(this).show(message, action, invoker)
+        SquareToast.getInstance(this).show(SquareToast.Data(text = message))
     }
 
     override fun showActionMessage(message: Int?, action: Int, invoker: () -> Unit) {
@@ -137,14 +131,18 @@ class MainActivity : BaseActivity(), RouterProvider, LoadingView, InformativeVie
         showActionMessage(getString(message), getString(action), invoker)
     }
 
-    override fun showIconableMessage(message: Int?, drawableResId: Int) {
-        if (message == null) return
-        showIconableMessage(getString(message), drawableResId)
+    override fun showActionMessage(message: String?, action: String, invoker: () -> Unit) {
+        if (message.isNullOrBlank()) return
+        SquareToast.getInstance(this).show(
+            SquareToast.Data(
+                text = message,
+                action = SquareToast.Data.Action(action, invoker)
+            )
+        )
     }
 
-    override fun showIconableMessage(message: String?, drawableResId: Int) {
-        if (message.isNullOrBlank()) return
-        SquareToast.getInstance(this).showIconable(message, drawableResId)
+    override fun showMessage(data: SquareToast.Data) {
+        SquareToast.getInstance(this).show(data)
     }
 
 }

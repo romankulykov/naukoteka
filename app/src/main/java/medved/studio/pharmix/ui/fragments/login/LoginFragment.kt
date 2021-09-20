@@ -8,6 +8,7 @@ import medved.studio.pharmix.databinding.FragmentLoginBinding
 import medved.studio.pharmix.global.base.BaseFragment
 import medved.studio.pharmix.presentation.login.LoginPresenter
 import medved.studio.pharmix.presentation.login.LoginView
+import medved.studio.pharmix.ui.custom.SquareToast
 import medved.studio.pharmix.utils.BackButtonListener
 import medved.studio.pharmix.utils.viewBinding
 import moxy.presenter.InjectPresenter
@@ -46,6 +47,17 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButt
 
     override fun showButtonState(isEnabled: Boolean) {
         contentView.btnEnter.isEnabled = isEnabled
+    }
+
+    override fun showSuccessLogin() {
+        showMessage(
+            SquareToast.Data(
+                text = getString(R.string.enter_has_successfully_passed),
+                leftIcon = R.drawable.ic_check_success,
+                rightIcon = R.drawable.ic_cross,
+                type = SquareToast.Type.SUCCESS
+            )
+        )
     }
 
     override fun onBackPressed(): Boolean {

@@ -10,4 +10,5 @@ import moxy.viewstate.strategy.StateStrategyType
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface LoginView : MvpView, LoadingView, InformativeView {
     fun showButtonState(isEnabled: Boolean)
+    fun showSuccessLogin()
 }

@@ -7,6 +7,7 @@ import androidx.viewbinding.ViewBinding
 import medved.studio.pharmix.di.DI
 import medved.studio.pharmix.global.views.InformativeView
 import medved.studio.pharmix.global.views.LoadingView
+import medved.studio.pharmix.ui.custom.SquareToast
 import moxy.MvpAppCompatFragment
 import toothpick.Scope
 import toothpick.ktp.KTP
@@ -57,12 +58,8 @@ abstract class BaseFragment(layoutResId: Int) : MvpAppCompatFragment(layoutResId
         (activity as? InformativeView)?.showActionMessage(message, action, invoker)
     }
 
-    override fun showIconableMessage(message: String?, drawableResId: Int) {
-        (activity as? InformativeView)?.showIconableMessage(message, drawableResId)
-    }
-
-    override fun showIconableMessage(message: Int?, drawableResId: Int) {
-        (activity as? InformativeView)?.showIconableMessage(message, drawableResId)
+    override fun showMessage(data: SquareToast.Data) {
+        (activity as? InformativeView)?.showMessage(data)
     }
 
     fun setBackpressedDispatcherActionListener(actionListener: (() -> Unit)) {

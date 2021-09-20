@@ -2,15 +2,19 @@ package medved.studio.pharmix.ui.custom
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.ColorStateList
+import android.os.Parcelable
 import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
+import kotlinx.parcelize.Parcelize
 import medved.studio.pharmix.R
 import medved.studio.pharmix.ui.custom.swipedismissdialog.Params
 import medved.studio.pharmix.ui.custom.swipedismissdialog.SwipeDismissDialog
-import medved.studio.pharmix.utils.ui.load
+import medved.studio.pharmix.utils.getColorCompat
 
 @SuppressLint("ViewConstructor")
 class SquareToast private constructor(context: Context, params: Params) :
@@ -20,42 +24,40 @@ class SquareToast private constructor(context: Context, params: Params) :
         throw RuntimeException("Use show(String text) instead")
     }
 
-    fun show(text: String?) {
+    fun show(data: Data) = data.run {
         val tvToast = findViewById<TextView>(R.id.tv_message)
-        findViewById<View>(R.id.tv_action).isVisible = false
-        findViewById<View>(R.id.iv_icon_left).isVisible = false
-        tvToast.text = text
-        super.showToast()
-        dismissRunnable = Runnable { this.dismiss() }
-        postDelayed(dismissRunnable, 5000)
-    }
-
-    fun show(text: String?, action: String, invoker: () -> Unit) {
-        val tvToast = findViewById<TextView>(R.id.tv_message)
-        tvToast.text = text
-        val tvAction = findViewById<TextView>(R.id.tv_action)
-        tvAction.run { setText(action); isVisible = true }
-        findViewById<View>(R.id.iv_icon_left).isVisible = false
-        tvAction.setOnClickListener {
-            invoker()
-            dismissRunnable?.run()
+        findViewById<TextView>(R.id.tv_action).run {
+            isVisible = action != null
+            text = action?.text
+            setOnClickListener {
+                action?.invoker?.invoke()
+                dismissRunnable?.run()
+            }
         }
-        super.showToast()
-        dismissRunnable = Runnable { this.dismiss() }
-        postDelayed(dismissRunnable, 5000)
-    }
-
-    fun showIconable(text: String?, drawableResId: Int) {
-        val tvToast = findViewById<TextView>(R.id.tv_message)
-        tvToast.text = text
-        findViewById<View>(R.id.tv_action).isVisible = false
         findViewById<ImageView>(R.id.iv_icon_left).run {
-            isVisible = true
-            setImageResource(drawableResId)
+            isVisible = leftIcon != null
+            if (leftIcon != null) {
+                setImageResource(leftIcon)
+            }
         }
+        findViewById<ImageView>(R.id.iv_icon_right).run {
+            isVisible = rightIcon != null
+            if (rightIcon != null) {
+                setImageResource(rightIcon)
+            }
+        }
+        findViewById<ConstraintLayout>(R.id.cl_root).run {
+            val color = when(type){
+                Type.ERROR -> R.color.background_toast_error
+                Type.SUCCESS -> R.color.background_toast_success
+                Type.USUAL -> R.color.background_toast
+            }
+            backgroundTintList = ColorStateList.valueOf(context.getColorCompat(color))
+        }
+        tvToast.text = text
 
         super.showToast()
-        dismissRunnable = Runnable { this.dismiss() }
+        dismissRunnable = Runnable { this@SquareToast.dismiss() }
         postDelayed(dismissRunnable, 5000)
     }
 
@@ -63,6 +65,20 @@ class SquareToast private constructor(context: Context, params: Params) :
         removeCallbacks(dismissRunnable)
         super.onDetachedFromWindow()
     }
+
+    @Parcelize
+    data class Data(
+        val text: String,
+        val leftIcon: Int? = null,
+        val rightIcon: Int? = null,
+        val type: Type = Type.USUAL,
+        val action: Action? = null,
+    ) : Parcelable {
+        @Parcelize
+        data class Action(val text: String, val invoker: () -> Unit) : Parcelable
+    }
+
+    enum class Type { ERROR, SUCCESS, USUAL }
 
     companion object {
         fun getInstance(context: Context): SquareToast {
