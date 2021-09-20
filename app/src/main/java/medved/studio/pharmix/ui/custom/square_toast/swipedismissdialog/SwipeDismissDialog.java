@@ -1,4 +1,4 @@
-package medved.studio.pharmix.ui.custom.swipedismissdialog;
+package medved.studio.pharmix.ui.custom.square_toast.swipedismissdialog;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;

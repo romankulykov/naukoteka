@@ -2,13 +2,13 @@ package medved.studio.pharmix.ui.fragments.login
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.text.parseAsHtml
 import medved.studio.pharmix.R
 import medved.studio.pharmix.databinding.FragmentLoginBinding
 import medved.studio.pharmix.global.base.BaseFragment
 import medved.studio.pharmix.presentation.login.LoginPresenter
 import medved.studio.pharmix.presentation.login.LoginView
-import medved.studio.pharmix.ui.custom.SquareToast
+import medved.studio.pharmix.ui.custom.square_toast.SquareToast
+import medved.studio.pharmix.ui.custom.square_toast.ToastInfo
 import medved.studio.pharmix.utils.BackButtonListener
 import medved.studio.pharmix.utils.viewBinding
 import moxy.presenter.InjectPresenter
@@ -51,7 +51,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButt
 
     override fun showSuccessLogin() {
         showMessage(
-            SquareToast.Data(
+            ToastInfo(
                 text = getString(R.string.enter_has_successfully_passed),
                 leftIcon = R.drawable.ic_check_success,
                 rightIcon = R.drawable.ic_cross,

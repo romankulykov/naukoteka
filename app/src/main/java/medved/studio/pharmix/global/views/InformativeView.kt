@@ -1,7 +1,6 @@
 package medved.studio.pharmix.global.views
 
-import medved.studio.pharmix.R
-import medved.studio.pharmix.ui.custom.SquareToast
+import medved.studio.pharmix.ui.custom.square_toast.ToastInfo
 import moxy.MvpView
 import moxy.viewstate.strategy.OneExecutionStateStrategy
 import moxy.viewstate.strategy.StateStrategyType
@@ -20,5 +19,5 @@ interface InformativeView : MvpView {
     fun showActionMessage(message: Int?, action: Int, invoker: () -> Unit)
 
     @StateStrategyType(OneExecutionStateStrategy::class)
-    fun showMessage(data: SquareToast.Data)
+    fun showMessage(data: ToastInfo)
 }

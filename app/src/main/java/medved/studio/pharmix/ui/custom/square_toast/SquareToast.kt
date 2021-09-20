@@ -1,30 +1,27 @@
-package medved.studio.pharmix.ui.custom
+package medved.studio.pharmix.ui.custom.square_toast
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
-import android.os.Parcelable
 import android.view.Gravity
-import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
-import kotlinx.parcelize.Parcelize
 import medved.studio.pharmix.R
-import medved.studio.pharmix.ui.custom.swipedismissdialog.Params
-import medved.studio.pharmix.ui.custom.swipedismissdialog.SwipeDismissDialog
+import medved.studio.pharmix.ui.custom.square_toast.swipedismissdialog.Params
+import medved.studio.pharmix.ui.custom.square_toast.swipedismissdialog.SwipeDismissDialog
 import medved.studio.pharmix.utils.getColorCompat
 
 @SuppressLint("ViewConstructor")
-class SquareToast private constructor(context: Context, params: Params) :
-    SwipeDismissDialog(context, params) {
+class SquareToast private constructor(context: Context, params: Params) : SwipeDismissDialog(context, params) {
     private var dismissRunnable: Runnable? = null
+
     override fun show(): SwipeDismissDialog {
         throw RuntimeException("Use show(String text) instead")
     }
 
-    fun show(data: Data) = data.run {
+    fun show(data: ToastInfo) = data.run {
         val tvToast = findViewById<TextView>(R.id.tv_message)
         findViewById<TextView>(R.id.tv_action).run {
             isVisible = action != null
@@ -66,17 +63,7 @@ class SquareToast private constructor(context: Context, params: Params) :
         super.onDetachedFromWindow()
     }
 
-    @Parcelize
-    data class Data(
-        val text: String,
-        val leftIcon: Int? = null,
-        val rightIcon: Int? = null,
-        val type: Type = Type.USUAL,
-        val action: Action? = null,
-    ) : Parcelable {
-        @Parcelize
-        data class Action(val text: String, val invoker: () -> Unit) : Parcelable
-    }
+
 
     enum class Type { ERROR, SUCCESS, USUAL }
 

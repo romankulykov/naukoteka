@@ -2,7 +2,8 @@ package medved.studio.pharmix.ui.fragments.registration_second_step
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.text.parseAsHtml
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import medved.studio.pharmix.R
 import medved.studio.pharmix.databinding.FragmentRegistrationSecondStepBinding
 import medved.studio.pharmix.global.base.BaseFragment
@@ -30,6 +31,16 @@ class RegistrationSecondStepFragment : BaseFragment(R.layout.fragment_registrati
         super.onViewCreated(view, savedInstanceState)
         contentView.run {
             ivBack.setOnClickListener { onBackPressed() }
+            ctiPassConfirmation.onFocusChange { hasFocus ->
+                if (hasFocus) {
+                    startListenPasswords()
+                }
+            }
+        }
+    }
+
+    private fun startListenPasswords() {
+        contentView.run {
             ctiPass.doAfterTextChange { checkValidFields() }
             ctiPassConfirmation.doAfterTextChange { checkValidFields() }
         }
@@ -49,6 +60,11 @@ class RegistrationSecondStepFragment : BaseFragment(R.layout.fragment_registrati
     }
 
     override fun showButtonState(isEnabled: Boolean) {
-        contentView.btnRegistrationNext.isEnabled = isEnabled
+        contentView.run {
+            btnRegistrationNext.isEnabled = isEnabled
+            tvError.isGone = isEnabled
+            ctiPass.showError(!isEnabled)
+            ctiPassConfirmation.showError(!isEnabled)
+        }
     }
 }

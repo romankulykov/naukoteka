@@ -18,5 +18,6 @@ class FieldsValidator : EmailValidator, PhoneValidator {
     }
 
     fun isNotEmpty(field: String): Boolean = field.isNotEmpty()
+    fun isEquals(password: String, passwordConfirmation: String) = password == passwordConfirmation
 
 }

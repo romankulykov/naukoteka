@@ -23,7 +23,8 @@ class RegistrationSecondStepPresenter(
     fun isValidFields(password: String, passwordConfirmation: String) {
         viewState.showButtonState(
             fieldsValidator.isNotEmpty(password) &&
-                    fieldsValidator.isNotEmpty(passwordConfirmation)
+                    fieldsValidator.isNotEmpty(passwordConfirmation) &&
+                    fieldsValidator.isEquals(password, passwordConfirmation)
         )
     }
 

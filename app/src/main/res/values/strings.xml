@@ -32,4 +32,5 @@
     <string name="registration_checking_mail">Проверьте свою электронную почту, мы отправили туда письмо со ссылкой.</string>
     <string name="registration_send_letter"><![CDATA[<font color=#8083A0>Не получили письмо? Проверьте папку &quot;спам&quot; <br>или</font> <font color=#2E83D9>отправьте письмо еще раз</font> <font color=#8083A0>%s</font>]]></string>
     <string name="enter_has_successfully_passed">Вход успешно выполнен!</string>
+    <string name="passwords_not_equals">Указанная пара паролей не совпадает. Проверьте введенные данные и повторите попытку.</string>
 </resources>
