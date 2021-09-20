@@ -25,7 +25,7 @@
         использован для регистрации</string>
     <string name="registration_agreement"><![CDATA[<font color=#8083A0>Нажимая на кнопку &quot;Дальше&quot;, вы соглашаетесь <br>с</font> <font color=#2E83D9>Правилами сервиса</font> <font color=#8083A0>и подтверждаете</font> <font color=#2E83D9>Политику <br> обработки персональных данных</font>]]></string>
     <string name="registration_new_password">Создание надежного пароля</string>
-    <string name="registration_password_requirements"><![CDATA[<font color=#FFFFFFFF>Теперь необходимо придумать надежный <br> пароль. Он должен соответствовать ряду <br> наших</font> <b><font color=#2E83D9>требований</font></b> <font color=#FFFFFFFF>.</font>]]></string>
+    <string name="registration_password_requirements"><![CDATA[<font color=#FFFFFFFF>Теперь необходимо придумать надежный <br> пароль. Он должен соответствовать ряду <br> наших</font> <font color=#2E83D9>требований</font><font color=#FFFFFFFF>.</font>]]></string>
     <string name="registration_password_confirmation">Подтвердите пароль</string>
     <string name="registration_error">Указанная пара паролей не совпадает. Проверьте введенные данные и повторите попытку.</string>
     <string name="registration_confirmation">Подтверждение регистрации</string>

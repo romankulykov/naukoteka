@@ -1,4 +1,4 @@
-package medved.studio.pharmix.presentation.registration_first_step
+package medved.studio.pharmix.presentation.registration_second_step
 
 import android.content.Context
 import medved.studio.data.validator.FieldsValidator
@@ -10,27 +10,24 @@ import toothpick.InjectConstructor
 
 @InjectConstructor
 @InjectViewState
-class RegistrationFirstStepPresenter(
+class RegistrationSecondStepPresenter(
     private val fieldsValidator: FieldsValidator,
     private val context: Context,
     val router: AppRouter
-) : BasePresenterImpl<RegistrationFirstStepView>() {
+) : BasePresenterImpl<RegistrationSecondStepView>() {
 
-    override fun attachView(view: RegistrationFirstStepView?) {
+    override fun attachView(view: RegistrationSecondStepView?) {
         super.attachView(view)
     }
 
-    fun isValidField(email: String) {
+    fun isValidFields(password: String, passwordConfirmation: String) {
         viewState.showButtonState(
-            fieldsValidator.isValidEmail(email)
+            fieldsValidator.isNotEmpty(password) &&
+                    fieldsValidator.isNotEmpty(passwordConfirmation)
         )
     }
 
     fun onBackPressed() {
-        router.replaceScreen(Screens.Login())
-    }
-
-    fun nextStep() {
-        router.newRootScreen(Screens.RegistrationSecondStep())
+        router.replaceScreen(Screens.RegistrationFirstStep())
     }
 }

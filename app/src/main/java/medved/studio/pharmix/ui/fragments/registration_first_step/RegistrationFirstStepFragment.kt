@@ -32,6 +32,7 @@ class RegistrationFirstStepFragment : BaseFragment(R.layout.fragment_registratio
             ivBack.setOnClickListener { onBackPressed() }
             tvAgreement.text = context?.getString(R.string.registration_agreement)?.parseAsHtml()
             ctiEmail.doAfterTextChange { checkValidField() }
+            btnRegistrationNext.setOnClickListener { presenter.nextStep() }
         }
     }
 
