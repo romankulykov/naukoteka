@@ -43,7 +43,7 @@ class RegistrationSecondStepFragment : BaseFragment(R.layout.fragment_registrati
         contentView.run {
             ctiPass.doAfterTextChange { checkValidFields() }
             ctiPassConfirmation.doAfterTextChange { checkValidFields() }
-            btnRegistrationNext.setOnClickListener { presenter.nextStep() }
+            btnRegistrationNext.setOnClickListener { presenter.nextStep(ctiPass.text()) }
         }
     }
 

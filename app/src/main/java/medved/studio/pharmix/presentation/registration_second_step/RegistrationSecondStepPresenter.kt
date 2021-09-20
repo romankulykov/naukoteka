@@ -2,6 +2,9 @@ package medved.studio.pharmix.presentation.registration_second_step
 
 import android.content.Context
 import medved.studio.data.validator.FieldsValidator
+import medved.studio.domain.interactors.auth.AuthInteractor
+import medved.studio.pharmix.di.modules.RegistrationModule
+import medved.studio.pharmix.di.modules.SimpleRegistration
 import medved.studio.pharmix.global.base.BasePresenterImpl
 import medved.studio.pharmix.navigation.AppRouter
 import medved.studio.pharmix.navigation.Screens
@@ -12,13 +15,11 @@ import toothpick.InjectConstructor
 @InjectViewState
 class RegistrationSecondStepPresenter(
     private val fieldsValidator: FieldsValidator,
-    private val context: Context,
-    val router: AppRouter
+    private val router: AppRouter,
+    private val simpleRegistration: SimpleRegistration,
+    private val authInteractor: AuthInteractor
 ) : BasePresenterImpl<RegistrationSecondStepView>() {
 
-    override fun attachView(view: RegistrationSecondStepView?) {
-        super.attachView(view)
-    }
 
     fun isValidFields(password: String, passwordConfirmation: String) {
         viewState.showButtonState(
@@ -32,7 +33,11 @@ class RegistrationSecondStepPresenter(
         router.exit()
     }
 
-    fun nextStep() {
-        router.navigateTo(Screens.RegistrationThirdStep())
+    fun nextStep(password : String) {
+        simpleRegistration.password = password
+        authInteractor.register(simpleRegistration.login!!, simpleRegistration.password!!)
+            .await {
+                router.navigateTo(Screens.RegistrationThirdStep())
+            }
     }
 }

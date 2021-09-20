@@ -3,8 +3,10 @@ package medved.studio.data.repositories.auth
 import io.reactivex.Completable
 import medved.studio.data.services.auth.AuthApiService
 import medved.studio.data.services.models.request.auth.AuthRequestDto
+import medved.studio.data.services.models.request.auth.CheckEmailFreeDto
 import medved.studio.data.services.models.request.auth.CheckTokenKeyDto
 import medved.studio.data.services.models.request.auth.RegisterRequestDto
+import medved.studio.domain.entities.EmailNotFreeException
 import medved.studio.domain.repositories.auth.AuthRepository
 import toothpick.InjectConstructor
 
@@ -30,7 +32,17 @@ class AuthRepositoryImpl(
             .flatMapCompletable {
                 Completable.complete()
             }
+    }
 
+    override fun checkEmailForFree(email: String): Completable {
+        return authApiService.checkEmailFree(CheckEmailFreeDto(email))
+            .flatMapCompletable {
+                if (it.emailIsFree) {
+                    Completable.complete()
+                } else {
+                    throw EmailNotFreeException
+                }
+            }
     }
 
 

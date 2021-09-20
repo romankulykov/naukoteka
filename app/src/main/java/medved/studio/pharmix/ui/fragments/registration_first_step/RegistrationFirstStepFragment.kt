@@ -2,7 +2,6 @@ package medved.studio.pharmix.ui.fragments.registration_first_step
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.text.parseAsHtml
 import medved.studio.pharmix.R
 import medved.studio.pharmix.databinding.FragmentRegistrationFirstStepBinding
 import medved.studio.pharmix.global.base.BaseFragment
@@ -31,7 +30,7 @@ class RegistrationFirstStepFragment : BaseFragment(R.layout.fragment_registratio
         contentView.run {
             ivBack.setOnClickListener { onBackPressed() }
             ctiEmail.doAfterTextChange { checkValidField() }
-            btnRegistrationNext.setOnClickListener { presenter.nextStep() }
+            btnRegistrationNext.setOnClickListener { presenter.nextStep(ctiEmail.text()) }
         }
     }
 

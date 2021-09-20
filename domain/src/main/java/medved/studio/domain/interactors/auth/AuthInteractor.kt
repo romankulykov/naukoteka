@@ -31,5 +31,11 @@ class AuthInteractor(
             .observeOn(schedulers.ui())
     }
 
+    fun checkEmailFree(email: String): Completable {
+        return authRepository.checkEmailForFree(email)
+            .subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
+    }
+
 
 }

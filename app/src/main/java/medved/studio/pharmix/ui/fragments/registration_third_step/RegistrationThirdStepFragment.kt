@@ -1,10 +1,7 @@
 package medved.studio.pharmix.ui.fragments.registration_third_step
 
-import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.core.text.parseAsHtml
 import androidx.core.view.isVisible
 import medved.studio.pharmix.R
@@ -31,7 +28,6 @@ class RegistrationThirdStepFragment : BaseFragment(R.layout.fragment_registratio
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter.startTimerResendCode()
     }
 
     override fun showSecondsToResend(seconds: Int) {
@@ -43,12 +39,13 @@ class RegistrationThirdStepFragment : BaseFragment(R.layout.fragment_registratio
                 tvSendLetter.isVisible = true
                 tvSendLetter.text =
                     getString(R.string.registration_send_letter, secondsLeft).parseAsHtml()
+                tvSendLetter.setOnClickListener {  }
             }
         } else if (seconds == 0) {
-            val secondsNull = String.format("%02d:%02d", 0, 0)
             contentView.run {
                 tvSendLetter.text =
-                    getString(R.string.registration_send_letter, secondsNull).parseAsHtml()
+                    getString(R.string.registration_send_letter, "").parseAsHtml()
+                tvSendLetter.setOnClickListener { presenter.resendCode() }
             }
         }
     }

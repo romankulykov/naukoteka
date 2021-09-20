@@ -1,4 +1,4 @@
-package medved.studio.pharmix.ui
+package medved.studio.pharmix.ui.activities.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -16,6 +16,9 @@ import medved.studio.pharmix.global.views.LoadingView
 import medved.studio.pharmix.navigation.AnimatableAppNavigator
 import medved.studio.pharmix.navigation.AppRouter
 import medved.studio.pharmix.navigation.Screens.Splash
+import medved.studio.pharmix.presentation.main.MainPresenter
+import medved.studio.pharmix.presentation.main.MainView
+import medved.studio.pharmix.ui.IntentKeys
 import medved.studio.pharmix.ui.custom.square_toast.ToastAction
 import medved.studio.pharmix.ui.custom.square_toast.SquareToast
 import medved.studio.pharmix.ui.custom.square_toast.ToastInfo
@@ -23,15 +26,25 @@ import medved.studio.pharmix.utils.ActivityResultListener
 import medved.studio.pharmix.utils.BackButtonListener
 import medved.studio.pharmix.utils.RouterProvider
 import medved.studio.pharmix.utils.viewBinding
+import moxy.presenter.InjectPresenter
+import moxy.presenter.ProvidePresenter
 import toothpick.ktp.delegate.inject
 
-class MainActivity : BaseActivity(), RouterProvider, LoadingView, InformativeView {
+class MainActivity : BaseActivity(), RouterProvider, MainView {
 
     override val contentView by viewBinding(ActivityMainBinding::inflate)
 
     private val navigatorHolder: NavigatorHolder by inject()
 
     private val navigator: Navigator by lazy { AnimatableAppNavigator(this, R.id.container) }
+
+    @InjectPresenter
+    lateinit var presenter: MainPresenter
+
+    @ProvidePresenter
+    fun providePresenter(): MainPresenter {
+        return getScope().getInstance(MainPresenter::class.java)
+    }
 
     protected lateinit var progressBar: ProgressBar
 
@@ -64,6 +77,7 @@ class MainActivity : BaseActivity(), RouterProvider, LoadingView, InformativeVie
     private fun handleDeepLink(newIntent: Intent) {
         newIntent.getParcelableExtra<IntentKeys.Registration>(IntentKeys.Registration.KEY)
             ?.let { registration ->
+                presenter.checkToken(registration.key)
                 // todo pass registration key
                 // router.navigateTo(Screens.EndRegistartion())
             }

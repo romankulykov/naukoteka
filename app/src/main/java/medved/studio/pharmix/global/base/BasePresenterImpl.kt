@@ -12,6 +12,8 @@ import medved.studio.pharmix.R
 import medved.studio.pharmix.di.DI
 import medved.studio.pharmix.global.views.InformativeView
 import medved.studio.pharmix.global.views.LoadingView
+import medved.studio.pharmix.ui.custom.square_toast.SquareToast
+import medved.studio.pharmix.ui.custom.square_toast.ToastInfo
 import medved.studio.pharmix.utils.isOffline
 import medved.studio.pharmix.utils.rx.OnComplete
 import medved.studio.pharmix.utils.rx.OnError
@@ -40,6 +42,7 @@ abstract class BasePresenterImpl<V : MvpView> : MvpPresenter<V>() {
     fun getScope(): Scope {
         return KTP.openRootScope()
             .openSubScope(DI.APP_SCOPE)
+            .openSubScope(DI.MAIN_ACTIVITY_SCOPE)
     }
 
     private val compositeDisposable = CompositeDisposable()
@@ -60,10 +63,11 @@ abstract class BasePresenterImpl<V : MvpView> : MvpPresenter<V>() {
     }
 
     protected fun V.onError(throwable: Throwable) = when {
-        throwable is SocketTimeoutException -> showMessage(R.string.errors_timeout_error)
-        throwable is HttpException -> showMessage(throwable.readMessage())
-        context.isOffline() -> showMessage(R.string.errors_network_error)
-        else -> showMessage(throwable.message)
+        throwable is SocketTimeoutException -> showErrorMessage(R.string.errors_timeout_error)
+        throwable is HttpException -> showErrorMessage(throwable.readMessage())
+        throwable is EmailNotFreeException -> showErrorMessage(R.string.errors_email_is_busy)
+        context.isOffline() -> showErrorMessage(R.string.errors_network_error)
+        else -> showErrorMessage(throwable.message)
     }
 
     private fun HttpException.readMessage(): String? {
@@ -74,7 +78,7 @@ abstract class BasePresenterImpl<V : MvpView> : MvpPresenter<V>() {
         return try {
             val apiError = gson.fromJson(string(), ApiErrorWrapper::class.java)
             apiError?.apiErrorDetail?.message
-        } catch (e : Exception){
+        } catch (e: Exception) {
             string()
         }
     }
@@ -88,6 +92,23 @@ abstract class BasePresenterImpl<V : MvpView> : MvpPresenter<V>() {
             (viewState as? InformativeView)?.showInfoMessage(text)
         } else {
             showMessage(R.string.errors_something_went_wrong)
+        }
+    }
+
+    protected fun showErrorMessage(textResId: Int) {
+        showErrorMessage(context.getString(textResId))
+    }
+
+    protected fun showErrorMessage(text: String?) {
+        if (!text.isNullOrEmpty()) {
+            (viewState as? InformativeView)?.showMessage(
+                ToastInfo(
+                    text = text,
+                    type = SquareToast.Type.ERROR
+                )
+            )
+        } else {
+
         }
     }
 

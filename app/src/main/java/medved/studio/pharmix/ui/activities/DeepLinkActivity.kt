@@ -1,10 +1,12 @@
-package medved.studio.pharmix.ui
+package medved.studio.pharmix.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import medved.studio.pharmix.databinding.ActivityMainBinding
 import medved.studio.pharmix.global.base.BaseActivity
+import medved.studio.pharmix.ui.IntentKeys
+import medved.studio.pharmix.ui.activities.main.MainActivity
 import medved.studio.pharmix.utils.ActivityResultListener
 import medved.studio.pharmix.utils.viewBinding
 
