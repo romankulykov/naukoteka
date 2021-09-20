@@ -72,7 +72,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <medved.studio.pharmix.ui.custom.HtmlTextView
         android:id="@+id/tv_password_requirements"
         style="@style/TextViewStyle.Usual"
         android:layout_width="0dp"
@@ -108,11 +108,12 @@
 
     <Button
         android:id="@+id/btn_registration_next"
-        style="@style/Button"
+        style="@style/Button.Registration"
         android:layout_marginStart="32dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginEnd="32dp"
         android:text="@string/next"
+        android:enabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>

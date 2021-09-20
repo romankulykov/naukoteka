@@ -9,6 +9,7 @@
     <color name="color_error">#D92E4D</color>
 
     <color name="object_main">#2E83D9</color>
+
     <color name="object_disabled">#2D2E41</color>
 
     <color name="object_inactive">#8083A0</color>
@@ -19,6 +20,8 @@
 
     <color name="text_inactive">#8083A0</color>
     <color name="text_active">#FFFFFFFF</color>
+
+    <color name="object_inactive_2">#4A4C67</color>
 
     <color name="transparent">#00000000</color>
     <color name="manatee">#888A94</color>

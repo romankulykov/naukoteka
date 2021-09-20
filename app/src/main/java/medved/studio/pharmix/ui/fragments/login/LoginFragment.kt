@@ -30,7 +30,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButt
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         contentView.run {
-            tvRegistration.text = context?.getString(R.string.login_registration)?.parseAsHtml()
+            tvRegistration.setOnClickListener { presenter.toRegistration() }
             ctiEmail.doAfterTextChange { checkValidFields() }
             ctiPass.doAfterTextChange { checkValidFields() }
             btnEnter.setOnClickListener { presenter.enter(ctiEmail.text(), ctiPass.text()) }

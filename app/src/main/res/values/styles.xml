@@ -46,6 +46,9 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="Button.Registration">
+        <item name="android:background">@drawable/button_states_registration</item>
+    </style>
 
     <style name="FadeInFadeOutAnimation" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/fade_in</item>
