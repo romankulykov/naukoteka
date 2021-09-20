@@ -27,7 +27,7 @@ class RegistrationSecondStepPresenter(
         )
     }
 
-    fun onBackPressed() {
-        router.replaceScreen(Screens.RegistrationFirstStep())
+    fun exit() {
+        router.exit()
     }
 }

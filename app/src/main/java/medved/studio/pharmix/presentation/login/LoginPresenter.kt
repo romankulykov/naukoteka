@@ -57,8 +57,8 @@ class LoginPresenter(
             }
     }
 
-    fun finishLogin() {
-        router.newRootScreen(Screens.RegistrationFirstStep())
+    fun toRegistration() {
+        router.navigateTo(Screens.RegistrationFirstStep())
     }
 
     fun exit() {

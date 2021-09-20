@@ -29,8 +29,6 @@ class RegistrationSecondStepFragment : BaseFragment(R.layout.fragment_registrati
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         contentView.run {
-            tvPasswordRequirements.text =
-                context?.getString(R.string.registration_password_requirements)?.parseAsHtml()
             ivBack.setOnClickListener { onBackPressed() }
             ctiPass.doAfterTextChange { checkValidFields() }
             ctiPassConfirmation.doAfterTextChange { checkValidFields() }
@@ -46,7 +44,7 @@ class RegistrationSecondStepFragment : BaseFragment(R.layout.fragment_registrati
     }
 
     override fun onBackPressed(): Boolean {
-        presenter.onBackPressed()
+        presenter.exit()
         return true
     }
 

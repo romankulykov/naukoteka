@@ -30,7 +30,6 @@ class RegistrationFirstStepFragment : BaseFragment(R.layout.fragment_registratio
         super.onViewCreated(view, savedInstanceState)
         contentView.run {
             ivBack.setOnClickListener { onBackPressed() }
-            tvAgreement.text = context?.getString(R.string.registration_agreement)?.parseAsHtml()
             ctiEmail.doAfterTextChange { checkValidField() }
             btnRegistrationNext.setOnClickListener { presenter.nextStep() }
         }
@@ -44,7 +43,7 @@ class RegistrationFirstStepFragment : BaseFragment(R.layout.fragment_registratio
     }
 
     override fun onBackPressed(): Boolean {
-        presenter.onBackPressed()
+        presenter.exit()
         return true
     }
 

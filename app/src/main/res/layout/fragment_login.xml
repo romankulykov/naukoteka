@@ -178,7 +178,7 @@
         app:layout_constraintStart_toEndOf="@+id/ib_ok"
         app:layout_constraintTop_toBottomOf="@id/social_guideline" />
 
-    <TextView
+    <medved.studio.pharmix.ui.custom.HtmlTextView
         android:id="@+id/tv_registration"
         style="@style/TextViewStyle"
         android:layout_width="0dp"
