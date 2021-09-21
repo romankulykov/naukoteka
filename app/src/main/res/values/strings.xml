@@ -45,4 +45,24 @@
     <string name="short_info_profile_personal_address">Вы можете задать для своего профиля персональный адрес</string>
     <string name="short_info_profile_field_link">Ссылка</string>
     <string name="short_info_profile_button_complete_registration">Завершить регистрацию</string>
+    <string name="password_recovery">Восстановление пароля</string>
+    <string name="password_recovery_send_link">Мы отправим ссылку на указанный Вами адрес электронной почты для подтверждения наличия доступа к Вашему аккаунту</string>
+    <string name="password_recovery_send">Отправить</string>
+    <string name="password_recovery_verification_send_link">Мы отправили ссылку на указанный Вами адрес электронной почты. Пожалуйста, проверьте Вашу почту и нажмите на ссылку, находящуюся в письме</string>
+    <string name="password_recovery_verification_not_receive_letter">Не получили письмо?</string>
+    <string name="password_recovery_verification_send_again"><![CDATA[<font color=#2E83D9>Отправить еще раз</font> <font color=#8083A0>%s</font>]]></string>
+    <string name="password_recovery_support"><![CDATA[<font color=#8083A0>Нужна помощь?</font> <font color=#2E83D9>Обратитесь в поддержку</font>]]></string>
+    <string name="password_recovery_requirements"><![CDATA[<font color=#FFFFFFFF>Теперь придумайте себе новый надежный <br> пароль. Он должен соответствовать ряду <br> наших</font> <font color=#2E83D9>требований</font><font color=#FFFFFFFF>.</font>]]></string>
+    <string name="password_recovery_new_pass">Новый пароль</string>
+    <string name="password_recovery_new_pass_confirmation">Подтвердите новый пароль</string>
+    <string name="password_recovery_save_password">Сохранить пароль</string>
+    <string name="password_recovery_by_phone_number">Восстановление пароля по номеру телефона</string>
+    <string name="password_recovery_send_sms">Мы отправим вам смс с кодом для подтверждения доступа к вашему аккаунту</string>
+    <string name="password_recovery_phone_number">Номер телефона</string>
+    <string name="password_recovery_send_code">Отправить код</string>
+    <string name="password_recovery_help"><![CDATA[<font color=#8083A0>Нужна помощь? Попробуйте восстановить через</font> <br> <font color=#2E83D9>электронный адрес</font> <font color=#8083A0>или</font> <font color=#2E83D9>обратитесь в поддержку</font>]]></string>
+    <string name="password_recovery_sent_the_code_to_the_specified_number">Отправили смс с кодом на указанный номер телефона</string>
+    <string name="password_recovery_received_code">Полученный код</string>
+    <string name="password_recovery_accept">Подтвердить</string>
+
 </resources>
