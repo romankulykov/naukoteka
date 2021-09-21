@@ -7,6 +7,9 @@ import medved.studio.pharmix.global.base.BasePresenterImpl
 import medved.studio.pharmix.navigation.AppRouter
 import medved.studio.pharmix.navigation.Screens
 import medved.studio.pharmix.ui.AppConfigs
+import medved.studio.pharmix.ui.IntentKeys
+import medved.studio.pharmix.ui.custom.square_toast.SquareToast
+import medved.studio.pharmix.ui.custom.square_toast.ToastInfo
 import moxy.InjectViewState
 import toothpick.InjectConstructor
 
@@ -48,14 +51,28 @@ class LoginPresenter(
     }
 
     fun authSocial(socialType: SocialType) {
-        router.navigateTo(
-            Screens.OpenBrowser(
-                AppConfigs.authSocialUrl(
-                    socialType,
-                    "https://stage.naukotheka.ru/login-actions/social-login?social_type=${socialType.raw}"
+        router.run {
+            setResultListener(Screens.RESULT_AUTH_SOCIAL) {
+                (it as? IntentKeys.SocialAuthorization)?.let { socialAuthorization ->
+                    socialAuth(socialAuthorization.socialType, socialAuthorization.key)
+                }
+            }
+            navigateTo(
+                Screens.WebViewAuth(
+                    AppConfigs.authSocialUrl(
+                        socialType,
+                        "https://stage.naukotheka.ru/${AppConfigs.SOCIAL_LOGIN_ENDPOINT}?social_type=${socialType.raw}"
+                    )
                 )
             )
-        )
+        }
+    }
+
+    fun socialAuth(socialType: SocialType, key: String) {
+        authInteractor.authenticate(socialType, key)
+            .await {
+                viewState.showMessage(ToastInfo("Success", type = SquareToast.Type.SUCCESS))
+            }
     }
 
 

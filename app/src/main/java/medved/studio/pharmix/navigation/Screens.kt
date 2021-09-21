@@ -11,10 +11,12 @@ import medved.studio.pharmix.ui.fragments.registration_second_step.RegistrationS
 import medved.studio.pharmix.ui.fragments.registration_third_step.RegistrationThirdStepFragment
 import java.io.Serializable
 import medved.studio.pharmix.ui.fragments.splash.SplashFragment
+import medved.studio.pharmix.ui.fragments.web_view_auth.WebViewAuthFragment
 
 
 object Screens {
 
+    const val RESULT_AUTH_SOCIAL = "RESULT_AUTH_SOCIAL"
 
     const val LOGIN = "loginFragment"
     const val TUTORIAL_SCREEN = "tutorialFragment"
@@ -22,7 +24,7 @@ object Screens {
     const val REGISTRATION_FIRST_STEP = "registrationFirstStepFragment"
     const val REGISTRATION_SECOND_STEP = "registrationSecondStepFragment"
     const val REGISTRATION_THIRD_STEP = "registrationThirdStepFragment"
-
+    const val WEB_VIEW_AUTH = "webViewAuth"
 
     fun Splash() = FragmentScreen(SPLASH_SCREEN) { SplashFragment() }
     fun Tutorial() = FragmentScreen(TUTORIAL_SCREEN) { TutorialFragment() }
@@ -37,6 +39,9 @@ object Screens {
 
     fun RegistrationThirdStep() =
         FragmentScreen(REGISTRATION_THIRD_STEP) { RegistrationThirdStepFragment() }
+
+    fun WebViewAuth(url : String) =
+        FragmentScreen(WEB_VIEW_AUTH) { WebViewAuthFragment.newInstance(url) }
 
     fun OpenBrowser(url: String) = ActivityScreen {
         Intent(Intent.ACTION_VIEW, Uri.parse(url))
