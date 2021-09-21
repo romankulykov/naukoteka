@@ -3,9 +3,12 @@ package medved.studio.pharmix.navigation
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 import medved.studio.pharmix.ui.fragments.tutorial.TutorialFragment
 import medved.studio.pharmix.ui.fragments.login.LoginFragment
+import medved.studio.pharmix.ui.fragments.password_recovery.PasswordRecoveryFragment
 import medved.studio.pharmix.ui.fragments.registration_first_step.RegistrationFirstStepFragment
 import medved.studio.pharmix.ui.fragments.registration_second_step.RegistrationSecondStepFragment
 import medved.studio.pharmix.ui.fragments.registration_third_step.RegistrationThirdStepFragment
+import medved.studio.pharmix.ui.fragments.short_info_profile.ShortInfoProfileFragment
+import medved.studio.pharmix.ui.fragments.signed_up.SignedUpFragment
 import java.io.Serializable
 import medved.studio.pharmix.ui.fragments.splash.SplashFragment
 
@@ -19,6 +22,9 @@ object Screens {
     const val REGISTRATION_FIRST_STEP = "registrationFirstStepFragment"
     const val REGISTRATION_SECOND_STEP = "registrationSecondStepFragment"
     const val REGISTRATION_THIRD_STEP = "registrationThirdStepFragment"
+    const val PASSWORD_RECOVERY = "passwordRecoveryFragment"
+    const val SHORT_INFO_PROFILE = "shortInfoProfileFragment"
+    const val SIGNED_UP = "signedUpFragment"
 
 
     fun Splash() = FragmentScreen(SPLASH_SCREEN) { SplashFragment() }
@@ -35,5 +41,12 @@ object Screens {
     fun RegistrationThirdStep() =
         FragmentScreen(REGISTRATION_THIRD_STEP) { RegistrationThirdStepFragment() }
 
+    fun PasswordRecovery() =
+        FragmentScreen(PASSWORD_RECOVERY) { PasswordRecoveryFragment() }
 
+    fun ShortInfoProfile() =
+        FragmentScreen(SHORT_INFO_PROFILE) { ShortInfoProfileFragment() }
+
+    fun SignedUp() =
+        FragmentScreen(SIGNED_UP) { SignedUpFragment() }
 }

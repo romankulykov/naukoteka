@@ -1,4 +1,4 @@
-package medved.studio.pharmix.presentation.registration_third_step
+package medved.studio.pharmix.presentation.password_recovery
 
 import android.content.Context
 import io.reactivex.Observable
@@ -7,23 +7,35 @@ import io.reactivex.disposables.Disposable
 import medved.studio.data.validator.FieldsValidator
 import medved.studio.pharmix.global.base.BasePresenterImpl
 import medved.studio.pharmix.navigation.AppRouter
-import medved.studio.pharmix.navigation.Screens
-import medved.studio.pharmix.presentation.registration_second_step.RegistrationSecondStepView
 import moxy.InjectViewState
 import toothpick.InjectConstructor
 import java.util.concurrent.TimeUnit
 
 @InjectConstructor
 @InjectViewState
-class RegistrationThirdStepPresenter(
+class PasswordRecoveryPresenter(
+    private val fieldsValidator: FieldsValidator,
     private val context: Context,
     val router: AppRouter
-) : BasePresenterImpl<RegistrationThirdStepView>() {
+) : BasePresenterImpl<PasswordRecoveryView>()  {
 
     private var countDownTimer: Disposable? = null
 
-    override fun attachView(view: RegistrationThirdStepView?) {
+    override fun attachView(view: PasswordRecoveryView?) {
         super.attachView(view)
+    }
+
+    fun isValidField(email: String) {
+        viewState.showButtonState(
+            fieldsValidator.isValidEmail(email)
+        )
+    }
+
+    fun isValidFields(password: String, passwordConfirmation: String) {
+        viewState.showButtonState(
+            fieldsValidator.isNotEmpty(password) &&
+                    fieldsValidator.isNotEmpty(passwordConfirmation)
+        )
     }
 
     fun startTimerResendCode() {
@@ -39,7 +51,7 @@ class RegistrationThirdStepPresenter(
             }
     }
 
-    fun toFinalRegistration() {
-        router.navigateTo(Screens.ShortInfoProfile())
+    fun exit() {
+        router.exit()
     }
 }

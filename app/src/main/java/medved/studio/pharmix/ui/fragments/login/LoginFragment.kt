@@ -33,6 +33,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButt
             ctiEmail.doAfterTextChange { checkValidFields() }
             ctiPass.doAfterTextChange { checkValidFields() }
             btnEnter.setOnClickListener { presenter.enter(ctiEmail.text(), ctiPass.text()) }
+            tvForgetPassword.setOnClickListener { presenter.toPasswordRecovery() }
         }
     }
 
