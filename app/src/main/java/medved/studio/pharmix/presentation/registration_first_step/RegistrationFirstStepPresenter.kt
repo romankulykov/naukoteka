@@ -26,6 +26,12 @@ class RegistrationFirstStepPresenter(
         scope.installModules(RegistrationModule())
     }
 
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
+        authInteractor.getSocialTypes()
+            .await(withProgress = false) { viewState.showSocialTypes(it) }
+    }
+
     fun isValidField(email: String) {
         viewState.showButtonState(
             fieldsValidator.isValidEmail(email)

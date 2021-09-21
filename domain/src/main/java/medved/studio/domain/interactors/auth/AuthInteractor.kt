@@ -1,8 +1,10 @@
 package medved.studio.domain.interactors.auth
 
 import io.reactivex.Completable
+import io.reactivex.Single
 import medved.studio.domain.SchedulersProvider
 import medved.studio.domain.repositories.auth.AuthRepository
+import medved.studio.domain.repositories.auth.models.SocialType
 import toothpick.InjectConstructor
 
 @InjectConstructor
@@ -33,6 +35,18 @@ class AuthInteractor(
 
     fun checkEmailFree(email: String): Completable {
         return authRepository.checkEmailForFree(email)
+            .subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
+    }
+
+    fun getSocialTypes(): Single<List<SocialType>> {
+        return authRepository.socialTypes()
+            .subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
+    }
+
+    fun authenticate(socialType: SocialType, key: String): Completable {
+        return authRepository.socialAuth(socialType, key)
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
     }

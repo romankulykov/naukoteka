@@ -6,9 +6,11 @@ import medved.studio.data.services.models.request.auth.CheckEmailFreeDto
 import medved.studio.data.services.models.request.auth.CheckTokenKeyDto
 import medved.studio.data.services.models.request.auth.RegisterRequestDto
 import medved.studio.data.services.models.response.auth.AuthResponseDto
-import medved.studio.data.services.models.response.auth.CheckTokenKeyResponse
-import medved.studio.data.services.models.response.auth.EmailFreeResponse
+import medved.studio.data.services.models.response.auth.CheckTokenKeyResponseDto
+import medved.studio.data.services.models.response.auth.EmailFreeResponseDto
+import medved.studio.data.services.models.response.auth.SocialTypesResponseDto
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface AuthApiService {
@@ -20,10 +22,16 @@ interface AuthApiService {
     fun register(@Body authRequestDto: RegisterRequestDto): Single<AuthResponseDto>
 
     @POST("login-actions/action-token")
-    fun checkTokenKey(@Body checkTokenKey: CheckTokenKeyDto): Single<CheckTokenKeyResponse>
+    fun checkTokenKey(@Body checkTokenKey: CheckTokenKeyDto): Single<CheckTokenKeyResponseDto>
 
     @POST("login-actions/authenticate/check-email-free")
-    fun checkEmailFree(@Body checkEmailFreeDto: CheckEmailFreeDto): Single<EmailFreeResponse>
+    fun checkEmailFree(@Body checkEmailFreeDto: CheckEmailFreeDto): Single<EmailFreeResponseDto>
+
+    @GET("login-actions/authenticate/idp-hints")
+    fun getSocialTypes(): Single<SocialTypesResponseDto>
+
+    @POST("login-actions/authenticate")
+    fun authenticate(@Body authRequestDto: AuthRequestDto): Single<AuthResponseDto>
 
 
 }

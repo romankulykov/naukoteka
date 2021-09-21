@@ -34,9 +34,6 @@ ext {
             dotsIndicator          : 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2',
             maskedEditText         : 'ru.egslava:MaskedEditText:1.0.5',
             keyboardVisibility     : 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC3',
-            vkontakte              : 'com.vk:androidsdk:2.0.0',
-            facebook               : 'com.facebook.android:facebook-login:5.13.0',
-
 
     ]
 

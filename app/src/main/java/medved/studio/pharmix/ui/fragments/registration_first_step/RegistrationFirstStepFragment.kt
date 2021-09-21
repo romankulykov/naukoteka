@@ -2,6 +2,8 @@ package medved.studio.pharmix.ui.fragments.registration_first_step
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
+import medved.studio.domain.repositories.auth.models.SocialType
 import medved.studio.pharmix.R
 import medved.studio.pharmix.databinding.FragmentRegistrationFirstStepBinding
 import medved.studio.pharmix.global.base.BaseFragment
@@ -49,4 +51,15 @@ class RegistrationFirstStepFragment : BaseFragment(R.layout.fragment_registratio
     override fun showButtonState(isEnabled: Boolean) {
         contentView.btnRegistrationNext.isEnabled = isEnabled
     }
+
+    override fun showSocialTypes(socialTypes: List<SocialType>) {
+        contentView.run {
+            ibVkontakte.isVisible = socialTypes.contains(SocialType.VK)
+            ibOk.isVisible = socialTypes.contains(SocialType.OK)
+            ibFacebook.isVisible = socialTypes.contains(SocialType.FACEBOOK)
+            ibMail.isVisible = socialTypes.contains(SocialType.MAIL_RU)
+            ibGoogle.isVisible = socialTypes.contains(SocialType.GOOGLE)
+        }
+    }
+
 }

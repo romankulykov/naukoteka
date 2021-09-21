@@ -3,6 +3,7 @@ package medved.studio.pharmix.ui.activities
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import medved.studio.domain.repositories.auth.models.SocialType
 import medved.studio.pharmix.databinding.ActivityMainBinding
 import medved.studio.pharmix.global.base.BaseActivity
 import medved.studio.pharmix.ui.IntentKeys
@@ -25,10 +26,20 @@ class DeepLinkActivity : BaseActivity() {
     private fun handleDeepLink(newIntent: Intent? = null) {
         val intent = newIntent ?: intent
         val keyAuthorization = intent.data?.getQueryParameter("key")
-        if (!keyAuthorization.isNullOrEmpty()) {
-            startActivity(Intent(this, MainActivity::class.java).apply {
-                putExtra(IntentKeys.Registration.KEY, IntentKeys.Registration(keyAuthorization))
-            })
+        if (intent.dataString?.contains("login-actions/verify-email") == true) {
+            if (!keyAuthorization.isNullOrEmpty()) {
+                startActivity(Intent(this, MainActivity::class.java).apply {
+                    putExtra(IntentKeys.Registration.KEY, IntentKeys.Registration(keyAuthorization))
+                })
+            }
+        } else if (intent.dataString?.contains("login-actions/social-login") == true) {
+            if (!keyAuthorization.isNullOrEmpty()) {
+                val socialTypeRaw = intent.data?.getQueryParameter("social_type")
+                val socialType = SocialType.values().find { it.raw == socialTypeRaw }
+                startActivity(Intent(this, MainActivity::class.java).apply {
+                    putExtra(IntentKeys.SocialAuthorization.KEY, IntentKeys.SocialAuthorization(keyAuthorization, socialType!!))
+                })
+            }
         }
     }
 

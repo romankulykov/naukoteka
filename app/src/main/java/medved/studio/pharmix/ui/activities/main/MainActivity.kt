@@ -81,6 +81,12 @@ class MainActivity : BaseActivity(), RouterProvider, MainView {
                 // todo pass registration key
                 // router.navigateTo(Screens.EndRegistartion())
             }
+        newIntent.getParcelableExtra<IntentKeys.SocialAuthorization>(IntentKeys.SocialAuthorization.KEY)
+            ?.let { socialAuth ->
+                presenter.socialAuth(socialAuth.socialType, socialAuth.key)
+                // todo pass registration key
+                // router.navigateTo(Screens.EndRegistartion())
+            }
     }
 
     override fun onNewIntent(intent: Intent) {

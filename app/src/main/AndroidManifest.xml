@@ -43,6 +43,8 @@
                 <data
                     android:host="stage.naukotheka.ru"
                     android:pathPrefix="/login-actions/verify-email" />
+                <data
+                    android:pathPrefix="/login-actions/social-login" />
 
             </intent-filter>
         </activity>

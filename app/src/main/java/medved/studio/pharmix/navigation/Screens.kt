@@ -1,5 +1,8 @@
 package medved.studio.pharmix.navigation
 
+import android.content.Intent
+import android.net.Uri
+import com.github.terrakok.cicerone.androidx.ActivityScreen
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 import medved.studio.pharmix.ui.fragments.tutorial.TutorialFragment
 import medved.studio.pharmix.ui.fragments.login.LoginFragment
@@ -34,6 +37,10 @@ object Screens {
 
     fun RegistrationThirdStep() =
         FragmentScreen(REGISTRATION_THIRD_STEP) { RegistrationThirdStepFragment() }
+
+    fun OpenBrowser(url: String) = ActivityScreen {
+        Intent(Intent.ACTION_VIEW, Uri.parse(url))
+    }
 
 
 }

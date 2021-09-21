@@ -2,6 +2,8 @@ package medved.studio.pharmix.ui.fragments.login
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
+import medved.studio.domain.repositories.auth.models.SocialType
 import medved.studio.pharmix.R
 import medved.studio.pharmix.databinding.FragmentLoginBinding
 import medved.studio.pharmix.global.base.BaseFragment
@@ -34,6 +36,11 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButt
             ctiEmail.doAfterTextChange { checkValidFields() }
             ctiPass.doAfterTextChange { checkValidFields() }
             btnEnter.setOnClickListener { presenter.enter(ctiEmail.text(), ctiPass.text()) }
+            ibVkontakte.setOnClickListener { presenter.authSocial(SocialType.VK) }
+            ibOk.setOnClickListener { presenter.authSocial(SocialType.OK) }
+            ibFacebook.setOnClickListener { presenter.authSocial(SocialType.FACEBOOK) }
+            ibMail.setOnClickListener { presenter.authSocial(SocialType.MAIL_RU) }
+            ibGoogle.setOnClickListener { presenter.authSocial(SocialType.GOOGLE) }
         }
     }
 
@@ -58,6 +65,16 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButt
                 type = SquareToast.Type.SUCCESS
             )
         )
+    }
+
+    override fun showSocialTypes(socialTypes: List<SocialType>) {
+        contentView.run {
+            ibVkontakte.isVisible = socialTypes.contains(SocialType.VK)
+            ibOk.isVisible = socialTypes.contains(SocialType.OK)
+            ibFacebook.isVisible = socialTypes.contains(SocialType.FACEBOOK)
+            ibMail.isVisible = socialTypes.contains(SocialType.MAIL_RU)
+            ibGoogle.isVisible = socialTypes.contains(SocialType.GOOGLE)
+        }
     }
 
     override fun onBackPressed(): Boolean {
