@@ -31,4 +31,18 @@
     <string name="registration_confirmation">Подтверждение регистрации</string>
     <string name="registration_checking_mail">Проверьте свою электронную почту, мы отправили туда письмо со ссылкой.</string>
     <string name="registration_send_letter"><![CDATA[<font color=#8083A0>Не получили письмо? Проверьте папку &quot;спам&quot; <br>или</font> <font color=#2E83D9>отправьте письмо еще раз</font> <font color=#8083A0>%s</font>]]></string>
+    <string name="signed_up_registered_successfully">Вы успешно зарегистрированы!</string>
+    <string name="signed_up_fill_in_the_form">Загрузите свою фотографию и заполните небольшую анкету о вашем образовании, карьере и интересах</string>
+    <string name="signed_up_fill_in_profile">Заполнить профиль</string>
+    <string name="short_info_profile_complete_registration">Завершите регистрацию</string>
+    <string name="short_info_profile_minimum_information">Нам нужна минимальная информация о вас</string>
+    <string name="short_info_profile_name">Как вас зовут</string>
+    <string name="short_info_profile_surname">Фамилия</string>
+    <string name="short_info_profile_field_name">Имя</string>
+    <string name="short_info_profile_patronymic">Отчество</string>
+    <string name="short_info_profile_without_patronymic">Без отчества</string>
+    <string name="short_info_profile_link">Ссылка на профиль</string>
+    <string name="short_info_profile_personal_address">Вы можете задать для своего профиля персональный адрес</string>
+    <string name="short_info_profile_field_link">Ссылка</string>
+    <string name="short_info_profile_button_complete_registration">Завершить регистрацию</string>
 </resources>
