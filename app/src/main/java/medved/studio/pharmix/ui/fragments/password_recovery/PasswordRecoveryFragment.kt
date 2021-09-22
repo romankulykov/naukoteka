@@ -39,6 +39,7 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
             passwordRecovery.run {
                 btnSend.setOnClickListener {
                     viewFlipper.displayedChild = FLIPPER_PASSWORD_RECOVERY_VERIFICATION
+                    presenter.startTimerResendCode()
                 }
                 ctiEmail.doAfterTextChange { checkValidField() }
             }
@@ -46,17 +47,19 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
                 ctiNewPass.doAfterTextChange { checkValidFields() }
                 ctiNewPassConfirmation.doAfterTextChange { checkValidFields() }
             }
-            passwordRecoveryVerification.run {
-                presenter.startTimerResendCode()
-                tvSendAgain.setOnClickListener {
-                    viewFlipper.displayedChild = FLIPPER_PASSWORD_RECOVERY_NEW_PASSWORD
-                }
-            }
         }
     }
 
     override fun onBackPressed(): Boolean {
-        presenter.exit()
+        contentView.run {
+            when (viewFlipper.displayedChild) {
+                FLIPPER_PASSWORD_RECOVERY -> presenter.exit()
+                FLIPPER_PASSWORD_RECOVERY_NEW_PASSWORD -> viewFlipper.displayedChild =
+                    FLIPPER_PASSWORD_RECOVERY
+                FLIPPER_PASSWORD_RECOVERY_VERIFICATION -> viewFlipper.displayedChild =
+                    FLIPPER_PASSWORD_RECOVERY
+            }
+        }
         return true
     }
 
@@ -76,10 +79,11 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
     }
 
     override fun showButtonState(isEnabled: Boolean) {
-        contentView.run {
-            passwordRecovery.btnSend.isEnabled = isEnabled
-            passwordRecoveryNewPassword.btnSavePassword.isEnabled = isEnabled
-        }
+        contentView.passwordRecovery.btnSend.isEnabled = isEnabled
+    }
+
+    override fun showButtonStateOfPasswordRecoveryVerification(isEnabled: Boolean) {
+        contentView.passwordRecoveryNewPassword.btnSavePassword.isEnabled = isEnabled
     }
 
     override fun showSecondsToResend(seconds: Int) {
