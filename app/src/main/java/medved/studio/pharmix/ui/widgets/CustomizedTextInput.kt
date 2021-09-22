@@ -92,6 +92,11 @@ class CustomizedTextInput(context: Context, attrs: AttributeSet) : LinearLayout(
     fun doAfterTextChange(invoke: (String) -> Unit) =
         binding.metField.doAfterTextChanged { invoke(it.toString()) }
 
+    fun onFocusChange(invoker: (Boolean) -> Unit) {
+        binding.metField.onFocusChangeListener =
+            OnFocusChangeListener { v, hasFocus -> invoker.invoke(hasFocus) }
+    }
+
     fun text() = binding.metField.text.toString()
 
     private fun toggleEye() {

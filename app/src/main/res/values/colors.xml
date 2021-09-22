@@ -28,5 +28,7 @@
     <color name="mine_shaft">#333333</color>
     <color name="ghost">#C7CBDB</color>
     <color name="background_toast">#E6333333</color>
+    <color name="background_toast_success">#63AA55</color>
+    <color name="background_toast_error">#D92E4D</color>
 
 </resources>

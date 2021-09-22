@@ -12,6 +12,8 @@ data class HttpException(
     val reason: String?
 ) : UsualException(message)
 
+object EmailNotFreeException : AcceptableException("Email is not free")
+
 class HttpRequestException(
     throwable: Throwable
 ) : UsualException("Something wrong happened during http request:\n${throwable.message}")

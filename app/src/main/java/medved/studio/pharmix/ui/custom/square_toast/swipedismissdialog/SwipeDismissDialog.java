@@ -1,4 +1,4 @@
-package medved.studio.pharmix.ui.custom.swipedismissdialog;
+package medved.studio.pharmix.ui.custom.square_toast.swipedismissdialog;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
@@ -95,7 +95,7 @@ public class SwipeDismissDialog extends FrameLayout {
         layoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE |
                 WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL |
                 WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH;
-        layoutParams.windowAnimations = params.dialogAnimations;
+        layoutParams.windowAnimations = android.R.style.Animation_Toast;
 
         windowManager.addView(this, layoutParams);
         return this;

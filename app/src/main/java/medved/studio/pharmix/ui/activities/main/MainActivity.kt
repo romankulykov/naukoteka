@@ -1,4 +1,4 @@
-package medved.studio.pharmix.ui
+package medved.studio.pharmix.ui.activities.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -16,20 +16,35 @@ import medved.studio.pharmix.global.views.LoadingView
 import medved.studio.pharmix.navigation.AnimatableAppNavigator
 import medved.studio.pharmix.navigation.AppRouter
 import medved.studio.pharmix.navigation.Screens.Splash
-import medved.studio.pharmix.ui.custom.SquareToast
+import medved.studio.pharmix.presentation.main.MainPresenter
+import medved.studio.pharmix.presentation.main.MainView
+import medved.studio.pharmix.ui.IntentKeys
+import medved.studio.pharmix.ui.custom.square_toast.ToastAction
+import medved.studio.pharmix.ui.custom.square_toast.SquareToast
+import medved.studio.pharmix.ui.custom.square_toast.ToastInfo
 import medved.studio.pharmix.utils.ActivityResultListener
 import medved.studio.pharmix.utils.BackButtonListener
 import medved.studio.pharmix.utils.RouterProvider
 import medved.studio.pharmix.utils.viewBinding
+import moxy.presenter.InjectPresenter
+import moxy.presenter.ProvidePresenter
 import toothpick.ktp.delegate.inject
 
-class MainActivity : BaseActivity(), RouterProvider, LoadingView, InformativeView {
+class MainActivity : BaseActivity(), RouterProvider, MainView {
 
     override val contentView by viewBinding(ActivityMainBinding::inflate)
 
     private val navigatorHolder: NavigatorHolder by inject()
 
     private val navigator: Navigator by lazy { AnimatableAppNavigator(this, R.id.container) }
+
+    @InjectPresenter
+    lateinit var presenter: MainPresenter
+
+    @ProvidePresenter
+    fun providePresenter(): MainPresenter {
+        return getScope().getInstance(MainPresenter::class.java)
+    }
 
     protected lateinit var progressBar: ProgressBar
 
@@ -57,6 +72,26 @@ class MainActivity : BaseActivity(), RouterProvider, LoadingView, InformativeVie
             .also { view ->
                 this.progressBar = view.findViewById(R.id.progressBar) as ProgressBar
             }
+    }
+
+    private fun handleDeepLink(newIntent: Intent) {
+        newIntent.getParcelableExtra<IntentKeys.Registration>(IntentKeys.Registration.KEY)
+            ?.let { registration ->
+                presenter.checkToken(registration.key)
+                // todo pass registration key
+                // router.navigateTo(Screens.EndRegistartion())
+            }
+        newIntent.getParcelableExtra<IntentKeys.SocialAuthorization>(IntentKeys.SocialAuthorization.KEY)
+            ?.let { socialAuth ->
+                presenter.socialAuth(socialAuth.socialType, socialAuth.key)
+                // todo pass registration key
+                // router.navigateTo(Screens.EndRegistartion())
+            }
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        handleDeepLink(intent)
     }
 
     override fun onBackPressed() {
@@ -103,19 +138,14 @@ class MainActivity : BaseActivity(), RouterProvider, LoadingView, InformativeVie
 
     }
 
-    override fun showInfoMessage(message: String?) {
-        if (message.isNullOrBlank()) return
-        SquareToast.getInstance(this).show(message)
-    }
-
     override fun showInfoMessage(message: Int?) {
         if (message == null) return
         showInfoMessage(getString(message))
     }
 
-    override fun showActionMessage(message: String?, action: String, invoker: () -> Unit) {
+    override fun showInfoMessage(message: String?) {
         if (message.isNullOrBlank()) return
-        SquareToast.getInstance(this).show(message, action, invoker)
+        SquareToast.getInstance(this).show(ToastInfo(text = message))
     }
 
     override fun showActionMessage(message: Int?, action: Int, invoker: () -> Unit) {
@@ -123,14 +153,18 @@ class MainActivity : BaseActivity(), RouterProvider, LoadingView, InformativeVie
         showActionMessage(getString(message), getString(action), invoker)
     }
 
-    override fun showIconableMessage(message: Int?, drawableResId: Int) {
-        if (message == null) return
-        showIconableMessage(getString(message), drawableResId)
+    override fun showActionMessage(message: String?, action: String, invoker: () -> Unit) {
+        if (message.isNullOrBlank()) return
+        SquareToast.getInstance(this).show(
+            ToastInfo(
+                text = message,
+                action = ToastAction(action, invoker)
+            )
+        )
     }
 
-    override fun showIconableMessage(message: String?, drawableResId: Int) {
-        if (message.isNullOrBlank()) return
-        SquareToast.getInstance(this).showIconable(message, drawableResId)
+    override fun showMessage(data: ToastInfo) {
+        SquareToast.getInstance(this).show(data)
     }
 
 }

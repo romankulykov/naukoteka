@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.firebase.appdistribution'
 apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'kotlin-parcelize'
 
 android {
 
@@ -100,8 +101,6 @@ dependencies {
     implementation ui.keyboardVisibility
 
     implementation ui.gmsPlayServicesAuth
-    implementation ui.vkontakte
-    implementation ui.facebook
 
     implementation presentation.moxy
     implementation presentation.moxyAndroid

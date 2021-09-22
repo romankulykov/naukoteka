@@ -1,23 +1,35 @@
 package medved.studio.pharmix.presentation.registration_first_step
 
-import android.content.Context
 import medved.studio.data.validator.FieldsValidator
+import medved.studio.domain.interactors.auth.AuthInteractor
+import medved.studio.pharmix.di.DI
+import medved.studio.pharmix.di.modules.RegistrationModule
+import medved.studio.pharmix.di.modules.SimpleRegistration
 import medved.studio.pharmix.global.base.BasePresenterImpl
 import medved.studio.pharmix.navigation.AppRouter
 import medved.studio.pharmix.navigation.Screens
 import moxy.InjectViewState
 import toothpick.InjectConstructor
+import toothpick.ktp.KTP
 
 @InjectConstructor
 @InjectViewState
 class RegistrationFirstStepPresenter(
     private val fieldsValidator: FieldsValidator,
-    private val context: Context,
-    val router: AppRouter
+    private val simpleRegistration: SimpleRegistration,
+    val router: AppRouter,
+    private val authInteractor: AuthInteractor,
 ) : BasePresenterImpl<RegistrationFirstStepView>() {
 
-    override fun attachView(view: RegistrationFirstStepView?) {
-        super.attachView(view)
+    init {
+        val scope = getScope().openSubScope(DI.REGISTRATION_SCOPE)
+        scope.installModules(RegistrationModule())
+    }
+
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
+        authInteractor.getSocialTypes()
+            .await(withProgress = false) { viewState.showSocialTypes(it) }
     }
 
     fun isValidField(email: String) {
@@ -27,10 +39,15 @@ class RegistrationFirstStepPresenter(
     }
 
     fun exit() {
+        KTP.closeScope(DI.REGISTRATION_SCOPE)
         router.exit()
     }
 
-    fun nextStep() {
-        router.navigateTo(Screens.RegistrationSecondStep())
+    fun nextStep(login: String) {
+        authInteractor.checkEmailFree(login)
+            .await {
+                simpleRegistration.login = login
+                router.navigateTo(Screens.RegistrationSecondStep())
+            }
     }
 }
