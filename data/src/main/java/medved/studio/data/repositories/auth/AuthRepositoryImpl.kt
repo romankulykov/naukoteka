@@ -7,6 +7,7 @@ import medved.studio.data.services.models.request.auth.AuthRequestDto
 import medved.studio.data.services.models.request.auth.CheckEmailFreeDto
 import medved.studio.data.services.models.request.auth.CheckTokenKeyDto
 import medved.studio.data.services.models.request.auth.RegisterRequestDto
+import medved.studio.data.services.models.request.reset.ResetRequestDto
 import medved.studio.domain.entities.EmailNotFreeException
 import medved.studio.domain.repositories.auth.AuthRepository
 import medved.studio.domain.repositories.auth.models.SocialType
@@ -22,6 +23,10 @@ class AuthRepositoryImpl(
     override fun loginEmail(login: String, password: String): Completable {
         return authApiService.login(AuthRequestDto(login, password))
             .flatMapCompletable { Completable.complete() }
+    }
+
+    override fun recoverPassportByEmail(email: String): Completable {
+        return authApiService.passwordRecovery(ResetRequestDto("reset-credentials", email))
     }
 
     override fun register(login: String, password: String): Completable {

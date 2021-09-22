@@ -21,6 +21,12 @@ class AuthInteractor(
             .observeOn(schedulers.ui())
     }
 
+    fun resetPassword(email: String): Completable {
+        return authRepository.recoverPassportByEmail(email)
+            .subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
+    }
+
     fun register(login: String, password: String): Completable {
         return authRepository.register(login, password)
             .subscribeOn(schedulers.io())

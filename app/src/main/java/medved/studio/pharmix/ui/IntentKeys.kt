@@ -12,6 +12,12 @@ object IntentKeys {
             const val KEY = "registration"
         }
     }
+    @Parcelize
+    data class RecoveryPassword(val key: String) : Parcelable {
+        companion object {
+            const val KEY = "recovery"
+        }
+    }
 
     @Parcelize
     data class SocialAuthorization(val key: String, val socialType: SocialType) : Parcelable {

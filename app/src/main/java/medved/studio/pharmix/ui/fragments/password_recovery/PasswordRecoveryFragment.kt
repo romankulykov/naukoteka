@@ -40,6 +40,7 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
                 btnSend.setOnClickListener {
                     viewFlipper.displayedChild = FLIPPER_PASSWORD_RECOVERY_VERIFICATION
                     presenter.startTimerResendCode()
+                    presenter.recoveryPassword(ctiEmail.text())
                 }
                 ctiEmail.doAfterTextChange { checkValidField() }
             }

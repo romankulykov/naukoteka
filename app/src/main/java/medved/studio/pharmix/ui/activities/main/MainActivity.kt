@@ -81,6 +81,12 @@ class MainActivity : BaseActivity(), RouterProvider, MainView {
                 // todo pass registration key
                 // router.navigateTo(Screens.EndRegistartion())
             }
+        newIntent.getParcelableExtra<IntentKeys.RecoveryPassword>(IntentKeys.RecoveryPassword.KEY)
+            ?.let { registration ->
+                presenter.checkToken(registration.key)
+                // todo pass registration key
+                // router.navigateTo(Screens.EndRegistartion())
+            }
         newIntent.getParcelableExtra<IntentKeys.SocialAuthorization>(IntentKeys.SocialAuthorization.KEY)
             ?.let { socialAuth ->
                 presenter.socialAuth(socialAuth.socialType, socialAuth.key)

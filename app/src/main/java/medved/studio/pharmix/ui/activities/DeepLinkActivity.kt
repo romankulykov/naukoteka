@@ -40,6 +40,12 @@ class DeepLinkActivity : BaseActivity() {
                     putExtra(IntentKeys.SocialAuthorization.KEY, IntentKeys.SocialAuthorization(keyAuthorization, socialType!!))
                 })
             }
+        }else if(intent.dataString?.contains("login-actions/reset-credentials") == true){
+            if (!keyAuthorization.isNullOrEmpty()) {
+                startActivity(Intent(this, MainActivity::class.java).apply {
+                    putExtra(IntentKeys.RecoveryPassword.KEY, IntentKeys.RecoveryPassword(keyAuthorization))
+                })
+            }
         }
     }
 

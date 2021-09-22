@@ -5,6 +5,7 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import medved.studio.data.validator.FieldsValidator
+import medved.studio.domain.interactors.auth.AuthInteractor
 import medved.studio.pharmix.global.base.BasePresenterImpl
 import medved.studio.pharmix.navigation.AppRouter
 import moxy.InjectViewState
@@ -15,15 +16,11 @@ import java.util.concurrent.TimeUnit
 @InjectViewState
 class PasswordRecoveryPresenter(
     private val fieldsValidator: FieldsValidator,
-    private val context: Context,
-    val router: AppRouter
+    val router: AppRouter,
+    private val authInteractor: AuthInteractor
 ) : BasePresenterImpl<PasswordRecoveryView>()  {
 
     private var countDownTimer: Disposable? = null
-
-    override fun attachView(view: PasswordRecoveryView?) {
-        super.attachView(view)
-    }
 
     fun isValidField(email: String) {
         viewState.showButtonState(
@@ -53,5 +50,10 @@ class PasswordRecoveryPresenter(
 
     fun exit() {
         router.exit()
+    }
+
+    fun recoveryPassword(text: String) {
+     authInteractor.resetPassword(text)
+         .await {  }
     }
 }

@@ -45,6 +45,8 @@
                     android:pathPrefix="/login-actions/verify-email" />
                 <data
                     android:pathPrefix="/login-actions/social-login" />
+                <data
+                    android:pathPrefix="/login-actions/reset-credentials" />
 
             </intent-filter>
         </activity>
