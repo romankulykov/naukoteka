@@ -32,7 +32,7 @@ class PasswordRecoveryPresenter(
     }
 
     fun isValidFields(password: String, passwordConfirmation: String) {
-        viewState.showButtonState(
+        viewState.showButtonStateOfPasswordRecoveryVerification(
             fieldsValidator.isNotEmpty(password) &&
                     fieldsValidator.isNotEmpty(passwordConfirmation)
         )

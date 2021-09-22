@@ -13,4 +13,6 @@ interface PasswordRecoveryView : MvpView, LoadingView, InformativeView {
 
     fun showSecondsToResend(seconds: Int)
 
+    fun showButtonStateOfPasswordRecoveryVerification(isEnabled: Boolean)
+
 }
