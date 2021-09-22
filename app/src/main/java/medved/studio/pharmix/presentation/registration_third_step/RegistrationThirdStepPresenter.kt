@@ -7,6 +7,7 @@ import medved.studio.domain.interactors.auth.AuthInteractor
 import medved.studio.pharmix.di.modules.SimpleRegistration
 import medved.studio.pharmix.global.base.BasePresenterImpl
 import medved.studio.pharmix.navigation.AppRouter
+import medved.studio.pharmix.navigation.Screens
 import moxy.InjectViewState
 import toothpick.InjectConstructor
 import java.util.concurrent.TimeUnit
@@ -33,7 +34,7 @@ class RegistrationThirdStepPresenter(
             }
     }
 
-    private fun startTimerResendCode() {
+    fun startTimerResendCode() {
         var countSeconds = 120
         countDownTimer?.dispose()
         countDownTimer = Observable.interval(1000, TimeUnit.MILLISECONDS)
