@@ -41,6 +41,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButt
             ibFacebook.setOnClickListener { presenter.authSocial(SocialType.FACEBOOK) }
             ibMail.setOnClickListener { presenter.authSocial(SocialType.MAIL_RU) }
             ibGoogle.setOnClickListener { presenter.authSocial(SocialType.GOOGLE) }
+            tvForgetPassword.setOnClickListener { presenter.toPasswordRecovery() }
         }
     }
 

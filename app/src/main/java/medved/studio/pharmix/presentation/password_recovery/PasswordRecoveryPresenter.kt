@@ -1,10 +1,10 @@
-package medved.studio.pharmix.presentation.registration_third_step
+package medved.studio.pharmix.presentation.password_recovery
 
+import android.content.Context
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import medved.studio.domain.interactors.auth.AuthInteractor
-import medved.studio.pharmix.di.modules.SimpleRegistration
+import medved.studio.data.validator.FieldsValidator
 import medved.studio.pharmix.global.base.BasePresenterImpl
 import medved.studio.pharmix.navigation.AppRouter
 import moxy.InjectViewState
@@ -13,29 +13,33 @@ import java.util.concurrent.TimeUnit
 
 @InjectConstructor
 @InjectViewState
-class RegistrationThirdStepPresenter(
-    val router: AppRouter,
-    private val simpleRegistration: SimpleRegistration,
-    private val authInteractor: AuthInteractor,
-) : BasePresenterImpl<RegistrationThirdStepView>() {
+class PasswordRecoveryPresenter(
+    private val fieldsValidator: FieldsValidator,
+    private val context: Context,
+    val router: AppRouter
+) : BasePresenterImpl<PasswordRecoveryView>()  {
 
     private var countDownTimer: Disposable? = null
 
-    override fun attachView(view: RegistrationThirdStepView?) {
+    override fun attachView(view: PasswordRecoveryView?) {
         super.attachView(view)
-        startTimerResendCode()
     }
 
-    fun resendCode() {
-        authInteractor.register(simpleRegistration.login!!, simpleRegistration.password!!)
-            .await {
-                startTimerResendCode()
-            }
+    fun isValidField(email: String) {
+        viewState.showButtonState(
+            fieldsValidator.isValidEmail(email)
+        )
     }
 
-    private fun startTimerResendCode() {
+    fun isValidFields(password: String, passwordConfirmation: String) {
+        viewState.showButtonState(
+            fieldsValidator.isNotEmpty(password) &&
+                    fieldsValidator.isNotEmpty(passwordConfirmation)
+        )
+    }
+
+    fun startTimerResendCode() {
         var countSeconds = 120
-        countDownTimer?.dispose()
         countDownTimer = Observable.interval(1000, TimeUnit.MILLISECONDS)
             .map { countSeconds-- }
             .observeOn(AndroidSchedulers.mainThread())
@@ -47,7 +51,7 @@ class RegistrationThirdStepPresenter(
             }
     }
 
-    fun toFinalRegistration() {
-        router.navigateTo(Screens.ShortInfoProfile())
+    fun exit() {
+        router.exit()
     }
 }

@@ -46,6 +46,10 @@ class LoginPresenter(
         router.navigateTo(Screens.RegistrationFirstStep())
     }
 
+    fun toPasswordRecovery() {
+        router.navigateTo(Screens.PasswordRecovery())
+    }
+
     fun exit() {
         router.exit()
     }
