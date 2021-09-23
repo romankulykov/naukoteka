@@ -37,8 +37,8 @@ class LoginPresenter(
     }
 
     fun enter(email: String, pass: String) {
-        //authInteractor.login(email, pass)
-        authInteractor.testLogin()
+        authInteractor.login(email, pass)
+        //authInteractor.testLogin()
             .await { viewState.showSuccessLogin() }
     }
 

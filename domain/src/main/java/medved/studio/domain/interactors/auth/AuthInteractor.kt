@@ -4,6 +4,7 @@ import io.reactivex.Completable
 import io.reactivex.Single
 import medved.studio.domain.SchedulersProvider
 import medved.studio.domain.repositories.auth.AuthRepository
+import medved.studio.domain.repositories.auth.models.SessionAttributes
 import medved.studio.domain.repositories.auth.models.SocialType
 import toothpick.InjectConstructor
 
@@ -21,8 +22,8 @@ class AuthInteractor(
             .observeOn(schedulers.ui())
     }
 
-    fun resetPassword(email: String): Completable {
-        return authRepository.recoverPassportByEmail(email)
+    fun sendLetterToRecovery(email: String): Completable {
+        return authRepository.sendLetterToRecoveryPassword(email)
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
     }
@@ -39,8 +40,14 @@ class AuthInteractor(
             .observeOn(schedulers.ui())
     }
 
-    fun enterTheNewPassword(key: String): Completable {
-        return authRepository.enterTheNewPassword(key)
+    fun checkTokenToRecovery(key: String): Single<SessionAttributes> {
+        return authRepository.checkConfirmRecovery(key)
+            .subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
+    }
+
+    fun setNewPassword(password: String, sessionAttributes: SessionAttributes): Completable {
+        return authRepository.setNewPassword(sessionAttributes, password)
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
     }

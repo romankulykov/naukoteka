@@ -82,13 +82,8 @@ class MainActivity : BaseActivity(), RouterProvider, MainView {
                 // router.navigateTo(Screens.EndRegistartion())
             }
         newIntent.getParcelableExtra<IntentKeys.RecoveryPassword>(IntentKeys.RecoveryPassword.KEY)
-            ?.let { registration ->
-                presenter.checkToken(registration.key)
-                val fragment =
-                    supportFragmentManager.findFragmentByTag(Screens.PASSWORD_RECOVERY) as? PasswordRecoveryFragment
-                fragment?.enterNewPassword(registration.key)
-                // todo pass registration key
-                // router.navigateTo(Screens.EndRegistartion())
+            ?.let { recovery ->
+                (supportFragmentManager.findFragmentByTag(Screens.PASSWORD_RECOVERY) as? PasswordRecoveryFragment)?.checkTokenToRecovery(recovery.key)
             }
         newIntent.getParcelableExtra<IntentKeys.SocialAuthorization>(IntentKeys.SocialAuthorization.KEY)
             ?.let { socialAuth ->

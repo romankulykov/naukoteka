@@ -37,18 +37,20 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
             ivBack.setOnClickListener { onBackPressed() }
             viewFlipper.displayedChild = FLIPPER_PASSWORD_RECOVERY
             passwordRecovery.run {
-                btnSend.setOnClickListener {
-                    viewFlipper.displayedChild = FLIPPER_PASSWORD_RECOVERY_VERIFICATION
-                    presenter.startTimerResendCode()
-                    presenter.recoveryPassword(ctiEmail.text())
-                }
+                btnSend.setOnClickListener { presenter.recoveryPassword(ctiEmail.text()) }
                 ctiEmail.doAfterTextChange { checkValidField() }
             }
             passwordRecoveryNewPassword.run {
                 ctiNewPass.doAfterTextChange { checkValidFields() }
                 ctiNewPassConfirmation.doAfterTextChange { checkValidFields() }
+                btnSavePassword.setOnClickListener { presenter.changePassword(ctiNewPass.text()) }
             }
         }
+    }
+
+    override fun showTimer() {
+        presenter.startTimerResendCode()
+        contentView.viewFlipper.displayedChild = FLIPPER_PASSWORD_RECOVERY_VERIFICATION
     }
 
     override fun onBackPressed(): Boolean {
@@ -67,7 +69,7 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
     private fun checkValidField() {
         contentView.passwordRecovery.run {
             val email = ctiEmail.text()
-            presenter.isValidField(email)
+            presenter.isValidEmail(email)
         }
     }
 
@@ -75,7 +77,7 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
         contentView.passwordRecoveryNewPassword.run {
             val password = ctiNewPass.text()
             val passwordConfirmation = ctiNewPassConfirmation.text()
-            presenter.isValidFields(password, passwordConfirmation)
+            presenter.isValidPasswords(password, passwordConfirmation)
         }
     }
 
@@ -84,7 +86,11 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
     }
 
     override fun showButtonStateOfPasswordRecoveryVerification(isEnabled: Boolean) {
-        contentView.passwordRecoveryNewPassword.btnSavePassword.isEnabled = isEnabled
+        contentView.passwordRecoveryNewPassword.run {
+            btnSavePassword.isEnabled = isEnabled
+            ctiNewPass.showError(!isEnabled)
+            ctiNewPassConfirmation.showError(!isEnabled)
+        }
     }
 
     override fun showSecondsToResend(seconds: Int) {
@@ -112,12 +118,13 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
         }
     }
 
-    fun enterNewPassword(key: String) {
-        contentView.run {
-            viewFlipper.displayedChild = FLIPPER_PASSWORD_RECOVERY_NEW_PASSWORD
-            passwordRecoveryNewPassword.btnSavePassword.setOnClickListener {
-                presenter.enterTheNewPassword(key)
-            }
-        }
+    fun checkTokenToRecovery(key: String) {
+        presenter.checkKey(key)
     }
+
+    override fun showInputNewPassword() {
+        contentView.viewFlipper.displayedChild = FLIPPER_PASSWORD_RECOVERY_NEW_PASSWORD
+
+    }
+
 }

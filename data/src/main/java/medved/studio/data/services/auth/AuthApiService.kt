@@ -3,9 +3,8 @@ package medved.studio.data.services.auth
 import io.reactivex.Completable
 import io.reactivex.Single
 import medved.studio.data.services.models.request.auth.*
-import medved.studio.data.services.models.request.reset.ResetRequestDto
+import medved.studio.data.services.models.request.auth.ResetRequestDto
 import medved.studio.data.services.models.response.auth.*
-import medved.studio.data.services.models.response.reset.ResetResponseDto
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -32,8 +31,5 @@ interface AuthApiService {
 
     @POST("login-actions/execute")
     fun passwordRecovery(@Body resetRequestDto: ResetRequestDto): Completable
-
-    @POST("login-actions/action-token")
-    fun enterNewPassword(@Body checkTokenKey: CheckTokenKeyDto): Single<SessionAttributesResponseDto>
 
 }

@@ -1,4 +1,4 @@
-package medved.studio.data.services.models.request.reset
+package medved.studio.data.services.models.request.auth
 
 
 import com.google.gson.annotations.SerializedName

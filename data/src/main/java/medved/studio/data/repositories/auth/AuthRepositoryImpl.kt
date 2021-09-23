@@ -3,11 +3,14 @@ package medved.studio.data.repositories.auth
 import io.reactivex.Completable
 import io.reactivex.Single
 import medved.studio.data.services.auth.AuthApiService
-import medved.studio.data.services.models.request.auth.*
-import medved.studio.data.services.models.request.reset.ResetRequestDto
-import medved.studio.data.services.models.response.auth.SessionAttributesResponseDto
+import medved.studio.data.services.models.request.auth.AuthRequestDto
+import medved.studio.data.services.models.request.auth.CheckEmailFreeDto
+import medved.studio.data.services.models.request.auth.CheckTokenKeyDto
+import medved.studio.data.services.models.request.auth.RegisterRequestDto
+import medved.studio.data.services.models.request.auth.ResetRequestDto
 import medved.studio.domain.entities.EmailNotFreeException
 import medved.studio.domain.repositories.auth.AuthRepository
+import medved.studio.domain.repositories.auth.models.SessionAttributes
 import medved.studio.domain.repositories.auth.models.SocialType
 import toothpick.InjectConstructor
 
@@ -23,7 +26,7 @@ class AuthRepositoryImpl(
             .flatMapCompletable { Completable.complete() }
     }
 
-    override fun recoverPassportByEmail(email: String): Completable {
+    override fun sendLetterToRecoveryPassword(email: String): Completable {
         return authApiService.passwordRecovery(ResetRequestDto("reset-credentials", email))
     }
 
@@ -34,15 +37,29 @@ class AuthRepositoryImpl(
 
     override fun checkConfirmRegistration(key: String): Completable {
         return authApiService.checkTokenKey(CheckTokenKeyDto(key))
-            .flatMapCompletable {
-                Completable.complete()
-            }
+            .flatMapCompletable { Completable.complete() }
     }
 
-    override fun enterTheNewPassword(key: String): Completable {
-        return authApiService.enterNewPassword(CheckTokenKeyDto(key))
+    override fun checkConfirmRecovery(key: String): Single<SessionAttributes> {
+        return authApiService.checkTokenKey(CheckTokenKeyDto(key))
+            .map { mapper.mapSessionAttributesToDomain(it) }
+    }
+
+    override fun setNewPassword(
+        sessionAttributes: SessionAttributes,
+        password: String
+    ): Completable {
+        return authApiService.checkTokenKey(
+            sessionAttributes.run {
+                CheckTokenKeyDto(key, clientId, tabId, authSessionId, password)
+            }
+        )
             .flatMapCompletable {
-                Completable.complete()
+                if (!it.followUp) {
+                    Completable.complete()
+                } else {
+                    throw Exception("Something went wrong during set new password")
+                }
             }
     }
 
