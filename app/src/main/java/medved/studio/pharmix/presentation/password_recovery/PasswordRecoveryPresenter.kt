@@ -18,7 +18,7 @@ class PasswordRecoveryPresenter(
     private val fieldsValidator: FieldsValidator,
     val router: AppRouter,
     private val authInteractor: AuthInteractor
-) : BasePresenterImpl<PasswordRecoveryView>()  {
+) : BasePresenterImpl<PasswordRecoveryView>() {
 
     private var countDownTimer: Disposable? = null
 
@@ -30,8 +30,7 @@ class PasswordRecoveryPresenter(
 
     fun isValidFields(password: String, passwordConfirmation: String) {
         viewState.showButtonStateOfPasswordRecoveryVerification(
-            fieldsValidator.isNotEmpty(password) &&
-                    fieldsValidator.isNotEmpty(passwordConfirmation)
+            fieldsValidator.isEquals(password, passwordConfirmation)
         )
     }
 
@@ -53,7 +52,10 @@ class PasswordRecoveryPresenter(
     }
 
     fun recoveryPassword(text: String) {
-     authInteractor.resetPassword(text)
-         .await {  }
+        authInteractor.resetPassword(text).await {  }
+    }
+
+    fun enterTheNewPassword(key: String) {
+        authInteractor.enterTheNewPassword(key)
     }
 }

@@ -39,6 +39,12 @@ class AuthInteractor(
             .observeOn(schedulers.ui())
     }
 
+    fun enterTheNewPassword(key: String): Completable {
+        return authRepository.enterTheNewPassword(key)
+            .subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
+    }
+
     fun checkEmailFree(email: String): Completable {
         return authRepository.checkEmailForFree(email)
             .subscribeOn(schedulers.io())

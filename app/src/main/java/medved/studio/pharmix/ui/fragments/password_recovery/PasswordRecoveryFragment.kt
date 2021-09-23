@@ -111,4 +111,13 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
             }
         }
     }
+
+    fun enterNewPassword(key: String) {
+        contentView.run {
+            viewFlipper.displayedChild = FLIPPER_PASSWORD_RECOVERY_NEW_PASSWORD
+            passwordRecoveryNewPassword.btnSavePassword.setOnClickListener {
+                presenter.enterTheNewPassword(key)
+            }
+        }
+    }
 }

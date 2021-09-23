@@ -11,7 +11,7 @@ interface AuthRepository {
     fun checkConfirmRegistration(key: String): Completable
     fun checkEmailForFree(email: String): Completable
     fun socialTypes(): Single<List<SocialType>>
-    fun socialAuth(socialType: SocialType, key : String) : Completable
+    fun socialAuth(socialType: SocialType, key: String): Completable
     fun recoverPassportByEmail(email: String): Completable
-
+    fun enterTheNewPassword(key: String): Completable
 }

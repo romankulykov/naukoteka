@@ -3,11 +3,9 @@ package medved.studio.data.repositories.auth
 import io.reactivex.Completable
 import io.reactivex.Single
 import medved.studio.data.services.auth.AuthApiService
-import medved.studio.data.services.models.request.auth.AuthRequestDto
-import medved.studio.data.services.models.request.auth.CheckEmailFreeDto
-import medved.studio.data.services.models.request.auth.CheckTokenKeyDto
-import medved.studio.data.services.models.request.auth.RegisterRequestDto
+import medved.studio.data.services.models.request.auth.*
 import medved.studio.data.services.models.request.reset.ResetRequestDto
+import medved.studio.data.services.models.response.auth.SessionAttributesResponseDto
 import medved.studio.domain.entities.EmailNotFreeException
 import medved.studio.domain.repositories.auth.AuthRepository
 import medved.studio.domain.repositories.auth.models.SocialType
@@ -36,6 +34,13 @@ class AuthRepositoryImpl(
 
     override fun checkConfirmRegistration(key: String): Completable {
         return authApiService.checkTokenKey(CheckTokenKeyDto(key))
+            .flatMapCompletable {
+                Completable.complete()
+            }
+    }
+
+    override fun enterTheNewPassword(key: String): Completable {
+        return authApiService.enterNewPassword(CheckTokenKeyDto(key))
             .flatMapCompletable {
                 Completable.complete()
             }

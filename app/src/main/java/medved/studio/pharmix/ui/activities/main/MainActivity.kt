@@ -11,10 +11,9 @@ import com.github.terrakok.cicerone.NavigatorHolder
 import medved.studio.pharmix.R
 import medved.studio.pharmix.databinding.ActivityMainBinding
 import medved.studio.pharmix.global.base.BaseActivity
-import medved.studio.pharmix.global.views.InformativeView
-import medved.studio.pharmix.global.views.LoadingView
 import medved.studio.pharmix.navigation.AnimatableAppNavigator
 import medved.studio.pharmix.navigation.AppRouter
+import medved.studio.pharmix.navigation.Screens
 import medved.studio.pharmix.navigation.Screens.Splash
 import medved.studio.pharmix.presentation.main.MainPresenter
 import medved.studio.pharmix.presentation.main.MainView
@@ -22,6 +21,7 @@ import medved.studio.pharmix.ui.IntentKeys
 import medved.studio.pharmix.ui.custom.square_toast.ToastAction
 import medved.studio.pharmix.ui.custom.square_toast.SquareToast
 import medved.studio.pharmix.ui.custom.square_toast.ToastInfo
+import medved.studio.pharmix.ui.fragments.password_recovery.PasswordRecoveryFragment
 import medved.studio.pharmix.utils.ActivityResultListener
 import medved.studio.pharmix.utils.BackButtonListener
 import medved.studio.pharmix.utils.RouterProvider
@@ -84,6 +84,9 @@ class MainActivity : BaseActivity(), RouterProvider, MainView {
         newIntent.getParcelableExtra<IntentKeys.RecoveryPassword>(IntentKeys.RecoveryPassword.KEY)
             ?.let { registration ->
                 presenter.checkToken(registration.key)
+                val fragment =
+                    supportFragmentManager.findFragmentByTag(Screens.PASSWORD_RECOVERY) as? PasswordRecoveryFragment
+                fragment?.enterNewPassword(registration.key)
                 // todo pass registration key
                 // router.navigateTo(Screens.EndRegistartion())
             }
