@@ -1,6 +1,8 @@
 package medved.studio.pharmix.presentation.login
 
 import medved.studio.data.validator.FieldsValidator
+import medved.studio.domain.entities.HttpException
+import medved.studio.domain.entities.ServerApiError
 import medved.studio.domain.interactors.auth.AuthInteractor
 import medved.studio.domain.repositories.auth.models.SocialType
 import medved.studio.pharmix.global.base.BasePresenterImpl
@@ -38,8 +40,11 @@ class LoginPresenter(
 
     fun enter(email: String, pass: String) {
         authInteractor.login(email, pass)
-        //authInteractor.testLogin()
-            .await { viewState.showSuccessLogin() }
+            .await(onError = {
+                if (it is HttpException && it.statusCode == ServerApiError.InvalidCredentials) {
+                    viewState.showErrorCredentials(true)
+                } else onError(it)
+            }, onComplete = { viewState.showSuccessLogin() })
     }
 
     fun toRegistration() {

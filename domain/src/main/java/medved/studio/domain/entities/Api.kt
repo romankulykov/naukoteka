@@ -34,8 +34,8 @@ enum class StatusCode(val code: Int) {
 }
 
 enum class ServerApiError(val code: Int) {
-    @SerializedName("0")
-    NoConnection(0),
+    @SerializedName("1101")
+    InvalidCredentials(1101),
 
     @SerializedName("200")
     Ok(200),
@@ -56,7 +56,11 @@ enum class ServerApiError(val code: Int) {
     CodeAlreadyUsed(404),
 
     @SerializedName("500")
-    InternalServerError(500)
+    InternalServerError(500);
+
+    companion object {
+        fun fromInt(value: Int) = values().first { it.code == value }
+    }
 }
 
 data class ListResponseDto<T>(

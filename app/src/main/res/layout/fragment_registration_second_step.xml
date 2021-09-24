@@ -116,7 +116,7 @@
         android:layout_marginBottom="24dp"
         android:fontFamily="@font/golos_text_regular"
         android:visibility="gone"
-        android:text="@string/passwords_not_equals"
+        android:text="@string/error_passwords_not_equals"
         android:textColor="@color/color_error"
         app:layout_constraintBottom_toTopOf="@+id/btn_registration_next"
         app:layout_constraintEnd_toEndOf="@id/tv_new_password"

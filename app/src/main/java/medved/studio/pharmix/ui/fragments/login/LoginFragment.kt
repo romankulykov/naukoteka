@@ -68,6 +68,11 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButt
         )
     }
 
+    override fun showErrorCredentials(flag: Boolean) {
+        contentView.tvError.isVisible = flag
+        contentView.btnEnter.isEnabled = !flag
+    }
+
     override fun showSocialTypes(socialTypes: List<SocialType>) {
         contentView.run {
             ibVkontakte.isVisible = socialTypes.contains(SocialType.VK)

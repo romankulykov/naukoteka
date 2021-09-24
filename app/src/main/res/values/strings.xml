@@ -33,7 +33,8 @@
     <string name="registration_checking_mail">Проверьте свою электронную почту, мы отправили туда письмо со ссылкой.</string>
     <string name="registration_send_letter"><![CDATA[<font color=#8083A0>Не получили письмо? Проверьте папку &quot;спам&quot; <br>или</font> <font color=#2E83D9>отправьте письмо еще раз</font> <font color=#8083A0>%s</font>]]></string>
     <string name="enter_has_successfully_passed">Вход успешно выполнен!</string>
-    <string name="passwords_not_equals">Указанная пара паролей не совпадает. Проверьте введенные данные и повторите попытку.</string>
+    <string name="error_passwords_not_equals">Указанная пара паролей не совпадает. Проверьте введенные данные и повторите попытку.</string>
+    <string name="error_incorrect_credentials">Не получается войти проверьте указанные данные</string>
     <string name="signed_up_registered_successfully">Вы успешно зарегистрированы!</string>
     <string name="signed_up_fill_in_the_form">Загрузите свою фотографию и заполните небольшую анкету о вашем образовании, карьере и интересах</string>
     <string name="signed_up_fill_in_profile">Заполнить профиль</string>

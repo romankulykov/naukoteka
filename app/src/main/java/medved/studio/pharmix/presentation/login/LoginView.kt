@@ -13,4 +13,5 @@ interface LoginView : MvpView, LoadingView, InformativeView {
     fun showButtonState(isEnabled: Boolean)
     fun showSuccessLogin()
     fun showSocialTypes(socialTypes: List<SocialType>)
+    fun showErrorCredentials(flag: Boolean)
 }

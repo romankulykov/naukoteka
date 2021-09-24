@@ -2,6 +2,7 @@ package medved.studio.pharmix.di.providers
 
 import medved.studio.pharmix.BuildConfig
 import medved.studio.pharmix.di.utils.http.AuthInterceptor
+import medved.studio.pharmix.di.utils.http.ErrorTransformerInterceptor
 import medved.studio.pharmix.di.utils.http.RefreshTokenAuthenticator
 import medved.studio.pharmix.di.utils.http.StatusCodeParsingInterceptor
 import okhttp3.OkHttpClient
@@ -14,6 +15,7 @@ import javax.inject.Provider
 class OkHttpProvider(
     private val authInterceptor: AuthInterceptor,
     //private val statusCodeInterceptor: StatusCodeParsingInterceptor,
+    private val errorTransformerInterceptor : ErrorTransformerInterceptor,
     private val authenticator: RefreshTokenAuthenticator,
 ) : Provider<OkHttpClient> {
     override fun get() = OkHttpClient.Builder()
@@ -25,6 +27,7 @@ class OkHttpProvider(
             }
         })
         //.addNetworkInterceptor(statusCodeInterceptor)
+        .addNetworkInterceptor(errorTransformerInterceptor)
         .addInterceptor(authInterceptor)
         .authenticator(authenticator)
         .connectTimeout(2, TimeUnit.MINUTES)
