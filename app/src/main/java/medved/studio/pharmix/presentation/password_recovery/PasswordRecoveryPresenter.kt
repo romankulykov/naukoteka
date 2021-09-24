@@ -11,6 +11,7 @@ import medved.studio.domain.repositories.auth.models.SessionAttributes
 import medved.studio.pharmix.global.base.BasePresenterImpl
 import medved.studio.pharmix.navigation.AppRouter
 import medved.studio.pharmix.navigation.Screens
+import medved.studio.pharmix.ui.AppConfigs
 import medved.studio.pharmix.ui.custom.square_toast.SquareToast
 import medved.studio.pharmix.ui.custom.square_toast.ToastInfo
 import moxy.InjectViewState
@@ -41,7 +42,7 @@ class PasswordRecoveryPresenter(
     }
 
     fun startTimerResendCode() {
-        var countSeconds = 120
+        var countSeconds = AppConfigs.TIMEOUT_TO_RESEND
         countDownTimer = Observable.interval(1000, TimeUnit.MILLISECONDS)
             .map { countSeconds-- }
             .observeOn(AndroidSchedulers.mainThread())

@@ -3,6 +3,7 @@ package medved.studio.domain.interactors.auth
 import io.reactivex.Completable
 import io.reactivex.Single
 import medved.studio.domain.SchedulersProvider
+import medved.studio.domain.entities.PasswordRequirementsEntity
 import medved.studio.domain.repositories.auth.AuthRepository
 import medved.studio.domain.repositories.auth.models.SessionAttributes
 import medved.studio.domain.repositories.auth.models.SocialType

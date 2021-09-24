@@ -37,8 +37,11 @@ enum class ServerApiError(val code: Int) {
     @SerializedName("1101")
     InvalidCredentials(1101),
 
-    @SerializedName("200")
-    Ok(200),
+    @SerializedName("1201")
+    UserAlreadyExist(1201),
+
+    @SerializedName("1202")
+    PasswordPolicy(1202),
 
     @SerializedName("400")
     BadRequest(400),
@@ -59,7 +62,7 @@ enum class ServerApiError(val code: Int) {
     InternalServerError(500);
 
     companion object {
-        fun fromInt(value: Int) = values().first { it.code == value }
+        fun fromInt(value: Int) = values().firstOrNull { it.code == value }
     }
 }
 

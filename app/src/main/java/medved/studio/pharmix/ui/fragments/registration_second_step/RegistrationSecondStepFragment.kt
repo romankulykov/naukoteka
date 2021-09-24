@@ -1,14 +1,19 @@
 package medved.studio.pharmix.ui.fragments.registration_second_step
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isGone
-import androidx.core.view.isVisible
+import androidx.recyclerview.widget.RecyclerView
 import medved.studio.pharmix.R
 import medved.studio.pharmix.databinding.FragmentRegistrationSecondStepBinding
 import medved.studio.pharmix.global.base.BaseFragment
 import medved.studio.pharmix.presentation.registration_second_step.RegistrationSecondStepPresenter
 import medved.studio.pharmix.presentation.registration_second_step.RegistrationSecondStepView
+import medved.studio.pharmix.ui.AppConfigs
+import medved.studio.pharmix.ui.adapters.password_requirements.PasswordRequirementsAdapter
 import medved.studio.pharmix.utils.BackButtonListener
 import medved.studio.pharmix.utils.viewBinding
 import moxy.presenter.InjectPresenter
@@ -36,7 +41,24 @@ class RegistrationSecondStepFragment : BaseFragment(R.layout.fragment_registrati
                     startListenPasswords()
                 }
             }
+            tvPasswordRequirements.setOnClickListener { showDialogRequirements() }
         }
+    }
+
+    private fun showDialogRequirements() {
+        val dialogView = layoutInflater.inflate(
+            R.layout.dialog_password_requirements,
+            ConstraintLayout(requireContext())
+        )
+        AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
+            .setCancelable(true)
+            .setView(dialogView)
+            .create().apply {
+                dialogView.findViewById<RecyclerView>(R.id.rv_requirements)?.adapter =
+                    PasswordRequirementsAdapter().apply { setItems(AppConfigs.getPasswordRequirements()) }
+                dialogView.findViewById<TextView>(R.id.btn_accessibly)
+                    ?.setOnClickListener { dismiss() }
+            }.show()
     }
 
     private fun startListenPasswords() {

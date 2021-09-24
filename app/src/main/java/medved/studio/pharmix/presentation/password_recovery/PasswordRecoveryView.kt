@@ -16,6 +16,5 @@ interface PasswordRecoveryView : MvpView, LoadingView, InformativeView {
     fun showButtonStateOfPasswordRecoveryVerification(isEnabled: Boolean)
     fun showTimer()
     fun showInputNewPassword()
-
     fun startDialogPasswordRecoverySuccessful()
 }

@@ -16,7 +16,9 @@ class ErrorTransformerInterceptor constructor(
         val response = chain.run { proceed(request()) }
         if (response.code > 399) {
             response.getApiError().run {
-                throw HttpException(ServerApiError.fromInt(code), message, null)
+                ServerApiError.fromInt(code)?.let { apiError ->
+                    throw HttpException(apiError, message, null)
+                }
             }
         }
 

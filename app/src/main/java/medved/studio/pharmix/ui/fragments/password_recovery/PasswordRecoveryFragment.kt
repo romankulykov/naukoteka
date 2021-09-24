@@ -1,10 +1,8 @@
 package medved.studio.pharmix.ui.fragments.password_recovery
 
 import android.app.AlertDialog
-import android.app.Dialog
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -12,12 +10,12 @@ import androidx.core.text.parseAsHtml
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import medved.studio.domain.entities.PasswordRequirementsEntity
-import medved.studio.domain.entities.TutorialEntity
 import medved.studio.pharmix.R
 import medved.studio.pharmix.databinding.FragmentPasswordRecoveryBinding
 import medved.studio.pharmix.global.base.BaseFragment
 import medved.studio.pharmix.presentation.password_recovery.PasswordRecoveryPresenter
 import medved.studio.pharmix.presentation.password_recovery.PasswordRecoveryView
+import medved.studio.pharmix.ui.AppConfigs
 import medved.studio.pharmix.ui.adapters.password_requirements.PasswordRequirementsAdapter
 import medved.studio.pharmix.utils.BackButtonListener
 import medved.studio.pharmix.utils.viewBinding
@@ -118,15 +116,15 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
                         R.string.password_recovery_verification_send_again,
                         secondsLeft
                     ).parseAsHtml()
+                tvSendAgain.setOnClickListener { }
             }
         } else if (seconds == 0) {
-            val secondsNull = String.format("%02d:%02d", 0, 0)
             contentView.passwordRecoveryVerification.run {
                 tvSendAgain.text =
                     getString(
-                        R.string.password_recovery_verification_send_again,
-                        secondsNull
+                        R.string.password_recovery_verification_send_again, ""
                     ).parseAsHtml()
+                tvSendAgain.setOnClickListener { presenter.recoveryPassword(contentView.passwordRecovery.ctiEmail.text()) }
             }
         }
     }
@@ -144,17 +142,12 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
             R.layout.dialog_password_requirements,
             ConstraintLayout(requireContext())
         )
-        requirements = ArrayList()
-        requirements.add(PasswordRequirementsEntity(R.string.dialog_password_requirements_count_of_symbols))
-        requirements.add(PasswordRequirementsEntity(R.string.dialog_password_requirements_capital_letters))
-        requirements.add(PasswordRequirementsEntity(R.string.dialog_password_requirements_digits))
-        requirements.add(PasswordRequirementsEntity(R.string.dialog_password_requirements_symbols))
         AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
             .setCancelable(true)
             .setView(dialogView)
             .create().apply {
                 dialogView.findViewById<RecyclerView>(R.id.rv_requirements)?.adapter =
-                    PasswordRequirementsAdapter().apply { setItems(requirements) }
+                    PasswordRequirementsAdapter().apply { setItems(AppConfigs.getPasswordRequirements()) }
                 dialogView.findViewById<TextView>(R.id.btn_accessibly)
                     ?.setOnClickListener { dismiss() }
             }.show()
