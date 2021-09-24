@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.text.parseAsHtml
@@ -30,6 +31,7 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
     private val FLIPPER_PASSWORD_RECOVERY_VERIFICATION = 1
     private val FLIPPER_PASSWORD_RECOVERY_NEW_PASSWORD = 2
     private lateinit var requirements: MutableList<PasswordRequirementsEntity>
+    private var dialog: AlertDialog? = null
 
     override val contentView by viewBinding(FragmentPasswordRecoveryBinding::bind)
 
@@ -53,6 +55,7 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
             passwordRecoveryNewPassword.run {
                 ctiNewPass.doAfterTextChange { checkValidFields() }
                 ctiNewPassConfirmation.doAfterTextChange { checkValidFields() }
+                tvRequirements.setOnClickListener { showDialogRequirements() }
                 btnSavePassword.setOnClickListener { presenter.changePassword(ctiNewPass.text()) }
             }
         }
@@ -134,12 +137,9 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
 
     override fun showInputNewPassword() {
         contentView.viewFlipper.displayedChild = FLIPPER_PASSWORD_RECOVERY_NEW_PASSWORD
-        contentView.passwordRecoveryNewPassword.tvRequirements.setOnClickListener {
-            showDialogRequirements()
-        }
     }
 
-    fun showDialogRequirements() {
+    private fun showDialogRequirements() {
         val dialogView = layoutInflater.inflate(
             R.layout.dialog_password_requirements,
             ConstraintLayout(requireContext())
@@ -160,7 +160,7 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
             }.show()
     }
 
-    override fun startDialogCancelPasswordRecovery() {
+    private fun startDialogCancelPasswordRecovery() {
         val dialogView = layoutInflater.inflate(
             R.layout.dialog_cancel_password_recovery,
             ConstraintLayout(requireContext())
@@ -177,5 +177,30 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
                 }
                 dialogView.findViewById<TextView>(R.id.btn_no)?.setOnClickListener { dismiss() }
             }.show()
+    }
+
+    override fun startDialogPasswordRecoverySuccessful() {
+        val dialogView = layoutInflater.inflate(
+            R.layout.dialog_successful_password_recovery,
+            ConstraintLayout(requireContext())
+        )
+        dialog = AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
+            .setCancelable(true)
+            .setView(dialogView)
+            .create()
+        dialog.apply {
+            dialogView.findViewById<ImageView>(R.id.iv_success_password_recovery)
+                .setImageResource(R.drawable.ic_success_password_recovery)
+            dialogView.findViewById<TextView>(R.id.tv_new_password_save)
+                ?.setText(R.string.dialog_password_recovery_new_password_save)
+            dialogView.findViewById<TextView>(R.id.tv_password_recovery_successful)
+                ?.setText(R.string.dialog_password_recovery_successful)
+        }?.show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        dialog?.dismiss()
+        dialog = null
     }
 }

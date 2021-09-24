@@ -79,12 +79,7 @@ class PasswordRecoveryPresenter(
         sessionAttrs?.let { sessionAttrs ->
             authInteractor.setNewPassword(password, sessionAttrs)
                 .await {
-                    viewState.showMessage(
-                        ToastInfo(
-                            "Пароль успешно изменен",
-                            type = SquareToast.Type.SUCCESS
-                        )
-                    )
+                    viewState.startDialogPasswordRecoverySuccessful()
                     Handler(Looper.getMainLooper()).postDelayed({
                         router.newRootScreen(Screens.Login())
                     }, 2000L)

@@ -75,5 +75,7 @@
     <string name="dialog_password_requirements_capital_letters">Cодержать заглавные и строчные буквы</string>
     <string name="dialog_password_requirements_digits">Cодержать цифры</string>
     <string name="dialog_password_requirements_symbols">Содержать неалфавитные символы «–», «_» и т.п.</string>
+    <string name="dialog_password_recovery_new_password_save">Новый пароль сохранен</string>
+    <string name="dialog_password_recovery_successful">Восстановление прошло успешно</string>
 
 </resources>
