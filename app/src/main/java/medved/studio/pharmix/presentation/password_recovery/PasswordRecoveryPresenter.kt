@@ -57,6 +57,10 @@ class PasswordRecoveryPresenter(
         router.exit()
     }
 
+    fun toAuthorization() {
+        router.navigateTo(Screens.Login())
+    }
+
     fun recoveryPassword(email: String) {
         authInteractor.sendLetterToRecovery(email).await {
             viewState.showTimer()

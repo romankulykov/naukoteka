@@ -1,7 +1,12 @@
 package medved.studio.pharmix.ui.fragments.password_recovery
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.text.parseAsHtml
 import androidx.core.view.isVisible
 import medved.studio.pharmix.R
@@ -59,8 +64,8 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
                 FLIPPER_PASSWORD_RECOVERY -> presenter.exit()
                 FLIPPER_PASSWORD_RECOVERY_NEW_PASSWORD -> viewFlipper.displayedChild =
                     FLIPPER_PASSWORD_RECOVERY
-                FLIPPER_PASSWORD_RECOVERY_VERIFICATION -> viewFlipper.displayedChild =
-                    FLIPPER_PASSWORD_RECOVERY
+                FLIPPER_PASSWORD_RECOVERY_VERIFICATION ->
+                    startDialogCancelPasswordRecovery()
             }
         }
         return true
@@ -127,4 +132,22 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
 
     }
 
+    override fun startDialogCancelPasswordRecovery() {
+        val dialogView = layoutInflater.inflate(
+            R.layout.dialog_cancel_password_recovery,
+            ConstraintLayout(requireContext())
+        )
+        androidx.appcompat.app.AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
+            .setCancelable(true)
+            .setView(dialogView)
+            .create().apply {
+                dialogView.findViewById<TextView>(R.id.tv_are_you_sure_interrupt_password_recovery)
+                    ?.setText(R.string.are_you_sure_want_to_interrupt_the_password_recovery)
+                dialogView.findViewById<TextView>(R.id.btn_yes)?.setOnClickListener {
+                    presenter.toAuthorization()
+                    dismiss()
+                }
+                dialogView.findViewById<TextView>(R.id.btn_no)?.setOnClickListener { dismiss() }
+            }.show()
+    }
 }

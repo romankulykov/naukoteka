@@ -67,5 +67,8 @@
     <string name="password_recovery_sent_the_code_to_the_specified_number">Отправили смс с кодом на указанный номер телефона</string>
     <string name="password_recovery_received_code">Полученный код</string>
     <string name="password_recovery_accept">Подтвердить</string>
+    <string name="dialog_password_recovery_cancel_no">Нет</string>
+    <string name="dialog_password_recovery_cancel_yes">Да</string>
+    <string name="are_you_sure_want_to_interrupt_the_password_recovery">Вы действительно хотите прервать процесс восстановления пароля?</string>
 
 </resources>
