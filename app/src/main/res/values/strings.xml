@@ -70,5 +70,10 @@
     <string name="dialog_password_recovery_cancel_no">Нет</string>
     <string name="dialog_password_recovery_cancel_yes">Да</string>
     <string name="are_you_sure_want_to_interrupt_the_password_recovery">Вы действительно хотите прервать процесс восстановления пароля?</string>
+    <string name="dialog_password_requirements_accessibly">Понятно</string>
+    <string name="dialog_password_requirements_count_of_symbols">Пароль должен состоять из 8 или более символов латинского алфавита</string>
+    <string name="dialog_password_requirements_capital_letters">Cодержать заглавные и строчные буквы</string>
+    <string name="dialog_password_requirements_digits">Cодержать цифры</string>
+    <string name="dialog_password_requirements_symbols">Содержать неалфавитные символы «–», «_» и т.п.</string>
 
 </resources>

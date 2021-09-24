@@ -9,11 +9,15 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.text.parseAsHtml
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.RecyclerView
+import medved.studio.domain.entities.PasswordRequirementsEntity
+import medved.studio.domain.entities.TutorialEntity
 import medved.studio.pharmix.R
 import medved.studio.pharmix.databinding.FragmentPasswordRecoveryBinding
 import medved.studio.pharmix.global.base.BaseFragment
 import medved.studio.pharmix.presentation.password_recovery.PasswordRecoveryPresenter
 import medved.studio.pharmix.presentation.password_recovery.PasswordRecoveryView
+import medved.studio.pharmix.ui.adapters.password_requirements.PasswordRequirementsAdapter
 import medved.studio.pharmix.utils.BackButtonListener
 import medved.studio.pharmix.utils.viewBinding
 import moxy.presenter.InjectPresenter
@@ -25,6 +29,7 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
     private val FLIPPER_PASSWORD_RECOVERY = 0
     private val FLIPPER_PASSWORD_RECOVERY_VERIFICATION = 1
     private val FLIPPER_PASSWORD_RECOVERY_NEW_PASSWORD = 2
+    private lateinit var requirements: MutableList<PasswordRequirementsEntity>
 
     override val contentView by viewBinding(FragmentPasswordRecoveryBinding::bind)
 
@@ -129,7 +134,30 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
 
     override fun showInputNewPassword() {
         contentView.viewFlipper.displayedChild = FLIPPER_PASSWORD_RECOVERY_NEW_PASSWORD
+        contentView.passwordRecoveryNewPassword.tvRequirements.setOnClickListener {
+            showDialogRequirements()
+        }
+    }
 
+    fun showDialogRequirements() {
+        val dialogView = layoutInflater.inflate(
+            R.layout.dialog_password_requirements,
+            ConstraintLayout(requireContext())
+        )
+        requirements = ArrayList()
+        requirements.add(PasswordRequirementsEntity(R.string.dialog_password_requirements_count_of_symbols))
+        requirements.add(PasswordRequirementsEntity(R.string.dialog_password_requirements_capital_letters))
+        requirements.add(PasswordRequirementsEntity(R.string.dialog_password_requirements_digits))
+        requirements.add(PasswordRequirementsEntity(R.string.dialog_password_requirements_symbols))
+        AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
+            .setCancelable(true)
+            .setView(dialogView)
+            .create().apply {
+                dialogView.findViewById<RecyclerView>(R.id.rv_requirements)?.adapter =
+                    PasswordRequirementsAdapter().apply { setItems(requirements) }
+                dialogView.findViewById<TextView>(R.id.btn_accessibly)
+                    ?.setOnClickListener { dismiss() }
+            }.show()
     }
 
     override fun startDialogCancelPasswordRecovery() {
@@ -137,7 +165,7 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
             R.layout.dialog_cancel_password_recovery,
             ConstraintLayout(requireContext())
         )
-        androidx.appcompat.app.AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
+        AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
             .setCancelable(true)
             .setView(dialogView)
             .create().apply {
