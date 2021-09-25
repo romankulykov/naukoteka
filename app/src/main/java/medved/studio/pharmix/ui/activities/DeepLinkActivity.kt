@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import medved.studio.domain.repositories.auth.models.SocialType
+import medved.studio.pharmix.R
 import medved.studio.pharmix.databinding.ActivityMainBinding
 import medved.studio.pharmix.global.base.BaseActivity
 import medved.studio.pharmix.ui.IntentKeys
@@ -26,13 +27,13 @@ class DeepLinkActivity : BaseActivity() {
     private fun handleDeepLink(newIntent: Intent? = null) {
         val intent = newIntent ?: intent
         val keyAuthorization = intent.data?.getQueryParameter("key")
-        if (intent.dataString?.contains("login-actions/verify-email") == true) {
+        if (intent.dataString?.contains(getString(R.string.deep_link_verify_email)) == true) {
             if (!keyAuthorization.isNullOrEmpty()) {
                 startActivity(Intent(this, MainActivity::class.java).apply {
                     putExtra(IntentKeys.Registration.KEY, IntentKeys.Registration(keyAuthorization))
                 })
             }
-        } else if (intent.dataString?.contains("login-actions/social-login") == true) {
+        } else if (intent.dataString?.contains(getString(R.string.deep_link_social_login)) == true) {
             if (!keyAuthorization.isNullOrEmpty()) {
                 val socialTypeRaw = intent.data?.getQueryParameter("social_type")
                 val socialType = SocialType.values().find { it.raw == socialTypeRaw }
@@ -43,7 +44,7 @@ class DeepLinkActivity : BaseActivity() {
                     )
                 })
             }
-        } else if (intent.dataString?.contains("login-actions/reset-credentials") == true) {
+        } else if (intent.dataString?.contains(getString(R.string.deep_link_reset_credentials)) == true) {
             if (!keyAuthorization.isNullOrEmpty()) {
                 startActivity(Intent(this, MainActivity::class.java).apply {
                     putExtra(

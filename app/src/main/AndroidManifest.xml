@@ -17,8 +17,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.activities.main.MainActivity"
-            android:launchMode="singleInstance"
             android:configChanges="keyboardHidden|screenSize|orientation|layoutDirection"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
@@ -29,9 +29,9 @@
 
         </activity>
 
-        <activity android:name=".ui.activities.DeepLinkActivity"
-            android:launchMode="singleTask"
-            >
+        <activity
+            android:name=".ui.activities.DeepLinkActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -42,11 +42,9 @@
                 <data android:scheme="https" />
                 <data
                     android:host="stage.naukotheka.ru"
-                    android:pathPrefix="/login-actions/verify-email" />
-                <data
-                    android:pathPrefix="/login-actions/social-login" />
-                <data
-                    android:pathPrefix="/login-actions/reset-credentials" />
+                    android:pathPrefix="@string/deep_link_verify_email" />
+                <data android:pathPrefix="@string/deep_link_social_login" />
+                <data android:pathPrefix="@string/deep_link_reset_credentials" />
 
             </intent-filter>
         </activity>
