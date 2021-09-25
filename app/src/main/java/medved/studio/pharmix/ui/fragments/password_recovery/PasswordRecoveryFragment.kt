@@ -68,10 +68,8 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
         contentView.run {
             when (viewFlipper.displayedChild) {
                 FLIPPER_PASSWORD_RECOVERY -> presenter.exit()
-                FLIPPER_PASSWORD_RECOVERY_NEW_PASSWORD -> viewFlipper.displayedChild =
-                    FLIPPER_PASSWORD_RECOVERY
-                FLIPPER_PASSWORD_RECOVERY_VERIFICATION ->
-                    startDialogCancelPasswordRecovery()
+                FLIPPER_PASSWORD_RECOVERY_NEW_PASSWORD -> startDialogCancelPasswordRecovery(FLIPPER_PASSWORD_RECOVERY)
+                FLIPPER_PASSWORD_RECOVERY_VERIFICATION -> startDialogCancelPasswordRecovery(FLIPPER_PASSWORD_RECOVERY)
             }
         }
         return true
@@ -153,7 +151,7 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
             }.show()
     }
 
-    private fun startDialogCancelPasswordRecovery() {
+    private fun startDialogCancelPasswordRecovery(viewFlipperIndex : Int) {
         val dialogView = layoutInflater.inflate(
             R.layout.dialog_cancel_password_recovery,
             ConstraintLayout(requireContext())
@@ -165,7 +163,7 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
                 dialogView.findViewById<TextView>(R.id.tv_are_you_sure_interrupt_password_recovery)
                     ?.setText(R.string.are_you_sure_want_to_interrupt_the_password_recovery)
                 dialogView.findViewById<TextView>(R.id.btn_yes)?.setOnClickListener {
-                    presenter.toAuthorization()
+                    contentView.viewFlipper.displayedChild = viewFlipperIndex
                     dismiss()
                 }
                 dialogView.findViewById<TextView>(R.id.btn_no)?.setOnClickListener { dismiss() }

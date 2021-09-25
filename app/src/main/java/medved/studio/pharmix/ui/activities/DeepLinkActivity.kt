@@ -37,16 +37,23 @@ class DeepLinkActivity : BaseActivity() {
                 val socialTypeRaw = intent.data?.getQueryParameter("social_type")
                 val socialType = SocialType.values().find { it.raw == socialTypeRaw }
                 startActivity(Intent(this, MainActivity::class.java).apply {
-                    putExtra(IntentKeys.SocialAuthorization.KEY, IntentKeys.SocialAuthorization(keyAuthorization, socialType!!))
+                    putExtra(
+                        IntentKeys.SocialAuthorization.KEY,
+                        IntentKeys.SocialAuthorization(keyAuthorization, socialType!!)
+                    )
                 })
             }
-        }else if(intent.dataString?.contains("login-actions/reset-credentials") == true){
+        } else if (intent.dataString?.contains("login-actions/reset-credentials") == true) {
             if (!keyAuthorization.isNullOrEmpty()) {
                 startActivity(Intent(this, MainActivity::class.java).apply {
-                    putExtra(IntentKeys.RecoveryPassword.KEY, IntentKeys.RecoveryPassword(keyAuthorization))
+                    putExtra(
+                        IntentKeys.RecoveryPassword.KEY,
+                        IntentKeys.RecoveryPassword(keyAuthorization)
+                    )
                 })
             }
         }
+        finish()
     }
 
     override fun onNewIntent(intent: Intent?) {
