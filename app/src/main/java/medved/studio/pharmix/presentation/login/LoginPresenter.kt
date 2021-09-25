@@ -5,6 +5,7 @@ import medved.studio.domain.entities.HttpException
 import medved.studio.domain.entities.ServerApiError
 import medved.studio.domain.interactors.auth.AuthInteractor
 import medved.studio.domain.repositories.auth.models.SocialType
+import medved.studio.domain.utils.logging.ILogger
 import medved.studio.pharmix.global.base.BasePresenterImpl
 import medved.studio.pharmix.navigation.AppRouter
 import medved.studio.pharmix.navigation.Screens
@@ -21,7 +22,8 @@ import toothpick.InjectConstructor
 class LoginPresenter(
     private val authInteractor: AuthInteractor,
     private val fieldsValidator: FieldsValidator,
-    val router: AppRouter
+    val router: AppRouter,
+    private val logger : ILogger
 ) : BasePresenterImpl<LoginView>() {
 
 
@@ -48,10 +50,12 @@ class LoginPresenter(
     }
 
     fun toRegistration() {
+        logger.debug("click toRegistration")
         router.navigateTo(Screens.RegistrationFirstStep())
     }
 
     fun toPasswordRecovery() {
+        logger.debug("click toPasswordRecovery")
         router.navigateTo(Screens.PasswordRecovery())
     }
 

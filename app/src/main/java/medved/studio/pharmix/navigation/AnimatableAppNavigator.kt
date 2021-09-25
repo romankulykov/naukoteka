@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.github.terrakok.cicerone.androidx.AppNavigator
+import com.github.terrakok.cicerone.androidx.FragmentScreen
 import medved.studio.pharmix.R
 
 class AnimatableAppNavigator(
@@ -13,18 +14,23 @@ class AnimatableAppNavigator(
     fragmentManager: FragmentManager = activity.supportFragmentManager
 ) :
     AppNavigator(activity, container, fragmentManager) {
+
     override fun setupFragmentTransaction(
+        screen: FragmentScreen,
         fragmentTransaction: FragmentTransaction,
         currentFragment: Fragment?,
-        nextFragment: Fragment?
+        nextFragment: Fragment
     ) {
-        super.setupFragmentTransaction(fragmentTransaction.apply {
-            setCustomAnimations(
-                R.anim.enter_from_right,
-                R.anim.exit_to_left,
-                R.anim.enter_from_left,
-                R.anim.exit_to_right
-            )
-        }, currentFragment, nextFragment)
+        super.setupFragmentTransaction(
+            screen,
+            fragmentTransaction.apply {
+                setCustomAnimations(
+                    R.anim.enter_from_right,
+                    R.anim.exit_to_left,
+                    R.anim.enter_from_left,
+                    R.anim.exit_to_right
+                )
+            }, currentFragment, nextFragment
+        )
     }
 }

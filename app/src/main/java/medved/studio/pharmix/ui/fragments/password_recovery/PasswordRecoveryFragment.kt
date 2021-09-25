@@ -28,7 +28,7 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
     private val FLIPPER_PASSWORD_RECOVERY = 0
     private val FLIPPER_PASSWORD_RECOVERY_VERIFICATION = 1
     private val FLIPPER_PASSWORD_RECOVERY_NEW_PASSWORD = 2
-    private lateinit var requirements: MutableList<PasswordRequirementsEntity>
+
     private var dialog: AlertDialog? = null
 
     override val contentView by viewBinding(FragmentPasswordRecoveryBinding::bind)
@@ -43,9 +43,9 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        logger.debug("on view created ${javaClass.canonicalName}")
         contentView.run {
             ivBack.setOnClickListener { onBackPressed() }
-            viewFlipper.displayedChild = FLIPPER_PASSWORD_RECOVERY
             passwordRecovery.run {
                 btnSend.setOnClickListener { presenter.recoveryPassword(ctiEmail.text()) }
                 ctiEmail.doAfterTextChange { checkValidField() }

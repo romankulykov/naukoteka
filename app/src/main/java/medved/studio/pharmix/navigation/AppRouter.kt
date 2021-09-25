@@ -1,18 +1,19 @@
 package medved.studio.pharmix.navigation
 
-import com.github.terrakok.cicerone.*
-import java.util.*
+import com.github.terrakok.cicerone.BackTo
+import com.github.terrakok.cicerone.Forward
+import com.github.terrakok.cicerone.Router
+import com.github.terrakok.cicerone.Screen
 
 class AppRouter : Router() {
 
     fun newScreenChainFrom(
         screenKeyBeforeChain: Screen,
-        screenKey: Screen,
-        clearContainer: Boolean = false
+        screenKey: Screen
     ) {
         executeCommands(
             BackTo(screenKeyBeforeChain),
-            Forward(screenKey, clearContainer)
+            Forward(screenKey)
         )
     }
 

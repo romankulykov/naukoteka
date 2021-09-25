@@ -1,8 +1,12 @@
 package medved.studio.pharmix.global.base
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.viewbinding.ViewBinding
+import medved.studio.domain.utils.logging.ILogger
 import medved.studio.pharmix.di.DI
 import medved.studio.pharmix.global.views.InformativeView
 import medved.studio.pharmix.global.views.LoadingView
@@ -11,9 +15,12 @@ import medved.studio.pharmix.ui.custom.square_toast.ToastInfo
 import moxy.MvpAppCompatFragment
 import toothpick.Scope
 import toothpick.ktp.KTP
+import toothpick.ktp.delegate.inject
 
 abstract class BaseFragment(layoutResId: Int) : MvpAppCompatFragment(layoutResId), LoadingView,
     InformativeView {
+
+    val logger : ILogger by inject()
 
     abstract val contentView: ViewBinding
 
@@ -27,6 +34,20 @@ abstract class BaseFragment(layoutResId: Int) : MvpAppCompatFragment(layoutResId
         return KTP.openRootScope()
             .openSubScope(DI.APP_SCOPE)
             .openSubScope(DI.MAIN_ACTIVITY_SCOPE)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        logger.debug("onCreateView from ${javaClass.canonicalName}")
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
+    override fun onDestroy() {
+        logger.debug("onDestroy from ${javaClass.canonicalName}")
+        super.onDestroy()
     }
 
     open fun onFragmentResume() {

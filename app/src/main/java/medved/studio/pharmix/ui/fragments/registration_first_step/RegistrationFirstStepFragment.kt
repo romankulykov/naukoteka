@@ -29,6 +29,7 @@ class RegistrationFirstStepFragment : BaseFragment(R.layout.fragment_registratio
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        logger.debug("on view created ${javaClass.canonicalName}")
         contentView.run {
             ivBack.setOnClickListener { onBackPressed() }
             ctiEmail.doAfterTextChange { checkValidField() }
