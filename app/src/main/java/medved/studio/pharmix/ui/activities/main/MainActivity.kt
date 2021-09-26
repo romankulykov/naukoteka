@@ -18,13 +18,15 @@ import medved.studio.pharmix.navigation.Screens.Splash
 import medved.studio.pharmix.presentation.main.MainPresenter
 import medved.studio.pharmix.presentation.main.MainView
 import medved.studio.pharmix.ui.IntentKeys
-import medved.studio.pharmix.ui.custom.square_toast.ToastAction
 import medved.studio.pharmix.ui.custom.square_toast.SquareToast
+import medved.studio.pharmix.ui.custom.square_toast.ToastAction
 import medved.studio.pharmix.ui.custom.square_toast.ToastInfo
 import medved.studio.pharmix.ui.fragments.password_recovery.PasswordRecoveryFragment
+import medved.studio.pharmix.ui.fragments.registration_third_step.RegistrationThirdStepFragment
 import medved.studio.pharmix.utils.ActivityResultListener
 import medved.studio.pharmix.utils.BackButtonListener
 import medved.studio.pharmix.utils.RouterProvider
+import medved.studio.pharmix.utils.ui.findFragment
 import medved.studio.pharmix.utils.viewBinding
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
@@ -77,13 +79,13 @@ class MainActivity : BaseActivity(), RouterProvider, MainView {
     private fun handleDeepLink(newIntent: Intent) {
         newIntent.getParcelableExtra<IntentKeys.Registration>(IntentKeys.Registration.KEY)
             ?.let { registration ->
-                presenter.checkToken(registration.key)
-                // todo pass registration key
-                // router.navigateTo(Screens.EndRegistartion())
+                findFragment<RegistrationThirdStepFragment>(Screens.REGISTRATION_THIRD_STEP)
+                    ?.checkTokenToRegistration(registration.key)
             }
         newIntent.getParcelableExtra<IntentKeys.RecoveryPassword>(IntentKeys.RecoveryPassword.KEY)
             ?.let { recovery ->
-                (supportFragmentManager.findFragmentByTag(Screens.PASSWORD_RECOVERY) as? PasswordRecoveryFragment)?.checkTokenToRecovery(recovery.key)
+                findFragment<PasswordRecoveryFragment>(Screens.PASSWORD_RECOVERY)
+                    ?.checkTokenToRecovery(recovery.key)
             }
         newIntent.getParcelableExtra<IntentKeys.SocialAuthorization>(IntentKeys.SocialAuthorization.KEY)
             ?.let { socialAuth ->

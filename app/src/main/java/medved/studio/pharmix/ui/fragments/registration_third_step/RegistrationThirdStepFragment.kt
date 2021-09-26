@@ -50,4 +50,8 @@ class RegistrationThirdStepFragment : BaseFragment(R.layout.fragment_registratio
             }
         }
     }
+
+    fun checkTokenToRegistration(key: String) {
+        presenter.checkKey(key)
+    }
 }

@@ -10,12 +10,6 @@ import toothpick.InjectConstructor
 @InjectConstructor
 class MainPresenter(private val authInteractor: AuthInteractor) : BasePresenterImpl<MainView>() {
 
-    fun checkToken(key: String) {
-        authInteractor.checkToken(key)
-            .await {
-                viewState.showMessage(ToastInfo("Success", type = SquareToast.Type.SUCCESS))
-            }
-    }
 
     fun socialAuth(socialType: SocialType, key: String) {
         authInteractor.authenticate(socialType, key)

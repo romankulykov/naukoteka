@@ -11,7 +11,7 @@ import medved.studio.pharmix.ui.fragments.registration_first_step.RegistrationFi
 import medved.studio.pharmix.ui.fragments.registration_second_step.RegistrationSecondStepFragment
 import medved.studio.pharmix.ui.fragments.registration_third_step.RegistrationThirdStepFragment
 import medved.studio.pharmix.ui.fragments.short_info_profile.ShortInfoProfileFragment
-import medved.studio.pharmix.ui.fragments.signed_up.SignedUpFragment
+import medved.studio.pharmix.ui.fragments.signed_up.SignedUpFinishedFragment
 import medved.studio.pharmix.ui.fragments.splash.SplashFragment
 import medved.studio.pharmix.ui.fragments.web_view_auth.WebViewAuthFragment
 
@@ -59,6 +59,6 @@ object Screens {
     fun ShortInfoProfile() =
         FragmentScreen(SHORT_INFO_PROFILE) { ShortInfoProfileFragment() }
 
-    fun SignedUp() =
-        FragmentScreen(SIGNED_UP) { SignedUpFragment() }
+    fun SignedUpFinished() =
+        FragmentScreen(SIGNED_UP) { SignedUpFinishedFragment() }
 }

@@ -9,6 +9,8 @@ import medved.studio.pharmix.global.base.BasePresenterImpl
 import medved.studio.pharmix.navigation.AppRouter
 import medved.studio.pharmix.navigation.Screens
 import medved.studio.pharmix.ui.AppConfigs
+import medved.studio.pharmix.ui.custom.square_toast.SquareToast
+import medved.studio.pharmix.ui.custom.square_toast.ToastInfo
 import moxy.InjectViewState
 import toothpick.InjectConstructor
 import java.util.concurrent.TimeUnit
@@ -35,7 +37,7 @@ class RegistrationThirdStepPresenter(
             }
     }
 
-    fun startTimerResendCode() {
+    private fun startTimerResendCode() {
         var countSeconds = AppConfigs.TIMEOUT_TO_RESEND
         countDownTimer?.dispose()
         countDownTimer = Observable.interval(1000, TimeUnit.MILLISECONDS)
@@ -50,6 +52,13 @@ class RegistrationThirdStepPresenter(
     }
 
     fun toFinalRegistration() {
-        router.navigateTo(Screens.ShortInfoProfile())
+        router.navigateTo(Screens.SignedUpFinished())
+    }
+
+    fun checkKey(key: String) {
+        authInteractor.checkToken(key)
+            .await {
+                router.newRootScreen(Screens.SignedUpFinished())
+            }
     }
 }

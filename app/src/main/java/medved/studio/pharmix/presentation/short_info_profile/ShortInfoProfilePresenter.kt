@@ -30,6 +30,6 @@ class ShortInfoProfilePresenter(
     }
 
     fun nextStep() {
-        router.navigateTo(Screens.SignedUp())
+        router.newRootScreen(Screens.Login())
     }
 }
