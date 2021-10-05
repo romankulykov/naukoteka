@@ -16,4 +16,5 @@ interface AuthRepository {
     fun socialTypes(): Single<List<SocialType>>
     fun socialAuth(socialType: SocialType, key: String): Completable
     fun sendLetterToRecoveryPassword(email: String): Completable
+    fun getUser(): Completable
 }

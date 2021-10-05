@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "nauchat-e1312",
+  "private_key_id": "cf1de59ec655720c92ad11a026fefcb195e00f62",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDCltpSzj61ShFL\n0STTtmJ4Kbon5KAYa5DIfrFJ2T7WjcFwIEUajnvrh13a807LBispiebaQpMomba7\n8Rn/OFR2dP0+Klx+6cCSooOo3hZ/n8BGIQKWHxQoXzGvcR6rkemL/nshBRreE9Lk\nxZ74k8izhgsNA3L18GvjEAoZM1O8BUZvmMhO4XkAhH6u/7njuSYpkktqIezkkHmN\nHMiZCRuI9x3FSzpuhqqCLOc4UJmL8/PPlMY9S9sSLW3VtUElih4TDX5Ce7c6FMKH\nbe45UmCVrPRgTD9HwxMLK1hDvvpym9Tdb/UtEe6LtkXbVKjKM2zgc8HQtNdBv0iN\nsJHeUoUhAgMBAAECggEAAqFzdicfpefIcBP1wX73udQmlh97IplhrbQ4xVzQgqoL\n8W4eQQuoFTkRRcKAUDJXJwqcOlsoDiZ11/icd1zVl3xhaBO+iGC0n8berMvD1hnc\nyZXsqQbmiN0wmMSYu40PcTsRgxLEmDgAY+NgENA+qF6pi5V+WmDTtJAk8s5E1Yfe\nr5gMxrS/y0HDdUApCFygDfR5Grt7D967sLaiJbhnvB2GVAbGCNIKG1lK3zp+i/Dt\nszKxpovjlvNNS21v49+z/mS0jsp0D8B52fd71NXE4d1kdaZrK9ZgcD2mjvj1SBqA\nFGHvTIDMr+M6OTSedIGfm+/Hcd4PhDL3XsQ75LSi2QKBgQDo5ovfMkctgLqBxLtI\nxq66ME9hezGROtIn8BToh+4ygxx6TwBaDp2oOVVj00fd74Yhn0/N/x5ThmqDNrbZ\nz5kh/QdLK3DXucjeVZPIYljUFH8d+188eDEKhY7tyOMgSSkypZ+xpu+OdmkQp0OM\nPgwH9zL7BvwHwsUbpQgcyBtv9wKBgQDV45CPUnuF3PSLW6RJqrg+J1bVW/0hfCZ2\nwevjbo/MjnJ+B5lzReJiY5kJ48XDk1WnY5Y0j8qsSaAsSdWSTDwlqlY/8uv/zZOp\ns30q8tQRhbkDKuJfMoSpkkxwFCLblrrQxWO2+RqE3m2Jcs/oyorBf62YqOz/YoWR\niWwq2M6dpwKBgQDYVi7e6IkNT2HvYJrHAycSdAWIezKTwJut1WjWhk1QRlGRmwis\nnp77wCX9UCiVkwR4/s7Wfn/g/h66O3yl3hxUYgEAZh2vhTd8rulTXWc9uLxLUVAp\nj0uehmk5nzy6pLrL/OTV1Eb5giwd+ADaqFfsnkaQvvAlFVqaTzW15nr2CQKBgQDF\n38+fKDmqb+2090UX+d6VcaN9o6qczdRvzZvDPke+gJIfUjx+TkrPp0Cvy47sDmQR\nhaoyWkyv8zVBg9UXkXubhOhiJQR8FN3lA25qy1eyFjpBWe0vEPd2QSiCD77n05xl\nBBfp8K69+WDw5cy+mpKfzNT3BGCtK6JSMAZn5UfQxQKBgQCiqpz3Sh6olLcIyuoE\nZgf1MYVORtl0GNWQqdLArAaVDbiZ3VOjiYz6qZ7wPeYmiBA+ow3J66KRIUkthatx\nD34yqW9PmEwppUJM37b4Gfv4A1IQIKAevCebzmDVm8ZxKOaAwnyS4Ba6ijbXLt50\nhU30HKNtBlJEEKB22EHqKPtqhw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "test-android-firebase@nauchat-e1312.iam.gserviceaccount.com",
+  "client_id": "104761939864790342280",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/test-android-firebase%40nauchat-e1312.iam.gserviceaccount.com"
+}

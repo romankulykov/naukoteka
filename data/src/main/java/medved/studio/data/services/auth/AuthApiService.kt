@@ -7,6 +7,7 @@ import medved.studio.data.services.models.request.auth.ResetRequestDto
 import medved.studio.data.services.models.response.auth.*
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface AuthApiService {
@@ -31,5 +32,11 @@ interface AuthApiService {
 
     @POST("login-actions/execute")
     fun passwordRecovery(@Body resetRequestDto: ResetRequestDto): Completable
+
+    @GET("oauth2c/user/me")
+    fun getMe(
+        @Header("_nkts") _nkts: String?=null,
+        @Header(" _nkthnt")  _nkthnt: String?=null,
+        ) : Single<MeReposnseDto>
 
 }

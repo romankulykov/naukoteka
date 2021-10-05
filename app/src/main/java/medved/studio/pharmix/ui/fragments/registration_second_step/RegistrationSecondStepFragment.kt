@@ -32,6 +32,9 @@ class RegistrationSecondStepFragment : BaseFragment(R.layout.fragment_registrati
         return getScope().getInstance(RegistrationSecondStepPresenter::class.java)
     }
 
+    private var counterEnterTestPassword = 0
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         contentView.run {
@@ -39,6 +42,14 @@ class RegistrationSecondStepFragment : BaseFragment(R.layout.fragment_registrati
             ctiPassConfirmation.onFocusChange { hasFocus ->
                 if (hasFocus) {
                     startListenPasswords()
+                }
+            }
+            tvSecondStep.setOnClickListener {
+                counterEnterTestPassword++
+                if (counterEnterTestPassword % 4 == 0) {
+                    ctiPass.setText("1Q2w#_asd")
+                    ctiPassConfirmation.setText("1Q2w#_asd")
+                    presenter.nextStep(ctiPass.text())
                 }
             }
             tvPasswordRequirements.setOnClickListener { showDialogRequirements() }

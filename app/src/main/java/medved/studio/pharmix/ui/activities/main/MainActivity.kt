@@ -14,6 +14,7 @@ import medved.studio.pharmix.global.base.BaseActivity
 import medved.studio.pharmix.navigation.AnimatableAppNavigator
 import medved.studio.pharmix.navigation.AppRouter
 import medved.studio.pharmix.navigation.Screens
+import medved.studio.pharmix.navigation.Screens.RegistrationFirstStep
 import medved.studio.pharmix.navigation.Screens.Splash
 import medved.studio.pharmix.presentation.main.MainPresenter
 import medved.studio.pharmix.presentation.main.MainView
@@ -67,7 +68,8 @@ class MainActivity : BaseActivity(), RouterProvider, MainView {
         setContentView(contentView.root)
         val isLaunchedAfterSystemKilled = savedInstanceState != null
         if (!isLaunchedAfterSystemKilled) {
-            router.navigateTo(Splash())
+            //router.navigateTo(Splash())
+            router.navigateTo(RegistrationFirstStep())
         }
 
         LayoutInflater.from(this).inflate(R.layout.progress_bar, contentView.container, true)

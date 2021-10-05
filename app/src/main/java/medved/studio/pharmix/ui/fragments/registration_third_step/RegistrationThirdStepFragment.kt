@@ -28,7 +28,7 @@ class RegistrationThirdStepFragment : BaseFragment(R.layout.fragment_registratio
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        contentView.tvSendLetter.setOnClickListener { presenter.toFinalRegistration() }
+        contentView.tvSendLetter.setOnClickListener { presenter.startTimerResendCode() }
     }
 
     override fun showSecondsToResend(seconds: Int) {

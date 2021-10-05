@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.firebase.appdistribution'
+apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'kotlin-parcelize'
 
@@ -44,7 +45,7 @@ android {
     buildTypes {
         debug {
             firebaseAppDistribution {
-                serviceCredentialsFile = "$project.rootDir/mypharmy-cf57735337ef.json"
+                serviceCredentialsFile = "$project.rootDir/nauchat-app-distribution.json"
                 groupsFile = "$project.rootDir/tester_groups.txt"
                 releaseNotesFile = "$project.rootDir/releasenotes.txt"
             }
@@ -54,7 +55,7 @@ android {
         }
         release {
             firebaseAppDistribution {
-                serviceCredentialsFile = "$project.rootDir/mypharmy-cf57735337ef.json"
+                serviceCredentialsFile = "$project.rootDir/nauchat-app-distribution.json"
                 groupsFile = "$project.rootDir/tester_groups.txt"
                 releaseNotesFile = "$project.rootDir/releasenotes.txt"
             }
@@ -130,5 +131,3 @@ dependencies {
     implementation lib.data
 
 }
-
-apply plugin: 'com.google.gms.google-services'

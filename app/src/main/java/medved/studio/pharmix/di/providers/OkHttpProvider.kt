@@ -1,5 +1,6 @@
 package medved.studio.pharmix.di.providers
 
+import medved.studio.data.NaukotekaCookieJar
 import medved.studio.pharmix.BuildConfig
 import medved.studio.pharmix.di.utils.http.AuthInterceptor
 import medved.studio.pharmix.di.utils.http.ErrorTransformerInterceptor
@@ -17,8 +18,10 @@ class OkHttpProvider(
     //private val statusCodeInterceptor: StatusCodeParsingInterceptor,
     private val errorTransformerInterceptor : ErrorTransformerInterceptor,
     private val authenticator: RefreshTokenAuthenticator,
-) : Provider<OkHttpClient> {
+    private val cookieJar: NaukotekaCookieJar,
+    ) : Provider<OkHttpClient> {
     override fun get() = OkHttpClient.Builder()
+        .cookieJar(cookieJar)
         .addNetworkInterceptor(HttpLoggingInterceptor().apply {
             level = if (BuildConfig.DEBUG) {
                 HttpLoggingInterceptor.Level.BODY

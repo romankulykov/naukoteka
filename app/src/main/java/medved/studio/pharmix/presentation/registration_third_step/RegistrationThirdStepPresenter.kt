@@ -37,7 +37,7 @@ class RegistrationThirdStepPresenter(
             }
     }
 
-    private fun startTimerResendCode() {
+    fun startTimerResendCode() {
         var countSeconds = AppConfigs.TIMEOUT_TO_RESEND
         countDownTimer?.dispose()
         countDownTimer = Observable.interval(1000, TimeUnit.MILLISECONDS)

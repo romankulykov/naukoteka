@@ -37,6 +37,13 @@ class AuthInteractor(
 
     fun checkToken(key: String): Completable {
         return authRepository.checkConfirmRegistration(key)
+            .andThen(authRepository.getUser())
+            .subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
+    }
+
+    fun getUser() : Completable{
+        return authRepository.getUser()
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
     }

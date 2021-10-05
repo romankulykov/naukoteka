@@ -2,6 +2,7 @@ package medved.studio.data.repositories.auth
 
 import io.reactivex.Completable
 import io.reactivex.Single
+import medved.studio.data.cache.cookies.CookiesCache
 import medved.studio.data.services.auth.AuthApiService
 import medved.studio.data.services.models.request.auth.AuthRequestDto
 import medved.studio.data.services.models.request.auth.CheckEmailFreeDto
@@ -18,6 +19,7 @@ import toothpick.InjectConstructor
 class AuthRepositoryImpl(
     private val authApiService: AuthApiService,
     private val mapper: AuthRepositoryMapper,
+    private val cookiesCache: CookiesCache
 ) : AuthRepository {
 
 
@@ -32,7 +34,9 @@ class AuthRepositoryImpl(
 
     override fun register(login: String, password: String): Completable {
         return authApiService.register(RegisterRequestDto(login, password))
-            .flatMapCompletable { Completable.complete() }
+            .flatMapCompletable {
+                Completable.complete()
+            }
     }
 
     override fun checkConfirmRegistration(key: String): Completable {
@@ -86,6 +90,13 @@ class AuthRepositoryImpl(
     override fun socialAuth(socialType: SocialType, key: String): Completable {
         return authApiService.authenticate(AuthRequestDto(socialLogin = socialType.raw, key = key))
             .flatMapCompletable {
+                Completable.complete()
+            }
+    }
+
+    override fun getUser(): Completable {
+        return authApiService.getMe()
+            .flatMapCompletable { cookiesCache.entity
                 Completable.complete()
             }
     }

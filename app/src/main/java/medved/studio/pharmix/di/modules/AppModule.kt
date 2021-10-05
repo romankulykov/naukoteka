@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.google.gson.Gson
+import medved.studio.data.NaukotekaCookieJar
 import medved.studio.data.repositories.auth.AuthRepositoryImpl
 import medved.studio.data.services.auth.AuthApiHolder
 import medved.studio.data.services.auth.AuthApiService
@@ -32,6 +33,7 @@ class AppModule(application: Application) : Module() {
 
         bind(String::class.java).withName(ServerUrl::class.java)
             .toInstance("https://stage.naukotheka.ru/api/a/")
+        bind(CookieJar::class.java).to(NaukotekaCookieJar::class.java)
 
         bind(OkHttpClient::class.java).toProvider(OkHttpProvider::class.java).singleton()
         bind(Retrofit::class.java).toProvider(RetrofitProvider::class.java).singleton()

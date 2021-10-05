@@ -98,6 +98,7 @@ class CustomizedTextInput(context: Context, attrs: AttributeSet) : LinearLayout(
     }
 
     fun text() = binding.metField.text.toString()
+    fun setText(text : String) = binding.metField.setText(text)
 
     private fun toggleEye() {
         isOpenedEye = !isOpenedEye
