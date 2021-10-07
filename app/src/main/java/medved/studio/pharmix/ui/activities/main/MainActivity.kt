@@ -15,6 +15,7 @@ import medved.studio.pharmix.navigation.AnimatableAppNavigator
 import medved.studio.pharmix.navigation.AppRouter
 import medved.studio.pharmix.navigation.Screens
 import medved.studio.pharmix.navigation.Screens.RegistrationFirstStep
+import medved.studio.pharmix.navigation.Screens.ShortInfoProfile
 import medved.studio.pharmix.navigation.Screens.Splash
 import medved.studio.pharmix.presentation.main.MainPresenter
 import medved.studio.pharmix.presentation.main.MainView
@@ -70,6 +71,7 @@ class MainActivity : BaseActivity(), RouterProvider, MainView {
         if (!isLaunchedAfterSystemKilled) {
             //router.navigateTo(Splash())
             router.navigateTo(RegistrationFirstStep())
+            //router.navigateTo(ShortInfoProfile())
         }
 
         LayoutInflater.from(this).inflate(R.layout.progress_bar, contentView.container, true)

@@ -5,6 +5,7 @@ import com.google.gson.JsonSyntaxException
 import medved.studio.data.utils.fromJson
 import medved.studio.domain.entities.ApiErrorDetail
 import medved.studio.domain.entities.ApiErrorWrapper
+import medved.studio.domain.entities.StatusCode
 import okhttp3.FormBody
 import okhttp3.Response
 import java.nio.charset.Charset
@@ -27,7 +28,16 @@ fun Response.getApiError(): ApiErrorDetail {
     val responseBodyString = source.buffer().clone().readString(Charset.forName("UTF-8"))
     return try {
         Gson().fromJson<ApiErrorWrapper>(responseBodyString).apiErrorDetail
-    } catch (exceptAnotherModelException: JsonSyntaxException) {
-        ApiErrorDetail(0, "", "", "Could not parse correct error")
+    } catch (npe: Exception) {
+        val message = when (StatusCode.values().find { it.code == code }) {
+            StatusCode.Unauthorized -> "Unauthorized method"
+            StatusCode.NoConnection -> "No connection"
+            StatusCode.BadRequest -> "Bad request"
+            StatusCode.Forbidden -> "Forbidden method"
+            StatusCode.NotFound -> "NotFound method"
+            StatusCode.InternalServerError -> "Internal Server Error"
+            else -> "Could not found status code error"
+        }
+        ApiErrorDetail(code, "", "", message)
     }
 }

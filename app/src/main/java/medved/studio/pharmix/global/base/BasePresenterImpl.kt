@@ -7,6 +7,7 @@ import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
+import io.reactivex.exceptions.CompositeException
 import medved.studio.domain.entities.*
 import medved.studio.pharmix.R
 import medved.studio.pharmix.di.DI
@@ -67,6 +68,7 @@ abstract class BasePresenterImpl<V : MvpView> : MvpPresenter<V>() {
         throwable is HttpException -> showErrorMessage(throwable.readMessage())
         throwable is EmailNotFreeException -> showErrorMessage(R.string.errors_email_is_busy)
         context.isOffline() -> showErrorMessage(R.string.errors_network_error)
+        throwable is CompositeException -> throwable.exceptions.forEach { showErrorMessage(it.message) }
         else -> showErrorMessage(throwable.message)
     }
 

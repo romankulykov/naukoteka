@@ -26,9 +26,6 @@ enum class StatusCode(val code: Int) {
     @SerializedName("404")
     NotFound(404),
 
-    @SerializedName("409")
-    CodeAlreadyUsed(404),
-
     @SerializedName("500")
     InternalServerError(500)
 }
@@ -43,6 +40,9 @@ enum class ServerApiError(val code: Int) {
     @SerializedName("1202")
     PasswordPolicy(1202),
 
+    @SerializedName("0")
+    NoConnection(0),
+
     @SerializedName("400")
     BadRequest(400),
 
@@ -54,9 +54,6 @@ enum class ServerApiError(val code: Int) {
 
     @SerializedName("404")
     NotFound(404),
-
-    @SerializedName("409")
-    CodeAlreadyUsed(404),
 
     @SerializedName("500")
     InternalServerError(500);

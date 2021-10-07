@@ -51,10 +51,6 @@ class RegistrationThirdStepPresenter(
             }
     }
 
-    fun toFinalRegistration() {
-        router.navigateTo(Screens.SignedUpFinished())
-    }
-
     fun checkKey(key: String) {
         authInteractor.checkToken(key)
             .await {

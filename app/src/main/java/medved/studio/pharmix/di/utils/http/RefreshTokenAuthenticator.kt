@@ -3,7 +3,6 @@ package medved.studio.pharmix.di.utils.http
 
 import medved.studio.data.repositories.auth.AuthRepositoryMapper
 import medved.studio.data.services.auth.AuthApiHolder
-import medved.studio.data.services.auth.AuthApiService
 import medved.studio.domain.utils.logging.ILogger
 import okhttp3.Authenticator
 import okhttp3.Request

@@ -2,6 +2,8 @@ package medved.studio.pharmix.ui.fragments.short_info_profile
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isGone
+import medved.studio.domain.interactors.user_profile.model.ShortInfoUi
 import medved.studio.pharmix.R
 import medved.studio.pharmix.databinding.FragmentShortInfoProfileBinding
 import medved.studio.pharmix.global.base.BaseFragment
@@ -27,11 +29,23 @@ class ShortInfoProfileFragment : BaseFragment(R.layout.fragment_short_info_profi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         contentView.run {
-            ctiLink.doAfterTextChange { checkValidFields() }
+            ctiLink.doAfterTextChange {
+                presenter.checkFreeNickname(it)
+                checkValidFields()
+            }
             ctiName.doAfterTextChange { checkValidFields() }
             ctiPatronymic.doAfterTextChange { checkValidFields() }
             ctiSurname.doAfterTextChange { checkValidFields() }
-            btnCompleteRegistration.setOnClickListener { presenter.nextStep() }
+            btnCompleteRegistration.setOnClickListener {
+                presenter.fillProfile(
+                    ShortInfoUi(
+                        surname = ctiSurname.text(),
+                        name = ctiName.text(),
+                        nickname = ctiLink.text(),
+                        middleName = ctiPatronymic.text()
+                    )
+                )
+            }
         }
     }
 
@@ -48,4 +62,10 @@ class ShortInfoProfileFragment : BaseFragment(R.layout.fragment_short_info_profi
     override fun showButtonState(isEnabled: Boolean) {
         contentView.btnCompleteRegistration.isEnabled = isEnabled
     }
+
+    override fun showNicknameAvailable(isAvailable: Boolean) {
+        contentView.tvErrorNickname.isGone = isAvailable
+        checkValidFields()
+    }
+
 }

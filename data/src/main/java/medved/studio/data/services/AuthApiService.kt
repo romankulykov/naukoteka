@@ -1,4 +1,4 @@
-package medved.studio.data.services.auth
+package medved.studio.data.services
 
 import io.reactivex.Completable
 import io.reactivex.Single
@@ -33,11 +33,5 @@ interface AuthApiService {
     @POST("a/login-actions/execute")
     fun passwordRecovery(@Body resetRequestDto: ResetRequestDto): Completable
 
-    @POST("core/user_profile/info")
-    fun setUser(
-        //@Header("Cookie") _nkts: String? = null,
-        //@Header(" _nkthnt") _nkthnt: String? = null,
-        @Body userProfileRequestDto: UserProfileRequestDto
-    ): Single<MeReposnseDto>
 
 }

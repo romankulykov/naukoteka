@@ -31,21 +31,12 @@ class AuthInteractor(
 
     fun register(login: String, password: String): Completable {
         return authRepository.register(login, password)
-            //.flatMapCompletable { Single.timer(2300L, TimeUnit.MILLISECONDS).flatMapCompletable { authRepository.setUser() }}
-            .flatMapCompletable { Completable.complete() }
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
     }
 
     fun checkToken(key: String): Completable {
         return authRepository.checkConfirmRegistration(key)
-            .flatMapCompletable { Single.timer(2300L, TimeUnit.MILLISECONDS).flatMapCompletable { authRepository.setUser() }}
-            .subscribeOn(schedulers.io())
-            .observeOn(schedulers.ui())
-    }
-
-    fun getUser(): Completable {
-        return authRepository.setUser()
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
     }

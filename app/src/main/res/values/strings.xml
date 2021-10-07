@@ -8,6 +8,7 @@
     <string name="errors_something_went_wrong">Something went wrong</string>
     <string name="error_passwords_not_equals">Указанная пара паролей не совпадает. Проверьте введенные данные и повторите попытку.</string>
     <string name="error_incorrect_credentials">Не получается войти проверьте указанные данные</string>
+    <string name="error_nickname_is_busy">Никнейм занят</string>
     <string name="error_password_policy">Пароль не соответствует ряду требований</string>
 
     <string name="next">Дальше</string>

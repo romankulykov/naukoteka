@@ -8,10 +8,13 @@ import com.github.terrakok.cicerone.NavigatorHolder
 import com.google.gson.Gson
 import medved.studio.data.NaukotekaCookieJar
 import medved.studio.data.repositories.auth.AuthRepositoryImpl
+import medved.studio.data.repositories.user_profile.UserProfileRepositoryImpl
 import medved.studio.data.services.auth.AuthApiHolder
-import medved.studio.data.services.auth.AuthApiService
+import medved.studio.data.services.AuthApiService
+import medved.studio.data.services.UserProfileApiService
 import medved.studio.domain.SchedulersProvider
 import medved.studio.domain.repositories.auth.AuthRepository
+import medved.studio.domain.repositories.user_profile.UserProfileRepository
 import medved.studio.domain.utils.logging.ILogger
 import medved.studio.pharmix.di.ServerUrl
 import medved.studio.pharmix.di.providers.*
@@ -44,8 +47,10 @@ class AppModule(application: Application) : Module() {
 
 
         bind(AuthApiService::class.java).toProvider(AuthApiProvider::class.java).singleton()
+        bind(UserProfileApiService::class.java).toProvider(UserProfileApiProvider::class.java).singleton()
         bind(AuthApiHolder::class.java).singleton()
         bind(AuthRepository::class.java).to(AuthRepositoryImpl::class.java)
+        bind(UserProfileRepository::class.java).to(UserProfileRepositoryImpl::class.java)
 
     }
 

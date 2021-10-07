@@ -4,15 +4,13 @@ import io.reactivex.Completable
 import io.reactivex.Single
 import medved.studio.data.cache.cookies.CookiesCache
 import medved.studio.data.cache.user_id.UserIdCache
-import medved.studio.data.services.auth.AuthApiService
+import medved.studio.data.services.AuthApiService
 import medved.studio.data.services.models.request.auth.*
-import medved.studio.data.services.models.request.user_profile.UserProfileRequestDto
 import medved.studio.domain.entities.EmailNotFreeException
 import medved.studio.domain.repositories.auth.AuthRepository
 import medved.studio.domain.repositories.auth.models.SessionAttributes
 import medved.studio.domain.repositories.auth.models.SocialType
 import toothpick.InjectConstructor
-import kotlin.random.Random
 
 @InjectConstructor
 class AuthRepositoryImpl(
@@ -32,17 +30,17 @@ class AuthRepositoryImpl(
         return authApiService.passwordRecovery(ResetRequestDto("reset-credentials", email))
     }
 
-    override fun register(login: String, password: String): Single<Unit> {
+    override fun register(login: String, password: String): Completable {
         return authApiService.register(RegisterRequestDto(login, password))
-            .flatMap {
+            .flatMapCompletable {
                 userIdCache.entity = it.userStatus.id
-                Single.just(Unit)
+                Completable.complete()
             }
     }
 
-    override fun checkConfirmRegistration(key: String): Single<Unit> {
+    override fun checkConfirmRegistration(key: String): Completable {
         return authApiService.checkTokenKey(CheckTokenKeyDto(key))
-            .flatMap { Single.just(Unit) }
+            .flatMapCompletable { Completable.complete() }
     }
 
     override fun checkConfirmRecovery(key: String): Single<SessionAttributes> {
@@ -90,23 +88,6 @@ class AuthRepositoryImpl(
 
     override fun socialAuth(socialType: SocialType, key: String): Completable {
         return authApiService.authenticate(AuthRequestDto(socialLogin = socialType.raw, key = key))
-            .flatMapCompletable {
-                Completable.complete()
-            }
-    }
-
-    override fun setUser(): Completable {
-        return authApiService.setUser(
-            //_nkts = cookiesCache.entity,
-            userProfileRequestDto = UserProfileRequestDto(
-                id = userIdCache.entity,
-                firstName = "firstname",
-                lastName = "asdasda",
-                middleName = "adsadas",
-                // nick name should be more or equals 6 digits after id
-                nickname = "id${Random.nextInt(10000, 99999)}"
-            )
-        )
             .flatMapCompletable {
                 Completable.complete()
             }
