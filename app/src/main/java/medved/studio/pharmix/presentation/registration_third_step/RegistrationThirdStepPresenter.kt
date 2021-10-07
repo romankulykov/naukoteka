@@ -54,7 +54,7 @@ class RegistrationThirdStepPresenter(
     fun checkKey(key: String) {
         authInteractor.checkToken(key)
             .await {
-                router.newRootScreen(Screens.SignedUpFinished())
+                router.newRootChain(Screens.Login(), Screens.SignedUpFinished())
             }
     }
 }

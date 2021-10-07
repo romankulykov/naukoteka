@@ -48,10 +48,6 @@ class ShortInfoProfilePresenter(
         )
     }
 
-    fun nextStep() {
-        router.newRootScreen(Screens.Login())
-    }
-
     fun checkFreeNickname(nickname: String) {
         inputNicknameSubject.onNext(nickname)
     }
@@ -59,7 +55,8 @@ class ShortInfoProfilePresenter(
     fun fillProfile(shortInfoUi: ShortInfoUi) {
         userProfileInteractor.setUser(shortInfoUi)
             .await {
-                viewState.showInfoMessage("Success")
+                viewState.showInfoMessage("Данные заполнены успешно")
+                router.newRootScreen(Screens.Login())
             }
     }
 }
