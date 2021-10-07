@@ -3,11 +3,11 @@ package medved.studio.domain.interactors.auth
 import io.reactivex.Completable
 import io.reactivex.Single
 import medved.studio.domain.SchedulersProvider
-import medved.studio.domain.entities.PasswordRequirementsEntity
 import medved.studio.domain.repositories.auth.AuthRepository
 import medved.studio.domain.repositories.auth.models.SessionAttributes
 import medved.studio.domain.repositories.auth.models.SocialType
 import toothpick.InjectConstructor
+import java.util.concurrent.TimeUnit
 
 @InjectConstructor
 class AuthInteractor(
@@ -31,19 +31,21 @@ class AuthInteractor(
 
     fun register(login: String, password: String): Completable {
         return authRepository.register(login, password)
+            //.flatMapCompletable { Single.timer(2300L, TimeUnit.MILLISECONDS).flatMapCompletable { authRepository.setUser() }}
+            .flatMapCompletable { Completable.complete() }
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
     }
 
     fun checkToken(key: String): Completable {
         return authRepository.checkConfirmRegistration(key)
-            .andThen(authRepository.getUser())
+            .flatMapCompletable { Single.timer(2300L, TimeUnit.MILLISECONDS).flatMapCompletable { authRepository.setUser() }}
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
     }
 
-    fun getUser() : Completable{
-        return authRepository.getUser()
+    fun getUser(): Completable {
+        return authRepository.setUser()
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
     }

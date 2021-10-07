@@ -3,23 +3,23 @@ package medved.studio.data.repositories.auth
 import io.reactivex.Completable
 import io.reactivex.Single
 import medved.studio.data.cache.cookies.CookiesCache
+import medved.studio.data.cache.user_id.UserIdCache
 import medved.studio.data.services.auth.AuthApiService
-import medved.studio.data.services.models.request.auth.AuthRequestDto
-import medved.studio.data.services.models.request.auth.CheckEmailFreeDto
-import medved.studio.data.services.models.request.auth.CheckTokenKeyDto
-import medved.studio.data.services.models.request.auth.RegisterRequestDto
-import medved.studio.data.services.models.request.auth.ResetRequestDto
+import medved.studio.data.services.models.request.auth.*
+import medved.studio.data.services.models.request.user_profile.UserProfileRequestDto
 import medved.studio.domain.entities.EmailNotFreeException
 import medved.studio.domain.repositories.auth.AuthRepository
 import medved.studio.domain.repositories.auth.models.SessionAttributes
 import medved.studio.domain.repositories.auth.models.SocialType
 import toothpick.InjectConstructor
+import kotlin.random.Random
 
 @InjectConstructor
 class AuthRepositoryImpl(
     private val authApiService: AuthApiService,
     private val mapper: AuthRepositoryMapper,
-    private val cookiesCache: CookiesCache
+    private val cookiesCache: CookiesCache,
+    private val userIdCache: UserIdCache,
 ) : AuthRepository {
 
 
@@ -32,16 +32,17 @@ class AuthRepositoryImpl(
         return authApiService.passwordRecovery(ResetRequestDto("reset-credentials", email))
     }
 
-    override fun register(login: String, password: String): Completable {
+    override fun register(login: String, password: String): Single<Unit> {
         return authApiService.register(RegisterRequestDto(login, password))
-            .flatMapCompletable {
-                Completable.complete()
+            .flatMap {
+                userIdCache.entity = it.userStatus.id
+                Single.just(Unit)
             }
     }
 
-    override fun checkConfirmRegistration(key: String): Completable {
+    override fun checkConfirmRegistration(key: String): Single<Unit> {
         return authApiService.checkTokenKey(CheckTokenKeyDto(key))
-            .flatMapCompletable { Completable.complete() }
+            .flatMap { Single.just(Unit) }
     }
 
     override fun checkConfirmRecovery(key: String): Single<SessionAttributes> {
@@ -94,9 +95,19 @@ class AuthRepositoryImpl(
             }
     }
 
-    override fun getUser(): Completable {
-        return authApiService.getMe()
-            .flatMapCompletable { cookiesCache.entity
+    override fun setUser(): Completable {
+        return authApiService.setUser(
+            //_nkts = cookiesCache.entity,
+            userProfileRequestDto = UserProfileRequestDto(
+                id = userIdCache.entity,
+                firstName = "firstname",
+                lastName = "asdasda",
+                middleName = "adsadas",
+                // nick name should be more or equals 6 digits after id
+                nickname = "id${Random.nextInt(10000, 99999)}"
+            )
+        )
+            .flatMapCompletable {
                 Completable.complete()
             }
     }

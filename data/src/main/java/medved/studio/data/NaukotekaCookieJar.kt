@@ -13,13 +13,13 @@ class NaukotekaCookieJar(private val cookiesCache: CookiesCache) : CookieJar {
 
     override fun loadForRequest(url: HttpUrl): List<Cookie> {
         if (cookies != null) {
-            return cookies!!
+            return cookies?.filter { it.value().isNotEmpty() }!!
         }
         return listOf()
     }
 
     override fun saveFromResponse(url: HttpUrl, cookies: List<Cookie>) {
         this.cookies = cookies
-        cookiesCache.entity = cookies.firstOrNull().toString()
+        cookiesCache.entity = cookies.find { it.value().isNotEmpty() }?.value().toString()
     }
 }

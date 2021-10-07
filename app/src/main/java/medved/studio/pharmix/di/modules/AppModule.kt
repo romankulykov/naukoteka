@@ -32,7 +32,7 @@ class AppModule(application: Application) : Module() {
         bind(SchedulersProvider::class.java).toInstance(AppSchedulersProvider())
 
         bind(String::class.java).withName(ServerUrl::class.java)
-            .toInstance("https://stage.naukotheka.ru/api/a/")
+            .toInstance("https://stage.naukotheka.ru/api/")
         bind(CookieJar::class.java).to(NaukotekaCookieJar::class.java)
 
         bind(OkHttpClient::class.java).toProvider(OkHttpProvider::class.java).singleton()
