@@ -61,7 +61,7 @@ class WebViewAuthFragment : BaseFragment(R.layout.fragment_web_view), BackButton
                                     Screens.RESULT_AUTH_SOCIAL,
                                     IntentKeys.SocialAuthorization(key, socialType)
                                 )
-                                router.backTo(Screens.Login())
+                                onBackPressed()
                             }
                             return false
                         }
