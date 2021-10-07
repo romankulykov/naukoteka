@@ -34,6 +34,11 @@ class RegistrationFirstStepFragment : BaseFragment(R.layout.fragment_registratio
             ivBack.setOnClickListener { onBackPressed() }
             ctiEmail.doAfterTextChange { checkValidField() }
             btnRegistrationNext.setOnClickListener { presenter.nextStep(ctiEmail.text()) }
+            ibVkontakte.setOnClickListener { presenter.authSocial(SocialType.VK) }
+            ibOk.setOnClickListener { presenter.authSocial(SocialType.OK) }
+            ibFacebook.setOnClickListener { presenter.authSocial(SocialType.FACEBOOK) }
+            ibMail.setOnClickListener { presenter.authSocial(SocialType.MAIL_RU) }
+            ibGoogle.setOnClickListener { presenter.authSocial(SocialType.GOOGLE) }
         }
     }
 

@@ -9,7 +9,7 @@ import moxy.viewstate.strategy.StateStrategyType
 
 
 @StateStrategyType(AddToEndSingleStrategy::class)
-interface LoginView : MvpView, LoadingView, InformativeView {
+interface LoginView : SocialLoginView {
     fun showButtonState(isEnabled: Boolean)
     fun showSuccessLogin()
     fun showSocialTypes(socialTypes: List<SocialType>)

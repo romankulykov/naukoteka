@@ -8,6 +8,7 @@ import medved.studio.pharmix.di.modules.SimpleRegistration
 import medved.studio.pharmix.global.base.BasePresenterImpl
 import medved.studio.pharmix.navigation.AppRouter
 import medved.studio.pharmix.navigation.Screens
+import medved.studio.pharmix.presentation.login.SocialLoginPresenter
 import moxy.InjectViewState
 import toothpick.InjectConstructor
 import toothpick.ktp.KTP
@@ -17,9 +18,9 @@ import toothpick.ktp.KTP
 class RegistrationFirstStepPresenter(
     private val fieldsValidator: FieldsValidator,
     private val simpleRegistration: SimpleRegistration,
-    val router: AppRouter,
-    private val authInteractor: AuthInteractor,
-) : BasePresenterImpl<RegistrationFirstStepView>() {
+    override val router: AppRouter,
+    override val authInteractor: AuthInteractor,
+) : SocialLoginPresenter<RegistrationFirstStepView>() {
 
     init {
         val scope = getScope().openSubScope(DI.REGISTRATION_SCOPE)

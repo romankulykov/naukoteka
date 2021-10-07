@@ -20,11 +20,11 @@ import toothpick.InjectConstructor
 @InjectConstructor
 @InjectViewState
 class LoginPresenter(
-    private val authInteractor: AuthInteractor,
+    override val authInteractor: AuthInteractor,
     private val fieldsValidator: FieldsValidator,
-    val router: AppRouter,
+    override val router: AppRouter,
     private val logger : ILogger
-) : BasePresenterImpl<LoginView>() {
+) : SocialLoginPresenter<LoginView>() {
 
 
     override fun onFirstViewAttach() {
@@ -61,31 +61,6 @@ class LoginPresenter(
 
     fun exit() {
         router.exit()
-    }
-
-    fun authSocial(socialType: SocialType) {
-        router.run {
-            setResultListener(Screens.RESULT_AUTH_SOCIAL) {
-                (it as? IntentKeys.SocialAuthorization)?.let { socialAuthorization ->
-                    socialAuth(socialAuthorization.socialType, socialAuthorization.key)
-                }
-            }
-            navigateTo(
-                Screens.WebViewAuth(
-                    AppConfigs.authSocialUrl(
-                        socialType,
-                        "https://stage.naukotheka.ru/${AppConfigs.SOCIAL_LOGIN_ENDPOINT}?social_type=${socialType.raw}"
-                    )
-                )
-            )
-        }
-    }
-
-    fun socialAuth(socialType: SocialType, key: String) {
-        authInteractor.authenticate(socialType, key)
-            .await {
-                viewState.showMessage(ToastInfo("Success", type = SquareToast.Type.SUCCESS))
-            }
     }
 
 
