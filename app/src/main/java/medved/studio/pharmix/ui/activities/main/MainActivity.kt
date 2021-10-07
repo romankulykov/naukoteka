@@ -69,8 +69,8 @@ class MainActivity : BaseActivity(), RouterProvider, MainView {
         setContentView(contentView.root)
         val isLaunchedAfterSystemKilled = savedInstanceState != null
         if (!isLaunchedAfterSystemKilled) {
-            //router.navigateTo(Splash())
-            router.navigateTo(RegistrationFirstStep())
+            router.navigateTo(Splash())
+            //router.navigateTo(RegistrationFirstStep())
             //router.navigateTo(ShortInfoProfile())
         }
 
