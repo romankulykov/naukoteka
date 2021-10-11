@@ -81,6 +81,8 @@ android {
 
 }
 
+apply plugin: "net.madeng.slack"
+
 dependencies {
 
     implementation presentation.kotlin
