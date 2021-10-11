@@ -26,9 +26,6 @@
     <string name="login_forget_password">Забыли пароль?</string>
     <string name="login_enter">Войти</string>
     <string name="login_registration"><![CDATA[<font color=#8083A0>Нет аккаунта?</font> <font color=#2E83D9>Зарегистрируйтесь</font>]]></string>
-    <string name="registration_third">3</string>
-    <string name="registration_second">2</string>
-    <string name="registration_first">1</string>
     <string name="registration_new_user">Регистрация нового пользователя</string>
     <string name="registration_address_for_registration">Ваш адрес электронной почты будет
         использован для регистрации</string>
