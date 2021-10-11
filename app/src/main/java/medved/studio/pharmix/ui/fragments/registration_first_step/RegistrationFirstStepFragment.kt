@@ -2,6 +2,7 @@ package medved.studio.pharmix.ui.fragments.registration_first_step
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import medved.studio.domain.repositories.auth.models.SocialType
 import medved.studio.pharmix.R
@@ -31,6 +32,7 @@ class RegistrationFirstStepFragment : BaseFragment(R.layout.fragment_registratio
         super.onViewCreated(view, savedInstanceState)
         logger.debug("on view created ${javaClass.canonicalName}")
         contentView.run {
+            ctiEmail.validFieldEditTextListener = { isValid -> tvError.isGone = isValid }
             ivBack.setOnClickListener { onBackPressed() }
             ctiEmail.doAfterTextChange { checkValidField() }
             btnRegistrationNext.setOnClickListener { presenter.nextStep(ctiEmail.text()) }

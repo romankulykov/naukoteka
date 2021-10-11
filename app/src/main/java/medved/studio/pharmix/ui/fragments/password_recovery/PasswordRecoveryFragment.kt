@@ -49,6 +49,11 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
             passwordRecovery.run {
                 btnSend.setOnClickListener { presenter.recoveryPassword(ctiEmail.text()) }
                 ctiEmail.doAfterTextChange { checkValidEmail() }
+                ctiEmail.validFieldEditTextListener = { isValid ->
+                    ctiEmail.showError(!isValid)
+                    tvError.setText(R.string.error_email_format)
+                    tvError.isGone = isValid
+                }
             }
             passwordRecoveryNewPassword.run {
                 ctiNewPass.doAfterTextChange { checkValidFields() }
@@ -77,8 +82,6 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
 
     private fun checkValidEmail() {
         contentView.passwordRecovery.run {
-            ctiEmail.showError(false)
-            tvError.isGone = true
             presenter.isValidEmail(ctiEmail.text())
         }
     }
@@ -192,6 +195,7 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
 
     override fun showErrorEmail(isValid: Boolean) {
         contentView.passwordRecovery.ctiEmail.showError(!isValid)
+        contentView.passwordRecovery.tvError.setText(R.string.error_email_not_exist)
         contentView.passwordRecovery.tvError.isGone = isValid
         showButtonState(isValid)
     }
