@@ -100,6 +100,7 @@ task sendDeployReportToSlack {
                             if (apkFabricDeployError == null) {
                                 title = "Get on Firebase app distribution"
                                 titleLink = "https://appdistribution.firebase.google.com/testerapps/1:611944487654:android:817630d544715414677927"
+                                // or from computer https://console.firebase.google.com/u/0/project/nauchat-e1312/appdistribution/app/android:com.nauchat/releases
                             }
 
                             fallback = "$appName - new version is available"
