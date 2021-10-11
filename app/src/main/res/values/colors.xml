@@ -30,5 +30,6 @@
     <color name="background_toast">#E6333333</color>
     <color name="background_toast_success">#63AA55</color>
     <color name="background_toast_error">#D92E4D</color>
+    <color name="pin_color">#3F4159</color>
 
 </resources>

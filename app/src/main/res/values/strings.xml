@@ -82,5 +82,15 @@
     <string name="dialog_password_requirements_symbols">Содержать неалфавитные символы «–», «_» и т.п.</string>
     <string name="dialog_password_recovery_new_password_save">Новый пароль сохранен</string>
     <string name="dialog_password_recovery_successful">Восстановление прошло успешно</string>
+    <string name="chat_change">Изм.</string>
+    <string name="chat_science_chat">НауЧат</string>
+    <string name="chat_search_chat">Поиск по чатам и людям</string>
+    <string name="chat_all">Все</string>
+    <string name="chat_groups">Группы</string>
+    <string name="chat_studies">Учеба</string>
+    <string name="chat_work">Работа</string>
+    <string name="chat_hidden">Скрытые</string>
+    <string name="chat_time">пт</string>
+    <string name="chat_count_of_message">17</string>
 
 </resources>
