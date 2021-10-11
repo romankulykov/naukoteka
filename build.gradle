@@ -39,6 +39,14 @@ allprojects {
     }
 }
 
+task getVersionCode {
+    doLast {
+        def version = "${getVersionMajor()}.${getVersionMinor()}.${getVersionPatch()}.${getVersionBuild()}"
+        //println(version)
+        return version
+    }
+}
+
 task incrementVersionCode {
     doLast {
         def propFile = new File("${project.projectDir}/version.properties")
