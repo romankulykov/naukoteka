@@ -83,6 +83,78 @@ android {
 
 apply plugin: "net.madeng.slack"
 
+
+ext {
+    slackWebHookUrl = 'https://hooks.slack.com/services/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'
+}
+
+task sendDeployReportToSlack {
+    doLast {
+        project.ext {
+            slack {
+                webhookUrl "$slackWebHookUrl"
+                message {
+                    text "test"
+                    /*attachment {
+                        if (apkMarketDeployError == null) {
+                            if (apkFabricDeployError == null) {
+                                title = "Get on Firebase app distribution"
+                                titleLink = "https://appdistribution.firebase.google.com/testerapps/1:611944487654:android:817630d544715414677927"
+                            }
+
+                            fallback = "$appName - new version is available"
+                            color = 'good'
+                            field {
+                                title = "App"
+                                value = appName
+                                shortValue = true
+                            }
+                            field {
+                                title = "Deploy status"
+                                value = "Success"
+                                shortValue = true
+                            }
+                            field {
+                                title = "Version"
+                                value = getCurrentVersionName(appDir)
+                                shortValue = true
+                            }
+                            field {
+                                title = "Build"
+                                value = getCurrentVersionCode()
+                                shortValue = true
+                            }
+                        } else {
+                            fallback = "$appName - error happened during deploy"
+                            color = 'danger'
+                            field {
+                                title = "App"
+                                value = appName
+                                shortValue = true
+                            }
+                            field {
+                                title = "Deploy status"
+                                value = "Failure"
+                                shortValue = true
+                            }
+                            field {
+                                title = "Error"
+                                value = apkMarketDeployError.message
+                            }
+                            field {
+                                title = "Cause"
+                                value = apkMarketDeployError.cause.message
+                            }
+                        }
+                    }*/
+                }
+            }
+        }
+    }
+}
+
+sendDeployReportToSlack.finalizedBy publishToSlack
+
 dependencies {
 
     implementation presentation.kotlin
