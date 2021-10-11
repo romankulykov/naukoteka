@@ -34,6 +34,9 @@ class CustomizedTextInput(context: Context, attrs: AttributeSet) : LinearLayout(
     private val binding =
         ViewCustomizedTextInputBinding.inflate(LayoutInflater.from(context), this, true)
 
+    var validFieldFocusListener: ((Boolean) -> Unit)? = null
+    var validFieldEditTextListener: ((Boolean) -> Unit)? = null
+
     init {
         KTP.openRootScope()
             .openSubScope(DI.APP_SCOPE)
@@ -62,21 +65,42 @@ class CustomizedTextInput(context: Context, attrs: AttributeSet) : LinearLayout(
                         TypeInput.TYPE_INPUT_EMAIL -> InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
                         TypeInput.TYPE_INPUT_TEXT -> InputType.TYPE_CLASS_TEXT
                     }
-                    binding.metField.inputType = textInputType
-                    binding.metField.doAfterTextChanged {
-                        if (typeInput == TypeInput.TYPE_INPUT_EMAIL) {
-                            binding.ivCheck.isVisible = validator.isValidEmail(it.toString())
+                    binding.metField.run {
+                        inputType = textInputType
+                        doAfterTextChanged {
+                            if (typeInput == TypeInput.TYPE_INPUT_EMAIL) {
+                                binding.ivCheck.isVisible = validator.isValidEmail(it.toString())
+                                if (validFieldEditTextListener != null) {
+                                    val isValid =
+                                        validator.isValidEmail(this@CustomizedTextInput.text())
+                                    showError(!isValid)
+                                    validFieldEditTextListener?.invoke(isValid)
+                                }
+                            }
+                            if (typeInput == TypeInput.TYPE_INPUT_PASSWORD) {
+                                binding.ivEye.isVisible = it.toString().isNotEmpty()
+                            }
                         }
-                        if (typeInput == TypeInput.TYPE_INPUT_PASSWORD) {
-                            binding.ivEye.isVisible = it.toString().isNotEmpty()
+                        onFocusChange { isFocused ->
+                            if (!isFocused && typeInput == TypeInput.TYPE_INPUT_EMAIL) {
+                                val isValid =
+                                    validator.isValidEmail(this@CustomizedTextInput.text())
+                                showError(!isValid)
+                                validFieldFocusListener?.invoke(isValid)
+                            }
                         }
-
                     }
                 }
             }
         }
         binding.ivEye.setOnClickListener { toggleEye() }
 
+    }
+
+    fun showIsChecked(isChecked: Boolean) {
+        binding.run {
+            ivCheck.isVisible = isChecked
+        }
     }
 
     fun showError(isError: Boolean) {
@@ -98,7 +122,7 @@ class CustomizedTextInput(context: Context, attrs: AttributeSet) : LinearLayout(
     }
 
     fun text() = binding.metField.text.toString()
-    fun setText(text : String) = binding.metField.setText(text)
+    fun setText(text: String) = binding.metField.setText(text)
 
     private fun toggleEye() {
         isOpenedEye = !isOpenedEye

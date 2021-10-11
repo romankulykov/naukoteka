@@ -7,9 +7,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.text.parseAsHtml
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import medved.studio.domain.entities.PasswordRequirementsEntity
 import medved.studio.pharmix.R
 import medved.studio.pharmix.databinding.FragmentPasswordRecoveryBinding
 import medved.studio.pharmix.global.base.BaseFragment
@@ -48,7 +48,12 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
             ivBack.setOnClickListener { onBackPressed() }
             passwordRecovery.run {
                 btnSend.setOnClickListener { presenter.recoveryPassword(ctiEmail.text()) }
-                ctiEmail.doAfterTextChange { checkValidField() }
+                ctiEmail.doAfterTextChange { checkValidEmail() }
+                ctiEmail.validFieldEditTextListener = { isValid ->
+                    ctiEmail.showError(!isValid)
+                    tvError.setText(R.string.error_email_format)
+                    tvError.isGone = isValid
+                }
             }
             passwordRecoveryNewPassword.run {
                 ctiNewPass.doAfterTextChange { checkValidFields() }
@@ -75,10 +80,9 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
         return true
     }
 
-    private fun checkValidField() {
+    private fun checkValidEmail() {
         contentView.passwordRecovery.run {
-            val email = ctiEmail.text()
-            presenter.isValidEmail(email)
+            presenter.isValidEmail(ctiEmail.text())
         }
     }
 
@@ -187,6 +191,13 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
             dialogView.findViewById<TextView>(R.id.tv_password_recovery_successful)
                 ?.setText(R.string.dialog_password_recovery_successful)
         }?.show()
+    }
+
+    override fun showErrorEmail(isValid: Boolean) {
+        contentView.passwordRecovery.ctiEmail.showError(!isValid)
+        contentView.passwordRecovery.tvError.setText(R.string.error_email_not_exist)
+        contentView.passwordRecovery.tvError.isGone = isValid
+        showButtonState(isValid)
     }
 
     override fun onDestroy() {

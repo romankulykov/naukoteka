@@ -2,6 +2,7 @@ package medved.studio.pharmix.ui.fragments.login
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import medved.studio.domain.repositories.auth.models.SocialType
 import medved.studio.pharmix.R
@@ -33,6 +34,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButt
         super.onViewCreated(view, savedInstanceState)
         contentView.run {
             tvRegistration.setOnClickListener { presenter.toRegistration() }
+            ctiEmail.validFieldFocusListener = { isValid -> showIsValidEmail(isValid) }
             ctiEmail.doAfterTextChange { checkValidFields() }
             ctiPass.doAfterTextChange { checkValidFields() }
             btnEnter.setOnClickListener { presenter.enter(ctiEmail.text(), ctiPass.text()) }
@@ -43,6 +45,11 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButt
             ibGoogle.setOnClickListener { presenter.authSocial(SocialType.GOOGLE) }
             tvForgetPassword.setOnClickListener { presenter.toPasswordRecovery() }
         }
+    }
+
+    override fun onPause() {
+        contentView.ctiEmail.validFieldFocusListener = null
+        super.onPause()
     }
 
     private fun checkValidFields() {
@@ -68,7 +75,13 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButt
         )
     }
 
+    private fun showIsValidEmail(isValid : Boolean){
+        contentView.tvError.setText(R.string.error_email_format)
+        contentView.tvError.isGone = isValid
+    }
+
     override fun showErrorCredentials(flag: Boolean) {
+        contentView.tvError.setText(R.string.error_incorrect_credentials)
         contentView.tvError.isVisible = flag
         contentView.btnEnter.isEnabled = !flag
     }

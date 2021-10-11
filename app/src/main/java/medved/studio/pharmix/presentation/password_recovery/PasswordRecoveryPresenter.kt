@@ -69,7 +69,11 @@ class PasswordRecoveryPresenter(
     }
 
     fun recoveryPassword(email: String) {
-        authInteractor.sendLetterToRecovery(email).await {
+        authInteractor.sendLetterToRecovery(email).await(onError = {
+            if (it is HttpException && it.statusCode == ServerApiError.InvalidUser) {
+                viewState.showErrorEmail(false)
+            } else onError(it)
+        }) {
             viewState.showTimer()
         }
     }

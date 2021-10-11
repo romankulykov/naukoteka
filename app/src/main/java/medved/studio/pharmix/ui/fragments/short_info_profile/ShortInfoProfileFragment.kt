@@ -12,6 +12,7 @@ import medved.studio.pharmix.presentation.short_info_profile.ShortInfoProfileVie
 import medved.studio.pharmix.utils.viewBinding
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
+import kotlin.random.Random
 
 class ShortInfoProfileFragment : BaseFragment(R.layout.fragment_short_info_profile),
     ShortInfoProfileView {
@@ -64,7 +65,10 @@ class ShortInfoProfileFragment : BaseFragment(R.layout.fragment_short_info_profi
     }
 
     override fun showNicknameAvailable(isAvailable: Boolean) {
-        contentView.tvErrorNickname.isGone = isAvailable
+        contentView.run {
+            tvErrorNickname.isGone = isAvailable
+            ctiLink.showIsChecked(isAvailable)
+        }
         checkValidFields()
     }
 
