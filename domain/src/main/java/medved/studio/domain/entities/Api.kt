@@ -34,6 +34,9 @@ enum class ServerApiError(val code: Int) {
     @SerializedName("1101")
     InvalidCredentials(1101),
 
+    @SerializedName("1102")
+    InvalidUser(1102),
+
     @SerializedName("1201")
     UserAlreadyExist(1201),
 

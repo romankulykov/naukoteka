@@ -79,6 +79,12 @@ class CustomizedTextInput(context: Context, attrs: AttributeSet) : LinearLayout(
 
     }
 
+    fun showIsChecked(isChecked : Boolean){
+        binding.run {
+            ivCheck.isVisible = isChecked
+        }
+    }
+
     fun showError(isError: Boolean) {
         binding.clEditText.updateLayoutParams<MarginLayoutParams> {
             if (isError) {

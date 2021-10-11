@@ -10,6 +10,7 @@
     <string name="error_incorrect_credentials">Не получается войти проверьте указанные данные</string>
     <string name="error_nickname_is_busy">Никнейм занят</string>
     <string name="error_password_policy">Пароль не соответствует ряду требований</string>
+    <string name="error_email_not_exist">Пользователь с указанным адресом электронной почты ранее не был зарегистрирован. Пожалуйста, проверьте корректность указанных данных.</string>
 
     <string name="next">Дальше</string>
     <string name="ready">Готово</string>
