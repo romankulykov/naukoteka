@@ -81,5 +81,9 @@
     <string name="dialog_password_requirements_symbols">Содержать неалфавитные символы «–», «_» и т.п.</string>
     <string name="dialog_password_recovery_new_password_save">Новый пароль сохранен</string>
     <string name="dialog_password_recovery_successful">Восстановление прошло успешно</string>
+    <string name="english">English</string>
+    <string name="arab">Арабский</string>
+    <string name="chinese">Китайский</string>
+    <string name="russian">Русский</string>
 
 </resources>

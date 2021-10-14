@@ -1,11 +1,15 @@
 package medved.studio.pharmix.ui.activities.main
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.ProgressBar
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.LocaleChangerAppCompatDelegate
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import com.franmontiel.localechanger.LocaleChanger
 import com.github.terrakok.cicerone.Navigator
 import com.github.terrakok.cicerone.NavigatorHolder
 import medved.studio.pharmix.R
@@ -146,6 +150,14 @@ class MainActivity : BaseActivity(), RouterProvider, MainView {
 
     override fun showRefreshLoading(show: Boolean) {
 
+    }
+
+    override fun getDelegate(): AppCompatDelegate {
+        return LocaleChangerAppCompatDelegate(super.getDelegate())
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(LocaleChanger.configureBaseContext(newBase))
     }
 
     override fun showInfoMessage(message: Int?) {
