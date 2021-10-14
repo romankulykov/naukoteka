@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">naukoteka</string>
+    <string name="login_email">بريد الالكتروني</string>
+    <string name="login_password">كلمه السر</string>
+    <string name="login_remember_me">تذكرنى</string>
+    <string name="login_forget_password">نسيت رقمك السري?</string>
+    <string name="login_enter">ليأتي</string>
+</resources>
