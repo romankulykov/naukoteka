@@ -8,4 +8,5 @@ import medved.studio.domain.interactors.user_profile.model.ShortInfoUi
 interface UserProfileRepository {
     fun setUser(shortInfoEntity: ShortInfoUi): Completable
     fun checkNickname(nickname: String): Observable<Boolean>
+    fun getProfileNickName(): Single<String>
 }

@@ -1,9 +1,8 @@
-package medved.studio.pharmix.presentation.login
+package medved.studio.pharmix.global.base
 
 import com.github.terrakok.cicerone.Router
 import medved.studio.domain.interactors.auth.AuthInteractor
 import medved.studio.domain.repositories.auth.models.SocialType
-import medved.studio.pharmix.global.base.BasePresenterImpl
 import medved.studio.pharmix.global.views.InformativeView
 import medved.studio.pharmix.global.views.LoadingView
 import medved.studio.pharmix.navigation.Screens

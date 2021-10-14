@@ -2,6 +2,7 @@ package medved.studio.domain.interactors.user_profile
 
 import io.reactivex.Completable
 import io.reactivex.Observable
+import io.reactivex.Single
 import medved.studio.domain.SchedulersProvider
 import medved.studio.domain.entities.HttpException
 import medved.studio.domain.entities.ServerApiError
@@ -15,15 +16,14 @@ class UserProfileInteractor(
     private val schedulers: SchedulersProvider,
 ) {
 
+    fun getProfileNickname(): Single<String> {
+        return userProfileRepository.getProfileNickName()
+            .subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
+    }
+
     fun setUser(shortInfoEntity: ShortInfoUi): Completable {
-        return userProfileRepository.checkNickname(shortInfoEntity.nickname)
-            .flatMapCompletable { isFree ->
-                if (isFree) {
-                    userProfileRepository.setUser(shortInfoEntity)
-                } else {
-                    throw UnsupportedOperationException("Nickname is not free")
-                }
-            }
+        return userProfileRepository.setUser(shortInfoEntity)
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
     }

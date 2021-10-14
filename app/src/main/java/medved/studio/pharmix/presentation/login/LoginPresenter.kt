@@ -4,15 +4,10 @@ import medved.studio.data.validator.FieldsValidator
 import medved.studio.domain.entities.HttpException
 import medved.studio.domain.entities.ServerApiError
 import medved.studio.domain.interactors.auth.AuthInteractor
-import medved.studio.domain.repositories.auth.models.SocialType
 import medved.studio.domain.utils.logging.ILogger
-import medved.studio.pharmix.global.base.BasePresenterImpl
+import medved.studio.pharmix.global.base.SocialLoginPresenter
 import medved.studio.pharmix.navigation.AppRouter
 import medved.studio.pharmix.navigation.Screens
-import medved.studio.pharmix.ui.AppConfigs
-import medved.studio.pharmix.ui.IntentKeys
-import medved.studio.pharmix.ui.custom.square_toast.SquareToast
-import medved.studio.pharmix.ui.custom.square_toast.ToastInfo
 import moxy.InjectViewState
 import toothpick.InjectConstructor
 

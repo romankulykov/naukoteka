@@ -6,7 +6,9 @@ import medved.studio.data.services.models.request.user_profile.NickNameCheckRequ
 import medved.studio.data.services.models.request.user_profile.UserProfileRequestDto
 import medved.studio.data.services.models.response.auth.MeReposnseDto
 import medved.studio.data.services.models.response.user_profile.CheckNickNameResponseDto
+import medved.studio.data.services.models.response.user_profile.UserProfileDto
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface UserProfileApiService {
@@ -17,6 +19,9 @@ interface UserProfileApiService {
         //@Header(" _nkthnt") _nkthnt: String? = null,
         @Body userProfileRequestDto: UserProfileRequestDto
     ): Single<String>
+
+    @GET("core/user_profile/info")
+    fun getUserInfo(): Single<UserProfileDto>
 
     @POST("core/user_profile/info/check-nickname-free")
     fun checkNickName(

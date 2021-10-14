@@ -1,7 +1,7 @@
 package medved.studio.pharmix.presentation.registration_first_step
 
 import medved.studio.domain.repositories.auth.models.SocialType
-import medved.studio.pharmix.presentation.login.SocialLoginView
+import medved.studio.pharmix.global.base.SocialLoginView
 import moxy.viewstate.strategy.AddToEndSingleStrategy
 import moxy.viewstate.strategy.StateStrategyType
 

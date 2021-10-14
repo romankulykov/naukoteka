@@ -20,12 +20,22 @@ class ShortInfoProfilePresenter(
 ) : BasePresenterImpl<ShortInfoProfileView>() {
 
     private var isAvailableNickname = false
+    private var defaultNickname: String? = null
 
     private val inputNicknameSubject = BehaviorSubject.create<String>()
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         startListenNicknameChanges()
+        //getUserProfileNickname()
+    }
+
+    private fun getUserProfileNickname() {
+        userProfileInteractor.getProfileNickname()
+            .await {
+                defaultNickname = it.replace("id","")
+                viewState.showDefaultNickname(defaultNickname!!)
+            }
     }
 
     private fun startListenNicknameChanges() {
@@ -38,18 +48,23 @@ class ShortInfoProfilePresenter(
             .connect()
     }
 
-    fun isValidFields(surname: String, name: String, patronymic: String, link: String) {
+    fun isValidFields(surname: String, name: String, patronymic: String, withoutPatronymic : Boolean, link: String) {
         viewState.showButtonState(
             fieldsValidator.isNotEmpty(surname) &&
                     fieldsValidator.isNotEmpty(name) &&
-                    fieldsValidator.isNotEmpty(patronymic) &&
+                    (withoutPatronymic || fieldsValidator.isNotEmpty(patronymic)) &&
                     fieldsValidator.isNotEmpty(link) &&
                     isAvailableNickname
         )
     }
 
     fun checkFreeNickname(nickname: String) {
-        inputNicknameSubject.onNext(nickname)
+        if (nickname == defaultNickname) {
+            isAvailableNickname = true
+            viewState.showNicknameAvailable(isAvailableNickname)
+        } else {
+            inputNicknameSubject.onNext(nickname)
+        }
     }
 
     fun fillProfile(shortInfoUi: ShortInfoUi) {

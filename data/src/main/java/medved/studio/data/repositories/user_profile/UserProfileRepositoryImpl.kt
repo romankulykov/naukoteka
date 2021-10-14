@@ -9,7 +9,6 @@ import medved.studio.data.services.models.request.user_profile.NickNameCheckRequ
 import medved.studio.domain.interactors.user_profile.model.ShortInfoUi
 import medved.studio.domain.repositories.user_profile.UserProfileRepository
 import toothpick.InjectConstructor
-import java.util.concurrent.TimeUnit
 
 @InjectConstructor
 class UserProfileRepositoryImpl(
@@ -18,6 +17,11 @@ class UserProfileRepositoryImpl(
     private val userUUIDCache: UserUUIDCache
 ) : UserProfileRepository {
 
+
+    override fun getProfileNickName(): Single<String> {
+        return profileApiService.getUserInfo()
+            .map { it.nickname }
+    }
 
     override fun setUser(shortInfoEntity: ShortInfoUi): Completable {
         return profileApiService.setUser(

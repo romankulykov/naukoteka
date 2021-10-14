@@ -5,10 +5,9 @@ import medved.studio.domain.interactors.auth.AuthInteractor
 import medved.studio.pharmix.di.DI
 import medved.studio.pharmix.di.modules.RegistrationModule
 import medved.studio.pharmix.di.modules.SimpleRegistration
-import medved.studio.pharmix.global.base.BasePresenterImpl
 import medved.studio.pharmix.navigation.AppRouter
 import medved.studio.pharmix.navigation.Screens
-import medved.studio.pharmix.presentation.login.SocialLoginPresenter
+import medved.studio.pharmix.global.base.SocialLoginPresenter
 import moxy.InjectViewState
 import toothpick.InjectConstructor
 import toothpick.ktp.KTP
