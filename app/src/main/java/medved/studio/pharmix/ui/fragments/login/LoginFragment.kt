@@ -143,6 +143,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButt
             }
             tvLanguage.setTextColor(resources.getColor(R.color.white))
             with(child) {
+
                 findViewById<TextView>(R.id.tv_english).apply {
                 }.setOnClickListener {
                     presenter.onLanguageChange(EN_LOCALE)
@@ -177,6 +178,9 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButt
             ivArrowDown.isVisible = true
             ivArrowUp.isVisible = false
         }
+    }
 
+    override fun showLanguages(locales: List<CustomLanguage>) {
+        
     }
 }
