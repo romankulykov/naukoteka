@@ -1,6 +1,7 @@
 package medved.studio.pharmix.presentation.login
 
 import android.app.Activity
+import android.content.Intent
 import com.franmontiel.localechanger.LocaleChanger
 import com.franmontiel.localechanger.utils.ActivityRecreationHelper
 import medved.studio.data.validator.FieldsValidator
@@ -52,7 +53,9 @@ class LoginPresenter(
         viewState.showLoading(show = true)
         LocaleChanger.resetLocale()
         LocaleChanger.setLocale(locale)
-        ActivityRecreationHelper.recreate(activity, true)
+        activity?.finishAffinity()
+        activity?.startActivity(Intent(activity, MainActivity::class.java))
+        //ActivityRecreationHelper.recreate(activity, false)
     }
 
     fun isValidFields(email: String, password: String) {

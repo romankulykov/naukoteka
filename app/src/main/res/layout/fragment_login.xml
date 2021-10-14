@@ -47,7 +47,7 @@
         android:fontFamily="@font/golos_text_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="@string/russian" />
+        android:text="Russian" />
 
     <ImageView
         android:id="@+id/iv_illustration"

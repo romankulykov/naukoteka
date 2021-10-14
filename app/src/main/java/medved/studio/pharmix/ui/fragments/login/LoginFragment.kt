@@ -147,24 +147,18 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButt
                 findViewById<TextView>(R.id.tv_english).apply {
                 }.setOnClickListener {
                     presenter.onLanguageChange(EN_LOCALE)
-                    language = getString(R.string.english)
-                    tvLanguage.setText(language)
                     dismiss()
                     visibilityOfArrows()
                 }
                 findViewById<TextView>(R.id.tv_arab).apply {
                 }.setOnClickListener {
                     presenter.onLanguageChange(AR_LOCALE)
-                    language = getString(R.string.arab)
-                    tvLanguage.setText(language)
                     dismiss()
                     visibilityOfArrows()
                 }
                 findViewById<TextView>(R.id.tv_russian).apply {
                 }.setOnClickListener {
                     presenter.onLanguageChange(RU_LOCALE)
-                    language = getString(R.string.russian)
-                    tvLanguage.setText(language)
                     dismiss()
                     visibilityOfArrows()
                 }
