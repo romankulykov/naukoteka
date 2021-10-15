@@ -62,15 +62,14 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButt
             tvForgetPassword.setOnClickListener { presenter.toPasswordRecovery() }
             ivArrowDown.setOnClickListener {
                 showPopupMenu(it)
-                ivArrowUp.isVisible = true
-                ivArrowDown.isVisible = false
+                ivArrowDown.setImageResource(R.drawable.ic_arrow_up)
             }
             tvLanguage.run {
-                text = SUPPORTED_LOCALES_CUSTOM.find { LocaleChanger.getLocale() == it.locale }?.languageName
+                text =
+                    SUPPORTED_LOCALES_CUSTOM.find { LocaleChanger.getLocale() == it.locale }?.languageName
                 setOnClickListener {
                     showPopupMenu(it)
-                    ivArrowUp.isVisible = true
-                    ivArrowDown.isVisible = false
+                    ivArrowDown.setImageResource(R.drawable.ic_arrow_up)
                 }
             }
         }
@@ -143,7 +142,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButt
             isOutsideTouchable = true
             showAsDropDown(v)
             setOnDismissListener {
-                visibilityOfArrows()
+                ivArrowDown.setImageResource(R.drawable.ic_arrow_down)
                 tvLanguage.setTextColor(resources.getColor(R.color.text_inactive))
             }
             tvLanguage.setTextColor(resources.getColor(R.color.white))
@@ -153,33 +152,23 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButt
                 }.setOnClickListener {
                     presenter.onLanguageChange(EN_LOCALE)
                     dismiss()
-                    visibilityOfArrows()
                 }
                 findViewById<TextView>(R.id.tv_arab).apply {
                 }.setOnClickListener {
                     presenter.onLanguageChange(AR_LOCALE)
                     dismiss()
-                    visibilityOfArrows()
                 }
                 findViewById<TextView>(R.id.tv_russian).apply {
                 }.setOnClickListener {
                     presenter.onLanguageChange(RU_LOCALE)
                     dismiss()
-                    visibilityOfArrows()
                 }
             }
         }
         return popupWindow
     }
 
-    fun visibilityOfArrows() {
-        contentView.run {
-            ivArrowDown.isVisible = true
-            ivArrowUp.isVisible = false
-        }
-    }
-
     override fun showLanguages(locales: List<CustomLanguage>) {
-        
+
     }
 }
