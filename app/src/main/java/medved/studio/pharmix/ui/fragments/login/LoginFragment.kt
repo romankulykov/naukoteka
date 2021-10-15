@@ -11,12 +11,14 @@ import android.widget.PopupWindow
 import android.widget.TextView
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import com.franmontiel.localechanger.LocaleChanger
 import medved.studio.domain.repositories.auth.models.SocialType
 import medved.studio.pharmix.R
 import medved.studio.pharmix.databinding.FragmentLoginBinding
 import medved.studio.pharmix.ext.data.AR_LOCALE
 import medved.studio.pharmix.ext.data.EN_LOCALE
 import medved.studio.pharmix.ext.data.RU_LOCALE
+import medved.studio.pharmix.ext.data.SUPPORTED_LOCALES_CUSTOM
 import medved.studio.pharmix.global.base.BaseFragment
 import medved.studio.pharmix.presentation.login.LoginPresenter
 import medved.studio.pharmix.presentation.login.LoginView
@@ -63,10 +65,13 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButt
                 ivArrowUp.isVisible = true
                 ivArrowDown.isVisible = false
             }
-            tvLanguage.setOnClickListener {
-                showPopupMenu(it)
-                ivArrowUp.isVisible = true
-                ivArrowDown.isVisible = false
+            tvLanguage.run {
+                text = SUPPORTED_LOCALES_CUSTOM.find { LocaleChanger.getLocale() == it.locale }?.languageName
+                setOnClickListener {
+                    showPopupMenu(it)
+                    ivArrowUp.isVisible = true
+                    ivArrowDown.isVisible = false
+                }
             }
         }
     }

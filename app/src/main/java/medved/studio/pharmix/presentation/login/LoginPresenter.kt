@@ -50,12 +50,10 @@ class LoginPresenter(
     }
 
     fun onLanguageChange(locale: Locale) {
-        viewState.showLoading(show = true)
         LocaleChanger.resetLocale()
         LocaleChanger.setLocale(locale)
         activity?.finishAffinity()
         activity?.startActivity(Intent(activity, MainActivity::class.java))
-        //ActivityRecreationHelper.recreate(activity, false)
     }
 
     fun isValidFields(email: String, password: String) {
