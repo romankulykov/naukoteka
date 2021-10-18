@@ -72,7 +72,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <medved.studio.pharmix.ui.custom.HtmlTextView
+    <uddug.com.naukoteka.ui.custom.HtmlTextView
         android:id="@+id/tv_password_requirements"
         style="@style/TextViewStyle.Usual"
         android:layout_width="0dp"
@@ -84,7 +84,7 @@
         app:layout_constraintStart_toStartOf="@id/tv_new_password"
         app:layout_constraintTop_toBottomOf="@id/tv_new_password" />
 
-    <medved.studio.pharmix.ui.widgets.CustomizedTextInput
+    <uddug.com.naukoteka.ui.widgets.CustomizedTextInput
         android:id="@+id/cti_pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_password_requirements"
         app:typeInput="type_input_password" />
 
-    <medved.studio.pharmix.ui.widgets.CustomizedTextInput
+    <uddug.com.naukoteka.ui.widgets.CustomizedTextInput
         android:id="@+id/cti_pass_confirmation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

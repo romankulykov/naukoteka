@@ -105,7 +105,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_address_for_registration"
         tools:visibility="visible" />
 
-    <medved.studio.pharmix.ui.widgets.CustomizedTextInput
+    <uddug.com.naukoteka.ui.widgets.CustomizedTextInput
         android:id="@+id/cti_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -182,7 +182,7 @@
         app:layout_constraintStart_toEndOf="@+id/ib_ok"
         app:layout_constraintTop_toBottomOf="@id/btn_registration_next" />
 
-    <medved.studio.pharmix.ui.custom.HtmlTextView
+    <uddug.com.naukoteka.ui.custom.HtmlTextView
         android:id="@+id/tv_agreement"
         style="@style/TextViewStyle"
         android:layout_width="wrap_content"

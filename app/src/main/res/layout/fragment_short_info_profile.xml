@@ -61,7 +61,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_minimum_information" />
 
-        <medved.studio.pharmix.ui.widgets.CustomizedTextInput
+        <uddug.com.naukoteka.ui.widgets.CustomizedTextInput
             android:id="@+id/cti_surname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_name"
             app:typeInput="type_input_text" />
 
-        <medved.studio.pharmix.ui.widgets.CustomizedTextInput
+        <uddug.com.naukoteka.ui.widgets.CustomizedTextInput
             android:id="@+id/cti_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
             app:layout_constraintTop_toBottomOf="@id/cti_surname"
             app:typeInput="type_input_text" />
 
-        <medved.studio.pharmix.ui.widgets.CustomizedTextInput
+        <uddug.com.naukoteka.ui.widgets.CustomizedTextInput
             android:id="@+id/cti_patronymic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -138,7 +138,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_profile_link" />
 
-        <medved.studio.pharmix.ui.widgets.CustomizedTextInput
+        <uddug.com.naukoteka.ui.widgets.CustomizedTextInput
             android:id="@+id/cti_link"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

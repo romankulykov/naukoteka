@@ -97,7 +97,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.37" />
 
-    <medved.studio.pharmix.ui.widgets.CustomizedTextInput
+    <uddug.com.naukoteka.ui.widgets.CustomizedTextInput
         android:id="@+id/cti_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
         app:layout_constraintTop_toBottomOf="@id/fields_guideline"
         app:typeInput="type_input_email" />
 
-    <medved.studio.pharmix.ui.widgets.CustomizedTextInput
+    <uddug.com.naukoteka.ui.widgets.CustomizedTextInput
         android:id="@+id/cti_pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -221,7 +221,7 @@
         app:layout_constraintStart_toEndOf="@+id/ib_ok"
         app:layout_constraintTop_toBottomOf="@id/social_guideline" />
 
-    <medved.studio.pharmix.ui.custom.HtmlTextView
+    <uddug.com.naukoteka.ui.custom.HtmlTextView
         android:id="@+id/tv_registration"
         style="@style/TextViewStyle"
         android:layout_width="0dp"
