@@ -1,4 +1,4 @@
-package medved.studio.pharmix.presentation.chat_list
+package medved.studio.pharmix.presentation.chats
 
 import medved.studio.pharmix.global.base.BasePresenterImpl
 import medved.studio.pharmix.navigation.AppRouter
@@ -7,11 +7,7 @@ import toothpick.InjectConstructor
 
 @InjectConstructor
 @InjectViewState
-class ChatListPresenter(val router: AppRouter) : BasePresenterImpl<ChatListView>() {
-
-    override fun onFirstViewAttach() {
-        super.onFirstViewAttach()
-    }
+class ChatsPresenter(val router: AppRouter) : BasePresenterImpl<ChatsView>() {
 
     fun exit() {
         router.exit()

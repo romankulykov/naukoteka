@@ -1,31 +1,39 @@
-package medved.studio.pharmix.ui.fragments.chat_list
+package medved.studio.pharmix.ui.fragments.chats
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import medved.studio.domain.entities.ChatListEntity
 import medved.studio.pharmix.R
-import medved.studio.pharmix.databinding.FragmentChatListBinding
+import medved.studio.pharmix.databinding.FragmentChatsBinding
 import medved.studio.pharmix.global.base.BaseFragment
-import medved.studio.pharmix.presentation.chat_list.ChatListPresenter
-import medved.studio.pharmix.presentation.chat_list.ChatListView
+import medved.studio.pharmix.presentation.chats.ChatsPresenter
+import medved.studio.pharmix.presentation.chats.ChatsView
 import medved.studio.pharmix.utils.BackButtonListener
 import medved.studio.pharmix.utils.viewBinding
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 
-class ChatListFragment : BaseFragment(R.layout.fragment_chat_list),
-    ChatListView, BackButtonListener {
+class ChatsFragment : BaseFragment(R.layout.fragment_chats),
+    ChatsView, BackButtonListener {
 
-    override val contentView by viewBinding(FragmentChatListBinding::bind)
+    override val contentView by viewBinding(FragmentChatsBinding::bind)
 
     @InjectPresenter
-    lateinit var presenter: ChatListPresenter
+    lateinit var presenter: ChatsPresenter
 
     @ProvidePresenter
-    fun providePresenter(): ChatListPresenter {
-        return getScope().getInstance(ChatListPresenter::class.java)
+    fun providePresenter(): ChatsPresenter {
+        return getScope().getInstance(ChatsPresenter::class.java)
     }
 
+    companion object {
+        private const val KEY_TITLE = "ChatsFragment.KEY_TITLE"
+
+        fun newInstance(titlesList: ArrayList<Int>?) = ChatsFragment().apply {
+            arguments = bundleOf().apply { putIntegerArrayList(KEY_TITLE, titlesList) }
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -42,7 +50,7 @@ class ChatListFragment : BaseFragment(R.layout.fragment_chat_list),
             ChatListEntity(R.string.contact_name_10, R.string.text_message_10),
         )
 
-        contentView.rvChatList.adapter = ChatListAdapter().apply { setItems(listOfChatList) }
+        contentView.rvChatList.adapter = ChatsAdapter().apply { setItems(listOfChatList) }
 
     }
 

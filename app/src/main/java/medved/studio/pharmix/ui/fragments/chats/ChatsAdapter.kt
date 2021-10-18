@@ -1,4 +1,4 @@
-package medved.studio.pharmix.ui.fragments.chat_list
+package medved.studio.pharmix.ui.fragments.chats
 
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -9,7 +9,7 @@ import medved.studio.pharmix.databinding.ListItemChatBinding
 import medved.studio.pharmix.global.base.BaseAdapter
 import medved.studio.pharmix.global.base.BaseViewHolder
 
-class ChatListAdapter : BaseAdapter<ChatListEntity, ChatListAdapter.ViewHolder>() {
+class ChatsAdapter : BaseAdapter<ChatListEntity, ChatsAdapter.ViewHolder>() {
 
     override fun newViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(R.layout.list_item_chat, parent)

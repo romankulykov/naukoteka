@@ -4,7 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import com.github.terrakok.cicerone.androidx.ActivityScreen
 import com.github.terrakok.cicerone.androidx.FragmentScreen
-import medved.studio.pharmix.ui.fragments.chat.ChatFragment
+import medved.studio.pharmix.ui.fragments.chats_detail.ChatsDetailFragment
 import medved.studio.pharmix.ui.fragments.tutorial.TutorialFragment
 import medved.studio.pharmix.ui.fragments.login.LoginFragment
 import medved.studio.pharmix.ui.fragments.password_recovery.PasswordRecoveryFragment
@@ -64,5 +64,6 @@ object Screens {
     fun SignedUpFinished() =
         FragmentScreen(SIGNED_UP) { SignedUpFinishedFragment() }
 
-    fun Chat() = FragmentScreen(CHAT) { ChatFragment() }
+    fun Chat() =
+        FragmentScreen(CHAT) { ChatsDetailFragment() }
 }
