@@ -1,0 +1,25 @@
+package uddug.com.data
+
+import uddug.com.data.cache.cookies.CookiesCache
+import okhttp3.Cookie
+import okhttp3.CookieJar
+import okhttp3.HttpUrl
+import toothpick.InjectConstructor
+
+@InjectConstructor
+class NaukotekaCookieJar(private val cookiesCache: CookiesCache) : CookieJar {
+
+    private var cookies: List<Cookie>? = null
+
+    override fun loadForRequest(url: HttpUrl): List<Cookie> {
+        if (cookies != null) {
+            return cookies?.filter { it.value().isNotEmpty() }!!
+        }
+        return listOf()
+    }
+
+    override fun saveFromResponse(url: HttpUrl, cookies: List<Cookie>) {
+        this.cookies = cookies
+        cookiesCache.entity = cookies.find { it.value().isNotEmpty() }?.value().toString()
+    }
+}
