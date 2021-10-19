@@ -2,6 +2,7 @@ package uddug.com.naukoteka.ui
 
 import uddug.com.domain.entities.PasswordRequirementsEntity
 import uddug.com.domain.repositories.auth.models.SocialType
+import uddug.com.naukoteka.BuildConfig
 import uddug.com.naukoteka.R
 
 object AppConfigs {
@@ -10,7 +11,7 @@ object AppConfigs {
         "https://stage.naukotheka.ru/api/a/oauth2/authorize/nkt?idp=${socialType.raw}&redirect_uri=${redirectUrl}"
 
     const val SOCIAL_LOGIN_ENDPOINT = "login-actions/social-login"
-    const val TIMEOUT_TO_RESEND = 120
+    val TIMEOUT_TO_RESEND = if (BuildConfig.DEBUG) 10 else 120
 
     fun getPasswordRequirements() = listOf(
         PasswordRequirementsEntity(R.string.dialog_password_requirements_count_of_symbols),

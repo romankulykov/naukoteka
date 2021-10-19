@@ -56,18 +56,12 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButt
             ibMail.setOnClickListener { presenter.authSocial(SocialType.MAIL_RU) }
             ibGoogle.setOnClickListener { presenter.authSocial(SocialType.GOOGLE) }
             tvForgetPassword.setOnClickListener { presenter.toPasswordRecovery() }
-            ivArrowDown.setOnClickListener {
+            llLanguage.setOnClickListener {
                 showPopupMenu(it)
                 ivArrowDown.setImageResource(R.drawable.ic_arrow_up)
             }
-            tvLanguage.run {
-                text =
-                    SUPPORTED_LOCALES_CUSTOM.find { LocaleChanger.getLocale() == it.locale }?.languageName
-                setOnClickListener {
-                    showPopupMenu(it)
-                    ivArrowDown.setImageResource(R.drawable.ic_arrow_up)
-                }
-            }
+            tvLanguage.text =
+                SUPPORTED_LOCALES_CUSTOM.find { LocaleChanger.getLocale() == it.locale }?.languageName
         }
     }
 
