@@ -71,7 +71,7 @@
   <string name="dialog_password_recovery_cancel_no">No</string>
   <string name="dialog_password_recovery_cancel_yes">Yes</string>
   <string name="are_you_sure_want_to_interrupt_the_password_recovery">Do you really want abort the process password recovery?</string>
-  <string name="dialog_password_requirements_accessibly"></string>
+  <string name="dialog_password_requirements_accessibly">Got it</string>
   <string name="dialog_password_requirements_count_of_symbols">Password must consist of 8 or more characters of the Latin alphabet; 
 Digits;</string>
   <string name="dialog_password_requirements_capital_letters">Contain uppercase and lowercase letters;</string>
