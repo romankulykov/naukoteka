@@ -51,7 +51,7 @@
   <string name="short_info_profile_button_complete_registration">Complete registration</string>
   <string name="password_recovery">Password recovery</string>
   <string name="password_recovery_send_link">We have sent a link to the email address you provided. Please check your mail and click on the link in the letter</string>
-  <string name="password_recovery_send"></string>
+  <string name="password_recovery_send">Send</string>
   <string name="password_recovery_verification_send_link"></string>
   <string name="password_recovery_verification_not_receive_letter"></string>
   <string name="password_recovery_verification_send_again">Send again</string>
