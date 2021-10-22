@@ -56,7 +56,7 @@
     <string name="password_recovery_verification_not_receive_letter">Did not get the email?</string>
     <string name="password_recovery_verification_send_again">&lt;font color=#2E83D9&gt;Send again&lt;/font&gt; &lt;font color=#8083A0&gt;%s&lt;/font&gt;</string>
     <string name="password_recovery_support">&lt;font color=#8083A0&gt;Need help?&lt;/font&gt; &lt;font color=#2E83D9&gt;Contact support&lt;/font&gt;</string>
-    <string name="password_recovery_requirements">Now come up with a strong new password. It must meet a number of our requirements.</string>
+    <string name="password_recovery_requirements">&lt;font color=#FFFFFFFF&gt;Now come up with a strong new &lt;br&gt; password. It must meet a number &lt;br&gt; of our&lt;/font&gt; &lt;font color=#2E83D9&gt;requirements&lt;/font&gt;&lt;font color=#FFFFFFFF&gt;.&lt;/font&gt;</string>
     <string name="password_recovery_new_pass">New password</string>
     <string name="password_recovery_new_pass_confirmation">Repeat new password</string>
     <string name="password_recovery_save_password">Save password</string>
