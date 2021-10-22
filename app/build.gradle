@@ -103,6 +103,8 @@ dependencies {
 
     implementation ui.gmsPlayServicesAuth
 
+    implementation ui.chatkit
+
     implementation presentation.moxy
     implementation presentation.moxyAndroid
     implementation presentation.moxyKtx

@@ -23,6 +23,12 @@
 
     <color name="object_inactive_2">#4A4C67</color>
 
+    <color name="message_fon_black">#3E4057</color>
+
+    <color name="blue_grey_900">#14181B</color>
+
+    <color name="button_inactive_color">#FAEC3E</color>
+
     <color name="transparent">#00000000</color>
     <color name="manatee">#888A94</color>
     <color name="mine_shaft">#333333</color>

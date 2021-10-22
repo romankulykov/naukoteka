@@ -112,5 +112,8 @@
     <string name="text_message_8">You are welcome!</string>
     <string name="text_message_9">Какие планы у тебя есть на сегодня?</string>
     <string name="text_message_10">Сколько у нас завтра уроков?</string>
+    <string name="graduate_work">Дипломная работа</string>
+    <string name="chat_count_people">18 участников</string>
+    <string name="message">Сообщение</string>
 
 </resources>
