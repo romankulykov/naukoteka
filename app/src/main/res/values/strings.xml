@@ -10,7 +10,7 @@
     <string name="error_nickname_is_busy"></string>
     <string name="error_password_policy"></string>
     <string name="error_email_not_exist">The user with the specified email address has not previously been registered. Please check the correctness of the specified data.</string>
-    <string name="error_email_format"></string>
+    <string name="error_email_format">Email input error</string>
     <string name="next">Next</string>
     <string name="ready">Done</string>
     <string name="the_best_scientific_works">The best scientific papers in one place</string>
