@@ -33,7 +33,7 @@
     <string name="registration_error">The specified password pair does not match. Check the entered data and try again</string>
     <string name="registration_confirmation">Confirmation of registration</string>
     <string name="registration_checking_mail">Check your email, we have sent you an email with a link</string>
-    <string name="registration_send_letter">Didn\'t get the email? Check your spam folder or send the email again</string>
+    <string name="registration_send_letter">&lt;font color=#8083A0&gt;Didn\'t get the email? Check your folder &amp;quot;spam&amp;quot; &lt;br&gt;or&lt;/font&gt; &lt;font color=#2E83D9&gt;send the email again&lt;/font&gt; &lt;font color=#8083A0&gt;%s&lt;/font&gt;</string>
     <string name="enter_has_successfully_passed"></string>
     <string name="signed_up_registered_successfully">Complete registration</string>
     <string name="signed_up_fill_in_the_form">Upload your photo and fill out a short questionnaire about your education, career and interests</string>
