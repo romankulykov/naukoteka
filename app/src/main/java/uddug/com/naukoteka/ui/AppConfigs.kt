@@ -7,10 +7,13 @@ import uddug.com.naukoteka.R
 
 object AppConfigs {
 
-    fun authSocialUrl(socialType: SocialType, redirectUrl: String) =
-        "https://stage.naukotheka.ru/api/a/oauth2/authorize/nkt?idp=${socialType.raw}&redirect_uri=${redirectUrl}"
+    fun authSocialUrl(socialType: SocialType) =
+        "https://stage.naukotheka.ru/api/a/oauth2/authorize/nkt?idp=${socialType.raw}&redirect_uri=${redirectSocialUrl(socialType)}"
+
+    fun redirectSocialUrl(socialType: SocialType) = "https://stage.naukotheka.ru/$SOCIAL_LOGIN_ENDPOINT?social_type=${socialType.raw}"
 
     const val SOCIAL_LOGIN_ENDPOINT = "login-actions/social-login"
+
     val TIMEOUT_TO_RESEND = if (BuildConfig.DEBUG) 10 else 120
 
     fun getPasswordRequirements() = listOf(
