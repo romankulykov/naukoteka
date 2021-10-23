@@ -44,6 +44,7 @@ class WebViewAuthFragment : BaseFragment(R.layout.fragment_web_view), BackButton
                 loadUrl(requiredUrl!!)
                 settings.javaScriptEnabled = true
                 settings.domStorageEnabled = true
+                settings.userAgentString = "Chrome/56.0.0.0 Mobile";
                 settings.setSupportMultipleWindows(true)
                 setAcceptThirdPartyCookies(this)
                 webViewClient = object : WebViewClient() {
