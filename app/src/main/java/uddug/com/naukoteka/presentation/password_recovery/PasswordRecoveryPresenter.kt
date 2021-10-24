@@ -65,7 +65,7 @@ class PasswordRecoveryPresenter(
     }
 
     fun toAuthorization() {
-        router.navigateTo(Screens.Login())
+        router.backTo(Screens.Login())
     }
 
     fun recoveryPassword(email: String) {
