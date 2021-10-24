@@ -66,7 +66,7 @@ class LoginPresenter(
         authInteractor.login(email, pass)
             .await(onError = {
                 if (it is HttpException && it.statusCode == ServerApiError.InvalidCredentials) {
-                    viewState.showErrorCredentials(true)
+                    viewState.showErrorCredentials()
                 } else onError(it)
             }, onComplete = { viewState.showSuccessLogin() })
     }

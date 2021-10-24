@@ -95,17 +95,19 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButt
 
     private fun showIsValidEmail(isValid: Boolean){
         contentView.tvError.setText(R.string.error_email_format)
-        contentView.tvError.isGone = isValid
+        val needToHideError = isValid || contentView.ctiEmail.text().isEmpty()
+        contentView.tvError.isGone = needToHideError
+        contentView.ctiEmail.showError(!needToHideError)
     }
 
-    override fun showErrorCredentials(flag: Boolean) {
+    override fun showErrorCredentials() {
         showMessage(
             ToastInfo(
                 text = getString(R.string.error_incorrect_credentials),
                 type = SquareToast.Type.ERROR
             )
         )
-        contentView.btnEnter.isEnabled = !flag
+        contentView.btnEnter.isEnabled = false
     }
 
     override fun showSocialTypes(socialTypes: List<SocialType>) {
