@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import com.github.terrakok.cicerone.androidx.ActivityScreen
 import com.github.terrakok.cicerone.androidx.FragmentScreen
+import uddug.com.naukoteka.ui.fragments.chat_detail.ChatDetailFragment
 import uddug.com.naukoteka.ui.fragments.chats_detail.ChatsDetailFragment
 import uddug.com.naukoteka.ui.fragments.tutorial.TutorialFragment
 import uddug.com.naukoteka.ui.fragments.login.LoginFragment
@@ -32,12 +33,15 @@ object Screens {
     const val SHORT_INFO_PROFILE = "shortInfoProfileFragment"
     const val SIGNED_UP = "signedUpFragment"
     const val CHAT = "chatFragment"
+    const val CHAT_DETAIL = "chatDetailFragment"
 
 
     fun Splash() = FragmentScreen(SPLASH_SCREEN) { SplashFragment() }
     fun Tutorial() = FragmentScreen(TUTORIAL_SCREEN) { TutorialFragment() }
 
     fun Login() = FragmentScreen(LOGIN) { LoginFragment() }
+
+    fun ChatDetail() = FragmentScreen(CHAT_DETAIL) { ChatDetailFragment() }
 
     fun RegistrationFirstStep() =
         FragmentScreen(REGISTRATION_FIRST_STEP) { RegistrationFirstStepFragment() }
