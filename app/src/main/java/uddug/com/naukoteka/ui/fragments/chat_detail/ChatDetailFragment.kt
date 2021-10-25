@@ -41,7 +41,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
     var imageLoader: ImageLoader? = null
 
     private var selectionCount = 0
-    private var lastLoadedDate: Date? = null
+    private var lastLoadedDate: Date? = Date()
 
     private var holderPayload: Payload? = null
 
@@ -59,6 +59,8 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        contentView.input.setInputListener(this)
+        contentView.input.setAttachmentsListener(this)
         initAdapter()
         imageLoader = ImageLoader { imageView: ImageView?, url: String?, payload: Any? ->
             if (imageView != null) {

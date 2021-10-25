@@ -33,7 +33,7 @@ ext {
             cicerone               : "com.github.terrakok:cicerone:7.1",
             dotsIndicator          : 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2',
             maskedEditText         : 'ru.egslava:MaskedEditText:1.0.5',
-            chatkit                : "com.github.stfalcon:chatkit:0.3.3",
+            chatkit                : 'com.github.stfalcon-studio:Chatkit:0.4.1',
             keyboardVisibility     : 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC3',
 
     ]

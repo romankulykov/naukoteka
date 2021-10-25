@@ -9,7 +9,7 @@ class Message : IMessage,
     MessageContentType {
     private var id: String? = null
     private var text: String? = null
-    private var createdAt: Date? = null
+    private var createdAt: Date? = Date()
     private var user: User? = null
     private var image: Image? = null
     private var voice: Voice? = null
