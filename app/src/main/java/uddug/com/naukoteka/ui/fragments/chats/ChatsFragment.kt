@@ -50,7 +50,8 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats),
             ChatListEntity(R.string.contact_name_10, R.string.text_message_10),
         )
 
-        contentView.rvChatList.adapter = ChatsAdapter().apply { setItems(listOfChatList) }
+        contentView.rvChatList.adapter =
+            ChatsAdapter(presenter::onChatClick).apply { setItems(listOfChatList) }
 
     }
 

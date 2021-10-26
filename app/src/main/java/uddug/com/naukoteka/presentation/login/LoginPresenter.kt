@@ -17,7 +17,7 @@ class LoginPresenter(
     override val authInteractor: AuthInteractor,
     private val fieldsValidator: FieldsValidator,
     override val router: AppRouter,
-    private val logger : ILogger
+    private val logger: ILogger
 ) : SocialLoginPresenter<LoginView>() {
 
 
@@ -50,7 +50,7 @@ class LoginPresenter(
 
     fun toPasswordRecovery() {
         logger.debug("click toPasswordRecovery")
-        router.navigateTo(Screens.ChatDetail())
+        router.navigateTo(Screens.Chat())
     }
 
     fun exit() {

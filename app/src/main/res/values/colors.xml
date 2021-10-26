@@ -37,5 +37,9 @@
     <color name="background_toast_success">#63AA55</color>
     <color name="background_toast_error">#D92E4D</color>
     <color name="pin_color">#3F4159</color>
+    
+    <color name="name_message_color">#83BAF2</color>
+    
+    <color name="text_message_blue">#9CCDFF</color>
 
 </resources>

@@ -17,7 +17,7 @@
             android:id="@+id/iv_arrow_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="17dp"
+            android:padding="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -67,8 +67,9 @@
             android:id="@+id/iv_call"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="26dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:padding="10dp"
             android:src="@drawable/ic_call1"
             app:layout_constraintStart_toEndOf="@id/ll_chat_name"
             app:layout_constraintTop_toTopOf="parent" />
@@ -77,8 +78,9 @@
             android:id="@+id/iv_video_chat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="21dp"
+            android:layout_marginStart="11dp"
             android:layout_marginTop="8dp"
+            android:padding="10dp"
             android:src="@drawable/ic_video_chat"
             app:layout_constraintStart_toEndOf="@id/iv_call"
             app:layout_constraintTop_toTopOf="parent" />
@@ -87,8 +89,9 @@
             android:id="@+id/iv_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="22dp"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="8dp"
+            android:padding="10dp"
             android:src="@drawable/ic_menu"
             app:layout_constraintStart_toEndOf="@id/iv_video_chat"
             app:layout_constraintTop_toTopOf="parent" />
@@ -118,30 +121,44 @@
                 app:outcomingTextSize="14sp"
                 app:textAutoLink="all" />
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/llInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:orientation="vertical">
+                android:layout_alignParentBottom="true">
 
                 <com.stfalcon.chatkit.messages.MessageInput
                     android:id="@+id/input"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/blue_grey_900"
+                    android:layout_height="87dp"
+                    android:background="@color/back_darkgrey"
                     app:attachmentButtonBackground="@color/transparent"
                     app:attachmentButtonIcon="@drawable/ic_attachment"
                     app:inputBackground="@drawable/bg_input_text_message"
                     app:inputButtonBackground="@color/transparent"
                     app:inputButtonDefaultIconColor="@color/button_inactive_color"
-                    app:inputButtonIcon="@drawable/ic_send_yellow"
+                    app:inputButtonIcon="@drawable/ic_send_selector"
                     app:inputCursorDrawable="@drawable/chat_cursor_drawable"
                     app:inputHint="@string/message"
-                    app:inputTextSize="14sp"
+                    app:inputHintColor="@color/text_inactive"
+                    app:inputTextSize="16sp"
+                    app:inputTextColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:showAttachmentButton="true" />
 
-            </LinearLayout>
+                <ImageView
+                    android:id="@+id/iv_microphone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="70dp"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_microphone_message"
+                    app:layout_constraintBottom_toBottomOf="@id/input"
+                    app:layout_constraintEnd_toEndOf="@id/input"
+                    app:layout_constraintTop_toTopOf="@id/input" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </RelativeLayout>
 

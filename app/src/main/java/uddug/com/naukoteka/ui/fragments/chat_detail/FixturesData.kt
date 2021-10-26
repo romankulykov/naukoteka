@@ -63,7 +63,7 @@ abstract class FixturesData {
         }
     }
 
-    val images: ArrayList<String?> = object : ArrayList<String?>() {
+    val images: ArrayList<String> = object : ArrayList<String>() {
         init {
             add("https://habrastorage.org/getpro/habr/post_images/e4b/067/b17/e4b067b17a3e414083f7420351db272b.jpg")
             add("https://cdn.pixabay.com/photo/2017/12/25/17/48/waters-3038803_1280.jpg")
@@ -94,7 +94,7 @@ abstract class FixturesData {
         return messages[rnd.nextInt(messages.size)]
     }
 
-    open fun getRandomImage(): String? {
+    open fun getRandomImage(): String {
         return images[rnd.nextInt(images.size)]
     }
 

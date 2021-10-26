@@ -61,6 +61,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
         super.onViewCreated(view, savedInstanceState)
         contentView.input.setInputListener(this)
         contentView.input.setAttachmentsListener(this)
+        contentView.ivArrowBack.setOnClickListener { onBackPressed() }
         initAdapter()
         imageLoader = ImageLoader { imageView: ImageView?, url: String?, payload: Any? ->
             if (imageView != null) {

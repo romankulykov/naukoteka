@@ -1,49 +1,54 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingStart="20dp"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp">
+    android:layout_height="wrap_content">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@id/bubble"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="30dp"
-        android:backgroundTint="#FDFFB1"
-        android:orientation="vertical">
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/ic_background_outcoming_message"
+        android:paddingStart="12dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@id/messageText"
+            style="@style/TextViewStyle.Usual"
             android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="0dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="9dp"
-            android:layout_marginEnd="17dp"
-            android:lineSpacingExtra="4dp"
-            android:layout_marginBottom="12dp"
-            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/golos_text_regular"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="@tools:sample/lorem" />
 
         <TextView
             android:id="@id/messageTime"
+            style="@style/TextViewStyle"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="end"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="5dp"
-            android:gravity="bottom"
-            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            android:fontFamily="@font/golos_text_regular"
+            android:textColor="@color/text_message_blue"
+            app:layout_constraintEnd_toStartOf="@id/iv_white_check_mark"
+            app:layout_constraintTop_toBottomOf="@id/messageText"
             tools:text="11:00" />
 
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/iv_white_check_mark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_white_check_mark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/messageText" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

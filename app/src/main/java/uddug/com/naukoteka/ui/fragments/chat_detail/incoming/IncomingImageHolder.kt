@@ -7,6 +7,7 @@ import androidx.core.view.isVisible
 import com.stfalcon.chatkit.commons.models.MessageContentType
 import com.stfalcon.chatkit.messages.MessageHolders
 import com.stfalcon.chatkit.utils.DateFormatter
+import uddug.com.naukoteka.GlideApp
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.FragmentChatDetailBinding
 import uddug.com.naukoteka.databinding.ItemCustomIncomingImageMessageBinding
@@ -39,15 +40,20 @@ class IncomingImageHolder(itemView: View, var anyPayload: Any?) :
                 nameUser.text = user.name
                 messageTime.text = DateFormatter.format(createdAt, DateFormatter.Template.TIME)
                 val radius = itemView.resources.getDimension(R.dimen.message_bubble_corners_radius)
-                val shapeAppearanceModel = imageIncoming.shapeAppearanceModel.toBuilder()
+                /*val shapeAppearanceModel = imageIncoming.shapeAppearanceModel.toBuilder()
                     .setTopRightCornerSize(radius)
                     .setBottomLeftCornerSize(radius)
                     .setBottomRightCornerSize(radius)
                     .build()
-                imageIncoming.shapeAppearanceModel = shapeAppearanceModel
+                imageIncoming.shapeAppearanceModel = shapeAppearanceModel*/
 
                 ivIncoming = imageIncoming
                 mProgressBar = progressBar
+                GlideApp.with(itemView.context)
+                    .load(
+                        "https://pngimg.com/uploads/triangle/triangle_PNG30.png"
+                    )
+                    .placeholder(R.drawable.ic_glide_image_error).into(ivIncoming)
                 ivIncoming.run {
                     scaleType = ImageView.ScaleType.CENTER_INSIDE
                 }

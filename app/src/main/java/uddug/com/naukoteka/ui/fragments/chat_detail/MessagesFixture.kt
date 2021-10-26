@@ -9,7 +9,7 @@ class MessagesFixture : FixturesData() {
 
     fun getImageMessage(): Message {
         val message = Message(getRandomId(), getUser(), null)
-        message.setImage(getRandomImage()?.let { Message.Image(it) })
+        message.setImage(Message.Image(getRandomImage()))
         return message
     }
 

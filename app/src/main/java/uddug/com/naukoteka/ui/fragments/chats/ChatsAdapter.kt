@@ -9,7 +9,8 @@ import uddug.com.naukoteka.databinding.ListItemChatBinding
 import uddug.com.naukoteka.global.base.BaseAdapter
 import uddug.com.naukoteka.global.base.BaseViewHolder
 
-class ChatsAdapter : BaseAdapter<ChatListEntity, ChatsAdapter.ViewHolder>() {
+class ChatsAdapter(private val onChatClick: (ChatListEntity) -> Unit) :
+    BaseAdapter<ChatListEntity, ChatsAdapter.ViewHolder>() {
 
     override fun newViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(R.layout.list_item_chat, parent)
@@ -30,6 +31,7 @@ class ChatsAdapter : BaseAdapter<ChatListEntity, ChatsAdapter.ViewHolder>() {
                                     "-survey-5ac2cf57df8907.6438385715227165039156.jpg"
                         )
                         .placeholder(R.drawable.ic_glide_image_error).into(ivPhoto)
+                    root.setOnClickListener { onChatClick(item) }
                 }
             }
         }
