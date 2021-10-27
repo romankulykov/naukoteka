@@ -31,7 +31,8 @@ class ChatsAdapter(private val onChatClick: (ChatListEntity) -> Unit) :
                                     "-survey-5ac2cf57df8907.6438385715227165039156.jpg"
                         )
                         .placeholder(R.drawable.ic_glide_image_error).into(ivPhoto)
-                    root.setOnClickListener { onChatClick(item) }
+                    clChat.setOnClickListener { onChatClick.invoke(item) }
+
                 }
             }
         }

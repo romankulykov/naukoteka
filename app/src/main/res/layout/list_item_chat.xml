@@ -1,100 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/text_main">
+    android:orientation="horizontal">
 
-    <View
-        android:id="@+id/view_top"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_swipe_content"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/returnButtonBgView"
+            android:layout_width="108dp"
+            android:layout_height="0dp"
+            android:background="@color/return_swipe_button_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_return"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginBottom="35dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/returnButtonBgView"
+            app:layout_constraintStart_toStartOf="@id/returnButtonBgView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_fi_corner_up_left" />
+
+        <TextView
+            android:id="@+id/tvReturnChat"
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/golos_text_regular"
+            android:text="@string/swipe_return"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/returnButtonBgView"
+            app:layout_constraintStart_toStartOf="@id/returnButtonBgView"
+            app:layout_constraintTop_toBottomOf="@+id/iv_return" />
+
+        <View
+            android:id="@+id/blockButtonBgView"
+            android:layout_width="108dp"
+            android:layout_height="0dp"
+            android:background="@color/main_red"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/returnButtonBgView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_block"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginBottom="35dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/blockButtonBgView"
+            app:layout_constraintStart_toStartOf="@id/blockButtonBgView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_down_circle" />
+
+        <TextView
+            android:id="@+id/tvBlockChat"
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/golos_text_regular"
+            android:text="@string/swipe_block"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/blockButtonBgView"
+            app:layout_constraintStart_toStartOf="@id/blockButtonBgView"
+            app:layout_constraintTop_toBottomOf="@+id/iv_block" />
+
+        <View
+            android:id="@+id/clearButtonBgView"
+            android:layout_width="108dp"
+            android:layout_height="0dp"
+            android:background="@color/clear_swipe_button_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/blockButtonBgView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_clear"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginBottom="35dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/clearButtonBgView"
+            app:layout_constraintStart_toStartOf="@id/clearButtonBgView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_clear_swipe" />
+
+        <TextView
+            android:id="@+id/tvClearChat"
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/golos_text_regular"
+            android:text="@string/swipe_clear"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/clearButtonBgView"
+            app:layout_constraintStart_toStartOf="@id/clearButtonBgView"
+            app:layout_constraintTop_toBottomOf="@+id/iv_clear" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_chat"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginStart="76dp"
-        android:background="@color/pin_color"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/iv_photo"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view_top"
-        tools:src="@tools:sample/avatars" />
+        android:background="@color/text_main">
 
-    <TextView
-        android:id="@+id/tv_name_contact"
-        style="@style/TextViewStyle.Subtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="7dp"
-        android:fontFamily="@font/golos_text_regular"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@id/iv_photo"
-        app:layout_constraintTop_toBottomOf="@id/view_top"
-        tools:text="Михаил Маркин" />
+        <View
+            android:id="@+id/view_top"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="76dp"
+            android:background="@color/pin_color"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_text_of_message"
-        style="@style/TextViewStyle.Usual"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="95dp"
-        android:layout_marginTop="2dp"
-        android:fontFamily="@font/golos_text_regular"
-        android:textColor="@color/text_inactive"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/iv_photo"
-        app:layout_constraintTop_toBottomOf="@id/tv_name_contact"
-        tools:text="Не теряет актуальности любой прочее" />
+        <ImageView
+            android:id="@+id/iv_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_top"
+            tools:src="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/tv_time"
-        style="@style/TextViewStyle.Usual"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="10dp"
-        android:fontFamily="@font/golos_text_regular"
-        android:text="@string/chat_time"
-        android:textColor="@color/text_inactive"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tv_name_contact"
+            style="@style/TextViewStyle.Subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="7dp"
+            android:fontFamily="@font/golos_text_regular"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@id/iv_photo"
+            app:layout_constraintTop_toBottomOf="@id/view_top"
+            tools:text="Михаил Маркин" />
 
-    <ImageView
-        android:id="@+id/iv_check_mark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="4dp"
-        android:src="@drawable/ic_check_mark"
-        app:layout_constraintEnd_toStartOf="@id/tv_time"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tv_text_of_message"
+            style="@style/TextViewStyle.Usual"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="95dp"
+            android:fontFamily="@font/golos_text_regular"
+            android:textColor="@color/text_inactive"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_photo"
+            app:layout_constraintTop_toBottomOf="@id/tv_name_contact"
+            tools:text="Не теряет актуальности любой прочее" />
 
-    <TextView
-        android:id="@+id/tv_count_message"
-        style="@style/TextViewStyle.Usual"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginBottom="13dp"
-        android:background="@drawable/bg_rounded_corners_6dp_count_message"
-        android:fontFamily="@font/golos_text_regular"
-        android:paddingStart="6dp"
-        android:paddingTop="1dp"
-        android:paddingEnd="6dp"
-        android:paddingBottom="2dp"
-        android:text="@string/chat_count_of_message"
-        android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/tv_time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        <TextView
+            android:id="@+id/tv_time"
+            style="@style/TextViewStyle.Usual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/golos_text_regular"
+            android:text="@string/chat_time"
+            android:textColor="@color/text_inactive"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/iv_check_mark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="4dp"
+            android:src="@drawable/ic_check_mark"
+            app:layout_constraintEnd_toStartOf="@id/tv_time"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_count_message"
+            style="@style/TextViewStyle.Usual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="13dp"
+            android:background="@drawable/bg_rounded_corners_6dp_count_message"
+            android:fontFamily="@font/golos_text_regular"
+            android:paddingStart="6dp"
+            android:paddingTop="1dp"
+            android:paddingEnd="6dp"
+            android:paddingBottom="2dp"
+            android:text="@string/chat_count_of_message"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_time" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.daimajia.swipe.SwipeLayout>

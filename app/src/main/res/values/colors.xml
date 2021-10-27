@@ -37,9 +37,15 @@
     <color name="background_toast_success">#63AA55</color>
     <color name="background_toast_error">#D92E4D</color>
     <color name="pin_color">#3F4159</color>
-    
+
     <color name="name_message_color">#83BAF2</color>
-    
+
     <color name="text_message_blue">#9CCDFF</color>
+
+    <color name="return_swipe_button_color">#D96C2E</color>
+
+    <color name="main_red">#EB5545</color>
+
+    <color name="clear_swipe_button_color">#3E4057</color>
 
 </resources>

@@ -34,6 +34,7 @@ ext {
             dotsIndicator          : 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2',
             maskedEditText         : 'ru.egslava:MaskedEditText:1.0.5',
             chatkit                : 'com.github.stfalcon-studio:Chatkit:0.4.1',
+            swipeLayout            : "com.daimajia.swipelayout:library:1.2.0",
             keyboardVisibility     : 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC3',
 
     ]
