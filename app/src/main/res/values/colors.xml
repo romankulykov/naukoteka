@@ -47,5 +47,7 @@
     <color name="main_red">#EB5545</color>
 
     <color name="clear_swipe_button_color">#3E4057</color>
+    
+    <color name="green">#23A667</color>
 
 </resources>

@@ -2,6 +2,7 @@ package uddug.com.naukoteka.ui.fragments.chats
 
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import com.daimajia.swipe.SwipeLayout
 import uddug.com.domain.entities.ChatListEntity
 import uddug.com.naukoteka.GlideApp
 import uddug.com.naukoteka.R
@@ -32,7 +33,8 @@ class ChatsAdapter(private val onChatClick: (ChatListEntity) -> Unit) :
                         )
                         .placeholder(R.drawable.ic_glide_image_error).into(ivPhoto)
                     clChat.setOnClickListener { onChatClick.invoke(item) }
-
+                    swipeLayout.addDrag(SwipeLayout.DragEdge.Right, clSwipeContentRight)
+                    swipeLayout.addDrag(SwipeLayout.DragEdge.Left, clSwipeContentLeft)
                 }
             }
         }

@@ -118,5 +118,7 @@
     <string name="swipe_return">Вернуть</string>
     <string name="swipe_block">Заблокировать</string>
     <string name="swipe_clear">Очистить</string>
+    <string name="swipe_anchor">Закрепить</string>
+    <string name="swipe_read">Прочитано</string>
 
 </resources>
