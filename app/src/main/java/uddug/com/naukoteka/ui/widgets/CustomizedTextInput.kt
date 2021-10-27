@@ -67,6 +67,9 @@ class CustomizedTextInput(context: Context, attrs: AttributeSet) : LinearLayout(
                     }
                     binding.metField.run {
                         inputType = textInputType
+                        if (typeInput == TypeInput.TYPE_INPUT_TEXT) {
+                            importantForAutofill = IMPORTANT_FOR_AUTOFILL_NO
+                        }
                         doAfterTextChanged {
                             if (typeInput == TypeInput.TYPE_INPUT_EMAIL) {
                                 binding.ivCheck.isVisible = validator.isValidEmail(it.toString())

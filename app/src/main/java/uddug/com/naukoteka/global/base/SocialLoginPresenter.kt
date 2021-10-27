@@ -1,6 +1,7 @@
 package uddug.com.naukoteka.global.base
 
 import com.github.terrakok.cicerone.Router
+import moxy.MvpView
 import uddug.com.domain.interactors.auth.AuthInteractor
 import uddug.com.domain.repositories.auth.models.SocialType
 import uddug.com.naukoteka.global.views.InformativeView
@@ -10,7 +11,6 @@ import uddug.com.naukoteka.ui.AppConfigs
 import uddug.com.naukoteka.ui.IntentKeys
 import uddug.com.naukoteka.ui.custom.square_toast.SquareToast
 import uddug.com.naukoteka.ui.custom.square_toast.ToastInfo
-import moxy.MvpView
 
 
 interface SocialLoginView : MvpView, InformativeView, LoadingView
@@ -22,19 +22,17 @@ abstract class SocialLoginPresenter<V : SocialLoginView> : BasePresenterImpl<V>(
 
     fun authSocial(socialType: SocialType) {
         router.run {
-            setResultListener(Screens.RESULT_AUTH_SOCIAL) {
-                (it as? IntentKeys.SocialAuthorization)?.let { socialAuthorization ->
-                    socialAuth(socialAuthorization.socialType, socialAuthorization.key)
+            val url = AppConfigs.authSocialUrl(socialType)
+            //if (socialType == SocialType.GOOGLE) {
+            //    navigateTo(Screens.OpenBrowser(url))
+            //} else {
+                setResultListener(Screens.RESULT_AUTH_SOCIAL) {
+                    (it as? IntentKeys.SocialAuthorization)?.let { socialAuthorization ->
+                        socialAuth(socialAuthorization.socialType, socialAuthorization.key)
+                    }
                 }
-            }
-            navigateTo(
-                Screens.WebViewAuth(
-                    AppConfigs.authSocialUrl(
-                        socialType,
-                        "https://stage.naukotheka.ru/${AppConfigs.SOCIAL_LOGIN_ENDPOINT}?social_type=${socialType.raw}"
-                    )
-                )
-            )
+                navigateTo(Screens.WebViewAuth(url))
+            //}
         }
     }
 

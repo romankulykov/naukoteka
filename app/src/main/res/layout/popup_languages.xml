@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="12dp"
-    android:paddingEnd="17dp"
-    android:background="@drawable/bg_rounded_corners_12dp_disabled">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dropdown_languages"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/tv_english"
         style="@style/TextViewStyle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:fontFamily="@font/golos_text_regular"
+        android:paddingStart="20dp"
+        android:paddingTop="20dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="10dp"
         android:text="English"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,25 +25,33 @@
     <TextView
         android:id="@+id/tv_arab"
         style="@style/TextViewStyle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:fontFamily="@font/golos_text_regular"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="10dp"
         android:text="Arabic"
         android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/tv_english"
         app:layout_constraintTop_toBottomOf="@id/tv_english" />
 
     <TextView
         android:id="@+id/tv_russian"
         style="@style/TextViewStyle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:fontFamily="@font/golos_text_regular"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="10dp"
         android:text="Русский"
         android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/tv_arab"
         app:layout_constraintTop_toBottomOf="@id/tv_arab" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

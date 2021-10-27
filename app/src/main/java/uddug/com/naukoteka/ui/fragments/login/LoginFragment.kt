@@ -39,8 +39,6 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButt
         return getScope().getInstance(LoginPresenter::class.java)
     }
 
-    var language: String? = null
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.activity = requireActivity()
@@ -125,18 +123,16 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButt
         return true
     }
 
-    fun showPopupMenu(v: View): PopupWindow = contentView.run {
+    private fun showPopupMenu(v: View): PopupWindow = contentView.run {
         var child = LayoutInflater.from(requireContext()).inflate(R.layout.popup_languages, null)
         val popupWindow = PopupWindow(requireContext())
         with(popupWindow) {
             contentView = child
             setBackgroundDrawable(null)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                elevation = 12F
-            }
+            elevation = 12F
             isFocusable = true
             isOutsideTouchable = true
-            showAsDropDown(v)
+            showAsDropDown(v, 0, -20)
             setOnDismissListener {
                 ivArrowDown.setImageResource(R.drawable.ic_arrow_down)
                 tvLanguage.setTextColor(resources.getColor(R.color.text_inactive))
