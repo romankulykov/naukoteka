@@ -136,29 +136,27 @@
                     app:attachmentButtonIcon="@drawable/ic_attachment"
                     app:inputBackground="@drawable/bg_input_text_message"
                     app:inputButtonBackground="@color/transparent"
-                    app:inputButtonDefaultIconColor="@color/button_inactive_color"
                     app:inputButtonIcon="@drawable/ic_send_selector"
                     app:inputCursorDrawable="@drawable/chat_cursor_drawable"
                     app:inputHint="@string/message"
                     app:inputHintColor="@color/text_inactive"
-                    app:inputTextSize="16sp"
+                    app:inputMaxLines="4"
                     app:inputTextColor="@color/white"
+                    app:inputTextSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:showAttachmentButton="true"
-                    app:inputMaxLines="4"
-                    app:inputButtonWidth="1dp"/>
+                    app:showAttachmentButton="true" />
 
-                <ImageView
-                    android:id="@+id/iv_microphone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="70dp"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_microphone_message"
-                    app:layout_constraintBottom_toBottomOf="@id/input"
-                    app:layout_constraintEnd_toEndOf="@id/input"
-                    app:layout_constraintTop_toTopOf="@id/input" />
+                <!-- <ImageView
+                     android:id="@+id/iv_microphone"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginEnd="27dp"
+                     android:padding="10dp"
+                     android:src="@drawable/ic_send_selector"
+                     app:layout_constraintBottom_toBottomOf="@id/input"
+                     app:layout_constraintEnd_toEndOf="@id/input"
+                     app:layout_constraintTop_toTopOf="@id/input" />-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
