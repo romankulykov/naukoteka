@@ -54,7 +54,7 @@
   <string name="password_recovery_send">إرسال</string>
   <string name="password_recovery_verification_send_link">لقد قمنا بإرسال الرابط إلى عنوان البريد الإلكتروني الذي قدمته. يرجى التحقق من البريد الخاص بك وانقر على الرابط الموجود في الرسالة</string>
   <string name="password_recovery_verification_not_receive_letter">لم تحصل على البريد الإلكتروني ؟</string>
-  <string name="password_recovery_verification_send_again">إرسال مرة أخرى</string>
+  <string name="password_recovery_verification_send_again">إرسال مرة أخرى %s</string>
   <string name="password_recovery_support">المساعدة والدعم</string>
   <string name="password_recovery_requirements">الآن ابتكر كلمة مرور جديدة قوية لنفسك. يجب أن تفي بعدد من متطلباتنا</string>
   <string name="password_recovery_new_pass">كلمة السر الجديدة</string>

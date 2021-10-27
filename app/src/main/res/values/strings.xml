@@ -54,7 +54,7 @@
   <string name="password_recovery_send">Send</string>
   <string name="password_recovery_verification_send_link">We have sent a link to the email address you provided. Please check your mail and click on the link in the letter</string>
   <string name="password_recovery_verification_not_receive_letter">Did not get the email?</string>
-  <string name="password_recovery_verification_send_again">Send again</string>
+  <string name="password_recovery_verification_send_again">Send again %s</string>
   <string name="password_recovery_support">Need help? Contact support</string>
   <string name="password_recovery_requirements">Now come up with a strong new password. It must meet a number of our requirements.</string>
   <string name="password_recovery_new_pass">New password</string>
