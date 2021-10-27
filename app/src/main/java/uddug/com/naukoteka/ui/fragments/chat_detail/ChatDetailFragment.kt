@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.widget.ImageView
+import androidx.core.widget.doAfterTextChanged
 import com.mojipic.mojipic2.ui.chat.chat_items.incoming.IncomingImageHolder
 import com.mojipic.mojipic2.ui.chat.chat_items.incoming.IncomingTextHolder
 import com.mojipic.mojipic2.ui.chat.chat_items.outcoming.OutcomingImageHolder
@@ -59,8 +60,20 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        contentView.ivSendMessage.isEnabled = false
         contentView.input.setInputListener(this)
-        contentView.input.setAttachmentsListener(this)
+        contentView.input.setAttachmentsListener {
+
+        }
+        contentView.input.inputEditText.doAfterTextChanged {
+            contentView.ivSendMessage.isEnabled = it?.isNotEmpty()!!
+            if (contentView.ivSendMessage.isEnabled) {
+                contentView.ivSendMessage.setOnClickListener {
+                    contentView.input.setInputListener(this)
+                }
+            }
+        }
+
         contentView.ivArrowBack.setOnClickListener { onBackPressed() }
         initAdapter()
         imageLoader = ImageLoader { imageView: ImageView?, url: String?, payload: Any? ->
