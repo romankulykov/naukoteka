@@ -120,5 +120,11 @@
     <string name="swipe_clear">Очистить</string>
     <string name="swipe_anchor">Закрепить</string>
     <string name="swipe_read">Прочитано</string>
+    <string name="file_attachment_dialog_cancel">Отменить</string>
+    <string name="search_by_conversation">Поиск по беседе</string>
+    <string name="interview_materials">Материалы беседы</string>
+    <string name="disable_notifications">Отключить уведомления</string>
+    <string name="clear_the_history">Очистить историю</string>
+    <string name="add_participant">Добавить участника</string>
 
 </resources>

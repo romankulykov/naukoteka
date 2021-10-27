@@ -1,10 +1,14 @@
 package uddug.com.naukoteka.ui.fragments.chat_detail
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.widget.doAfterTextChanged
+import androidx.recyclerview.widget.RecyclerView
 import com.mojipic.mojipic2.ui.chat.chat_items.incoming.IncomingImageHolder
 import com.mojipic.mojipic2.ui.chat.chat_items.incoming.IncomingTextHolder
 import com.mojipic.mojipic2.ui.chat.chat_items.outcoming.OutcomingImageHolder
@@ -23,6 +27,8 @@ import uddug.com.naukoteka.databinding.FragmentChatDetailBinding
 import uddug.com.naukoteka.global.base.BaseFragment
 import uddug.com.naukoteka.presentation.chat_detail.ChatDetailPresenter
 import uddug.com.naukoteka.presentation.chat_detail.ChatDetailView
+import uddug.com.naukoteka.ui.AppConfigs
+import uddug.com.naukoteka.ui.adapters.additional_options.AdditionalOptionsAdapter
 import uddug.com.naukoteka.ui.custom.square_toast.ToastInfo
 import uddug.com.naukoteka.utils.BackButtonListener
 import uddug.com.naukoteka.utils.viewBinding
@@ -63,7 +69,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
         contentView.ivSendMessage.isEnabled = false
         contentView.input.setInputListener(this)
         contentView.input.setAttachmentsListener {
-
+            showFileAttachmentDialog()
         }
         contentView.input.inputEditText.doAfterTextChanged {
             contentView.ivSendMessage.isEnabled = it?.isNotEmpty()!!
@@ -83,6 +89,22 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
                     .placeholder(R.drawable.ic_glide_image_error).into(imageView)
             }
         }
+    }
+
+    fun showFileAttachmentDialog() {
+        val dialogView = layoutInflater.inflate(
+            R.layout.file_attachment_dialog,
+            ConstraintLayout(requireContext())
+        )
+        AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
+            .setCancelable(true)
+            .setView(dialogView)
+            .create().apply {
+                dialogView.findViewById<RecyclerView>(R.id.rv_additional_options)?.adapter =
+                    AdditionalOptionsAdapter().apply { setItems(AppConfigs.getAdditionalOptions()) }
+                dialogView.findViewById<Button>(R.id.btn_cancel)
+                    ?.setOnClickListener { dismiss() }
+            }.show()
     }
 
     override fun onBackPressed(): Boolean {
