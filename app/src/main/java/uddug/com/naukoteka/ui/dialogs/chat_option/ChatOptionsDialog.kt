@@ -2,10 +2,9 @@ package uddug.com.naukoteka.ui.dialogs.chat_option
 
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.data_model.ChatOption
-import uddug.com.naukoteka.databinding.FileAttachmentDialogBinding
+import uddug.com.naukoteka.databinding.AdditionalOptionsDialogBinding
 import uddug.com.naukoteka.global.base.BaseBottomSheetDialog
 import uddug.com.naukoteka.ui.adapters.additional_options.AdditionalOptionsAdapter
 
@@ -15,8 +14,8 @@ class ChatOptionsDialog(
 ) :
     BaseBottomSheetDialog(fragmentActivity) {
 
-    override val layoutRes: Int = R.layout.file_attachment_dialog
-    override val contentView by lazy { FileAttachmentDialogBinding.inflate(layoutInflater) }
+    override val layoutRes: Int = R.layout.additional_options_dialog
+    override val contentView by lazy { AdditionalOptionsDialogBinding.inflate(layoutInflater) }
 
     init {
         setContentView(contentView.root)
