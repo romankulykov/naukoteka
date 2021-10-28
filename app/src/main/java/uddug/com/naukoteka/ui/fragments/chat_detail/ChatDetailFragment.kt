@@ -69,8 +69,9 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
         super.onViewCreated(view, savedInstanceState)
         contentView.ivSendMessage.isEnabled = false
         contentView.input.setInputListener(this)
+        contentView.ivMenu.setOnClickListener { showOptionsDialog() }
         contentView.input.setAttachmentsListener {
-            showOptionsDialog()
+
         }
         contentView.input.inputEditText.doAfterTextChanged {
             contentView.ivSendMessage.isEnabled = it?.isNotEmpty()!!
