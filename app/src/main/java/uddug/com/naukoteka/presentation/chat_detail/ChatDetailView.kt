@@ -8,4 +8,12 @@ import uddug.com.naukoteka.global.views.LoadingView
 
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface ChatDetailView : MvpView, LoadingView, InformativeView {
+
+    fun showDialogSearchByConversation()
+    fun showDialogInterviewMaterials()
+    fun showDisableNotifications()
+    fun showClearTheHistory()
+    fun showDialogAddParticipant()
+    fun showOptionsDialog()
+
 }

@@ -30,6 +30,7 @@ import uddug.com.naukoteka.presentation.chat_detail.ChatDetailView
 import uddug.com.naukoteka.ui.AppConfigs
 import uddug.com.naukoteka.ui.adapters.additional_options.AdditionalOptionsAdapter
 import uddug.com.naukoteka.ui.custom.square_toast.ToastInfo
+import uddug.com.naukoteka.ui.dialogs.chat_option.ChatOptionsDialog
 import uddug.com.naukoteka.utils.BackButtonListener
 import uddug.com.naukoteka.utils.viewBinding
 import java.util.*
@@ -69,7 +70,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
         contentView.ivSendMessage.isEnabled = false
         contentView.input.setInputListener(this)
         contentView.input.setAttachmentsListener {
-            showFileAttachmentDialog()
+            showOptionsDialog()
         }
         contentView.input.inputEditText.doAfterTextChanged {
             contentView.ivSendMessage.isEnabled = it?.isNotEmpty()!!
@@ -89,22 +90,6 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
                     .placeholder(R.drawable.ic_glide_image_error).into(imageView)
             }
         }
-    }
-
-    fun showFileAttachmentDialog() {
-        val dialogView = layoutInflater.inflate(
-            R.layout.file_attachment_dialog,
-            ConstraintLayout(requireContext())
-        )
-        AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
-            .setCancelable(true)
-            .setView(dialogView)
-            .create().apply {
-                dialogView.findViewById<RecyclerView>(R.id.rv_additional_options)?.adapter =
-                    AdditionalOptionsAdapter().apply { setItems(AppConfigs.getAdditionalOptions()) }
-                dialogView.findViewById<Button>(R.id.btn_cancel)
-                    ?.setOnClickListener { dismiss() }
-            }.show()
     }
 
     override fun onBackPressed(): Boolean {
@@ -179,5 +164,29 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
         messagesAdapter?.setOnMessageLongClickListener(this)
         messagesAdapter?.setLoadMoreListener(this)
         contentView.messagesList.setAdapter(messagesAdapter)
+    }
+
+    override fun showDialogSearchByConversation() {
+
+    }
+
+    override fun showDialogInterviewMaterials() {
+
+    }
+
+    override fun showDisableNotifications() {
+
+    }
+
+    override fun showClearTheHistory() {
+
+    }
+
+    override fun showDialogAddParticipant() {
+
+    }
+
+    override fun showOptionsDialog() {
+        ChatOptionsDialog(requireActivity(), presenter::onChatOptionClick).show()
     }
 }

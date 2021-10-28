@@ -19,12 +19,4 @@ object AppConfigs {
         PasswordRequirementsEntity(R.string.dialog_password_requirements_digits),
         PasswordRequirementsEntity(R.string.dialog_password_requirements_symbols)
     )
-
-    fun getAdditionalOptions() = listOf(
-        AdditionalOptionsEntity(R.string.search_by_conversation, R.drawable.ic_fi_search),
-        AdditionalOptionsEntity(R.string.interview_materials, R.drawable.ic_fi_inbox),
-        AdditionalOptionsEntity(R.string.disable_notifications, R.drawable.ic_bell),
-        AdditionalOptionsEntity(R.string.clear_the_history, R.drawable.ic_clear_history),
-        AdditionalOptionsEntity(R.string.add_participant, R.drawable.ic_u_plus)
-    )
 }
