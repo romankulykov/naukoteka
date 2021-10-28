@@ -30,6 +30,7 @@ import uddug.com.naukoteka.presentation.chat_detail.ChatDetailView
 import uddug.com.naukoteka.ui.AppConfigs
 import uddug.com.naukoteka.ui.adapters.additional_options.AdditionalOptionsAdapter
 import uddug.com.naukoteka.ui.custom.square_toast.ToastInfo
+import uddug.com.naukoteka.ui.dialogs.chat_option.AttachmentOptionsDialog
 import uddug.com.naukoteka.ui.dialogs.chat_option.ChatOptionsDialog
 import uddug.com.naukoteka.utils.BackButtonListener
 import uddug.com.naukoteka.utils.viewBinding
@@ -71,7 +72,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
         contentView.input.setInputListener(this)
         contentView.ivMenu.setOnClickListener { showOptionsDialog() }
         contentView.input.setAttachmentsListener {
-
+            showAttachmentOptionDialog()
         }
         contentView.input.inputEditText.doAfterTextChanged {
             contentView.ivSendMessage.isEnabled = it?.isNotEmpty()!!
@@ -189,5 +190,28 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
 
     override fun showOptionsDialog() {
         ChatOptionsDialog(requireActivity(), presenter::onChatOptionClick).show()
+    }
+
+    override fun showPhotoOrVideo() {
+
+    }
+
+    override fun showFile() {
+
+    }
+
+    override fun showContact() {
+
+    }
+
+    override fun showInterrogation() {
+
+    }
+
+    override fun showAttachmentOptionDialog() {
+        AttachmentOptionsDialog(
+            requireActivity(), presenter::onChatAttachmentOptionClick,
+            presenter::onPhotoAttachmentClick
+        ).show()
     }
 }

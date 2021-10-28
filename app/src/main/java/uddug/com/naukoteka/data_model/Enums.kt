@@ -9,3 +9,10 @@ enum class ChatOption(val textResId: Int, val imageResId: Int) {
     CLEAR_THE_HISTORY(R.string.clear_the_history, R.drawable.ic_clear_history),
     ADD_PARTICIPANT(R.string.add_participant, R.drawable.ic_u_plus),
 }
+
+enum class ChatAttachmentOption(val textResId: Int) {
+    PHOTO_OR_VIDEO(R.string.photo_or_video),
+    FILE(R.string.file),
+    CONTACT(R.string.contact),
+    INTERROGATION(R.string.interrogation)
+}

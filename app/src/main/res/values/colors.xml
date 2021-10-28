@@ -52,4 +52,6 @@
 
     <color name="abbey">#3B50555C</color>
 
+    <color name="view_dialog_color">#363850</color>
+
 </resources>

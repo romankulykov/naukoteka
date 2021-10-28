@@ -1,6 +1,5 @@
 package uddug.com.naukoteka.ui
 
-import uddug.com.domain.entities.AdditionalOptionsEntity
 import uddug.com.domain.entities.PasswordRequirementsEntity
 import uddug.com.domain.repositories.auth.models.SocialType
 import uddug.com.naukoteka.R

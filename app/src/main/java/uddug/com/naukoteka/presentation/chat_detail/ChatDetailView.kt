@@ -16,4 +16,10 @@ interface ChatDetailView : MvpView, LoadingView, InformativeView {
     fun showDialogAddParticipant()
     fun showOptionsDialog()
 
+    fun showPhotoOrVideo()
+    fun showFile()
+    fun showContact()
+    fun showInterrogation()
+    fun showAttachmentOptionDialog()
+
 }
