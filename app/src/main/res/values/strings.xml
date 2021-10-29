@@ -130,5 +130,7 @@
     <string name="file">Файл</string>
     <string name="contact">Контакт</string>
     <string name="interrogation">Опрос</string>
+    <string name="anchor_chat">Закрепить чат</string>
+    <string name="hide_chat">Скрыть чат</string>
 
 </resources>
