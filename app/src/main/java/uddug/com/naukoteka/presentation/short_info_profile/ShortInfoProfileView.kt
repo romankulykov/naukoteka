@@ -10,4 +10,5 @@ import moxy.viewstate.strategy.StateStrategyType
 interface ShortInfoProfileView : MvpView, LoadingView, InformativeView {
     fun showButtonState(isEnabled: Boolean)
     fun showNicknameAvailable(isAvailable: Boolean)
+    fun showDefaultNickname(nickname : String)
 }

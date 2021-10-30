@@ -46,6 +46,7 @@ class ShortInfoProfileFragment : BaseFragment(R.layout.fragment_short_info_profi
                     )
                 )
             }
+            cbWithoutPatronymic.setOnCheckedChangeListener { _, isChecked -> checkValidFields() }
         }
     }
 
@@ -55,7 +56,7 @@ class ShortInfoProfileFragment : BaseFragment(R.layout.fragment_short_info_profi
             val name = ctiName.text()
             val patronymic = ctiPatronymic.text()
             val link = ctiLink.text()
-            presenter.isValidFields(surname, name, patronymic, link)
+            presenter.isValidFields(surname, name, patronymic, cbWithoutPatronymic.isChecked, link)
         }
     }
 
@@ -64,8 +65,16 @@ class ShortInfoProfileFragment : BaseFragment(R.layout.fragment_short_info_profi
     }
 
     override fun showNicknameAvailable(isAvailable: Boolean) {
-        contentView.tvErrorNickname.isGone = isAvailable
+        contentView.run {
+            tvErrorNickname.isGone = isAvailable
+            ctiLink.showIsChecked(isAvailable)
+        }
         checkValidFields()
+    }
+
+    override fun showDefaultNickname(nickname: String) {
+        contentView.ctiLink.setText(nickname)
+        showNicknameAvailable(true)
     }
 
 }

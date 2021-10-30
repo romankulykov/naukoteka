@@ -23,7 +23,9 @@ class AuthRepositoryImpl(
 
     override fun loginEmail(login: String, password: String): Completable {
         return authApiService.login(AuthRequestDto(login, password))
-            .flatMapCompletable { Completable.complete() }
+            .flatMapCompletable {
+                Completable.complete()
+            }
     }
 
     override fun sendLetterToRecoveryPassword(email: String): Completable {
