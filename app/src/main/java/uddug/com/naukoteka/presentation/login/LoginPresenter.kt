@@ -85,5 +85,14 @@ class LoginPresenter(
         router.exit()
     }
 
+    fun enterTest() {
+        authInteractor.testLogin()
+            .await(onError = {
+                if (it is HttpException && it.statusCode == ServerApiError.InvalidCredentials) {
+                    viewState.showErrorCredentials()
+                } else onError(it)
+            }, onComplete = { viewState.showSuccessLogin() })
+    }
+
 
 }

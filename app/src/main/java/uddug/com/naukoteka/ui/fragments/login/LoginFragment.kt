@@ -25,6 +25,7 @@ import uddug.com.naukoteka.utils.BackButtonListener
 import uddug.com.naukoteka.utils.viewBinding
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
+import uddug.com.naukoteka.BuildConfig
 
 class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButtonListener {
 
@@ -48,6 +49,9 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButt
             ctiEmail.doAfterTextChange { checkValidFields() }
             ctiPass.doAfterTextChange { checkValidFields() }
             btnEnter.setOnClickListener { presenter.enter(ctiEmail.text(), ctiPass.text()) }
+            if (BuildConfig.DEBUG){
+                btnEnter.setOnLongClickListener { presenter.enterTest(); true }
+            }
             ibVkontakte.setOnClickListener { presenter.authSocial(SocialType.VK) }
             ibOk.setOnClickListener { presenter.authSocial(SocialType.OK) }
             ibFacebook.setOnClickListener { presenter.authSocial(SocialType.FACEBOOK) }
