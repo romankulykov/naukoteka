@@ -36,6 +36,7 @@ ext {
             maskedEditText         : 'ru.egslava:MaskedEditText:1.0.5',
             keyboardVisibility     : 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC3',
             localeChanger          : "com.github.franmontiel:LocaleChanger:$versionLocaleChanger",
+            robolectric            : 'org.robolectric:robolectric:4.2.1',
     ]
 
     presentation = [
