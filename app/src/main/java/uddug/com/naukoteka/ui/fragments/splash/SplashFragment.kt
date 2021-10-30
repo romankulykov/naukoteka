@@ -27,7 +27,8 @@ class SplashFragment : BaseFragment(R.layout.fragment_splash) {
                 if (isFirstLaunched.entity) {
                     router.newRootScreen(Screens.Tutorial())
                 } else {
-                    router.newRootScreen(Screens.Login())
+                    router.newRootScreen(Screens.TabsHolder())
+                    //router.newRootScreen(Screens.Login())
                 }
             }, 1000L)
         }

@@ -91,7 +91,10 @@ class LoginPresenter(
                 if (it is HttpException && it.statusCode == ServerApiError.InvalidCredentials) {
                     viewState.showErrorCredentials()
                 } else onError(it)
-            }, onComplete = { viewState.showSuccessLogin() })
+            }, onComplete = {
+                viewState.showSuccessLogin()
+                router.newRootScreen(Screens.TabsHolder())
+            })
     }
 
 

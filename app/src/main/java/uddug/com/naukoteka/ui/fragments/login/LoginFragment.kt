@@ -29,7 +29,6 @@ import uddug.com.naukoteka.BuildConfig
 
 class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButtonListener {
 
-
     override val contentView by viewBinding(FragmentLoginBinding::bind)
 
     @InjectPresenter

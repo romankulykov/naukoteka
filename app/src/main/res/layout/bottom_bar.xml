@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="87dp"
+    android:background="@color/back_darkgrey"
+    android:orientation="horizontal"
+    android:paddingTop="8dp"
+    tools:ignore="SmallSp">
+
+    <TextView
+        android:id="@+id/tv_nau_sphere"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawablePadding="6dp"
+        android:gravity="center"
+        android:text="@string/bottom_view_item_nau_sphere"
+        android:textColor="@color/text_inactive"
+        android:textSize="10sp"
+        app:drawableTopCompat="@drawable/ic_bottom_nav_nau_sphere" />
+
+    <TextView
+        android:id="@+id/tv_nau_profile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawablePadding="6dp"
+        android:gravity="center"
+        android:text="@string/bottom_view_item_nau_profile"
+        android:textColor="@color/text_inactive"
+        android:textSize="10sp"
+        app:drawableTopCompat="@drawable/ic_bottom_nav_profile" />
+
+    <TextView
+        android:id="@+id/tv_nau_chat"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawablePadding="6dp"
+        android:gravity="center"
+        android:text="@string/bottom_view_item_nau_chat"
+        android:textColor="@color/text_inactive"
+        android:textSize="10sp"
+        app:drawableTopCompat="@drawable/ic_bottom_navigation_nau_chat" />
+
+    <TextView
+        android:id="@+id/tv_my_territory"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawablePadding="6dp"
+        android:gravity="center"
+        android:text="@string/bottom_view_item_my_territory"
+        android:textColor="@color/text_inactive"
+        android:textSize="10sp"
+        app:drawableTopCompat="@drawable/ic_bottom_navigation_my_territory" />
+
+    <TextView
+        android:id="@+id/tv_nau_search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawablePadding="6dp"
+        android:gravity="center"
+        android:text="@string/bottom_view_item_nau_search"
+        android:textColor="@color/text_inactive"
+        android:textSize="10sp"
+        app:drawableTopCompat="@drawable/ic_bottom_navigation_nau_search" />
+
+</LinearLayout>

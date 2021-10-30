@@ -50,6 +50,7 @@ class ChatsDetailFragment : BaseFragment(R.layout.fragment_chat_details),
         contentView.run {
             viewPager.adapter = chatAdapter
             viewPager.offscreenPageLimit = 5
+            viewPager.isUserInputEnabled = false
             TabLayoutMediator(tabLayout, viewPager) { tab, position ->
                 tab.text = context?.getString(titles[position])
             }.attach()
