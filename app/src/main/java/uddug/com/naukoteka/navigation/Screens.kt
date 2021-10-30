@@ -41,8 +41,6 @@ object Screens {
 
     fun Login() = FragmentScreen(LOGIN) { LoginFragment() }
 
-    fun ChatDetail() = FragmentScreen(CHAT_DETAIL) { ChatDetailFragment() }
-
     fun RegistrationFirstStep() =
         FragmentScreen(REGISTRATION_FIRST_STEP) { RegistrationFirstStepFragment() }
 
@@ -70,4 +68,6 @@ object Screens {
 
     fun Chat() =
         FragmentScreen(CHAT) { ChatsDetailFragment() }
+
+    fun ChatDetail() = FragmentScreen(CHAT_DETAIL) { ChatDetailFragment() }
 }

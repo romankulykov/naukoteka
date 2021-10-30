@@ -90,4 +90,57 @@
   <string name="authorization_request_not_found">Запрос на вход не найден. Попробуйте войти заново</string>
   <string name="client_registration_not_found">Для данного приложения не разрешен вход в систему</string>
   <string name="idp_exception">Ошибка входа с помощью провайдера идентификации</string>
+
+  <string name="chat_change">Изм.</string>
+  <string name="chat_science_chat">НауЧат</string>
+  <string name="chat_search_chat">Поиск по чатам и людям</string>
+  <string name="chat_all">Все</string>
+  <string name="chat_groups">Группы</string>
+  <string name="chat_studies">Учеба</string>
+  <string name="chat_work">Работа</string>
+  <string name="chat_hidden">Скрытые</string>
+  <string name="chat_time">пт</string>
+  <string name="chat_count_of_message">17</string>
+  <string name="contact_name_1">Михаил Маркин</string>
+  <string name="contact_name_2">Александр Ивановский</string>
+  <string name="contact_name_3">Vasiliy Chernenko</string>
+  <string name="contact_name_4">Andrew Zakharov</string>
+  <string name="contact_name_5">Elena Babaeva</string>
+  <string name="contact_name_6">Александра Землянко</string>
+  <string name="contact_name_7">Andy</string>
+  <string name="contact_name_8">Алексей Демьяненко</string>
+  <string name="contact_name_9">Vadim Gubierna</string>
+  <string name="contact_name_10">Михаил Пахомов</string>
+  <string name="text_message_1">Не теряет актуальности любой прочее</string>
+  <string name="text_message_2">Аналогично</string>
+  <string name="text_message_3">Понятно</string>
+  <string name="text_message_4">Hello, my friend!</string>
+  <string name="text_message_5">What are you doing today?</string>
+  <string name="text_message_6">What is your favorite color?</string>
+  <string name="text_message_7">Привет. Когда пойдем гулять?</string>
+  <string name="text_message_8">You are welcome!</string>
+  <string name="text_message_9">Какие планы у тебя есть на сегодня?</string>
+  <string name="text_message_10">Сколько у нас завтра уроков?</string>
+  <string name="graduate_work">Дипломная работа</string>
+  <string name="chat_count_people">18 участников</string>
+  <string name="message">Сообщение</string>
+  <string name="swipe_return">Вернуть</string>
+  <string name="swipe_block">Заблокировать</string>
+  <string name="swipe_clear">Очистить</string>
+  <string name="swipe_anchor">Закрепить</string>
+  <string name="swipe_read">Прочитано</string>
+  <string name="file_attachment_dialog_cancel">Отменить</string>
+  <string name="search_by_conversation">Поиск по беседе</string>
+  <string name="interview_materials">Материалы беседы</string>
+  <string name="disable_notifications">Отключить уведомления</string>
+  <string name="clear_the_history">Очистить историю</string>
+  <string name="add_participant">Добавить участника</string>
+  <string name="photo_or_video">Фото или видео</string>
+  <string name="file">Файл</string>
+  <string name="contact">Контакт</string>
+  <string name="interrogation">Опрос</string>
+  <string name="anchor_chat">Закрепить чат</string>
+  <string name="hide_chat">Скрыть чат</string>
+
+
 </resources>
