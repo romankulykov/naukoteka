@@ -54,4 +54,6 @@
 
     <color name="view_dialog_color">#363850</color>
 
+    <color name="view_create_contact_color">#3D3D3F</color>
+
 </resources>

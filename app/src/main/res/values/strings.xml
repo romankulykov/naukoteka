@@ -132,5 +132,10 @@
     <string name="interrogation">Опрос</string>
     <string name="anchor_chat">Закрепить чат</string>
     <string name="hide_chat">Скрыть чат</string>
+    <string name="back">Назад</string>
+    <string name="write_message">Написать сообщение</string>
+    <string name="search_contact">Поиск</string>
+    <string name="create_group">Создать группу</string>
+    <string name="nickname_contact">\@manalexxi</string>
 
 </resources>
