@@ -71,7 +71,7 @@ class LoginPresenterTest {
     }
 
     @Test
-    fun `Requests payment cards with correct payment client`() {
+    fun `Pass data to login with correct credentials`() {
         verify(interactor).login("romanakamoran@gmail.com", "123QWEasdZXC$")
 
     }
