@@ -2,7 +2,6 @@ package uddug.com.naukoteka.ui.fragments.chats
 
 import android.view.View
 import android.view.ViewGroup
-import android.widget.PopupWindow
 import androidx.annotation.LayoutRes
 import com.daimajia.swipe.SwipeLayout
 import uddug.com.domain.entities.ChatListEntity

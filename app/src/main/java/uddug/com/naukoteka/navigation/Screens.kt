@@ -4,7 +4,9 @@ import android.content.Intent
 import android.net.Uri
 import com.github.terrakok.cicerone.androidx.ActivityScreen
 import com.github.terrakok.cicerone.androidx.FragmentScreen
+import uddug.com.naukoteka.ui.fragments.chat_add_contact.ChatAddContactFragment
 import uddug.com.naukoteka.ui.fragments.chat_detail.ChatDetailFragment
+import uddug.com.naukoteka.ui.fragments.chat_select_contact.ChatSelectContactFragment
 import uddug.com.naukoteka.ui.fragments.chats_detail.ChatsDetailFragment
 import uddug.com.naukoteka.ui.fragments.tutorial.TutorialFragment
 import uddug.com.naukoteka.ui.fragments.login.LoginFragment
@@ -34,6 +36,8 @@ object Screens {
     const val SIGNED_UP = "signedUpFragment"
     const val CHAT = "chatFragment"
     const val CHAT_DETAIL = "chatDetailFragment"
+    const val CHAT_ADD_CONTACT = "chatAddContactFragment"
+    const val CHAT_CREATE_GROUP = "chatSelectContactFragment"
 
 
     fun Splash() = FragmentScreen(SPLASH_SCREEN) { SplashFragment() }
@@ -70,4 +74,7 @@ object Screens {
 
     fun Chat() =
         FragmentScreen(CHAT) { ChatsDetailFragment() }
+
+    fun ChatAddContact() = FragmentScreen(CHAT_ADD_CONTACT) { ChatAddContactFragment() }
+    fun ChatCreateGroup() = FragmentScreen(CHAT_CREATE_GROUP) { ChatSelectContactFragment() }
 }

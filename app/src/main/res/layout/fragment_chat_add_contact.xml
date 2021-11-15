@@ -87,7 +87,7 @@
             android:id="@+id/iv_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="145dp"
+            android:layout_marginStart="135dp"
             android:src="@drawable/ic_search_contact"
             app:layout_constraintBottom_toBottomOf="@id/et_search_contact"
             app:layout_constraintStart_toStartOf="@id/et_search_contact"

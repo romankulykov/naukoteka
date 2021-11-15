@@ -137,5 +137,8 @@
     <string name="search_contact">Поиск</string>
     <string name="create_group">Создать группу</string>
     <string name="nickname_contact">\@manalexxi</string>
+    <string name="cancel">Отмена</string>
+    <string name="add_members">Добавить 200 участников</string>
+    <string name="selected_members">Выбрано 200 из 200</string>
 
 </resources>

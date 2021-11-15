@@ -50,7 +50,7 @@ class LoginPresenter(
 
     fun toPasswordRecovery() {
         logger.debug("click toPasswordRecovery")
-        router.navigateTo(Screens.Chat())
+        router.navigateTo(Screens.ChatAddContact())
     }
 
     fun exit() {
