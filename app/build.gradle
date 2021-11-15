@@ -109,6 +109,10 @@ dependencies {
 
     implementation ui.swipeLayout
 
+    implementation ui.circleimageview
+
+    implementation ui.stickyHeader
+
     implementation presentation.moxy
     implementation presentation.moxyAndroid
     implementation presentation.moxyKtx

@@ -140,6 +140,14 @@
     <string name="interrogation">Опрос</string>
     <string name="anchor_chat">Закрепить чат</string>
     <string name="hide_chat">Скрыть чат</string>
+    <string name="back">Назад</string>
+    <string name="write_message">Написать сообщение</string>
+    <string name="search_contact">Поиск</string>
+    <string name="create_group">Создать группу</string>
+    <string name="nickname_contact">\@manalexxi</string>
+    <string name="cancel">Отмена</string>
+    <string name="add_members">Добавить 200 участников</string>
+    <string name="selected_members">Выбрано 200 из 200</string>
 
     <string name="bottom_view_item_nau_sphere">НауСфера</string>
     <string name="bottom_view_item_nau_profile">НауПрофиль</string>
