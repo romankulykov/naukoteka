@@ -96,9 +96,6 @@ object Screens {
     fun MyTerritory(tabName: String) = FragmentScreen(tabName) { StubFragment() }
     fun NauSearch(tabName: String) = FragmentScreen(tabName) { StubFragment() }
 
-    fun Chat() =
-        FragmentScreen(CHAT) { ChatsDetailFragment() }
-
     fun ChatAddContact() = FragmentScreen(CHAT_ADD_CONTACT) { ChatAddContactFragment() }
     fun ChatCreateGroup() = FragmentScreen(CHAT_CREATE_GROUP) { ChatSelectContactFragment() }
     fun ChatDetail() = FragmentScreen(CHAT_DETAIL) { ChatDetailFragment() }
