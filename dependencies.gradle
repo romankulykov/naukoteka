@@ -9,6 +9,8 @@ ext {
     versionToothpick = '3.1.0'
     versionJavaxAnnotations = '1'
     versionLocaleChanger = "1.1"
+    versionPowerMock = '1.7.3'
+    versionMockito = '2.8.9'
 
     ui = [
             appcompat              : 'androidx.appcompat:appcompat:1.2.0',
@@ -72,9 +74,22 @@ ext {
 
     ]
 
+    unitTest = [
+            junit            : "junit:junit:4.13.2",
+            testCore         : "androidx.test:core-ktx:1.4.0",
+            coreTesting      : "androidx.arch.core:core-testing:2.1.0",
+            mockitoCore      : "org.mockito:mockito-core:$versionMockito",
+            mockitoInline    : "org.mockito:mockito-inline:$versionMockito",
+            powerMockCore    : "org.powermock:powermock-core:$versionPowerMock",
+            powerMockJUnit   : "org.powermock:powermock-module-junit4:$versionPowerMock",
+            powerMockMockito2: "org.powermock:powermock-api-mockito2:$versionPowerMock",
+            robolectric      : 'org.robolectric:robolectric:4.2.1',
+            toothpickTesting : "com.github.stephanenicolas.toothpick:toothpick-testing:$versionToothpick",
+    ]
+
     lib = [
-            domain      : project(":domain"),
-            data        : project(":data"),
+            domain: project(":domain"),
+            data  : project(":data"),
     ]
 
 }

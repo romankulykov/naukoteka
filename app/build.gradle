@@ -24,6 +24,7 @@ android {
 
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     signingConfigs {
@@ -135,8 +136,18 @@ dependencies {
     implementation presentation.rxJava
     implementation presentation.rxJavaAndroid
 
-
     implementation lib.domain
     implementation lib.data
+
+    testImplementation unitTest.junit
+    testImplementation unitTest.testCore
+    testImplementation unitTest.coreTesting
+    testImplementation unitTest.toothpickTesting
+    testImplementation unitTest.mockitoCore
+    testImplementation unitTest.mockitoInline
+    testImplementation unitTest.powerMockCore
+    testImplementation unitTest.powerMockJUnit
+    testImplementation unitTest.powerMockMockito2
+    testImplementation unitTest.robolectric
 
 }

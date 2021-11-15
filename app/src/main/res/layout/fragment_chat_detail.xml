@@ -43,6 +43,7 @@
             android:layout_marginTop="8dp"
             android:orientation="vertical"
             app:layout_constraintStart_toEndOf="@id/iv_chat_image"
+            app:layout_constraintEnd_toStartOf="@+id/iv_call"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
@@ -71,7 +72,7 @@
             android:layout_marginTop="8dp"
             android:padding="10dp"
             android:src="@drawable/ic_call1"
-            app:layout_constraintStart_toEndOf="@id/ll_chat_name"
+            app:layout_constraintEnd_toStartOf="@+id/iv_video_chat"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -82,7 +83,7 @@
             android:layout_marginTop="8dp"
             android:padding="10dp"
             android:src="@drawable/ic_video_chat"
-            app:layout_constraintStart_toEndOf="@id/iv_call"
+            app:layout_constraintEnd_toStartOf="@+id/iv_menu"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -93,7 +94,7 @@
             android:layout_marginTop="8dp"
             android:padding="10dp"
             android:src="@drawable/ic_menu"
-            app:layout_constraintStart_toEndOf="@id/iv_video_chat"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
