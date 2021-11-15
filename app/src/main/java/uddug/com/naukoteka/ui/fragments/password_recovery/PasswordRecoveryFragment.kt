@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.text.parseAsHtml
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import uddug.com.naukoteka.R
@@ -47,7 +48,12 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
             ivBack.setOnClickListener { onBackPressed() }
             passwordRecovery.run {
                 btnSend.setOnClickListener { presenter.recoveryPassword(ctiEmail.text()) }
-                ctiEmail.doAfterTextChange { checkValidField() }
+                ctiEmail.doAfterTextChange { checkValidEmail() }
+                ctiEmail.validFieldEditTextListener = { isValid ->
+                    ctiEmail.showError(!isValid)
+                    tvError.setText(R.string.error_email_format)
+                    tvError.isGone = isValid
+                }
             }
             passwordRecoveryNewPassword.run {
                 ctiNewPass.doAfterTextChange { checkValidFields() }
@@ -67,17 +73,20 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
         contentView.run {
             when (viewFlipper.displayedChild) {
                 FLIPPER_PASSWORD_RECOVERY -> presenter.exit()
-                FLIPPER_PASSWORD_RECOVERY_NEW_PASSWORD -> startDialogCancelPasswordRecovery(FLIPPER_PASSWORD_RECOVERY)
-                FLIPPER_PASSWORD_RECOVERY_VERIFICATION -> startDialogCancelPasswordRecovery(FLIPPER_PASSWORD_RECOVERY)
+                FLIPPER_PASSWORD_RECOVERY_NEW_PASSWORD -> startDialogCancelPasswordRecovery(
+                    FLIPPER_PASSWORD_RECOVERY
+                )
+                FLIPPER_PASSWORD_RECOVERY_VERIFICATION -> startDialogCancelPasswordRecovery(
+                    FLIPPER_PASSWORD_RECOVERY
+                )
             }
         }
         return true
     }
 
-    private fun checkValidField() {
+    private fun checkValidEmail() {
         contentView.passwordRecovery.run {
-            val email = ctiEmail.text()
-            presenter.isValidEmail(email)
+            presenter.isValidEmail(ctiEmail.text())
         }
     }
 
@@ -150,7 +159,7 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
             }.show()
     }
 
-    private fun startDialogCancelPasswordRecovery(viewFlipperIndex : Int) {
+    private fun startDialogCancelPasswordRecovery(viewFlipperIndex: Int) {
         val dialogView = layoutInflater.inflate(
             R.layout.dialog_cancel_password_recovery,
             ConstraintLayout(requireContext())
@@ -162,7 +171,7 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
                 dialogView.findViewById<TextView>(R.id.tv_are_you_sure_interrupt_password_recovery)
                     ?.setText(R.string.are_you_sure_want_to_interrupt_the_password_recovery)
                 dialogView.findViewById<TextView>(R.id.btn_yes)?.setOnClickListener {
-                    contentView.viewFlipper.displayedChild = viewFlipperIndex
+                    presenter.toAuthorization()
                     dismiss()
                 }
                 dialogView.findViewById<TextView>(R.id.btn_no)?.setOnClickListener { dismiss() }
@@ -186,6 +195,13 @@ class PasswordRecoveryFragment : BaseFragment(R.layout.fragment_password_recover
             dialogView.findViewById<TextView>(R.id.tv_password_recovery_successful)
                 ?.setText(R.string.dialog_password_recovery_successful)
         }?.show()
+    }
+
+    override fun showErrorEmail(isValid: Boolean) {
+        contentView.passwordRecovery.ctiEmail.showError(!isValid)
+        contentView.passwordRecovery.tvError.setText(R.string.error_email_not_exist)
+        contentView.passwordRecovery.tvError.isGone = isValid
+        showButtonState(isValid)
     }
 
     override fun onDestroy() {

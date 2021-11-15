@@ -7,7 +7,7 @@ import uddug.com.naukoteka.di.modules.RegistrationModule
 import uddug.com.naukoteka.di.modules.SimpleRegistration
 import uddug.com.naukoteka.navigation.AppRouter
 import uddug.com.naukoteka.navigation.Screens
-import uddug.com.naukoteka.presentation.login.SocialLoginPresenter
+import uddug.com.naukoteka.global.base.SocialLoginPresenter
 import moxy.InjectViewState
 import toothpick.InjectConstructor
 import toothpick.ktp.KTP

@@ -65,11 +65,15 @@ class PasswordRecoveryPresenter(
     }
 
     fun toAuthorization() {
-        router.navigateTo(Screens.Login())
+        router.backTo(Screens.Login())
     }
 
     fun recoveryPassword(email: String) {
-        authInteractor.sendLetterToRecovery(email).await {
+        authInteractor.sendLetterToRecovery(email).await(onError = {
+            if (it is HttpException && it.statusCode == ServerApiError.InvalidUser) {
+                viewState.showErrorEmail(false)
+            } else onError(it)
+        }) {
             viewState.showTimer()
         }
     }

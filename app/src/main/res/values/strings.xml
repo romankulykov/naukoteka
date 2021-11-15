@@ -1,87 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="app_name">naukoteka</string>
-
+    <string name="app_name">Naukotheka</string>
     <string name="errors_timeout_error">Timeout</string>
     <string name="errors_network_error">Network is disabled</string>
-    <string name="errors_email_is_busy">Почта занята</string>
+    <string name="errors_email_is_busy">The specified mail is not available</string>
     <string name="errors_something_went_wrong">Something went wrong</string>
-    <string name="error_passwords_not_equals">Указанная пара паролей не совпадает. Проверьте введенные данные и повторите попытку.</string>
-    <string name="error_incorrect_credentials">Не получается войти проверьте указанные данные</string>
-    <string name="error_nickname_is_busy">Никнейм занят</string>
-    <string name="error_password_policy">Пароль не соответствует ряду требований</string>
+    <string name="error_passwords_not_equals">The specified password pair does not match. Check your entries and try again.</string>
+    <string name="error_incorrect_credentials">Can\'t sign in, check the details</string>
+    <string name="error_nickname_is_busy">The specified nickname is not available</string>
+    <string name="error_password_policy">Password does not meet requirements</string>
+    <string name="error_email_not_exist">The user with the specified email address has not previously been registered. Please check the correctness of the specified data.</string>
+    <string name="error_email_format">Email input error</string>
+    <string name="next">Next</string>
+    <string name="ready">Done</string>
+    <string name="the_best_scientific_works">The best scientific papers in one place</string>
+    <string name="smart_community">Join Naukotheka community</string>
+    <string name="new_ideas">Service of the newest ideas</string>
+    <string name="skip">Skip</string>
+    <string name="login_welcome">Wellcome to Naukotheka</string>
+    <string name="login_email">Email</string>
+    <string name="login_password">Password</string>
+    <string name="login_remember_me">Remember me</string>
+    <string name="login_forget_password">Forgot your password</string>
+    <string name="login_enter">Log in</string>
+    <string name="login_registration">First time here? Sign up</string>
+    <string name="registration_new_user">Create an account</string>
+    <string name="registration_address_for_registration">Your email address will be used for registration</string>
+    <string name="registration_agreement">By clicking on the "Next" button, you agree to the Terms of Service and confirm the Personal Data Processing Policy</string>
+    <string name="registration_new_password">Create a strong password</string>
+    <string name="registration_password_requirements">Now you need to come up with a strong password. It must meet a number of our requirements</string>
+    <string name="registration_password_confirmation">Repeat password</string>
+    <string name="registration_error">The specified password pair does not match. Check the entered data and try again</string>
+    <string name="registration_confirmation">Confirmation of registration</string>
+    <string name="registration_checking_mail">Check your email, we have sent you an email with a link</string>
+    <string name="registration_send_letter">Didn\'t get the email? Check your spam folder or send the email again</string>
+    <string name="enter_has_successfully_passed">Login successfully completed!</string>
+    <string name="signed_up_registered_successfully">Complete registration</string>
+    <string name="signed_up_fill_in_the_form">Upload your photo and fill out a short questionnaire about your education, career and interests</string>
+    <string name="signed_up_fill_in_profile">Fill in the profile</string>
+    <string name="short_info_profile_complete_registration">Complete registration</string>
+    <string name="short_info_profile_minimum_information">We need minimal information about you</string>
+    <string name="short_info_profile_name">What is your name</string>
+    <string name="short_info_profile_surname">Last name</string>
+    <string name="short_info_profile_field_name">First name</string>
+    <string name="short_info_profile_patronymic">Middle name</string>
+    <string name="short_info_profile_without_patronymic">No middle name</string>
+    <string name="short_info_profile_link">Profile link</string>
+    <string name="short_info_profile_personal_address">You can set a personal link for your profile</string>
+    <string name="short_info_profile_field_link">Link</string>
+    <string name="short_info_profile_button_complete_registration">Complete registration</string>
+    <string name="password_recovery">Password recovery</string>
+    <string name="password_recovery_send_link">We have sent a link to the email address you provided. Please check your mail and click on the link in the letter</string>
+    <string name="password_recovery_send">Send</string>
+    <string name="password_recovery_verification_send_link">We have sent a link to the email address you provided. Please check your mail and click on the link in the letter</string>
+    <string name="password_recovery_verification_not_receive_letter">Did not get the email?</string>
+    <string name="password_recovery_verification_send_again">Send again %s</string>
+    <string name="password_recovery_support">Need help? Contact support</string>
+    <string name="password_recovery_requirements">Now come up with a strong new password. It must meet a number of our requirements.</string>
+    <string name="password_recovery_new_pass">New password</string>
+    <string name="password_recovery_new_pass_confirmation">Repeat new password</string>
+    <string name="password_recovery_save_password">Save password</string>
+    <string name="password_recovery_by_phone_number">Password recovery by phone number</string>
+    <string name="password_recovery_send_sms">We will send you an SMS with a code to confirm access to your account</string>
+    <string name="password_recovery_phone_number">Phone number</string>
+    <string name="password_recovery_send_code">Send code</string>
+    <string name="password_recovery_help">Need help? Try to recover via email or contact support</string>
+    <string name="password_recovery_sent_the_code_to_the_specified_number">An SMS with a code has been sent to the specified phone number</string>
+    <string name="password_recovery_received_code">Received code</string>
+    <string name="password_recovery_accept">Confirm</string>
+    <string name="dialog_password_recovery_cancel_no">No</string>
+    <string name="dialog_password_recovery_cancel_yes">Yes</string>
+    <string name="are_you_sure_want_to_interrupt_the_password_recovery">Do you really want abort the process password recovery?</string>
+    <string name="dialog_password_requirements_accessibly">Got it</string>
+    <string name="dialog_password_requirements_count_of_symbols">Password must consist of 8 or more characters of the Latin alphabet;
+ Digits;</string>
+    <string name="dialog_password_requirements_capital_letters">Contain uppercase and lowercase letters;</string>
+    <string name="dialog_password_requirements_digits">Digits;</string>
+    <string name="dialog_password_requirements_symbols">Non-alphabetic characters "-", "_".</string>
+    <string name="dialog_password_recovery_new_password_save">New password saved</string>
+    <string name="dialog_password_recovery_successful">Recovery was successful</string>
+    <string name="invalid_idp">Invalid identity provider selected</string>
+    <string name="session_not_found">User session not found. Try logging in again</string>
+    <string name="user_already_authenticated">User already authenticated</string>
+    <string name="user_already_exists">User already exists</string>
+    <string name="user_password_policy_not_met">User password policy not met</string>
+    <string name="unsupported_action">Unsupported action</string>
+    <string name="action_token_expired">Action token expired</string>
+    <string name="authorization_request_not_found">Authorization request not found. Try logging in again</string>
+    <string name="client_registration_not_found">This application is unauthorized</string>
+    <string name="idp_exception">Error logging in with identity provider</string>
 
-    <string name="next">Дальше</string>
-    <string name="ready">Готово</string>
-    <string name="the_best_scientific_works">Лучшие научные работы в одном месте</string>
-    <string name="smart_community">Вступайте в умное сообщество</string>
-    <string name="new_ideas">Сервис самых новых идей</string>
-    <string name="skip">Пропустить</string>
-    <string name="login_welcome">Добро пожаловать в Наукотеку</string>
-    <string name="login_email">Электронная почта</string>
-    <string name="login_password">Пароль</string>
-    <string name="login_remember_me">Запомнить меня</string>
-    <string name="login_forget_password">Забыли пароль?</string>
-    <string name="login_enter">Войти</string>
-    <string name="login_registration"><![CDATA[<font color=#8083A0>Нет аккаунта?</font> <font color=#2E83D9>Зарегистрируйтесь</font>]]></string>
-    <string name="registration_third">3</string>
-    <string name="registration_second">2</string>
-    <string name="registration_first">1</string>
-    <string name="registration_new_user">Регистрация нового пользователя</string>
-    <string name="registration_address_for_registration">Ваш адрес электронной почты будет
-        использован для регистрации</string>
-    <string name="registration_agreement"><![CDATA[<font color=#8083A0>Нажимая на кнопку &quot;Дальше&quot;, вы соглашаетесь <br>с</font> <font color=#2E83D9>Правилами сервиса</font> <font color=#8083A0>и подтверждаете</font> <font color=#2E83D9>Политику <br> обработки персональных данных</font>]]></string>
-    <string name="registration_new_password">Создание надежного пароля</string>
-    <string name="registration_password_requirements"><![CDATA[<font color=#FFFFFFFF>Теперь необходимо придумать надежный <br> пароль. Он должен соответствовать ряду <br> наших</font> <font color=#2E83D9>требований</font><font color=#FFFFFFFF>.</font>]]></string>
-    <string name="registration_password_confirmation">Подтвердите пароль</string>
-    <string name="registration_error">Указанная пара паролей не совпадает. Проверьте введенные данные и повторите попытку.</string>
-    <string name="registration_confirmation">Подтверждение регистрации</string>
-    <string name="registration_checking_mail">Проверьте свою электронную почту, мы отправили туда письмо со ссылкой.</string>
-    <string name="registration_send_letter"><![CDATA[<font color=#8083A0>Не получили письмо? Проверьте папку &quot;спам&quot; <br>или</font> <font color=#2E83D9>отправьте письмо еще раз</font> <font color=#8083A0>%s</font>]]></string>
-    <string name="enter_has_successfully_passed">Вход успешно выполнен!</string>
-    <string name="signed_up_registered_successfully">Вы успешно зарегистрированы!</string>
-    <string name="signed_up_fill_in_the_form">Загрузите свою фотографию и заполните небольшую анкету о вашем образовании, карьере и интересах</string>
-    <string name="signed_up_fill_in_profile">Заполнить профиль</string>
-    <string name="short_info_profile_complete_registration">Завершите регистрацию</string>
-    <string name="short_info_profile_minimum_information">Нам нужна минимальная информация о вас</string>
-    <string name="short_info_profile_name">Как вас зовут</string>
-    <string name="short_info_profile_surname">Фамилия</string>
-    <string name="short_info_profile_field_name">Имя</string>
-    <string name="short_info_profile_patronymic">Отчество</string>
-    <string name="short_info_profile_without_patronymic">Без отчества</string>
-    <string name="short_info_profile_link">Ссылка на профиль</string>
-    <string name="short_info_profile_personal_address">Вы можете задать для своего профиля персональный адрес</string>
-    <string name="short_info_profile_field_link">Ссылка</string>
-    <string name="short_info_profile_button_complete_registration">Завершить регистрацию</string>
-    <string name="password_recovery">Восстановление пароля</string>
-    <string name="password_recovery_send_link">Мы отправим ссылку на указанный Вами адрес электронной почты для подтверждения наличия доступа к Вашему аккаунту</string>
-    <string name="password_recovery_send">Отправить</string>
-    <string name="password_recovery_verification_send_link">Мы отправили ссылку на указанный Вами адрес электронной почты. Пожалуйста, проверьте Вашу почту и нажмите на ссылку, находящуюся в письме</string>
-    <string name="password_recovery_verification_not_receive_letter">Не получили письмо?</string>
-    <string name="password_recovery_verification_send_again"><![CDATA[<font color=#2E83D9>Отправить еще раз</font> <font color=#8083A0>%s</font>]]></string>
-    <string name="password_recovery_support"><![CDATA[<font color=#8083A0>Нужна помощь?</font> <font color=#2E83D9>Обратитесь в поддержку</font>]]></string>
-    <string name="password_recovery_requirements"><![CDATA[<font color=#FFFFFFFF>Теперь придумайте себе новый надежный <br> пароль. Он должен соответствовать ряду <br> наших</font> <font color=#2E83D9>требований</font><font color=#FFFFFFFF>.</font>]]></string>
-    <string name="password_recovery_new_pass">Новый пароль</string>
-    <string name="password_recovery_new_pass_confirmation">Подтвердите новый пароль</string>
-    <string name="password_recovery_save_password">Сохранить пароль</string>
-    <string name="password_recovery_by_phone_number">Восстановление пароля по номеру телефона</string>
-    <string name="password_recovery_send_sms">Мы отправим вам смс с кодом для подтверждения доступа к вашему аккаунту</string>
-    <string name="password_recovery_phone_number">Номер телефона</string>
-    <string name="password_recovery_send_code">Отправить код</string>
-    <string name="password_recovery_help"><![CDATA[<font color=#8083A0>Нужна помощь? Попробуйте восстановить через</font> <br> <font color=#2E83D9>электронный адрес</font> <font color=#8083A0>или</font> <font color=#2E83D9>обратитесь в поддержку</font>]]></string>
-    <string name="password_recovery_sent_the_code_to_the_specified_number">Отправили смс с кодом на указанный номер телефона</string>
-    <string name="password_recovery_received_code">Полученный код</string>
-    <string name="password_recovery_accept">Подтвердить</string>
-    <string name="dialog_password_recovery_cancel_no">Нет</string>
-    <string name="dialog_password_recovery_cancel_yes">Да</string>
-    <string name="are_you_sure_want_to_interrupt_the_password_recovery">Вы действительно хотите прервать процесс восстановления пароля?</string>
-    <string name="dialog_password_requirements_accessibly">Понятно</string>
-    <string name="dialog_password_requirements_count_of_symbols">Пароль должен состоять из 8 или более символов латинского алфавита</string>
-    <string name="dialog_password_requirements_capital_letters">Cодержать заглавные и строчные буквы</string>
-    <string name="dialog_password_requirements_digits">Cодержать цифры</string>
-    <string name="dialog_password_requirements_symbols">Содержать неалфавитные символы «–», «_» и т.п.</string>
-    <string name="dialog_password_recovery_new_password_save">Новый пароль сохранен</string>
-    <string name="dialog_password_recovery_successful">Восстановление прошло успешно</string>
     <string name="chat_change">Изм.</string>
     <string name="chat_science_chat">НауЧат</string>
     <string name="chat_search_chat">Поиск по чатам и людям</string>
@@ -140,5 +148,12 @@
     <string name="cancel">Отмена</string>
     <string name="add_members">Добавить 200 участников</string>
     <string name="selected_members">Выбрано 200 из 200</string>
+
+    <string name="bottom_view_item_nau_sphere">НауСфера</string>
+    <string name="bottom_view_item_nau_profile">НауПрофиль</string>
+    <string name="bottom_view_item_nau_chat">НауЧат</string>
+    <string name="bottom_view_item_my_territory">Моя территория</string>
+    <string name="bottom_view_item_nau_search">НауПоиск</string>
+
 
 </resources>

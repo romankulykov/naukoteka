@@ -1,11 +1,17 @@
 package uddug.com.naukoteka.ui.activities.main
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
+import android.view.inputmethod.InputMethodManager
 import android.widget.ProgressBar
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.LocaleChangerAppCompatDelegate
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import com.franmontiel.localechanger.LocaleChanger
 import com.github.terrakok.cicerone.Navigator
 import com.github.terrakok.cicerone.NavigatorHolder
 import uddug.com.naukoteka.R
@@ -121,6 +127,14 @@ class MainActivity : BaseActivity(), RouterProvider, MainView {
         }
     }
 
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        if (currentFocus != null) {
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
+        }
+        return super.dispatchTouchEvent(ev)
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         val fm = supportFragmentManager
         var fragment: Fragment? = null
@@ -144,6 +158,14 @@ class MainActivity : BaseActivity(), RouterProvider, MainView {
 
     override fun showRefreshLoading(show: Boolean) {
 
+    }
+
+    override fun getDelegate(): AppCompatDelegate {
+        return LocaleChangerAppCompatDelegate(super.getDelegate())
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(LocaleChanger.configureBaseContext(newBase))
     }
 
     override fun showInfoMessage(message: Int?) {

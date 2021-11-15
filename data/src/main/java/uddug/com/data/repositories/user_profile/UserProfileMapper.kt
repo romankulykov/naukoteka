@@ -15,7 +15,7 @@ class UserProfileMapper(
             id = userIdCache.entity,
             firstName = name,
             lastName = surname,
-            middleName = middleName,
+            middleName = if (middleName.isNullOrEmpty()) " " else middleName,
             // nick name should be more or equals 6 digits after id
             nickname = "id${nickname}"
         )

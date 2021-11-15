@@ -2,6 +2,7 @@ package uddug.com.data.repositories.user_profile
 
 import io.reactivex.Completable
 import io.reactivex.Observable
+import io.reactivex.Single
 import uddug.com.data.cache.user_uuid.UserUUIDCache
 import uddug.com.data.services.UserProfileApiService
 import uddug.com.data.services.models.request.user_profile.NickNameCheckRequestDto
@@ -16,6 +17,11 @@ class UserProfileRepositoryImpl(
     private val userUUIDCache: UserUUIDCache
 ) : UserProfileRepository {
 
+
+    override fun getProfileNickName(): Single<String> {
+        return profileApiService.getUserInfo()
+            .map { it.nickname }
+    }
 
     override fun setUser(shortInfoEntity: ShortInfoUi): Completable {
         return profileApiService.setUser(

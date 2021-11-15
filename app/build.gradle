@@ -90,6 +90,7 @@ dependencies {
     implementation ui.constraintLayout
     implementation ui.lifecycle
     implementation ui.lifecycleCommon
+    implementation ui.localeChanger
 
     implementation ui.glide
     implementation ui.glideAnnotation

@@ -1,12 +1,16 @@
 package uddug.com.naukoteka.utils
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.util.AttributeSet
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
+import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 
@@ -25,6 +29,11 @@ fun Context.useStyledAttributes(
         recycle()
     }
 }
+
+fun TextView.textColor(@ColorRes colorId: Int) = setTextColor(context.color(colorId))
+
+@SuppressLint("UseCompatLoadingForColorStateLists")
+fun Context.color(@ColorRes resId: Int) = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) getColor(resId) else resources.getColor(resId)
 
 fun Context.getDrawableCompat(drawableId: Int): Drawable {
     return ContextCompat.getDrawable(this, drawableId)!!
