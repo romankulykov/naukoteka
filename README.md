@@ -11,6 +11,11 @@ Modularization: data, domain, app
 
 API: https://stage.naukotheka.ru/api/a/swagger-ui/index.html?configUrl=/api/a/api-docs/swagger-config#/custom-controller/isEmailFree
 
+How to run tests:
+1) Open app/src/test/java
+2) Open necessary file
+3) click on the left side of class name and Run test file or Ctrl+Shift+F10
+
 ## Code structure
 ```
 |---app - main application components
