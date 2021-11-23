@@ -33,15 +33,15 @@ class ChatAddContactFragment : BaseFragment(R.layout.fragment_chat_add_contact),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         contentView.run {
             clBack.setOnClickListener {
                 onBackPressed()
             }
             etSearchContact.doAfterTextChanged {
                 presenter.onQueryFilter(it.toString())
-                ivSearch.isVisible = false
+                ivSearch.isVisible = etSearchContact.text.isEmpty()
             }
+
             tvCreateGroup.setOnClickListener { presenter.toCreateGroup() }
             rvContacts.adapter = chatAddContactAdapter
         }

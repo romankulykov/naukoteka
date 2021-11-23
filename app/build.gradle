@@ -113,6 +113,9 @@ dependencies {
 
     implementation ui.stickyHeader
 
+    implementation ui.tedbottompicker
+    implementation ui.tedpermission
+
     implementation presentation.moxy
     implementation presentation.moxyAndroid
     implementation presentation.moxyKtx

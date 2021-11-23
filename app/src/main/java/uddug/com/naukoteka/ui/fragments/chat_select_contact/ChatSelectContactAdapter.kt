@@ -30,15 +30,19 @@ class ChatSelectContactAdapter(
     inner class ViewHolder(@LayoutRes layoutRes: Int, parent: ViewGroup) :
         BaseViewHolder<Section>(layoutRes, parent) {
 
+        val binding get() = ListItemSelectedContactsBinding.bind(itemView)
+
+        var isChecked = false
+
         override fun updateView(item: Section) {
-            val binding = ListItemSelectedContactsBinding.bind(itemView)
             if (item is ChatContact) {
                 binding.tvNameContact.text = item.name
                 binding.tvNickname.text = item.nickname
-                itemView.setOnClickListener {
+                binding.root.setOnClickListener {
+                    isChecked = !isChecked
+                    binding.cbSelectContact.isChecked = isChecked
                     onContactClick.invoke(item)
                 }
-
             }
             binding.viewDivider.isGone = item.positionInSection == item.maxPosition
         }

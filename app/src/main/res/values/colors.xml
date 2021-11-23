@@ -47,7 +47,7 @@
     <color name="main_red">#EB5545</color>
 
     <color name="clear_swipe_button_color">#3E4057</color>
-    
+
     <color name="green">#23A667</color>
 
     <color name="abbey">#3B50555C</color>
@@ -59,5 +59,7 @@
     <color name="fon_space">#343549</color>
 
     <color name="list_of_selected_contacts">#131427</color>
+
+    <color name="description_group">#121325</color>
 
 </resources>

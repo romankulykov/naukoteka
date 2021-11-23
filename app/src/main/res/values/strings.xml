@@ -143,17 +143,25 @@
     <string name="back">Назад</string>
     <string name="write_message">Написать сообщение</string>
     <string name="search_contact">Поиск</string>
-    <string name="create_group">Создать группу</string>
     <string name="nickname_contact">\@manalexxi</string>
     <string name="cancel">Отмена</string>
-    <string name="add_members">Добавить 200 участников</string>
-    <string name="selected_members">Выбрано 200 из 200</string>
+    <string name="add_members">Добавить %d участников</string>
+    <string name="selected_members">Выбрано %d из %d</string>
 
     <string name="bottom_view_item_nau_sphere">НауСфера</string>
     <string name="bottom_view_item_nau_profile">НауПрофиль</string>
     <string name="bottom_view_item_nau_chat">НауЧат</string>
     <string name="bottom_view_item_my_territory">Моя территория</string>
     <string name="bottom_view_item_nau_search">НауПоиск</string>
+    <string name="create_group">Создать группу</string>
+    <string name="creating_of_group">Создание группы</string>
+    <string name="group_name">Название группы</string>
+    <string name="description_group">Описание группы</string>
+    <string name="enter_description">Введите</string>
+    <string name="count_symbols">Введите название группы не более 100 символов (%d/100)</string>
+    <string name="participants">Участники</string>
+    <string name="count_participants">%d</string>
+    <string name="admin">Админ</string>
 
 
 </resources>

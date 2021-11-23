@@ -7,13 +7,14 @@ import uddug.com.domain.repositories.contacts.models.Header
 import uddug.com.domain.repositories.contacts.models.Section
 import uddug.com.naukoteka.global.base.BasePresenterImpl
 import uddug.com.naukoteka.navigation.AppRouter
+import uddug.com.naukoteka.navigation.Screens
 
 @InjectConstructor
 @InjectViewState
 class ChatSelectContactPresenter(val router: AppRouter) :
     BasePresenterImpl<ChatSelectContactView>() {
 
-    private val listOfChatContact = mutableListOf(
+    val listOfChatContact = mutableListOf(
         ChatContact("Михаил Маркин", "@michael"),
         ChatContact("Александр Ивановский", "@alex"),
         ChatContact("Vasiliy Chernenko", "@vaska"),
@@ -35,6 +36,10 @@ class ChatSelectContactPresenter(val router: AppRouter) :
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         viewState.showContacts(listOfChatContact.sortByFirstLetter())
+    }
+
+    fun toCreateGroup() {
+        router.navigateTo(Screens.CreateGroup())
     }
 
     fun removeSelectedContacts(chatContact: ChatContact) {
