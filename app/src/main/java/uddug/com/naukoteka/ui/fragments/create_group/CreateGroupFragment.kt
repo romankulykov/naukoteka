@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.ImageView
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
+import com.bumptech.glide.request.RequestOptions
 import gun0912.tedbottompicker.TedBottomPicker
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
@@ -87,7 +88,7 @@ class CreateGroupFragment : BaseFragment(R.layout.fragment_create_group),
     }
 
     private fun ImageView.pick() = TedBottomPicker.with(activity).show {
-        load(it)
+        load(it, requestOptions = RequestOptions.centerCropTransform())
         photoUri = it
     }
 

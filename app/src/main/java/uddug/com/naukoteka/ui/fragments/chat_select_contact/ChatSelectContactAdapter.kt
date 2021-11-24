@@ -32,16 +32,13 @@ class ChatSelectContactAdapter(
 
         val binding get() = ListItemSelectedContactsBinding.bind(itemView)
 
-        var isChecked = false
-
         override fun updateView(item: Section) {
             if (item is ChatContact) {
-                binding.tvNameContact.text = item.name
-                binding.tvNickname.text = item.nickname
-                binding.root.setOnClickListener {
-                    isChecked = !isChecked
-                    binding.cbSelectContact.isChecked = isChecked
-                    onContactClick.invoke(item)
+                binding.run {
+                    tvNameContact.text = item.name
+                    tvNickname.text = item.nickname
+                    cbSelectContact.isChecked = selectedChatContactsList?.map{ it.nickname}?.contains(item.nickname)?:false
+                    root.setOnClickListener { onContactClick.invoke(item) }
                 }
             }
             binding.viewDivider.isGone = item.positionInSection == item.maxPosition

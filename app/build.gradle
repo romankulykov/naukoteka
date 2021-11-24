@@ -13,7 +13,7 @@ android {
     }
 
     compileSdkVersion rootProject.ext.TARGET_SDK_VERSION
-    buildToolsVersion rootProject.ext.BUILD_TOOLS_VERSION
+    //buildToolsVersion rootProject.ext.BUILD_TOOLS_VERSION
 
     defaultConfig {
         applicationId rootProject.ext.application_id
