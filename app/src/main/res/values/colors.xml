@@ -62,4 +62,10 @@
 
     <color name="description_group">#121325</color>
 
+    <color name="view_band_color">#171826</color>
+
+    <color name="black_text">#10101C</color>
+
+    <color name="color_divider">#EAEAF2</color>
+
 </resources>

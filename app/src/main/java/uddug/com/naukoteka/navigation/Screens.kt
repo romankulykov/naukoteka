@@ -14,6 +14,7 @@ import uddug.com.naukoteka.ui.fragments.chats_detail.ChatsDetailFragment
 import uddug.com.naukoteka.ui.fragments.create_group.CreateGroupFragment
 import uddug.com.naukoteka.ui.fragments.login.LoginFragment
 import uddug.com.naukoteka.ui.fragments.password_recovery.PasswordRecoveryFragment
+import uddug.com.naukoteka.ui.fragments.profile.ProfileFragment
 import uddug.com.naukoteka.ui.fragments.registration_first_step.RegistrationFirstStepFragment
 import uddug.com.naukoteka.ui.fragments.registration_second_step.RegistrationSecondStepFragment
 import uddug.com.naukoteka.ui.fragments.registration_third_step.RegistrationThirdStepFragment
@@ -46,6 +47,7 @@ object Screens {
     const val CHAT_ADD_CONTACT = "chatAddContactFragment"
     const val CHAT_CREATE_GROUP = "chatSelectContactFragment"
     const val CREATE_GROUP = "createGroupFragment"
+    const val PROFILE = "profileFragment"
 
     enum class BottomNavigationTab(val tabName: String) : Serializable {
         NAU_SPHERE("sphereTabContainer"),
@@ -59,6 +61,8 @@ object Screens {
     fun Tutorial() = FragmentScreen(TUTORIAL_SCREEN) { TutorialFragment() }
 
     fun Login() = FragmentScreen(LOGIN) { LoginFragment() }
+
+    fun Profile() = FragmentScreen(PROFILE) { ProfileFragment() }
 
     fun RegistrationFirstStep() =
         FragmentScreen(REGISTRATION_FIRST_STEP) { RegistrationFirstStepFragment() }

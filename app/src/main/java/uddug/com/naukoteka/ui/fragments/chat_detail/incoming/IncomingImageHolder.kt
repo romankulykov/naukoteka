@@ -13,6 +13,8 @@ import uddug.com.naukoteka.databinding.FragmentChatDetailBinding
 import uddug.com.naukoteka.databinding.ItemCustomIncomingImageMessageBinding
 import uddug.com.naukoteka.databinding.ItemCustomOutcomingImageMessageBinding
 import uddug.com.naukoteka.databinding.ItemCustomOutcomingTextMessageBinding
+import uddug.com.naukoteka.navigation.AppRouter
+import uddug.com.naukoteka.navigation.Screens
 import uddug.com.naukoteka.ui.fragments.chat_detail.IDropInChat
 import uddug.com.naukoteka.ui.fragments.chat_detail.Payload
 import uddug.com.naukoteka.utils.ui.load

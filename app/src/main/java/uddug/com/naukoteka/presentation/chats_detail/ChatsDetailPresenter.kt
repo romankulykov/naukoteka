@@ -19,4 +19,8 @@ class ChatsDetailPresenter(
     fun showCreateChat() {
         router.navigateTo(Screens.ChatAddContact())
     }
+
+    fun showProfile() {
+        router.navigateTo(Screens.Profile())
+    }
 }

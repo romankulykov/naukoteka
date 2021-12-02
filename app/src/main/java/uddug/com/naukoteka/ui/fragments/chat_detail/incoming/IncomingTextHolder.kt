@@ -7,6 +7,8 @@ import com.stfalcon.chatkit.messages.MessageHolders
 import com.stfalcon.chatkit.utils.DateFormatter
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.ItemCustomIncomingTextMessageBinding
+import uddug.com.naukoteka.navigation.AppRouter
+import uddug.com.naukoteka.navigation.Screens
 import uddug.com.naukoteka.ui.fragments.chat_detail.IDropInChat
 import uddug.com.naukoteka.ui.fragments.chat_detail.Payload
 import uddug.com.naukoteka.utils.ui.load

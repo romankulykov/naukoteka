@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_darkgrey">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/bg_semicircle"
+            android:layout_width="473dp"
+            android:layout_height="473dp"
+            android:alpha="0.7"
+            android:src="@drawable/bg_semicircle_profile"
+            android:translationY="-236dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingStart="15dp"
+                android:paddingTop="15dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="10dp"
+                android:src="@drawable/ic_arrow_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_back"
+                style="@style/TextViewStyle.Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/golos_text_regular"
+                android:paddingStart="10dp"
+                android:paddingTop="11dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="10dp"
+                android:text="@string/back"
+                app:layout_constraintStart_toEndOf="@id/iv_back"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_photo"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            app:layout_constraintEnd_toEndOf="@id/bg_semicircle"
+            app:layout_constraintStart_toStartOf="@id/bg_semicircle"
+            app:layout_constraintTop_toBottomOf="@id/cl_back"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+            app:srcCompat="@drawable/bg_rounded_corners_6dp_count_message" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_fi_camera"
+            app:layout_constraintBottom_toBottomOf="@id/iv_photo"
+            app:layout_constraintEnd_toEndOf="@id/iv_photo"
+            app:layout_constraintStart_toStartOf="@id/iv_photo"
+            app:layout_constraintTop_toTopOf="@id/iv_photo" />
+
+        <TextView
+            android:id="@+id/tv_name_contact"
+            style="@style/TextViewStyle.Subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/golos_text_regular"
+            android:text="@string/name_contact"
+            app:layout_constraintEnd_toEndOf="@id/bg_semicircle"
+            app:layout_constraintStart_toStartOf="@id/bg_semicircle"
+            app:layout_constraintTop_toBottomOf="@id/iv_photo" />
+
+        <TextView
+            android:id="@+id/tv_status"
+            style="@style/TextViewStyle.Usual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/golos_text_regular"
+            android:text="@string/status"
+            android:textColor="@color/text_inactive"
+            app:layout_constraintEnd_toEndOf="@id/bg_semicircle"
+            app:layout_constraintStart_toStartOf="@id/bg_semicircle"
+            app:layout_constraintTop_toBottomOf="@id/tv_name_contact" />
+
+        <Button
+            android:id="@+id/btn_go_to_profile"
+            style="@style/Button.BlueTint"
+            android:layout_width="211dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90dp"
+            android:text="@string/go_to_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_status" />
+
+        <View
+            android:id="@+id/view_divider_1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="28dp"
+            android:background="@color/view_create_contact_color"
+            app:layout_constraintTop_toBottomOf="@id/btn_go_to_profile" />
+
+        <LinearLayout
+            android:id="@+id/ll_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_divider_1">
+
+            <ImageView
+                android:id="@+id/iv_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_search_profile" />
+
+            <TextView
+                android:id="@+id/tv_search"
+                style="@style/TextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/golos_text_regular"
+                android:text="@string/search"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toEndOf="@id/ll_search"
+            app:layout_constraintTop_toBottomOf="@id/view_divider_1">
+
+            <ImageView
+                android:id="@+id/iv_video"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_video_profile" />
+
+            <TextView
+                android:id="@+id/tv_video"
+                style="@style/TextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/golos_text_regular"
+                android:text="@string/video"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toEndOf="@id/ll_video"
+            app:layout_constraintTop_toBottomOf="@id/view_divider_1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp">
+
+                <View
+                    android:id="@+id/view_oval"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:background="@drawable/bg_oval"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iv_call"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_call1"
+                    app:layout_constraintBottom_toBottomOf="@id/view_oval"
+                    app:layout_constraintEnd_toEndOf="@id/view_oval"
+                    app:layout_constraintStart_toStartOf="@id/view_oval"
+                    app:layout_constraintTop_toTopOf="@id/view_oval" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_call"
+                style="@style/TextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/golos_text_regular"
+                android:text="@string/call"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_bell"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toEndOf="@id/ll_call"
+            app:layout_constraintTop_toBottomOf="@id/view_divider_1">
+
+            <ImageView
+                android:id="@+id/iv_bell"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_bell_profile" />
+
+            <TextView
+                android:id="@+id/tv_bell"
+                style="@style/TextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/golos_text_regular"
+                android:text="@string/bell"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toEndOf="@id/ll_bell"
+            app:layout_constraintTop_toBottomOf="@id/view_divider_1">
+
+            <ImageView
+                android:id="@+id/iv_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_menu_profile" />
+
+            <TextView
+                android:id="@+id/tv_menu"
+                style="@style/TextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/golos_text_regular"
+                android:text="@string/yet"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view_band"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="11dp"
+            android:background="@color/view_band_color"
+            app:layout_constraintTop_toBottomOf="@id/ll_search" />
+
+        <LinearLayout
+            android:id="@+id/ll_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_band">
+
+            <TextView
+                android:id="@+id/tv_email"
+                style="@style/TextViewStyle.Usual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/golos_text_regular"
+                android:text="@string/email"
+                android:textColor="@color/text_inactive" />
+
+            <TextView
+                android:id="@+id/tv_email_value"
+                style="@style/TextViewStyle.Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/golos_text_regular"
+                android:text="@string/email_value"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view_divider_2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="11dp"
+            android:background="@color/view_create_contact_color"
+            app:layout_constraintTop_toBottomOf="@id/ll_email" />
+
+        <LinearLayout
+            android:id="@+id/ll_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_divider_2">
+
+            <TextView
+                android:id="@+id/tv_user_name"
+                style="@style/TextViewStyle.Usual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/golos_text_regular"
+                android:text="@string/user_name"
+                android:textColor="@color/text_inactive" />
+
+            <TextView
+                android:id="@+id/tv_user_name_value"
+                style="@style/TextViewStyle.Subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/golos_text_regular"
+                android:text="@string/user_name_value"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view_band_2"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="11dp"
+            android:background="@color/view_band_color"
+            app:layout_constraintTop_toBottomOf="@id/ll_user_name" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            style="@style/TabLayout.TabProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_band_2"
+            app:tabGravity="fill"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="2dp"
+            app:tabTextAppearance="@style/TabTextAppearance">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/media" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/links" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/files" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/audio" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <uddug.com.naukoteka.ui.custom.WrapContentHeightViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tab_layout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

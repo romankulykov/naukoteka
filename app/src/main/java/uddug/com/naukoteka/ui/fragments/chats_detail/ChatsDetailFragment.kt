@@ -52,6 +52,7 @@ class ChatsDetailFragment : BaseFragment(R.layout.fragment_chat_details),
             viewPager.offscreenPageLimit = 5
             viewPager.isUserInputEnabled = false
             chatEdit.setOnClickListener { presenter.showCreateChat() }
+            tvChange.setOnClickListener { presenter.showProfile() }
             TabLayoutMediator(tabLayout, viewPager) { tab, position ->
                 tab.text = context?.getString(titles[position])
             }.attach()

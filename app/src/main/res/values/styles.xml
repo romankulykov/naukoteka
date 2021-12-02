@@ -52,6 +52,13 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="Button.BlueTint">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bg_rounded_corners_10dp</item>
+        <item name="android:fontFamily">@font/golos_text_regular</item>
+    </style>
+
     <style name="Button.Dialog">
         <item name="android:layout_height">48dp</item>
     </style>
@@ -72,6 +79,11 @@
     <style name="TabLayout">
         <item name="tabIndicatorColor">@color/object_main</item>
         <item name="tabSelectedTextColor">@color/object_main</item>
+    </style>
+
+    <style name="TabLayout.TabProfile">
+        <item name="tabIndicatorColor">@color/white</item>
+        <item name="tabSelectedTextColor">@color/white</item>
     </style>
 
     <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
