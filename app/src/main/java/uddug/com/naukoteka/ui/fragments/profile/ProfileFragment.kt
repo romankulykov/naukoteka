@@ -2,6 +2,7 @@ package uddug.com.naukoteka.ui.fragments.profile
 
 import android.os.Bundle
 import android.view.View
+import com.google.android.material.tabs.TabLayoutMediator
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import uddug.com.naukoteka.R
@@ -23,18 +24,25 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile),
         return getScope().getInstance(ProfilePresenter::class.java)
     }
 
+    private val titles = arrayListOf(
+        R.string.media,
+        R.string.links,
+        R.string.files,
+        R.string.audio,
+    )
+
     override val contentView by viewBinding(FragmentProfileBinding::bind)
 
-    private val profileAdapter by lazy { ProfileAdapter(childFragmentManager, requireContext()) }
+    private val profileAdapter by lazy { ProfileAdapter(this) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         contentView.run {
             clBack.setOnClickListener { onBackPressed() }
-            viewPager.run {
-                adapter = profileAdapter
-            }
-            tabLayout.setupWithViewPager(viewPager)
+            viewPager.adapter = profileAdapter
+            TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+                tab.text = getString(titles[position])
+            }.attach()
         }
     }
 
