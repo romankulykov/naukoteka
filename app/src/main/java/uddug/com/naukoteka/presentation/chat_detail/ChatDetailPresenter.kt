@@ -7,6 +7,7 @@ import uddug.com.naukoteka.data_model.ChatAttachmentOption
 import uddug.com.naukoteka.data_model.ChatOption
 import uddug.com.naukoteka.global.base.BasePresenterImpl
 import uddug.com.naukoteka.navigation.AppRouter
+import uddug.com.naukoteka.navigation.Screens
 
 @InjectConstructor
 @InjectViewState
@@ -38,6 +39,10 @@ open class ChatDetailPresenter(val router: AppRouter) :
 
     fun onPhotoAttachmentClick(attachmentPhotoEntity: AttachmentPhotoEntity) {
 
+    }
+
+    fun toGroupScreen() {
+        router.navigateTo(Screens.GroupScreen(isProfile = false))
     }
 
     fun exit() {

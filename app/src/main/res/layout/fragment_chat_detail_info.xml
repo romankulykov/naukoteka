@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nestedScroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,7 +18,7 @@
             android:id="@+id/bg_semicircle"
             android:layout_width="473dp"
             android:layout_height="473dp"
-            android:alpha="0.7"
+            android:alpha="0.9"
             android:src="@drawable/bg_semicircle_profile"
             android:translationY="-236dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -127,9 +128,10 @@
             android:id="@+id/ll_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="22dp"
             android:layout_marginTop="15dp"
             android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="@+id/ll_video"
+            app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/view_divider_1">
 
@@ -156,9 +158,10 @@
             android:id="@+id/ll_video"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="31dp"
             android:layout_marginTop="15dp"
             android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="@+id/ll_call"
+            app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toEndOf="@id/ll_search"
             app:layout_constraintTop_toBottomOf="@id/view_divider_1">
 
@@ -185,9 +188,10 @@
             android:id="@+id/ll_call"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="31dp"
             android:layout_marginTop="15dp"
             android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="@+id/ll_bell"
+            app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toEndOf="@id/ll_video"
             app:layout_constraintTop_toBottomOf="@id/view_divider_1">
 
@@ -233,9 +237,10 @@
             android:id="@+id/ll_bell"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="31dp"
             android:layout_marginTop="15dp"
             android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="@+id/ll_menu"
+            app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toEndOf="@id/ll_call"
             app:layout_constraintTop_toBottomOf="@id/view_divider_1">
 
@@ -262,9 +267,10 @@
             android:id="@+id/ll_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="31dp"
             android:layout_marginTop="15dp"
             android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toEndOf="@id/ll_bell"
             app:layout_constraintTop_toBottomOf="@id/view_divider_1">
 
@@ -294,6 +300,67 @@
             android:layout_marginTop="11dp"
             android:background="@color/view_band_color"
             app:layout_constraintTop_toBottomOf="@id/ll_search" />
+
+        <TextView
+            android:id="@id/tv_description_group"
+            style="@style/TextViewStyle.Usual"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:background="@color/view_band_color"
+            android:fontFamily="@font/golos_text_regular"
+            android:paddingStart="15dp"
+            android:paddingTop="25dp"
+            android:paddingBottom="10dp"
+            android:text="@string/description_group"
+            android:textAllCaps="true"
+            android:textColor="@color/object_inactive"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_call" />
+
+        <TextView
+            android:id="@+id/tv_project_work"
+            style="@style/TextViewStyle.Subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="11dp"
+            android:fontFamily="@font/golos_text_regular"
+            android:text="@string/project_work"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_description_group" />
+
+        <TextView
+            android:id="@+id/tv_count_participants"
+            style="@style/TextViewStyle.Usual"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:background="@color/view_band_color"
+            android:fontFamily="@font/golos_text_regular"
+            android:paddingStart="15dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="10dp"
+            android:text="@string/count_of_participants"
+            android:textColor="@color/object_inactive"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_project_work" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_participants"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_count_participants"
+            tools:itemCount="2"
+            tools:listitem="@layout/list_item_participants" />
 
         <LinearLayout
             android:id="@+id/ll_email"
@@ -371,6 +438,13 @@
             android:background="@color/view_band_color"
             app:layout_constraintTop_toBottomOf="@id/ll_user_name" />
 
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="view_band_2,rv_participants" />
+
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
             style="@style/TabLayout.TabProfile"
@@ -378,7 +452,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view_band_2"
+            app:layout_constraintTop_toBottomOf="@id/barrier"
             app:tabGravity="fill"
             app:tabIndicatorFullWidth="false"
             app:tabIndicatorHeight="2dp"

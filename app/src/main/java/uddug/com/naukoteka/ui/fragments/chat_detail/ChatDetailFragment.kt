@@ -80,9 +80,10 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
                 contentView.ivSendMessage.setOnClickListener {
                     contentView.input.setInputListener(this)
                 }
+
             }
         }
-
+          contentView.clHeader.setOnClickListener { presenter.toGroupScreen() }
         contentView.ivArrowBack.setOnClickListener { onBackPressed() }
         initAdapter()
         imageLoader = ImageLoader { imageView: ImageView?, url: String?, payload: Any? ->

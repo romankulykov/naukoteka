@@ -21,6 +21,6 @@ class ChatsDetailPresenter(
     }
 
     fun showProfile() {
-        router.navigateTo(Screens.Profile())
+        router.navigateTo(Screens.Profile(isProfile = true))
     }
 }

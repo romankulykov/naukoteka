@@ -23,46 +23,54 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_arrow_back" />
 
-        <ImageView
-            android:id="@+id/iv_chat_image"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_arrow_back"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_google" />
-
-        <LinearLayout
-            android:id="@+id/ll_chat_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="9dp"
-            android:layout_marginTop="8dp"
-            android:orientation="vertical"
-            app:layout_constraintStart_toEndOf="@id/iv_chat_image"
-            app:layout_constraintEnd_toStartOf="@+id/iv_call"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/tv_chat"
-                style="@style/TextViewStyle.Subtitle"
+            <ImageView
+                android:id="@+id/iv_chat_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/golos_text_regular"
-                android:text="@string/graduate_work" />
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_google" />
 
-            <TextView
-                android:id="@+id/tv_count_people"
-                style="@style/TextViewStyle"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/ll_chat_name"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/golos_text_regular"
-                android:text="@string/chat_count_people" />
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                app:layout_constraintStart_toEndOf="@id/iv_chat_image"
+                app:layout_constraintTop_toTopOf="parent">
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_chat"
+                    style="@style/TextViewStyle.Subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/golos_text_regular"
+                    android:text="@string/graduate_work" />
+
+                <TextView
+                    android:id="@+id/tv_count_people"
+                    style="@style/TextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/golos_text_regular"
+                    android:text="@string/chat_count_people" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
             android:id="@+id/iv_call"
@@ -137,27 +145,27 @@
                     app:attachmentButtonIcon="@drawable/ic_attachment"
                     app:inputBackground="@drawable/bg_input_text_message"
                     app:inputButtonBackground="@color/transparent"
+                    app:inputButtonWidth="0dp"
                     app:inputCursorDrawable="@drawable/chat_cursor_drawable"
                     app:inputHint="@string/message"
                     app:inputHintColor="@color/text_inactive"
                     app:inputMaxLines="4"
                     app:inputTextColor="@color/white"
                     app:inputTextSize="16sp"
-                    app:inputButtonWidth="0dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:showAttachmentButton="true" />
 
-                 <ImageView
-                     android:id="@+id/iv_send_message"
-                     android:layout_width="50dp"
-                     android:layout_height="50dp"
-                     android:layout_marginEnd="27dp"
-                     android:padding="10dp"
-                     android:src="@drawable/ic_send_selector"
-                     app:layout_constraintBottom_toBottomOf="@id/input"
-                     app:layout_constraintEnd_toEndOf="@id/input"
-                     app:layout_constraintTop_toTopOf="@id/input" />
+                <ImageView
+                    android:id="@+id/iv_send_message"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="27dp"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_send_selector"
+                    app:layout_constraintBottom_toBottomOf="@id/input"
+                    app:layout_constraintEnd_toEndOf="@id/input"
+                    app:layout_constraintTop_toTopOf="@id/input" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
