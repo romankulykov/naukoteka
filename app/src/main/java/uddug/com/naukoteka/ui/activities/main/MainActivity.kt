@@ -27,8 +27,8 @@ import uddug.com.naukoteka.ui.IntentKeys
 import uddug.com.naukoteka.ui.custom.square_toast.SquareToast
 import uddug.com.naukoteka.ui.custom.square_toast.ToastAction
 import uddug.com.naukoteka.ui.custom.square_toast.ToastInfo
-import uddug.com.naukoteka.ui.fragments.password_recovery.PasswordRecoveryFragment
-import uddug.com.naukoteka.ui.fragments.registration_third_step.RegistrationThirdStepFragment
+import uddug.com.naukoteka.ui.fragments.auth_flow.password_recovery.PasswordRecoveryFragment
+import uddug.com.naukoteka.ui.fragments.auth_flow.registration_third_step.RegistrationThirdStepFragment
 import uddug.com.naukoteka.utils.ActivityResultListener
 import uddug.com.naukoteka.utils.BackButtonListener
 import uddug.com.naukoteka.utils.RouterProvider

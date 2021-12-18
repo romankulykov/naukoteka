@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
 import uddug.com.domain.entities.AttachmentPhotoEntity
 import uddug.com.naukoteka.R
-import uddug.com.naukoteka.data_model.ChatAttachmentOption
+import uddug.com.naukoteka.data.ChatAttachmentOption
 import uddug.com.naukoteka.databinding.AttachmentFileDialogBinding
 import uddug.com.naukoteka.global.base.BaseBottomSheetDialog
 import uddug.com.naukoteka.ui.adapters.attachment_options.AttachmentOptionsAdapter

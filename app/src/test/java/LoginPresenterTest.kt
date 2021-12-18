@@ -11,7 +11,6 @@ import org.mockito.Mockito.`when`
 import org.mockito.Mockito.verify
 import org.mockito.junit.MockitoJUnit
 import org.mockito.junit.MockitoJUnitRunner
-import org.robolectric.RobolectricTestRunner
 import toothpick.Toothpick
 import uddug.com.data.validator.FieldsValidator
 import uddug.com.domain.interactors.auth.AuthInteractor
@@ -19,9 +18,9 @@ import uddug.com.domain.utils.logging.ILogger
 import uddug.com.naukoteka.di.DI
 import uddug.com.naukoteka.di.modules.AppModule
 import uddug.com.naukoteka.navigation.AppRouter
-import uddug.com.naukoteka.presentation.login.LoginPresenter
-import uddug.com.naukoteka.presentation.login.LoginView
-import uddug.com.naukoteka.presentation.login.`LoginView$$State`
+import uddug.com.naukoteka.presentation.auth_flow.login.LoginPresenter
+import uddug.com.naukoteka.presentation.auth_flow.login.LoginView
+import uddug.com.naukoteka.presentation.auth_flow.login.`LoginView$$State`
 
 @RunWith(MockitoJUnitRunner::class)
 class LoginPresenterTest {

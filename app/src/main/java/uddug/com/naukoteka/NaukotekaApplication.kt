@@ -5,7 +5,7 @@ import android.content.res.Configuration
 import com.franmontiel.localechanger.LocaleChanger
 import uddug.com.naukoteka.di.DI
 import uddug.com.naukoteka.di.modules.AppModule
-import uddug.com.naukoteka.ext.data.SUPPORTED_LOCALES
+import uddug.com.naukoteka.data.SUPPORTED_LOCALES
 import toothpick.Scope
 import toothpick.ktp.KTP
 

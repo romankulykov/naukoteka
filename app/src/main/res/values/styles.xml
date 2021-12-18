@@ -76,7 +76,8 @@
         <item name="android:background">@drawable/button_states_registration</item>
     </style>
 
-    <style name="TabLayout">
+    <style name="TabLayout" parent="Widget.MaterialComponents.TabLayout.Colored">
+        <item name="android:background">@color/text_main</item>
         <item name="tabIndicatorColor">@color/object_main</item>
         <item name="tabSelectedTextColor">@color/object_main</item>
     </style>

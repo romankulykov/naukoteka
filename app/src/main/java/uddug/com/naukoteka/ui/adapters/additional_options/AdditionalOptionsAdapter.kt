@@ -4,7 +4,7 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.core.view.isVisible
 import uddug.com.naukoteka.R
-import uddug.com.naukoteka.data_model.ChatOption
+import uddug.com.naukoteka.data.ChatOption
 import uddug.com.naukoteka.databinding.ListItemAdditionalOptionsBinding
 import uddug.com.naukoteka.global.base.BaseAdapter
 import uddug.com.naukoteka.global.base.BaseViewHolder

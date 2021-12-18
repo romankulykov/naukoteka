@@ -4,7 +4,7 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.core.view.isVisible
 import uddug.com.naukoteka.R
-import uddug.com.naukoteka.data_model.ChatLongPressMenu
+import uddug.com.naukoteka.data.ChatLongPressMenu
 import uddug.com.naukoteka.databinding.ListItemPopupMenuBinding
 import uddug.com.naukoteka.global.base.BaseAdapter
 import uddug.com.naukoteka.global.base.BaseViewHolder

@@ -3,7 +3,7 @@ package uddug.com.naukoteka.ui.dialogs.chat_option
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
 import uddug.com.naukoteka.R
-import uddug.com.naukoteka.data_model.ChatOption
+import uddug.com.naukoteka.data.ChatOption
 import uddug.com.naukoteka.databinding.AdditionalOptionsDialogBinding
 import uddug.com.naukoteka.global.base.BaseBottomSheetDialog
 import uddug.com.naukoteka.ui.adapters.additional_options.AdditionalOptionsAdapter
