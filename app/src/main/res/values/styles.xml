@@ -83,6 +83,7 @@
     </style>
 
     <style name="TabLayout.TabProfile">
+        <item name="android:background">@color/back_darkgrey</item>
         <item name="tabIndicatorColor">@color/white</item>
         <item name="tabSelectedTextColor">@color/white</item>
     </style>

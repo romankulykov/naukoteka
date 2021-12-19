@@ -3,14 +3,17 @@ package uddug.com.naukoteka.ui.dialogs.chat_option
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
 import uddug.com.naukoteka.R
+import uddug.com.naukoteka.data.BottomSheetDialog
+import uddug.com.naukoteka.data.BottomSheetDialogOption
 import uddug.com.naukoteka.data.ChatOption
 import uddug.com.naukoteka.databinding.AdditionalOptionsDialogBinding
 import uddug.com.naukoteka.global.base.BaseBottomSheetDialog
 import uddug.com.naukoteka.ui.adapters.additional_options.AdditionalOptionsAdapter
 
-class ChatOptionsDialog(
+class ChatOptionsDialogType(
     private val fragmentActivity: FragmentActivity,
-    private val chatOptionListener: (ChatOption) -> Unit
+    private val bottomSheetDialogType: BottomSheetDialog,
+    private val chatOptionListener: (BottomSheetDialogOption) -> Unit
 ) :
     BaseBottomSheetDialog(fragmentActivity) {
 
@@ -33,6 +36,7 @@ class ChatOptionsDialog(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         options = ArrayList()
+
         options.run {
             add(ChatOption.SEARCH_BY_CONVERSATION)
             add(ChatOption.INTERVIEW_MATERIALS)
@@ -42,7 +46,7 @@ class ChatOptionsDialog(
         }
         contentView.run {
             rvAdditionalOptions.adapter = chatOptionsAdapter
-            chatOptionsAdapter.setItems(options)
+            chatOptionsAdapter.setItems(bottomSheetDialogType.create())
             btnCancel.setOnClickListener { dismiss() }
         }
     }

@@ -23,4 +23,8 @@ class ChatsDetailPresenter(
     fun showProfile() {
         router.navigateTo(Screens.Profile(isProfile = true))
     }
+
+    fun navigateToSearchInChapter() {
+        router.navigateTo(Screens.SearchInChapterScreen())
+    }
 }

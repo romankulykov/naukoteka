@@ -7,13 +7,17 @@ import com.daimajia.swipe.SwipeLayout
 import uddug.com.domain.entities.ChatListEntity
 import uddug.com.naukoteka.GlideApp
 import uddug.com.naukoteka.R
+import uddug.com.naukoteka.data.ChatSwipeTitleOption
 import uddug.com.naukoteka.databinding.ListItemChatBinding
 import uddug.com.naukoteka.global.base.BaseAdapter
 import uddug.com.naukoteka.global.base.BaseViewHolder
 
+data class ChatSwipeParams(val chatListEntity: ChatListEntity, val chatSwipeOption: ChatSwipeTitleOption)
+
 class ChatsAdapter(
     private val onChatClick: (ChatListEntity) -> Unit,
     private val onChatLongClick: (View) -> Unit,
+    private val onSwipeClick: (ChatSwipeParams) -> Unit
 ) :
     BaseAdapter<ChatListEntity, ChatsAdapter.ViewHolder>() {
 
@@ -43,6 +47,12 @@ class ChatsAdapter(
                     }
                     swipeLayout.addDrag(SwipeLayout.DragEdge.Right, clSwipeContentRight)
                     swipeLayout.addDrag(SwipeLayout.DragEdge.Left, clSwipeContentLeft)
+                    clearButtonBgView.setOnClickListener {
+                        onSwipeClick(ChatSwipeParams(item, ChatSwipeTitleOption.CLEAR))
+                    }
+                    blockButtonBgView.setOnClickListener {
+                        onSwipeClick(ChatSwipeParams(item, ChatSwipeTitleOption.BLOCK))
+                    }
                 }
             }
         }

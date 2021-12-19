@@ -11,11 +11,14 @@ import moxy.presenter.ProvidePresenter
 import uddug.com.domain.entities.ChatListEntity
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.data.ChatLongPressMenu
+import uddug.com.naukoteka.data.ChatTitleActionDialog
+import uddug.com.naukoteka.data.ChatSwipeTitleOption
 import uddug.com.naukoteka.databinding.FragmentChatsBinding
 import uddug.com.naukoteka.global.base.BaseFragment
 import uddug.com.naukoteka.presentation.chat_flow.chats.ChatsPresenter
 import uddug.com.naukoteka.presentation.chat_flow.chats.ChatsView
 import uddug.com.naukoteka.ui.adapters.long_press_menu.LongPressMenuAdapter
+import uddug.com.naukoteka.ui.dialogs.chat_option.ChatOptionsDialogType
 import uddug.com.naukoteka.utils.BackButtonListener
 import uddug.com.naukoteka.utils.viewBinding
 
@@ -23,7 +26,6 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
 
     override val contentView by viewBinding(FragmentChatsBinding::bind)
 
-    private val longPressMenuAdapter = LongPressMenuAdapter()
 
     private lateinit var longOptions: ArrayList<ChatLongPressMenu>
 
@@ -58,12 +60,33 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
             ChatListEntity(R.string.contact_name_10, R.string.text_message_10),
         )
         contentView.rvChatList.adapter =
-            ChatsAdapter(presenter::onChatClick, ::showPopupLongPressMenu).apply {
+            ChatsAdapter(presenter::onChatClick, ::showPopupLongPressMenu, ::showSwipeClick).apply {
                 setItems(
                     listOfChatList
                 )
             }
 
+    }
+
+    private fun showSwipeClick(chatSwipeParams: ChatSwipeParams) {
+        val title = getString(
+            when (chatSwipeParams.chatSwipeOption) {
+                ChatSwipeTitleOption.BLOCK -> R.string.block_chat_with
+                ChatSwipeTitleOption.CLEAR -> R.string.clear_chat_with
+                else -> R.string.clear_chat_with
+            },
+            getString(chatSwipeParams.chatListEntity.nameContact)
+        )
+        ChatOptionsDialogType(
+            requireActivity(),
+            ChatTitleActionDialog(title, chatSwipeParams.chatSwipeOption)
+        ) {
+            (it as? ChatSwipeTitleOption)?.let {
+                when (it) {
+
+                }
+            }
+        }.show()
     }
 
     private fun showPopupLongPressMenu(v: View) {
@@ -79,6 +102,7 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
             var child =
                 LayoutInflater.from(requireContext()).inflate(R.layout.popup_long_press_menu, null)
             val popupWindow = PopupWindow(requireContext())
+            val longPressMenuAdapter = LongPressMenuAdapter { popupWindow.dismiss() }
             with(popupWindow) {
                 contentView = child
                 setBackgroundDrawable(null)

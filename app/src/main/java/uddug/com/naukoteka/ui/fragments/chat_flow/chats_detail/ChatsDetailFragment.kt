@@ -56,6 +56,7 @@ class ChatsDetailFragment : BaseFragment(R.layout.fragment_chat_details),
             TabLayoutMediator(tabLayout, viewPager) { tab, position ->
                 tab.text = context?.getString(titles[position])
             }.attach()
+            etSearchChat.setOnClickListener { presenter.navigateToSearchInChapter() }
         }
     }
 

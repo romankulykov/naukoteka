@@ -89,6 +89,8 @@
                 style="@style/TextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="false"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
@@ -160,7 +162,6 @@
 
 
     </com.google.android.material.appbar.AppBarLayout>
-
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"

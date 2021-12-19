@@ -8,7 +8,7 @@
     <TextView
         android:id="@+id/tv_text_option"
         style="@style/TextViewStyle.Usual"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="11dp"
@@ -16,6 +16,7 @@
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/iv_option"
         tools:text="Поиск по беседе" />
 
     <ImageView

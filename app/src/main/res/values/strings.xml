@@ -191,6 +191,10 @@
     <string name="count_of_participants">%d УЧАСТНИКА</string>
     <string name="name_group">Дипломная работа</string>
     <string name="count">%d участника</string>
+    <string name="clear_chat_with">Очистить чат с %s?</string>
+    <string name="clear_chat">Очистить чат</string>
+    <string name="block_chat_with">Заблокировать чат с %s?</string>
+    <string name="block">Заблокировать</string>
 
 
 </resources>

@@ -9,7 +9,7 @@ import uddug.com.naukoteka.databinding.ListItemPopupMenuBinding
 import uddug.com.naukoteka.global.base.BaseAdapter
 import uddug.com.naukoteka.global.base.BaseViewHolder
 
-class LongPressMenuAdapter :
+class LongPressMenuAdapter(private val onItemClick: () -> Unit) :
     BaseAdapter<ChatLongPressMenu, LongPressMenuAdapter.ViewHolder>() {
 
     override fun newViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
@@ -30,6 +30,7 @@ class LongPressMenuAdapter :
                     ivOption.setImageResource(imageResId)
                 }
                 dividerOption.isVisible = adapterPosition < itemCount - 1
+                itemView.setOnClickListener { onItemClick() }
             }
         }
     }

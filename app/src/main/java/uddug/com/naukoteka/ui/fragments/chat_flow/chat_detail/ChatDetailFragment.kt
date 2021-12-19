@@ -19,13 +19,14 @@ import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import uddug.com.naukoteka.GlideApp
 import uddug.com.naukoteka.R
+import uddug.com.naukoteka.data.ChatOptionsDialog
 import uddug.com.naukoteka.databinding.FragmentChatDetailBinding
 import uddug.com.naukoteka.global.base.BaseFragment
 import uddug.com.naukoteka.presentation.chat_flow.chat_detail.ChatDetailPresenter
 import uddug.com.naukoteka.presentation.chat_flow.chat_detail.ChatDetailView
 import uddug.com.naukoteka.ui.custom.square_toast.ToastInfo
 import uddug.com.naukoteka.ui.dialogs.chat_option.AttachmentOptionsDialog
-import uddug.com.naukoteka.ui.dialogs.chat_option.ChatOptionsDialog
+import uddug.com.naukoteka.ui.dialogs.chat_option.ChatOptionsDialogType
 import uddug.com.naukoteka.utils.BackButtonListener
 import uddug.com.naukoteka.utils.viewBinding
 import java.util.*
@@ -77,7 +78,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
 
             }
         }
-          contentView.clHeader.setOnClickListener { presenter.toGroupScreen() }
+        contentView.clHeader.setOnClickListener { presenter.toGroupScreen() }
         contentView.ivArrowBack.setOnClickListener { onBackPressed() }
         initAdapter()
         imageLoader = ImageLoader { imageView: ImageView?, url: String?, payload: Any? ->
@@ -184,7 +185,9 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
     }
 
     override fun showOptionsDialog() {
-        ChatOptionsDialog(requireActivity(), presenter::onChatOptionClick).show()
+        ChatOptionsDialogType(
+            requireActivity(), ChatOptionsDialog
+        ) { presenter::onChatOptionClick }.show()
     }
 
     override fun showPhotoOrVideo() {
