@@ -1,15 +1,17 @@
 package uddug.com.naukoteka.presentation.chat_flow.chats_detail
 
-import uddug.com.naukoteka.global.base.BasePresenterImpl
-import uddug.com.naukoteka.navigation.AppRouter
 import moxy.InjectViewState
 import toothpick.InjectConstructor
+import uddug.com.data.cache.token.UserTokenCache
+import uddug.com.naukoteka.global.base.BasePresenterImpl
+import uddug.com.naukoteka.navigation.AppRouter
 import uddug.com.naukoteka.navigation.Screens
 
 @InjectConstructor
 @InjectViewState
 class ChatsDetailPresenter(
-    val router: AppRouter
+    val router: AppRouter,
+    private val userTokenCache: UserTokenCache
 ) : BasePresenterImpl<ChatsDetailView>() {
 
     fun exit() {
@@ -27,4 +29,10 @@ class ChatsDetailPresenter(
     fun navigateToSearchInChapter() {
         router.navigateTo(Screens.SearchInChapterScreen())
     }
+
+    fun logout() {
+        userTokenCache.clear()
+        router.replaceScreen(Screens.Splash())
+    }
+
 }

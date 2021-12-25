@@ -101,26 +101,7 @@
   <string name="chat_hidden">Скрытые</string>
   <string name="chat_time">пт</string>
   <string name="chat_count_of_message">17</string>
-  <string name="contact_name_1">Михаил Маркин</string>
-  <string name="contact_name_2">Александр Ивановский</string>
-  <string name="contact_name_3">Vasiliy Chernenko</string>
-  <string name="contact_name_4">Andrew Zakharov</string>
-  <string name="contact_name_5">Elena Babaeva</string>
-  <string name="contact_name_6">Александра Землянко</string>
-  <string name="contact_name_7">Andy</string>
-  <string name="contact_name_8">Алексей Демьяненко</string>
-  <string name="contact_name_9">Vadim Gubierna</string>
-  <string name="contact_name_10">Михаил Пахомов</string>
-  <string name="text_message_1">Не теряет актуальности любой прочее</string>
-  <string name="text_message_2">Аналогично</string>
-  <string name="text_message_3">Понятно</string>
-  <string name="text_message_4">Hello, my friend!</string>
-  <string name="text_message_5">What are you doing today?</string>
-  <string name="text_message_6">What is your favorite color?</string>
-  <string name="text_message_7">Привет. Когда пойдем гулять?</string>
-  <string name="text_message_8">You are welcome!</string>
-  <string name="text_message_9">Какие планы у тебя есть на сегодня?</string>
-  <string name="text_message_10">Сколько у нас завтра уроков?</string>
+
   <string name="graduate_work">Дипломная работа</string>
   <string name="chat_count_people">18 участников</string>
   <string name="message">Сообщение</string>

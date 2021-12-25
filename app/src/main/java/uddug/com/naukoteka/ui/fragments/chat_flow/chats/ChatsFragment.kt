@@ -8,11 +8,11 @@ import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
-import uddug.com.domain.entities.ChatListEntity
+import uddug.com.domain.repositories.dialogs.models.ChatsPreview
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.data.ChatLongPressMenu
-import uddug.com.naukoteka.data.ChatTitleActionDialog
 import uddug.com.naukoteka.data.ChatSwipeTitleOption
+import uddug.com.naukoteka.data.ChatTitleActionDialog
 import uddug.com.naukoteka.databinding.FragmentChatsBinding
 import uddug.com.naukoteka.global.base.BaseFragment
 import uddug.com.naukoteka.presentation.chat_flow.chats.ChatsPresenter
@@ -24,10 +24,16 @@ import uddug.com.naukoteka.utils.viewBinding
 
 class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButtonListener {
 
+    companion object {
+        private const val KEY_TITLE = "ChatsFragment.KEY_TITLE"
+
+        fun newInstance(titlesList: ArrayList<Int>?) = ChatsFragment().apply {
+            arguments = bundleOf().apply { putIntegerArrayList(KEY_TITLE, titlesList) }
+        }
+    }
+
     override val contentView by viewBinding(FragmentChatsBinding::bind)
 
-
-    private lateinit var longOptions: ArrayList<ChatLongPressMenu>
 
     @InjectPresenter
     lateinit var presenter: ChatsPresenter
@@ -37,35 +43,26 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
         return getScope().getInstance(ChatsPresenter::class.java)
     }
 
-    companion object {
-        private const val KEY_TITLE = "ChatsFragment.KEY_TITLE"
-
-        fun newInstance(titlesList: ArrayList<Int>?) = ChatsFragment().apply {
-            arguments = bundleOf().apply { putIntegerArrayList(KEY_TITLE, titlesList) }
-        }
+    private val chatsAdapter by lazy {
+        ChatsAdapter(
+            presenter::onChatClick,
+            ::showPopupLongPressMenu,
+            ::showSwipeClick
+        )
     }
+
+    private lateinit var longOptions: ArrayList<ChatLongPressMenu>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val listOfChatList = listOf(
-            ChatListEntity(R.string.contact_name_1, R.string.text_message_1),
-            ChatListEntity(R.string.contact_name_2, R.string.text_message_2),
-            ChatListEntity(R.string.contact_name_3, R.string.text_message_3),
-            ChatListEntity(R.string.contact_name_4, R.string.text_message_4),
-            ChatListEntity(R.string.contact_name_5, R.string.text_message_5),
-            ChatListEntity(R.string.contact_name_6, R.string.text_message_6),
-            ChatListEntity(R.string.contact_name_7, R.string.text_message_7),
-            ChatListEntity(R.string.contact_name_8, R.string.text_message_8),
-            ChatListEntity(R.string.contact_name_9, R.string.text_message_9),
-            ChatListEntity(R.string.contact_name_10, R.string.text_message_10),
-        )
-        contentView.rvChatList.adapter =
-            ChatsAdapter(presenter::onChatClick, ::showPopupLongPressMenu, ::showSwipeClick).apply {
-                setItems(
-                    listOfChatList
-                )
-            }
+        contentView.run {
+            rvChatList.adapter = chatsAdapter
+        }
 
+    }
+
+    override fun showChats(chatsPreview: ChatsPreview) {
+        chatsAdapter.setItems(chatsPreview.dialogs)
     }
 
     private fun showSwipeClick(chatSwipeParams: ChatSwipeParams) {
@@ -75,7 +72,7 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
                 ChatSwipeTitleOption.CLEAR -> R.string.clear_chat_with
                 else -> R.string.clear_chat_with
             },
-            getString(chatSwipeParams.chatListEntity.nameContact)
+            chatSwipeParams.chatListEntity.dialogName
         )
         ChatOptionsDialogType(
             requireActivity(),
@@ -123,7 +120,4 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
         return true
     }
 
-    override fun getChats(chatListEntity: ChatListEntity) {
-
-    }
 }

@@ -1,17 +1,29 @@
 package uddug.com.naukoteka.presentation.chat_flow.chats
 
-import uddug.com.naukoteka.global.base.BasePresenterImpl
-import uddug.com.naukoteka.navigation.AppRouter
 import moxy.InjectViewState
 import toothpick.InjectConstructor
-import uddug.com.domain.entities.ChatListEntity
+import uddug.com.domain.interactors.dialogs.DialogsInteractor
+import uddug.com.domain.repositories.dialogs.models.ChatPreview
+import uddug.com.naukoteka.global.base.BasePresenterImpl
+import uddug.com.naukoteka.navigation.AppRouter
 import uddug.com.naukoteka.navigation.Screens
 
 @InjectConstructor
 @InjectViewState
-class ChatsPresenter(val router: AppRouter) : BasePresenterImpl<ChatsView>() {
+class ChatsPresenter(
+    private val dialogsInteractor: DialogsInteractor,
+    val router: AppRouter
+) : BasePresenterImpl<ChatsView>() {
 
-    fun onChatClick(chatListEntity: ChatListEntity) {
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
+        dialogsInteractor.getDialogs()
+            .await {
+                viewState.showChats(it)
+            }
+    }
+
+    fun onChatClick(chatListEntity: ChatPreview) {
         router.navigateTo(Screens.ChatDetail())
     }
 

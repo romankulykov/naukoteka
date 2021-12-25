@@ -73,7 +73,7 @@ data class ListResponseDto<T>(
 
 data class ListResponse<T>(val count: Int, val elements: List<T>)
 
-data class ApiErrorWrapper(
+data class ApiErrorAuthWrapper(
     @SerializedName("error")
     val apiErrorDetail: ApiErrorDetail
 )
@@ -85,6 +85,20 @@ data class ApiErrorDetail(
     val textCode: String,
     @SerializedName("type")
     val type: String,
+    @SerializedName("message")
+    val message: String
+)
+
+data class ResponseData(
+    @SerializedName("data")
+    val `data`: Data,
+    @SerializedName("timestamp")
+    val timestamp: String
+)
+
+data class Data(
+    @SerializedName("statusCode")
+    val statusCode: Int,
     @SerializedName("message")
     val message: String
 )

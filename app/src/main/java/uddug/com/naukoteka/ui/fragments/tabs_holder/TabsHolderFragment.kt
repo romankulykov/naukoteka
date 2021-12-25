@@ -28,7 +28,6 @@ class TabsHolderFragment : BaseFragment(R.layout.fragment_tabs_holder), BottomNa
 
     override val contentView by viewBinding(FragmentTabsHolderBinding::bind)
 
-
     val navigationHelper: INavigationHelper by inject()
 
     override val router: AppRouter by inject()
@@ -37,10 +36,10 @@ class TabsHolderFragment : BaseFragment(R.layout.fragment_tabs_holder), BottomNa
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initBottomNavigation()
-        navigationHelper.onTabSelect(Screens.BottomNavigationTab.NAU_CHAT)
         Handler(Looper.getMainLooper()).postDelayed({
+            navigationHelper.onTabSelect(Screens.BottomNavigationTab.NAU_CHAT)
             contentView.vBottom.selectChat()
-        }, 500L)
+        }, 2500L)
     }
 
     private fun initBottomNavigation() {

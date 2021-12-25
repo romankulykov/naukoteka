@@ -43,7 +43,7 @@ class ChatsDetailFragment : BaseFragment(R.layout.fragment_chat_details),
         }
     }
 
-    private val chatAdapter get() = ChatsDetailAdapter(this, titles)
+    private val chatAdapter by lazy { ChatsDetailAdapter(this, titles) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -57,6 +57,7 @@ class ChatsDetailFragment : BaseFragment(R.layout.fragment_chat_details),
                 tab.text = context?.getString(titles[position])
             }.attach()
             etSearchChat.setOnClickListener { presenter.navigateToSearchInChapter() }
+            tvScienceChat.setOnClickListener { presenter.logout() }
         }
     }
 

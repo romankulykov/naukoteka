@@ -5,6 +5,7 @@ import uddug.com.data.services.AuthApiService
 import uddug.com.data.services.UserProfileApiService
 import retrofit2.Retrofit
 import toothpick.InjectConstructor
+import uddug.com.data.services.DialogsApiService
 import javax.inject.Provider
 
 
@@ -25,4 +26,12 @@ class UserProfileApiProvider(
 ) : Provider<UserProfileApiService> {
     override fun get() =
         retrofit.create(UserProfileApiService::class.java)
+}
+
+@InjectConstructor
+class DialogsApiProvider(
+    private val retrofit: Retrofit,
+) : Provider<DialogsApiService> {
+    override fun get() =
+        retrofit.create(DialogsApiService::class.java)
 }

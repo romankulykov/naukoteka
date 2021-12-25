@@ -222,15 +222,18 @@
         <TextView
             android:id="@+id/tv_name_contact"
             style="@style/TextViewStyle.Subtitle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="7dp"
+            android:ellipsize="end"
             android:fontFamily="@font/golos_text_regular"
+            android:lines="1"
             android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/iv_check_mark"
             app:layout_constraintStart_toEndOf="@id/iv_photo"
             app:layout_constraintTop_toBottomOf="@id/view_top"
-            tools:text="Михаил Маркин" />
+            tools:text="@tools:sample/lorem/random" />
 
         <TextView
             android:id="@+id/tv_text_of_message"

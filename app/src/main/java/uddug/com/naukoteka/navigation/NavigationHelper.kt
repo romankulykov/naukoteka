@@ -1,5 +1,6 @@
 package uddug.com.naukoteka.navigation
 
+import android.os.Handler
 import uddug.com.naukoteka.ui.fragments.tabs_holder.TabsHolderFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

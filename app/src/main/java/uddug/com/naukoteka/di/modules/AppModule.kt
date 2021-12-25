@@ -24,6 +24,9 @@ import okhttp3.CookieJar
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import toothpick.config.Module
+import uddug.com.data.repositories.dialogs.DialogsRepositoryImpl
+import uddug.com.data.services.DialogsApiService
+import uddug.com.domain.repositories.dialogs.DialogsRepository
 
 class AppModule(application: Application) : Module() {
 
@@ -48,9 +51,11 @@ class AppModule(application: Application) : Module() {
 
         bind(AuthApiService::class.java).toProvider(AuthApiProvider::class.java).singleton()
         bind(UserProfileApiService::class.java).toProvider(UserProfileApiProvider::class.java).singleton()
+        bind(DialogsApiService::class.java).toProvider(DialogsApiProvider::class.java).singleton()
         bind(AuthApiHolder::class.java).singleton()
         bind(AuthRepository::class.java).to(AuthRepositoryImpl::class.java)
         bind(UserProfileRepository::class.java).to(UserProfileRepositoryImpl::class.java)
+        bind(DialogsRepository::class.java).to(DialogsRepositoryImpl::class.java)
 
     }
 

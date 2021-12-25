@@ -78,7 +78,7 @@ abstract class BasePresenterImpl<V : MvpView> : MvpPresenter<V>() {
 
     private fun ResponseBody.readMessage(): String? {
         return try {
-            val apiError = gson.fromJson(string(), ApiErrorWrapper::class.java)
+            val apiError = gson.fromJson(string(), ApiErrorAuthWrapper::class.java)
             apiError?.apiErrorDetail?.message
         } catch (e: Exception) {
             string()
