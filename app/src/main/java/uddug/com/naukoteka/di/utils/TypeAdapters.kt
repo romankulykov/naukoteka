@@ -14,7 +14,7 @@ import java.util.*
 class CalendarTypeAdapter : TypeAdapter<Calendar>() {
 
     companion object {
-        const val MAIN_SERVER_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss"
+        const val MAIN_SERVER_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss"
         val PARSE_DATE_FORMATS = arrayOf(MAIN_SERVER_DATE_FORMAT)
     }
 
@@ -36,11 +36,11 @@ class CalendarTypeAdapter : TypeAdapter<Calendar>() {
             return null
         }
         var calendar: Calendar? = null
-        var timeInMillisServer = jsonReader.nextLong()
+        var timeInString = jsonReader.nextString()
 
         for (format in PARSE_DATE_FORMATS) {
             try {
-                calendar = Calendar.getInstance().apply { timeInMillis = timeInMillisServer * 1000 }
+                calendar = getCalendarFromString(format, timeInString)
             } catch (e: Exception) {
                 continue
             }
@@ -48,6 +48,17 @@ class CalendarTypeAdapter : TypeAdapter<Calendar>() {
         }
         return calendar
     }
+
+    fun getCalendarFromString(format: String, text: String): Calendar {
+        val calendar = Calendar.getInstance()
+        var dateFormat = SimpleDateFormat(format, Locale.getDefault())
+        dateFormat.timeZone = TimeZone.getTimeZone("GMT")
+        val ms = dateFormat.parse(text).time
+        calendar.timeInMillis = ms
+
+        return calendar
+    }
+
 }
 
 inline fun <reified T : Any> GsonBuilder.registerIntTypeAdapter(
@@ -75,7 +86,8 @@ private fun <T : Any> JsonWriter.writeInt(value: T?, getKey: (T) -> Int) {
 
 inline fun <reified T : Any> GsonBuilder.registerStringTypeAdapter(
     noinline getKey: (T) -> String,
-    noinline getVal: (String) -> T?) = apply {
+    noinline getVal: (String) -> T?
+) = apply {
     registerTypeAdapter(T::class.java, StringTypeAdapter(getKey, getVal))
 }
 

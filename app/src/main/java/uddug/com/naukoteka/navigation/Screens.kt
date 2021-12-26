@@ -5,12 +5,13 @@ import android.content.Intent
 import android.net.Uri
 import com.github.terrakok.cicerone.androidx.ActivityScreen
 import com.github.terrakok.cicerone.androidx.FragmentScreen
+import uddug.com.domain.repositories.dialogs.models.ChatPreview
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_add_contact.ChatAddContactFragment
 import uddug.com.naukoteka.ui.fragments.StubFragment
 import uddug.com.naukoteka.ui.fragments.TabContainerFragment
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.ChatDetailFragment
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_select_contact.ChatSelectContactFragment
-import uddug.com.naukoteka.ui.fragments.chat_flow.chats_detail.ChatsDetailFragment
+import uddug.com.naukoteka.ui.fragments.chat_flow.chats_list_detail.ChatsListDetailFragment
 import uddug.com.naukoteka.ui.fragments.chat_flow.create_group.CreateGroupFragment
 import uddug.com.naukoteka.ui.fragments.auth_flow.login.LoginFragment
 import uddug.com.naukoteka.ui.fragments.auth_flow.password_recovery.PasswordRecoveryFragment
@@ -106,15 +107,17 @@ object Screens {
             TabContainerFragment.getNewInstance(tabName, overriddenScreenTag)
         }
 
+    fun Stub() = FragmentScreen { StubFragment() }
+
     fun NauSphere(tabName: String) = FragmentScreen(tabName) { StubFragment() }
     fun NauProfile(tabName: String) = FragmentScreen(tabName) { StubFragment() }
-    fun NauChat(tabName: String) = FragmentScreen(tabName) { ChatsDetailFragment() }
+    fun NauChat(tabName: String) = FragmentScreen(tabName) { ChatsListDetailFragment() }
     fun MyTerritory(tabName: String) = FragmentScreen(tabName) { StubFragment() }
     fun NauSearch(tabName: String) = FragmentScreen(tabName) { StubFragment() }
 
     fun ChatAddContact() = FragmentScreen(CHAT_ADD_CONTACT) { ChatAddContactFragment() }
     fun ChatCreateGroup() = FragmentScreen(CHAT_CREATE_GROUP) { ChatSelectContactFragment() }
-    fun ChatDetail() = FragmentScreen(CHAT_DETAIL) { ChatDetailFragment() }
+    fun ChatDetail(chat : ChatPreview) = FragmentScreen(CHAT_DETAIL) { ChatDetailFragment.newInstance(chat) }
     fun CreateGroup() = FragmentScreen(CREATE_GROUP) { CreateGroupFragment() }
 
 

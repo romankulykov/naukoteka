@@ -1,5 +1,6 @@
 package uddug.com.naukoteka.di.providers
 
+import com.google.gson.Gson
 import uddug.com.naukoteka.di.ServerUrl
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -12,12 +13,13 @@ import javax.inject.Provider
 class RetrofitProvider(
     @ServerUrl private val serverUrl: String,
     private val okHttpClient: OkHttpClient,
+    private val gson : Gson
 ) : Provider<Retrofit> {
     override fun get(): Retrofit =
         Retrofit.Builder()
             .baseUrl(serverUrl)
             .client(okHttpClient)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
 }

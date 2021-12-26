@@ -39,7 +39,7 @@ class TabsHolderFragment : BaseFragment(R.layout.fragment_tabs_holder), BottomNa
         Handler(Looper.getMainLooper()).postDelayed({
             navigationHelper.onTabSelect(Screens.BottomNavigationTab.NAU_CHAT)
             contentView.vBottom.selectChat()
-        }, 2500L)
+        }, 500L)
     }
 
     private fun initBottomNavigation() {

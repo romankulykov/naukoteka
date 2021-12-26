@@ -13,7 +13,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/ic_background_outcoming_message"
+        android:background="@drawable/bubble_outcoming_message"
         android:paddingStart="12dp"
         android:paddingTop="8dp"
         android:paddingEnd="12dp"

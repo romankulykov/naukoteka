@@ -3,6 +3,7 @@ package uddug.com.naukoteka.presentation.chat_flow.chat_detail
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy
 import moxy.viewstate.strategy.StateStrategyType
+import uddug.com.domain.repositories.dialogs.models.ChatMessage
 import uddug.com.naukoteka.global.views.InformativeView
 import uddug.com.naukoteka.global.views.LoadingView
 
@@ -21,5 +22,6 @@ interface ChatDetailView : MvpView, LoadingView, InformativeView {
     fun showContact()
     fun showInterrogation()
     fun showAttachmentOptionDialog()
+    fun showMessages(messages: List<ChatMessage>)
 
 }

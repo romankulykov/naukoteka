@@ -94,8 +94,8 @@ class LoginPresenter(
             }, onComplete = {
                 viewState.showSuccessLogin()
                 // kostyl because exception caused java.lang.IllegalStateException: Fragment host has been destroyed in selectTab(NavigationHelper.kt:68)
-                router.newRootScreen(Screens.Splash())
-                //router.newRootScreen(Screens.TabsHolder())
+                //router.newRootScreen(Screens.Splash())
+                router.navigateTo(Screens.TabsHolder())
             })
     }
 

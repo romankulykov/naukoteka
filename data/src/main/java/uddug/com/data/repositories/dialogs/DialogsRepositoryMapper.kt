@@ -22,8 +22,8 @@ class DialogsRepositoryMapper {
             dialogName = fillChatName(dto, dialogType),
             dialogType = dialogType,
             messageId = messageId,
-            dialogImage = mapImageToDomain(dialogImage),
-            lastMessage = mapLastMessageChat(lastMessage),
+            dialogImage = mapAttachmentToDomain(dialogImage),
+            lastMessage = mapLastMessageChatDomain(lastMessage),
             users = users.map { mapUserChatToDomain(it)!! },
             unreadMessages = unreadMessages,
             interlocutor = mapUserChatToDomain(interlocutor)
@@ -41,34 +41,47 @@ class DialogsRepositoryMapper {
         }
     }
 
-    private fun mapUserChatToDomain(dto: UserChatPreviewDto?) = dto?.run {
+    fun mapUserChatToDomain(dto: UserChatPreviewDto?) = dto?.run {
         UserChatPreview(
-            image = mapImageToDomain(image),
+            image = mapAttachmentToDomain(image),
             userId = userId,
-            isAdmin = isAdmin,
+            isAdmin = isAdmin == 1,
             fullName = fullName,
             nickname = nickname
         )
     }
 
-    private fun mapImageToDomain(dto: ImageChatPreviewDto?) = dto?.run {
-        ImageChatPreview(
+    private fun mapAttachmentToDomain(dto: AttachmentChatPreviewDto?) = dto?.run {
+        AttachmentChatPreview(
             id = id,
             path = path,
             fileType = fileType,
             filename = filename,
-            contentType = contentType
+            contentType = ContentType.values().find { it.type == contentType }
         )
     }
 
-    private fun mapLastMessageChat(dto: LastMessageChatPreviewDto) = dto.run {
+    private fun mapLastMessageChatDomain(dto: LastMessageChatPreviewDto) = dto.run {
         LastMessageChatPreview(
             id = id,
             text = text,
             type = type,
-            files = files,
+            files = files.map { mapAttachmentToDomain(it)!! },
             ownerId = ownerId,
             createdAt = createdAt
+        )
+    }
+
+    fun mapDialogDetailToDomain(dto: ChatMessageDto, chatPreview: ChatPreview) = dto.run {
+        ChatMessage(
+            id = id,
+            text = text,
+            type = MessageType.values().find { it.type == type } ?: MessageType.TEXT,
+            files = files.map { mapAttachmentToDomain(it)!! },
+            ownerId = ownerId,
+            createdAt = createdAt,
+            read = read.map { it.entries.first().run { Pair(key, value.toInt()) } },
+            user = chatPreview.users.find { it.userId == ownerId }
         )
     }
 

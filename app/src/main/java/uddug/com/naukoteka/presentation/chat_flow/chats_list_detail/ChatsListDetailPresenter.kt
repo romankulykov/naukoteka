@@ -1,4 +1,4 @@
-package uddug.com.naukoteka.presentation.chat_flow.chats_detail
+package uddug.com.naukoteka.presentation.chat_flow.chats_list_detail
 
 import moxy.InjectViewState
 import toothpick.InjectConstructor
@@ -9,10 +9,15 @@ import uddug.com.naukoteka.navigation.Screens
 
 @InjectConstructor
 @InjectViewState
-class ChatsDetailPresenter(
-    val router: AppRouter,
+class ChatsListDetailPresenter(
+    private val router: AppRouter,
     private val userTokenCache: UserTokenCache
-) : BasePresenterImpl<ChatsDetailView>() {
+) : BasePresenterImpl<ChatsListDetailView>() {
+
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
+        viewState.initView()
+    }
 
     fun exit() {
         router.exit()
@@ -32,7 +37,7 @@ class ChatsDetailPresenter(
 
     fun logout() {
         userTokenCache.clear()
-        router.replaceScreen(Screens.Splash())
+        router.navigateTo(Screens.Splash())
     }
 
 }

@@ -1,4 +1,4 @@
-package uddug.com.domain.repositories.contacts.models
+package uddug.com.domain.repositories
 
 sealed class Section {
     abstract fun type(): Int
@@ -16,6 +16,6 @@ sealed class Section {
 }
 
 data class Header(val character: String, override var sectionPosition: Int) : Section() {
-    override fun type(): Int = Section.HEADER
+    override fun type(): Int = HEADER
     override fun sectionName(): String = character
 }

@@ -7,8 +7,8 @@ import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
-import uddug.com.domain.repositories.contacts.models.ChatContact
-import uddug.com.domain.repositories.contacts.models.Section
+import uddug.com.domain.repositories.ChatContact
+import uddug.com.domain.repositories.Section
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.FragmentSelectContactBinding
 import uddug.com.naukoteka.global.base.BaseFragment

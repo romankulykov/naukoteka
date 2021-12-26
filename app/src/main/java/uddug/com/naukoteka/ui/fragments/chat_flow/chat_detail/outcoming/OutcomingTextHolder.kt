@@ -1,4 +1,4 @@
-package com.mojipic.mojipic2.ui.chat.chat_items.outcoming
+package uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.outcoming
 
 import android.view.View
 import android.widget.LinearLayout

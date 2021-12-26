@@ -1,14 +1,9 @@
 package uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail
 
 import android.os.Bundle
-import android.os.Handler
 import android.view.View
 import android.widget.ImageView
-import androidx.core.widget.doAfterTextChanged
-import com.mojipic.mojipic2.ui.chat.chat_items.incoming.IncomingImageHolder
-import com.mojipic.mojipic2.ui.chat.chat_items.incoming.IncomingTextHolder
-import com.mojipic.mojipic2.ui.chat.chat_items.outcoming.OutcomingImageHolder
-import com.mojipic.mojipic2.ui.chat.chat_items.outcoming.OutcomingTextHolder
+import androidx.core.os.bundleOf
 import com.stfalcon.chatkit.commons.ImageLoader
 import com.stfalcon.chatkit.messages.MessageHolders
 import com.stfalcon.chatkit.messages.MessageInput.AttachmentsListener
@@ -17,6 +12,10 @@ import com.stfalcon.chatkit.messages.MessagesListAdapter
 import com.stfalcon.chatkit.messages.MessagesListAdapter.OnMessageLongClickListener
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
+import uddug.com.domain.repositories.dialogs.models.ChatMessage
+import uddug.com.domain.repositories.dialogs.models.ChatPreview
+import uddug.com.domain.repositories.dialogs.models.MessageType
+import uddug.com.domain.repositories.dialogs.models.UserChatPreview
 import uddug.com.naukoteka.GlideApp
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.data.ChatOptionsDialog
@@ -27,29 +26,43 @@ import uddug.com.naukoteka.presentation.chat_flow.chat_detail.ChatDetailView
 import uddug.com.naukoteka.ui.custom.square_toast.ToastInfo
 import uddug.com.naukoteka.ui.dialogs.chat_option.AttachmentOptionsDialog
 import uddug.com.naukoteka.ui.dialogs.chat_option.ChatOptionsDialogType
+import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.incoming.IncomingImageHolder
+import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.incoming.IncomingTextHolder
+import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.outcoming.OutcomingImageHolder
+import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.outcoming.OutcomingTextHolder
 import uddug.com.naukoteka.utils.BackButtonListener
 import uddug.com.naukoteka.utils.viewBinding
 import java.util.*
+import kotlin.random.Random
 
 class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
-    ChatDetailView, BackButtonListener, OnMessageLongClickListener<Message>,
+    ChatDetailView, BackButtonListener,
+    OnMessageLongClickListener<ChatMessage>,
     InputListener,
     AttachmentsListener, MessagesListAdapter.OnLoadMoreListener,
     MessagesListAdapter.SelectionListener {
 
-    var messagesAdapter: MessagesListAdapter<Message>? = null
+    companion object {
+
+        private const val CHAT = "ChatDetailFragment.CHAT_PREVIEW"
+
+        fun newInstance(chat: ChatPreview) = ChatDetailFragment().apply {
+            arguments = bundleOf(CHAT to chat)
+        }
+    }
+
+    private val chat get() = arguments?.getParcelable<ChatPreview>(CHAT)
+
+    var messagesAdapter: MessagesListAdapter<ChatMessage>? = null
 
     private val TOTAL_MESSAGES_COUNT = 100
 
-    val senderId = "0"
+    val senderId = "12345"
     var imageLoader: ImageLoader? = null
 
     private var selectionCount = 0
-    private var lastLoadedDate: Date? = Date()
 
     private var holderPayload: Payload? = null
-
-    val messagesFixture = MessagesFixture()
 
     override val contentView by viewBinding(FragmentChatDetailBinding::bind)
 
@@ -63,23 +76,15 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        contentView.ivSendMessage.isEnabled = false
-        contentView.input.setInputListener(this)
-        contentView.ivMenu.setOnClickListener { showOptionsDialog() }
-        contentView.input.setAttachmentsListener {
-            showAttachmentOptionDialog()
-        }
-        contentView.input.inputEditText.doAfterTextChanged {
-            contentView.ivSendMessage.isEnabled = it?.isNotEmpty()!!
-            if (contentView.ivSendMessage.isEnabled) {
-                contentView.ivSendMessage.setOnClickListener {
-                    contentView.input.setInputListener(this)
-                }
+        presenter.getChat(chat!!)
 
-            }
+        contentView.run {
+            input.setInputListener(this@ChatDetailFragment)
+            input.setAttachmentsListener(this@ChatDetailFragment)
+            ivMenu.setOnClickListener { showOptionsDialog() }
+            clHeader.setOnClickListener { presenter.toGroupScreen() }
+            ivArrowBack.setOnClickListener { onBackPressed() }
         }
-        contentView.clHeader.setOnClickListener { presenter.toGroupScreen() }
-        contentView.ivArrowBack.setOnClickListener { onBackPressed() }
         initAdapter()
         imageLoader = ImageLoader { imageView: ImageView?, url: String?, payload: Any? ->
             if (imageView != null) {
@@ -95,44 +100,41 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
         return true
     }
 
-    override fun onMessageLongClick(message: Message?) {
+    override fun onMessageLongClick(message: ChatMessage?) {
         showMessage(ToastInfo("Your custom long click handler"))
     }
 
     override fun onSubmit(input: CharSequence?): Boolean {
         messagesAdapter?.addToStart(
-            messagesFixture.getTextMessage(input.toString()), true
+            ChatMessage(
+                Random(1000).nextInt(1, 9999),
+                input.toString(),
+                MessageType.TEXT,
+                emptyList(),
+                senderId,
+                Calendar.getInstance(),
+                emptyList(),
+                UserChatPreview(null, senderId, false, "My Name is ", "My nick name")
+            ), true
         )
         return true
     }
 
     override fun onAddAttachments() {
-        messagesAdapter?.addToStart(messagesFixture.getImageMessage(), true)
+        showAttachmentOptionDialog()
     }
 
     override fun onLoadMore(page: Int, totalItemsCount: Int) {
         if (totalItemsCount < TOTAL_MESSAGES_COUNT) {
-            loadMessages()
         }
-    }
-
-    private fun loadMessages() {
-        val messagesFixture = MessagesFixture()
-        //imitation of internet connection
-        Handler().postDelayed({
-            val messages: ArrayList<Message> = messagesFixture.getMessages(lastLoadedDate)
-            lastLoadedDate = messages[messages.size - 1].createdAt
-            messagesAdapter?.addToEnd(messages, false)
-        }, 1000)
     }
 
     override fun onSelectionChanged(count: Int) {
         this.selectionCount = count
     }
 
-    override fun onStart() {
-        super.onStart()
-        messagesAdapter?.addToStart(messagesFixture.getTextMessage(), true)
+    override fun showMessages(messages: List<ChatMessage>) {
+        messagesAdapter?.addToEnd(messages, false)
     }
 
     private fun initAdapter() {

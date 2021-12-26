@@ -3,8 +3,8 @@ package uddug.com.naukoteka.ui.fragments.chat_flow.chat_select_contact
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.core.view.isGone
-import uddug.com.domain.repositories.contacts.models.ChatContact
-import uddug.com.domain.repositories.contacts.models.Section
+import uddug.com.domain.repositories.ChatContact
+import uddug.com.domain.repositories.Section
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.ListItemSelectedContactsBinding
 import uddug.com.naukoteka.global.base.BaseStickyAdapter

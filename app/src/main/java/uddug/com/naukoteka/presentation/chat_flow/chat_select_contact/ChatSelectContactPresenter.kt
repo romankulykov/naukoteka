@@ -2,16 +2,20 @@ package uddug.com.naukoteka.presentation.chat_flow.chat_select_contact
 
 import moxy.InjectViewState
 import toothpick.InjectConstructor
-import uddug.com.domain.repositories.contacts.models.ChatContact
-import uddug.com.domain.repositories.contacts.models.Header
-import uddug.com.domain.repositories.contacts.models.Section
+import uddug.com.domain.repositories.ChatContact
+import uddug.com.domain.repositories.Header
+import uddug.com.domain.repositories.Section
+import uddug.com.domain.interactors.users_search.UsersSearchInteractor
 import uddug.com.naukoteka.global.base.BasePresenterImpl
 import uddug.com.naukoteka.navigation.AppRouter
 import uddug.com.naukoteka.navigation.Screens
 
 @InjectConstructor
 @InjectViewState
-class ChatSelectContactPresenter(val router: AppRouter) :
+class ChatSelectContactPresenter(
+    private val router: AppRouter,
+    private val usersSearchInteractor: UsersSearchInteractor
+) :
     BasePresenterImpl<ChatSelectContactView>() {
 
     val listOfChatContact = mutableListOf(
@@ -52,7 +56,6 @@ class ChatSelectContactPresenter(val router: AppRouter) :
     private fun filterChatContacts(query: String): List<Section> {
         return listOfChatContact.filter { it.name.contains(query, ignoreCase = true) }
             .sortByFirstLetter()
-            ?: emptyList()
     }
 
     private fun List<ChatContact>.sortByFirstLetter(): List<Section> {
@@ -76,6 +79,10 @@ class ChatSelectContactPresenter(val router: AppRouter) :
     }
 
     fun onQueryFilter(query: String) {
+        usersSearchInteractor.usersSearch(query)
+            .await {
+
+            }
         filterChatContacts(query).also { viewState.showContacts(it) }
     }
 

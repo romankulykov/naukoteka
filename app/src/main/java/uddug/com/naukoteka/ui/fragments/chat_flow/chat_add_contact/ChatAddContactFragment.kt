@@ -6,7 +6,7 @@ import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
-import uddug.com.domain.repositories.contacts.models.Section
+import uddug.com.domain.repositories.Section
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.FragmentChatAddContactBinding
 import uddug.com.naukoteka.global.base.BaseFragment
@@ -33,9 +33,7 @@ class ChatAddContactFragment : BaseFragment(R.layout.fragment_chat_add_contact),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         contentView.run {
-            clBack.setOnClickListener {
-                onBackPressed()
-            }
+            clBack.setOnClickListener { onBackPressed() }
             etSearchContact.doAfterTextChanged {
                 presenter.onQueryFilter(it.toString())
                 ivSearch.isVisible = etSearchContact.text.isEmpty()

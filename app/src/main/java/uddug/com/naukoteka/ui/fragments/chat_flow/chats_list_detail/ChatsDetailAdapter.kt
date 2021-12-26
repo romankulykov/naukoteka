@@ -1,6 +1,7 @@
-package uddug.com.naukoteka.ui.fragments.chat_flow.chats_detail
+package uddug.com.naukoteka.ui.fragments.chat_flow.chats_list_detail
 
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import uddug.com.naukoteka.ui.fragments.chat_flow.chats.ChatsFragment
 

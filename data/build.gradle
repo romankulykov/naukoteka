@@ -8,6 +8,7 @@ dependencies {
     implementation data.gson
 
     implementation ui.gmsPlayServicesLocation
+    implementation ui.chatkit
 
     implementation lib.domain
 

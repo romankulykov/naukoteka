@@ -1,17 +1,20 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:gravity="end"
+    android:paddingBottom="8dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@id/bubble"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/ic_background_outcoming_message"
+        android:background="@drawable/bubble_outcoming_message"
+        android:orientation="vertical"
         android:paddingStart="12dp"
         android:paddingTop="8dp"
         android:paddingEnd="12dp"
@@ -23,33 +26,43 @@
             android:id="@id/messageText"
             style="@style/TextViewStyle.Usual"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:fontFamily="@font/golos_text_regular"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="@tools:sample/lorem" />
+            tools:text="@tools:sample/lorem/random" />
 
-        <TextView
-            android:id="@id/messageTime"
-            style="@style/TextViewStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="6dp"
-            android:fontFamily="@font/golos_text_regular"
-            android:textColor="@color/text_message_blue"
-            app:layout_constraintEnd_toStartOf="@id/iv_white_check_mark"
-            app:layout_constraintTop_toBottomOf="@id/messageText"
-            tools:text="11:00" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom|end"
+            android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/iv_white_check_mark"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_white_check_mark"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/messageText" />
+            <TextView
+                android:id="@id/messageTime"
+                style="@style/TextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:fontFamily="@font/golos_text_regular"
+                android:textColor="@color/text_message_blue"
+                app:layout_constraintEnd_toStartOf="@id/iv_white_check_mark"
+                app:layout_constraintTop_toBottomOf="@id/messageText"
+                tools:text="11:00" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/iv_white_check_mark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_white_check_mark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/messageText" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

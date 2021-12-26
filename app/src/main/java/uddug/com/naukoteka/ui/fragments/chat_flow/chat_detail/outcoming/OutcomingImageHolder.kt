@@ -1,4 +1,4 @@
-package com.mojipic.mojipic2.ui.chat.chat_items.outcoming
+package uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.outcoming
 
 import android.view.View
 import android.widget.ImageView
@@ -26,19 +26,10 @@ class OutcomingImageHolder(itemView: View, var anyPayload: Any?) :
         with(contentView) {
             data.run {
                 messageTime.text = DateFormatter.format(createdAt, DateFormatter.Template.TIME)
-                val radius = itemView.resources.getDimension(R.dimen.message_bubble_corners_radius)
-                /*val shapeAppearanceModel = imageOutcoming.shapeAppearanceModel.toBuilder()
-                    .setTopLeftCornerSize(radius)
-                    .setBottomLeftCornerSize(radius)
-                    .setBottomRightCornerSize(radius)
-                    .build()
-                imageOutcoming.shapeAppearanceModel = shapeAppearanceModel*/
                 ivOutcoing = imageOutcoming
                 mProgressBar = progressBar
                 GlideApp.with(itemView.context)
-                    .load(
-                        "https://pngimg.com/uploads/triangle/triangle_PNG30.png"
-                    )
+                    .load("https://pngimg.com/uploads/triangle/triangle_PNG30.png")
                     .placeholder(R.drawable.ic_glide_image_error).into(ivOutcoing)
                 ivOutcoing.run {
                     scaleType = ImageView.ScaleType.CENTER_INSIDE

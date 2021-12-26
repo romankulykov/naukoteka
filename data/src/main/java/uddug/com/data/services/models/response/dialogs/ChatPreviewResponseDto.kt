@@ -21,7 +21,7 @@ data class ChatPreviewDto(
     @SerializedName("messageId")
     val messageId: Int,
     @SerializedName("dialogImage")
-    val dialogImage: ImageChatPreviewDto?,
+    val dialogImage: AttachmentChatPreviewDto?,
     @SerializedName("lastMessage")
     val lastMessage: LastMessageChatPreviewDto,
     @SerializedName("users")
@@ -40,20 +40,20 @@ data class LastMessageChatPreviewDto(
     @SerializedName("type")
     val type: Int,
     @SerializedName("files")
-    val files: List<Any>,
+    val files: List<AttachmentChatPreviewDto>,
     @SerializedName("ownerId")
-    val ownerId: Any?,
+    val ownerId: String?,
     @SerializedName("createdAt")
     val createdAt: String
 )
 
 data class UserChatPreviewDto(
     @SerializedName("image")
-    val image: ImageChatPreviewDto,
+    val image: AttachmentChatPreviewDto,
     @SerializedName("userId")
     val userId: String,
     @SerializedName("isAdmin")
-    val isAdmin: Int,
+    val isAdmin: Int?,
     @SerializedName("fullName")
     val fullName: String,
     @SerializedName("nickname")
@@ -62,7 +62,7 @@ data class UserChatPreviewDto(
     val nicknameOrFullName get() = nickname ?: fullName
 }
 
-data class ImageChatPreviewDto(
+data class AttachmentChatPreviewDto(
     @SerializedName("id")
     val id: String,
     @SerializedName("path")

@@ -18,13 +18,11 @@ class ChatsPresenter(
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         dialogsInteractor.getDialogs()
-            .await {
-                viewState.showChats(it)
-            }
+            .await { viewState.showChats(it) }
     }
 
-    fun onChatClick(chatListEntity: ChatPreview) {
-        router.navigateTo(Screens.ChatDetail())
+    fun onChatClick(chat: ChatPreview) {
+        router.navigateTo(Screens.ChatDetail(chat))
     }
 
     fun exit() {

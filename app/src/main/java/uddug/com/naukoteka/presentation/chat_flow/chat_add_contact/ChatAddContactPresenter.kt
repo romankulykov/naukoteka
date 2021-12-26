@@ -2,9 +2,9 @@ package uddug.com.naukoteka.presentation.chat_flow.chat_add_contact
 
 import moxy.InjectViewState
 import toothpick.InjectConstructor
-import uddug.com.domain.repositories.contacts.models.ChatContact
-import uddug.com.domain.repositories.contacts.models.Header
-import uddug.com.domain.repositories.contacts.models.Section
+import uddug.com.domain.repositories.ChatContact
+import uddug.com.domain.repositories.Header
+import uddug.com.domain.repositories.Section
 import uddug.com.naukoteka.global.base.BasePresenterImpl
 import uddug.com.naukoteka.navigation.AppRouter
 import uddug.com.naukoteka.navigation.Screens

@@ -6,27 +6,29 @@ import android.content.SharedPreferences
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.google.gson.Gson
+import okhttp3.CookieJar
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import toothpick.config.Module
 import uddug.com.data.NaukotekaCookieJar
 import uddug.com.data.repositories.auth.AuthRepositoryImpl
+import uddug.com.data.repositories.dialogs.DialogsRepositoryImpl
 import uddug.com.data.repositories.user_profile.UserProfileRepositoryImpl
-import uddug.com.data.services.auth.AuthApiHolder
+import uddug.com.data.repositories.users.UsersSearchRepositoryImpl
 import uddug.com.data.services.AuthApiService
+import uddug.com.data.services.DialogsApiService
 import uddug.com.data.services.UserProfileApiService
+import uddug.com.data.services.auth.AuthApiHolder
 import uddug.com.domain.SchedulersProvider
 import uddug.com.domain.repositories.auth.AuthRepository
+import uddug.com.domain.repositories.dialogs.DialogsRepository
 import uddug.com.domain.repositories.user_profile.UserProfileRepository
+import uddug.com.domain.repositories.users_search.UsersSearchRepository
 import uddug.com.domain.utils.logging.ILogger
 import uddug.com.naukoteka.di.ServerUrl
 import uddug.com.naukoteka.di.providers.*
 import uddug.com.naukoteka.di.utils.Logger
 import uddug.com.naukoteka.navigation.AppRouter
-import okhttp3.CookieJar
-import okhttp3.OkHttpClient
-import retrofit2.Retrofit
-import toothpick.config.Module
-import uddug.com.data.repositories.dialogs.DialogsRepositoryImpl
-import uddug.com.data.services.DialogsApiService
-import uddug.com.domain.repositories.dialogs.DialogsRepository
 
 class AppModule(application: Application) : Module() {
 
@@ -50,12 +52,16 @@ class AppModule(application: Application) : Module() {
 
 
         bind(AuthApiService::class.java).toProvider(AuthApiProvider::class.java).singleton()
-        bind(UserProfileApiService::class.java).toProvider(UserProfileApiProvider::class.java).singleton()
+        bind(UserProfileApiService::class.java).toProvider(UserProfileApiProvider::class.java)
+            .singleton()
         bind(DialogsApiService::class.java).toProvider(DialogsApiProvider::class.java).singleton()
+        bind(UsersSearchRepository::class.java).toProvider(UsersSearchApiProvider::class.java)
+            .singleton()
         bind(AuthApiHolder::class.java).singleton()
         bind(AuthRepository::class.java).to(AuthRepositoryImpl::class.java)
         bind(UserProfileRepository::class.java).to(UserProfileRepositoryImpl::class.java)
         bind(DialogsRepository::class.java).to(DialogsRepositoryImpl::class.java)
+        bind(UsersSearchRepository::class.java).to(UsersSearchRepositoryImpl::class.java)
 
     }
 

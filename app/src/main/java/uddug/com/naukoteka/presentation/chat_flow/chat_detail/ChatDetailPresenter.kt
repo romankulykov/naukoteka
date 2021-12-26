@@ -3,6 +3,8 @@ package uddug.com.naukoteka.presentation.chat_flow.chat_detail
 import moxy.InjectViewState
 import toothpick.InjectConstructor
 import uddug.com.domain.entities.AttachmentPhotoEntity
+import uddug.com.domain.interactors.dialogs.DialogsInteractor
+import uddug.com.domain.repositories.dialogs.models.ChatPreview
 import uddug.com.naukoteka.data.ChatAttachmentOption
 import uddug.com.naukoteka.data.ChatOption
 import uddug.com.naukoteka.global.base.BasePresenterImpl
@@ -11,11 +13,22 @@ import uddug.com.naukoteka.navigation.Screens
 
 @InjectConstructor
 @InjectViewState
-open class ChatDetailPresenter(val router: AppRouter) :
+open class ChatDetailPresenter(
+    val router: AppRouter,
+    private val dialogsInteractor: DialogsInteractor,
+) :
     BasePresenterImpl<ChatDetailView>() {
+
+    var chatPreview: ChatPreview? = null
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
+    }
+
+    fun getChat(chatPreview: ChatPreview) {
+        this.chatPreview = chatPreview
+        dialogsInteractor.getDialogMessages(chatPreview)
+            .await { viewState.showMessages(it) }
     }
 
     fun onChatOptionClick(chatOption: ChatOption) {

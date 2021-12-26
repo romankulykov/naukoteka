@@ -2,7 +2,7 @@ package uddug.com.naukoteka.ui.fragments.chat_flow.chat_select_contact
 
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import uddug.com.domain.repositories.contacts.models.ChatContact
+import uddug.com.domain.repositories.ChatContact
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.ListItemSelectedContactsTopBinding
 import uddug.com.naukoteka.global.base.BaseAdapter

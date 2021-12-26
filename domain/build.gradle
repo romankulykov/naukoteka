@@ -3,6 +3,7 @@ apply from: "../default_core_module.gradle"
 dependencies {
 
     implementation data.gson
+    implementation ui.chatkit
 
 
 }

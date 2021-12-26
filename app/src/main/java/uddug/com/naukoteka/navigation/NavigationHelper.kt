@@ -1,7 +1,5 @@
 package uddug.com.naukoteka.navigation
 
-import android.os.Handler
-import uddug.com.naukoteka.ui.fragments.tabs_holder.TabsHolderFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import toothpick.InjectConstructor
@@ -12,6 +10,7 @@ import uddug.com.naukoteka.global.base.BaseFragment
 import uddug.com.naukoteka.navigation.Screens.ScreenByTag
 import uddug.com.naukoteka.navigation.Screens.Tab
 import uddug.com.naukoteka.ui.fragments.TabContainerFragment
+import uddug.com.naukoteka.ui.fragments.tabs_holder.TabsHolderFragment
 
 @InjectConstructor
 class NavigationHelper(val fragmentActivity: FragmentActivity) : INavigationHelper {
@@ -55,7 +54,8 @@ class NavigationHelper(val fragmentActivity: FragmentActivity) : INavigationHelp
         if (newFragment == null) {
             transaction.add(
                 R.id.container,
-                Tab(navTab, overriddenScreenTag).createFragment(fm.fragmentFactory), tag
+                Tab(navTab, overriddenScreenTag).createFragment(fm.fragmentFactory),
+                tag
             )
         }
         if (currentFragment != null) {

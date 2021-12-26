@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.LayoutRes
 import com.shuhart.stickyheader.StickyAdapter
-import uddug.com.domain.repositories.contacts.models.Section
+import uddug.com.domain.repositories.Section
 import uddug.com.naukoteka.R
 import java.util.ArrayList
 

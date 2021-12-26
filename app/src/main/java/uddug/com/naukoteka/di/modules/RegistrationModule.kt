@@ -14,7 +14,7 @@ class RegistrationModule : Module() {
 
 @Singleton
 @InjectConstructor
-class SimpleRegistration constructor() {
+class SimpleRegistration {
     var login: String? = null
     var password: String? = null
 }
