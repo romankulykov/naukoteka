@@ -15,28 +15,33 @@ class DialogsRepositoryMapper {
         )
     }
 
-    private fun mapChatPreviewToDomain(dto: ChatPreviewDto) = dto.run {
+    fun mapChatPreviewToDomain(dto: ChatPreviewDto) = dto.run {
         val dialogType = DialogType.values().find { it.type == dialogType } ?: DialogType.PERSONAL
         ChatPreview(
             dialogId = dialogId,
             dialogName = fillChatName(dto, dialogType),
             dialogType = dialogType,
             messageId = messageId,
+            firstMessageId = firstMessageId,
             dialogImage = mapAttachmentToDomain(dialogImage),
             lastMessage = mapLastMessageChatDomain(lastMessage),
             users = users.map { mapUserChatToDomain(it)!! },
             unreadMessages = unreadMessages,
-            interlocutor = mapUserChatToDomain(interlocutor)
+            interlocutor = mapUserChatToDomain(interlocutor),
         )
     }
 
     private fun fillChatName(chatPreviewDto: ChatPreviewDto, dialogType: DialogType): String {
         return when (dialogType) {
             DialogType.PERSONAL -> {
-                chatPreviewDto.interlocutor!!.nicknameOrFullName
+                chatPreviewDto.interlocutor?.nicknameOrFullName.toString()
             }
             DialogType.GROUP -> {
-                chatPreviewDto.users.joinToString(", ") { it.nicknameOrFullName }
+                if (chatPreviewDto.dialogName.isNullOrBlank()) {
+                    chatPreviewDto.users.joinToString(", ") { it.nicknameOrFullName }
+                } else {
+                    chatPreviewDto.dialogName
+                }
             }
         }
     }
@@ -45,9 +50,10 @@ class DialogsRepositoryMapper {
         UserChatPreview(
             image = mapAttachmentToDomain(image),
             userId = userId,
-            isAdmin = isAdmin == 1,
+            isAdmin = isAdmin == 1 || isAdmin == true,
             fullName = fullName,
-            nickname = nickname
+            nickname = nickname,
+            lastOnline = status
         )
     }
 
@@ -61,7 +67,7 @@ class DialogsRepositoryMapper {
         )
     }
 
-    private fun mapLastMessageChatDomain(dto: LastMessageChatPreviewDto) = dto.run {
+    private fun mapLastMessageChatDomain(dto: LastMessageChatPreviewDto?) = dto?.run {
         LastMessageChatPreview(
             id = id,
             text = text,

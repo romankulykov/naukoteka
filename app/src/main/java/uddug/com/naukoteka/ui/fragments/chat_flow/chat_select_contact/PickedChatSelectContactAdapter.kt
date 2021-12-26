@@ -2,14 +2,14 @@ package uddug.com.naukoteka.ui.fragments.chat_flow.chat_select_contact
 
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import uddug.com.domain.repositories.ChatContact
+import uddug.com.domain.repositories.dialogs.models.UserChatPreview
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.ListItemSelectedContactsTopBinding
 import uddug.com.naukoteka.global.base.BaseAdapter
 import uddug.com.naukoteka.global.base.BaseViewHolder
 
-class PickedChatSelectContactAdapter(private val onContactClick: (ChatContact) -> Unit) :
-    BaseAdapter<ChatContact, PickedChatSelectContactAdapter.ViewHolder>() {
+class PickedChatSelectContactAdapter(private val onContactClick: (UserChatPreview) -> Unit) :
+    BaseAdapter<UserChatPreview, PickedChatSelectContactAdapter.ViewHolder>() {
 
     override fun newViewHolder(
         parent: ViewGroup,
@@ -18,17 +18,17 @@ class PickedChatSelectContactAdapter(private val onContactClick: (ChatContact) -
         ViewHolder(R.layout.list_item_selected_contacts_top, parent)
 
     inner class ViewHolder(@LayoutRes layoutRes: Int, parent: ViewGroup) :
-        BaseViewHolder<ChatContact>(layoutRes, parent) {
+        BaseViewHolder<UserChatPreview>(layoutRes, parent) {
 
         private val rootView: ListItemSelectedContactsTopBinding
             get() = ListItemSelectedContactsTopBinding.bind(
                 itemView
             )
 
-        override fun updateView(item: ChatContact) {
+        override fun updateView(item: UserChatPreview) {
             rootView.run {
                 item.run {
-                    tvNameContact.text = item.name
+                    tvNameContact.text = item.getName()
                     itemView.setOnClickListener {
                         onContactClick.invoke(item)
                     }

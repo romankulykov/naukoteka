@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.annotation.LayoutRes
 import com.shuhart.stickyheader.StickyAdapter
 import uddug.com.domain.repositories.Section
+import uddug.com.domain.repositories.SectionType
 import uddug.com.naukoteka.R
 import java.util.ArrayList
 
@@ -33,7 +34,7 @@ abstract class BaseStickyAdapter<T : Section, VH : BaseViewHolder<T>> :
     }
 
     override fun getItemViewType(position: Int): Int {
-        return items?.get(position)?.type() ?: -1
+        return items?.get(position)?.type()?.type ?: -1
     }
 
     fun getItems(): List<T>? {
@@ -81,7 +82,7 @@ abstract class BaseStickyAdapter<T : Section, VH : BaseViewHolder<T>> :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
-        val holder = if (viewType == Section.HEADER) {
+        val holder = if (viewType == SectionType.Header.type) {
             newItemHeaderViewHolder(parent, viewType)
         } else {
             newItemViewHolder(parent, viewType)
@@ -122,9 +123,9 @@ abstract class BaseStickyAdapter<T : Section, VH : BaseViewHolder<T>> :
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-        val type: Int = items!![position].type()
+        val type = items!![position].type()
         val section = items!![position].sectionPosition
-        if (type == Section.HEADER) {
+        if (type == SectionType.Header) {
             getItem(position)?.let { holder.updateView(it) }
         }
     }

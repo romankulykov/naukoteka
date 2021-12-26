@@ -6,6 +6,7 @@ import android.net.Uri
 import com.github.terrakok.cicerone.androidx.ActivityScreen
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 import uddug.com.domain.repositories.dialogs.models.ChatPreview
+import uddug.com.domain.repositories.dialogs.models.UserChatPreview
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_add_contact.ChatAddContactFragment
 import uddug.com.naukoteka.ui.fragments.StubFragment
 import uddug.com.naukoteka.ui.fragments.TabContainerFragment
@@ -118,7 +119,7 @@ object Screens {
     fun ChatAddContact() = FragmentScreen(CHAT_ADD_CONTACT) { ChatAddContactFragment() }
     fun ChatCreateGroup() = FragmentScreen(CHAT_CREATE_GROUP) { ChatSelectContactFragment() }
     fun ChatDetail(chat : ChatPreview) = FragmentScreen(CHAT_DETAIL) { ChatDetailFragment.newInstance(chat) }
-    fun CreateGroup() = FragmentScreen(CREATE_GROUP) { CreateGroupFragment() }
+    fun CreateGroup(selectedContacts: List<UserChatPreview>) = FragmentScreen(CREATE_GROUP) { CreateGroupFragment.newInstance(selectedContacts) }
 
 
     fun ScreenByTag(tag: String?): FragmentScreen {

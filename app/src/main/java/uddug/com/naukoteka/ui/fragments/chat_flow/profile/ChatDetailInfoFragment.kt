@@ -8,7 +8,7 @@ import androidx.core.view.isVisible
 import com.google.android.material.tabs.TabLayoutMediator
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
-import uddug.com.domain.repositories.participants.ParticipantsEntity
+import uddug.com.domain.repositories.dialogs.models.UserChatPreview
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.FragmentChatDetailInfoBinding
 import uddug.com.naukoteka.global.base.BaseFragment
@@ -84,7 +84,7 @@ class ChatDetailInfoFragment :
         return true
     }
 
-    override fun showParticipants(participants: List<ParticipantsEntity>) {
+    override fun showParticipants(participants: List<UserChatPreview>) {
         createGroupAdapter.setItems(participants)
         contentView.run {
             tvStatus.text = getString(R.string.count, createGroupAdapter.itemCount)

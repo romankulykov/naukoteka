@@ -1,6 +1,7 @@
 package uddug.com.data.services.models.response.dialogs
 
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 data class ChatPreviewResponseDto(
     @SerializedName("dialogs")
@@ -12,18 +13,20 @@ data class ChatPreviewResponseDto(
 )
 
 data class ChatPreviewDto(
-    @SerializedName("dialogId")
+    @SerializedName("dialogId", alternate = ["id"])
     val dialogId: Int,
-    @SerializedName("dialogName")
+    @SerializedName("dialogName", alternate = ["name"])
     val dialogName: String?,
-    @SerializedName("dialogType")
+    @SerializedName("dialogType", alternate = ["type"])
     val dialogType: Int,
     @SerializedName("messageId")
-    val messageId: Int,
+    val messageId: Int?,
+    @SerializedName("firstMessageId")
+    val firstMessageId: Int?,
     @SerializedName("dialogImage")
     val dialogImage: AttachmentChatPreviewDto?,
     @SerializedName("lastMessage")
-    val lastMessage: LastMessageChatPreviewDto,
+    val lastMessage: LastMessageChatPreviewDto?,
     @SerializedName("users")
     val users: List<UserChatPreviewDto>,
     @SerializedName("unreadMessages")
@@ -50,27 +53,29 @@ data class LastMessageChatPreviewDto(
 data class UserChatPreviewDto(
     @SerializedName("image")
     val image: AttachmentChatPreviewDto,
-    @SerializedName("userId")
+    @SerializedName("userId", alternate = ["id"])
     val userId: String,
     @SerializedName("isAdmin")
-    val isAdmin: Int?,
+    val isAdmin: Any?,
     @SerializedName("fullName")
     val fullName: String,
     @SerializedName("nickname")
-    val nickname: String?
+    val nickname: String?,
+    @SerializedName("status")
+    val status: Calendar?
 ) {
     val nicknameOrFullName get() = nickname ?: fullName
 }
 
 data class AttachmentChatPreviewDto(
     @SerializedName("id")
-    val id: String,
+    val id: String?,
     @SerializedName("path")
-    val path: String,
+    val path: String?,
     @SerializedName("fileType")
-    val fileType: Int,
+    val fileType: Int?,
     @SerializedName("filename")
-    val filename: String,
+    val filename: String?,
     @SerializedName("contentType")
     val contentType: String?
 )

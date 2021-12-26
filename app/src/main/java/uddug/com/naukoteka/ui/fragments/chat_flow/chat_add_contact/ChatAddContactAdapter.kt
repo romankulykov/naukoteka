@@ -1,10 +1,13 @@
 package uddug.com.naukoteka.ui.fragments.chat_flow.chat_add_contact
 
+import android.annotation.SuppressLint
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.core.view.isGone
 import uddug.com.domain.repositories.ChatContact
 import uddug.com.domain.repositories.Section
+import uddug.com.domain.repositories.SectionType
+import uddug.com.domain.repositories.dialogs.models.UserChatPreview
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.ListItemSearchContactsBinding
 import uddug.com.naukoteka.global.base.BaseStickyAdapter
@@ -21,11 +24,12 @@ class ChatAddContactAdapter :
     inner class ViewHolder(@LayoutRes layoutRes: Int, parent: ViewGroup) :
         BaseViewHolder<Section>(layoutRes, parent) {
 
+        @SuppressLint("SetTextI18n")
         override fun updateView(item: Section) {
             val binding = ListItemSearchContactsBinding.bind(itemView)
-            if (item is ChatContact) {
-                binding.tvNameContact.text = item.name
-                binding.tvNickname.text = item.nickname
+            binding.tvNameContact.text = item.getName()
+            if (item is UserChatPreview) {
+                binding.tvNickname.text = "@"+item.nickname
             }
             binding.viewDivider.isGone = item.positionInSection == item.maxPosition
         }
@@ -48,6 +52,6 @@ class ChatAddContactAdapter :
     }
 
     override fun onCreateHeaderViewHolder(parent: ViewGroup): BaseViewHolder<Section> {
-        return createViewHolder(parent, Section.HEADER)
+        return createViewHolder(parent, SectionType.Header.type)
     }
 }

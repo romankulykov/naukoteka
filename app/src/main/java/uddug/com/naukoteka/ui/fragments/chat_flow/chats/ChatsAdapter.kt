@@ -34,7 +34,7 @@ class ChatsAdapter(
             rootView.run {
                 item.run {
                     tvNameContact.text = dialogName
-                    tvTextOfMessage.text = lastMessage.text
+                    tvTextOfMessage.text = lastMessage?.text
                     ivPhoto.load(dialogImage?.fullPath, placeholder = R.drawable.ic_glide_image_error)
                     clChat.setOnClickListener { onChatClick.invoke(item) }
                     clChat.setOnLongClickListener {

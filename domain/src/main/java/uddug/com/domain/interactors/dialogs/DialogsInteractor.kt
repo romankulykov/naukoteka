@@ -21,7 +21,14 @@ class DialogsInteractor(
     }
 
     fun getDialogMessages(chatPreview: ChatPreview): Single<List<ChatMessage>> {
-        return dialogsRepository.getChatDetail(chatPreview)
+        return dialogsRepository.getChatMessages(chatPreview)
+            .subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
+    }
+
+    fun createDialog(name : String, uuids : List<String>): Single<ChatPreview> {
+        return dialogsRepository.createDialog(name, uuids)
+            .flatMap { dialogsRepository.getChatDetailInfo(it) }
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
     }

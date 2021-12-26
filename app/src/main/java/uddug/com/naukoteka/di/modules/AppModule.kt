@@ -18,6 +18,7 @@ import uddug.com.data.repositories.users.UsersSearchRepositoryImpl
 import uddug.com.data.services.AuthApiService
 import uddug.com.data.services.DialogsApiService
 import uddug.com.data.services.UserProfileApiService
+import uddug.com.data.services.UsersSearchApiService
 import uddug.com.data.services.auth.AuthApiHolder
 import uddug.com.domain.SchedulersProvider
 import uddug.com.domain.repositories.auth.AuthRepository
@@ -55,8 +56,7 @@ class AppModule(application: Application) : Module() {
         bind(UserProfileApiService::class.java).toProvider(UserProfileApiProvider::class.java)
             .singleton()
         bind(DialogsApiService::class.java).toProvider(DialogsApiProvider::class.java).singleton()
-        bind(UsersSearchRepository::class.java).toProvider(UsersSearchApiProvider::class.java)
-            .singleton()
+        bind(UsersSearchApiService::class.java).toProvider(UsersSearchApiProvider::class.java).singleton()
         bind(AuthApiHolder::class.java).singleton()
         bind(AuthRepository::class.java).to(AuthRepositoryImpl::class.java)
         bind(UserProfileRepository::class.java).to(UserProfileRepositoryImpl::class.java)

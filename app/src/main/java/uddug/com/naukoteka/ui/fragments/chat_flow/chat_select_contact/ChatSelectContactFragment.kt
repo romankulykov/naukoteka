@@ -9,6 +9,7 @@ import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import uddug.com.domain.repositories.ChatContact
 import uddug.com.domain.repositories.Section
+import uddug.com.domain.repositories.dialogs.models.UserChatPreview
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.FragmentSelectContactBinding
 import uddug.com.naukoteka.global.base.BaseFragment
@@ -47,12 +48,6 @@ class ChatSelectContactFragment : BaseFragment(R.layout.fragment_select_contact)
 
             rvSelectedContacts.adapter = chatSelectContactAdapter
             rvSelectedContactsTop.adapter = pickedChatSelectContactAdapter
-            tvSelected.text =
-                getString(
-                    R.string.selected_members,
-                    0,
-                    presenter.listOfChatContact.size
-                )
             btnAddMembers.setOnClickListener { presenter.toCreateGroup() }
         }
     }
@@ -66,14 +61,8 @@ class ChatSelectContactFragment : BaseFragment(R.layout.fragment_select_contact)
         chatSelectContactAdapter.setItems(items)
     }
 
-    override fun showSelectedContacts(items: List<ChatContact>, scrollToEnd: Boolean) {
+    override fun showSelectedContacts(items: List<UserChatPreview>, scrollToEnd: Boolean) {
         contentView.run {
-            tvSelected.text =
-                getString(
-                    R.string.selected_members,
-                    items.size,
-                    presenter.listOfChatContact.size
-                )
             btnAddMembers.text = getString(R.string.add_members, items.size)
             rvSelectedContactsTop.isGone = items.isEmpty()
             btnAddMembers.isGone = items.size < 2

@@ -12,10 +12,7 @@ import com.stfalcon.chatkit.messages.MessagesListAdapter
 import com.stfalcon.chatkit.messages.MessagesListAdapter.OnMessageLongClickListener
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
-import uddug.com.domain.repositories.dialogs.models.ChatMessage
-import uddug.com.domain.repositories.dialogs.models.ChatPreview
-import uddug.com.domain.repositories.dialogs.models.MessageType
-import uddug.com.domain.repositories.dialogs.models.UserChatPreview
+import uddug.com.domain.repositories.dialogs.models.*
 import uddug.com.naukoteka.GlideApp
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.data.ChatOptionsDialog
@@ -31,6 +28,7 @@ import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.incoming.IncomingT
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.outcoming.OutcomingImageHolder
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.outcoming.OutcomingTextHolder
 import uddug.com.naukoteka.utils.BackButtonListener
+import uddug.com.naukoteka.utils.ui.wasOnlineTenMinutesAgo
 import uddug.com.naukoteka.utils.viewBinding
 import java.util.*
 import kotlin.random.Random
@@ -44,14 +42,14 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
 
     companion object {
 
-        private const val CHAT = "ChatDetailFragment.CHAT_PREVIEW"
+        private const val CHAT_PREVIEW = "ChatDetailFragment.CHAT_PREVIEW"
 
         fun newInstance(chat: ChatPreview) = ChatDetailFragment().apply {
-            arguments = bundleOf(CHAT to chat)
+            arguments = bundleOf(CHAT_PREVIEW to chat)
         }
     }
 
-    private val chat get() = arguments?.getParcelable<ChatPreview>(CHAT)
+    private val chat get() = arguments?.getParcelable<ChatPreview>(CHAT_PREVIEW)
 
     var messagesAdapter: MessagesListAdapter<ChatMessage>? = null
 
@@ -79,6 +77,16 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
         presenter.getChat(chat!!)
 
         contentView.run {
+            tvChat.text = chat?.dialogName
+            tvCountPeopleOrStatus.text = if (chat?.dialogType == DialogType.GROUP) {
+                getString(R.string.participants_count_format, chat?.users?.size.toString())
+            } else {
+                if (chat?.interlocutor?.lastOnline.wasOnlineTenMinutesAgo()) {
+                    getString(R.string.online)
+                } else {
+                    getString(R.string.recently)
+                }
+            }
             input.setInputListener(this@ChatDetailFragment)
             input.setAttachmentsListener(this@ChatDetailFragment)
             ivMenu.setOnClickListener { showOptionsDialog() }
@@ -114,7 +122,14 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
                 senderId,
                 Calendar.getInstance(),
                 emptyList(),
-                UserChatPreview(null, senderId, false, "My Name is ", "My nick name")
+                UserChatPreview(
+                    null,
+                    senderId,
+                    false,
+                    "My Name is ",
+                    "My nick name",
+                    Calendar.getInstance()
+                )
             ), true
         )
         return true

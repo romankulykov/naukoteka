@@ -1,17 +1,19 @@
 package uddug.com.naukoteka.ui.fragments.chat_flow.chat_select_contact
 
+import android.annotation.SuppressLint
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.core.view.isGone
-import uddug.com.domain.repositories.ChatContact
 import uddug.com.domain.repositories.Section
+import uddug.com.domain.repositories.SectionType
+import uddug.com.domain.repositories.dialogs.models.UserChatPreview
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.ListItemSelectedContactsBinding
 import uddug.com.naukoteka.global.base.BaseStickyAdapter
 import uddug.com.naukoteka.global.base.BaseViewHolder
 
 class ChatSelectContactAdapter(
-    private val onContactClick: (ChatContact) -> Unit
+    private val onContactClick: (UserChatPreview) -> Unit
 ) :
     BaseStickyAdapter<Section, BaseViewHolder<Section>>() {
 
@@ -20,9 +22,9 @@ class ChatSelectContactAdapter(
     override fun newItemViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<Section> =
         ViewHolder(listItemView, parent)
 
-    private var selectedChatContactsList: List<ChatContact>? = null
+    private var selectedChatContactsList: List<UserChatPreview>? = null
 
-    fun updateSelectedChatContactsList(selectedChatContactsList: List<ChatContact>) {
+    fun updateSelectedChatContactsList(selectedChatContactsList: List<UserChatPreview>) {
         this.selectedChatContactsList = selectedChatContactsList
         notifyDataSetChanged()
     }
@@ -32,12 +34,15 @@ class ChatSelectContactAdapter(
 
         val binding get() = ListItemSelectedContactsBinding.bind(itemView)
 
+        @SuppressLint("SetTextI18n")
         override fun updateView(item: Section) {
-            if (item is ChatContact) {
+            if (item is UserChatPreview) {
                 binding.run {
-                    tvNameContact.text = item.name
-                    tvNickname.text = item.nickname
-                    cbSelectContact.isChecked = selectedChatContactsList?.map{ it.nickname}?.contains(item.nickname)?:false
+                    tvNameContact.text = item.getName()
+                    tvNickname.text = "@" + item.nickname
+                    cbSelectContact.isChecked =
+                        selectedChatContactsList?.map { it.id }?.contains(item.id)
+                            ?: false
                     root.setOnClickListener { onContactClick.invoke(item) }
                 }
             }
@@ -62,6 +67,6 @@ class ChatSelectContactAdapter(
     }
 
     override fun onCreateHeaderViewHolder(parent: ViewGroup): BaseViewHolder<Section> {
-        return createViewHolder(parent, Section.HEADER)
+        return createViewHolder(parent, SectionType.Header.type)
     }
 }

@@ -5,6 +5,7 @@ import moxy.viewstate.strategy.AddToEndSingleStrategy
 import moxy.viewstate.strategy.StateStrategyType
 import uddug.com.domain.repositories.ChatContact
 import uddug.com.domain.repositories.Section
+import uddug.com.domain.repositories.dialogs.models.UserChatPreview
 import uddug.com.naukoteka.global.views.InformativeView
 import uddug.com.naukoteka.global.views.LoadingView
 
@@ -14,6 +15,6 @@ interface ChatSelectContactView : MvpView, LoadingView, InformativeView {
 
     fun showContacts(items: List<Section>)
 
-    fun showSelectedContacts(items: List<ChatContact>, scrollToEnd: Boolean = false)
+    fun showSelectedContacts(items: List<UserChatPreview>, scrollToEnd: Boolean = false)
 
 }

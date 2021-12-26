@@ -4,6 +4,7 @@ import android.os.Parcelable
 import com.stfalcon.chatkit.commons.models.IUser
 import kotlinx.parcelize.Parcelize
 import uddug.com.domain.repositories.Section
+import java.util.*
 
 enum class DialogType(val type: Int) { PERSONAL(1), GROUP(2) }
 enum class ContentType(val type: String) { AUDIO("audio/mpeg"), VIDEO("video/mp4"), IMAGE("image/jpeg") }
@@ -19,12 +20,13 @@ data class ChatPreview(
     val dialogId: Int,
     val dialogName: String,
     val dialogType: DialogType,
-    val messageId: Int,
+    val messageId: Int?,
+    val firstMessageId: Int?,
     val dialogImage: AttachmentChatPreview?,
-    val lastMessage: LastMessageChatPreview,
+    val lastMessage: LastMessageChatPreview?,
     val users: List<UserChatPreview>,
     val unreadMessages: Int,
-    val interlocutor: UserChatPreview?
+    val interlocutor: UserChatPreview?,
 ) : Parcelable
 
 @Parcelize
@@ -43,30 +45,36 @@ data class UserChatPreview(
     val userId: String,
     val isAdmin: Boolean,
     val fullName: String,
-    val nickname: String?
-) : IUser, Parcelable {
+    val nickname: String?,
+    val lastOnline: Calendar?
+) : IUser, Parcelable, Section() {
 
     val nicknameOrFullName get() = nickname ?: fullName
 
     override fun getId(): String {
-        return userId ?:""
+        return userId
     }
 
     override fun getName(): String {
-        return nicknameOrFullName
+        return fullName
     }
 
     override fun getAvatar(): String? {
         return image?.fullPath
     }
+
+    override fun sectionName(): String {
+        return name.substring(0, 1)
+    }
+
 }
 
 @Parcelize
 data class AttachmentChatPreview(
-    val id: String,
-    val path: String,
-    val fileType: Int,
-    val filename: String,
+    val id: String?,
+    val path: String?,
+    val fileType: Int?,
+    val filename: String?,
     val contentType: ContentType?
 ) : Parcelable {
     val fullPath get() = "https://stage.naukotheka.ru/" + path

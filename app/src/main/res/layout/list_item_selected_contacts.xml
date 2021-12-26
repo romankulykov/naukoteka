@@ -11,6 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
+        android:clickable="false"
+        android:focusable="false"
         android:layout_marginStart="10dp"
         android:button="@drawable/radio_flat_regular"
         app:layout_constraintStart_toStartOf="parent"
