@@ -68,7 +68,10 @@ class LoginPresenter(
                 if (it is HttpException && it.statusCode == ServerApiError.InvalidCredentials) {
                     viewState.showErrorCredentials()
                 } else onError(it)
-            }, onComplete = { viewState.showSuccessLogin() })
+            }, onComplete = {
+                viewState.showSuccessLogin()
+                router.newRootScreen(Screens.Splash())
+            })
     }
 
     fun toRegistration() {
@@ -93,9 +96,8 @@ class LoginPresenter(
                 } else onError(it)
             }, onComplete = {
                 viewState.showSuccessLogin()
-                // kostyl because exception caused java.lang.IllegalStateException: Fragment host has been destroyed in selectTab(NavigationHelper.kt:68)
-                //router.newRootScreen(Screens.Splash())
-                router.navigateTo(Screens.TabsHolder())
+                router.newRootScreen(Screens.Splash())
+                //router.navigateTo(Screens.TabsHolder())
             })
     }
 
