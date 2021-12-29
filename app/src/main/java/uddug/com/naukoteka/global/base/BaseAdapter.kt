@@ -106,13 +106,6 @@ abstract class BaseAdapter<T, VH : BaseViewHolder<T>> : RecyclerView.Adapter<VH>
     fun checkCorrectPosition(position: Int): Boolean =
         (0 <= position && position < items?.size ?: 0)
 
-    override fun onBindViewHolder(holder: VH, position: Int, payloads: MutableList<Any>) {
-        super.onBindViewHolder(holder, position, payloads)
-        val item = getItems()?.get(position)
-        item?.let { holder.updateView(it); holder.updateView(it) }
-    }
-
-
     override fun getItemCount(): Int {
         items?.run {
             return size
@@ -127,7 +120,7 @@ abstract class BaseAdapter<T, VH : BaseViewHolder<T>> : RecyclerView.Adapter<VH>
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         val item = getItems()?.get(position)
-        item?.let { holder.updateView(it); holder.updateView(it) }
+        item?.let { holder.updateView(it) }
     }
 
 
