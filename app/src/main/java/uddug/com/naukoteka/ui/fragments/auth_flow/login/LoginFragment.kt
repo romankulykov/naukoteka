@@ -49,6 +49,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login), LoginView, BackButt
             btnEnter.setOnClickListener { presenter.enter(ctiEmail.text(), ctiPass.text()) }
             if (BuildConfig.DEBUG) {
                 tvWelcome.setOnLongClickListener { presenter.enterTest(); true }
+                ivLogo.setOnLongClickListener { presenter.enterTest(); true }
             }
             ibVkontakte.setOnClickListener { presenter.authSocial(SocialType.VK) }
             ibOk.setOnClickListener { presenter.authSocial(SocialType.OK) }
