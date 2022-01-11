@@ -6,6 +6,15 @@
     android:gravity="end"
     android:paddingBottom="8dp">
 
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkbox_out_text_message"
+        android:layout_gravity="center"
+        tools:visibility="visible"
+        android:visibility="gone"
+        android:layout_marginStart="5dp"/>
+
     <LinearLayout
         android:id="@id/bubble"
         android:layout_width="wrap_content"

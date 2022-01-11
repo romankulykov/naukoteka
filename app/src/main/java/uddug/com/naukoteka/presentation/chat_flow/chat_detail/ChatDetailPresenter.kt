@@ -21,6 +21,8 @@ open class ChatDetailPresenter(
 
     var chatPreview: ChatPreview? = null
 
+    var isMessagesSelected = false
+
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
     }
@@ -58,7 +60,18 @@ open class ChatDetailPresenter(
         router.navigateTo(Screens.GroupScreen(isProfile = false))
     }
 
+    fun onMessageLongClick() {
+        isMessagesSelected = true
+        viewState.toggleSelectionMode(isMessagesSelected)
+    }
+
+
     fun exit() {
-        router.exit()
+        if (isMessagesSelected) {
+            isMessagesSelected = false
+            viewState.toggleSelectionMode(isMessagesSelected)
+        } else {
+            router.exit()
+        }
     }
 }

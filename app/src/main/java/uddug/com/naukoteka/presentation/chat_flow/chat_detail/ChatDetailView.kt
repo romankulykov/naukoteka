@@ -23,5 +23,6 @@ interface ChatDetailView : MvpView, LoadingView, InformativeView {
     fun showInterrogation()
     fun showAttachmentOptionDialog()
     fun showMessages(messages: List<ChatMessage>)
+    fun toggleSelectionMode(messagesSelected: Boolean)
 
 }

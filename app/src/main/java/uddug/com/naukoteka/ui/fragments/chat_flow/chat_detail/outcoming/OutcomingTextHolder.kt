@@ -2,6 +2,8 @@ package uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.outcoming
 
 import android.view.View
 import android.widget.LinearLayout
+import androidx.core.view.isVisible
+import androidx.lifecycle.LifecycleOwner
 import com.stfalcon.chatkit.commons.models.IMessage
 import com.stfalcon.chatkit.messages.MessageHolders
 import com.stfalcon.chatkit.utils.DateFormatter
@@ -17,6 +19,12 @@ class OutcomingTextHolder(itemView: View, var anyPayload: Any?) :
 
     override fun onBind(data: IMessage) {
         initDropInChat()
+        //TODO refactor
+        (payload as Payload).isMessagesSelected.observe(itemView.context as LifecycleOwner,
+            {
+                    data -> contentView.checkboxOutTextMessage.isVisible = data
+            })
+        //
         with(contentView) {
             data.run {
                 val lp = messageText.layoutParams.apply {
@@ -33,8 +41,11 @@ class OutcomingTextHolder(itemView: View, var anyPayload: Any?) :
         if (anyPayload != null) {
             if (anyPayload is Payload) {
                 (payload as Payload).dropInChat = object : IDropInChat {
-                    override fun droppedInChat(nothing: Any) {
+                    override fun droppedInChat(something: Any) {
                         // TODO when need to call something from activity to chat message
+//                        if (something is Boolean) {
+//                            contentView.checkboxOutTextMessage.isVisible = something
+//                        }
                     }
                 }
                 // if need something drop in activity

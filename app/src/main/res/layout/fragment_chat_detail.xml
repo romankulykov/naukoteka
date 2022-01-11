@@ -105,6 +105,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:padding="10dp"
+            android:text="@string/cancel"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ViewFlipper
@@ -158,6 +170,49 @@
                     app:showAttachmentButton="true" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/selected_messages_options_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <ImageButton
+                    android:id="@+id/iv_delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="64dp"
+                    android:background="@color/fon_space"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_vector_delete" />
+
+                <ImageButton
+                    android:id="@+id/iv_copy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="64dp"
+                    android:background="@color/fon_space"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_vector_copy" />
+
+                <ImageButton
+                    android:id="@+id/iv_load"
+                    android:layout_width="wrap_content"
+                    android:layout_height="64dp"
+                    android:background="@color/fon_space"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_vector_load" />
+
+                <ImageButton
+                    android:id="@+id/iv_forward"
+                    android:layout_width="wrap_content"
+                    android:layout_height="64dp"
+                    android:background="@color/fon_space"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_vector_forward" />
+
+
+            </LinearLayout>
 
         </RelativeLayout>
 

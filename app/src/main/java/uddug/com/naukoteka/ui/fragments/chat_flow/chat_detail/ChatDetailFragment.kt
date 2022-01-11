@@ -38,7 +38,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
     OnMessageLongClickListener<ChatMessage>,
     InputListener,
     AttachmentsListener, MessagesListAdapter.OnLoadMoreListener,
-    MessagesListAdapter.SelectionListener {
+    MessagesListAdapter.SelectionListener, MessagesListAdapter.OnMessageViewClickListener<ChatMessage> {
 
     companion object {
 
@@ -92,8 +92,15 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
             ivMenu.setOnClickListener { showOptionsDialog() }
             clHeader.setOnClickListener { presenter.toGroupScreen() }
             ivArrowBack.setOnClickListener { onBackPressed() }
+            tvCancel.setOnClickListener { onBackPressed() }
+            ivDelete.setOnClickListener { showMessage(ToastInfo("Your custom click handler")) }
+            ivCopy.setOnClickListener { showMessage(ToastInfo("Your custom click handler")) }
+            ivLoad.setOnClickListener { showMessage(ToastInfo("Your custom click handler")) }
+            ivForward.setOnClickListener { showMessage(ToastInfo("Your custom click handler")) }
+
         }
         initAdapter()
+        messagesAdapter?.enableSelectionMode(this)
         imageLoader = ImageLoader { imageView: ImageView?, url: String?, payload: Any? ->
             if (imageView != null) {
                 GlideApp.with(this)
@@ -109,7 +116,6 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
     }
 
     override fun onMessageLongClick(message: ChatMessage?) {
-        showMessage(ToastInfo("Your custom long click handler"))
     }
 
     override fun onSubmit(input: CharSequence?): Boolean {
@@ -145,6 +151,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
     }
 
     override fun onSelectionChanged(count: Int) {
+        presenter.onMessageLongClick()
         this.selectionCount = count
     }
 
@@ -152,7 +159,35 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
         messagesAdapter?.addToEnd(messages, false)
     }
 
+    override fun toggleSelectionMode(messagesSelected: Boolean) {
+        holderPayload!!.isMessagesSelected.postValue(messagesSelected)
+        if (messagesSelected) {
+            contentView.run {
+                selectedMessagesOptionsLl.visibility = View.VISIBLE
+                tvCancel.visibility = View.VISIBLE
+                llInput.visibility = View.GONE
+                ivCall.visibility = View.GONE
+                ivVideoChat.visibility = View.GONE
+                ivMenu.visibility = View.GONE
+            }
+        } else {
+            contentView.run {
+                selectedMessagesOptionsLl.visibility = View.GONE
+                tvCancel.visibility = View.GONE
+                llInput.visibility = View.VISIBLE
+                ivCall.visibility = View.VISIBLE
+                ivVideoChat.visibility = View.VISIBLE
+                ivMenu.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    override fun onMessageViewClick(view: View?, message: ChatMessage?) {
+        TODO("Not yet implemented")
+    }
+
     private fun initAdapter() {
+        holderPayload = Payload()
         val holdersConfig = MessageHolders()
             .setIncomingTextConfig(
                 IncomingTextHolder::class.java,
@@ -229,4 +264,5 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
             presenter::onPhotoAttachmentClick
         ).show()
     }
+
 }
