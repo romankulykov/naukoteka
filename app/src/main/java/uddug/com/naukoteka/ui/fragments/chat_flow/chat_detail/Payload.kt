@@ -6,6 +6,7 @@ open class Payload {
     var dropInActivity: IDropInActivity? = null
     var dropInChat: IDropInChat? = null
     val isMessagesSelected = MutableLiveData<Boolean>()
+    val selectedMessagesId = MutableLiveData<Int>()
 }
 
 interface IDropInChat {

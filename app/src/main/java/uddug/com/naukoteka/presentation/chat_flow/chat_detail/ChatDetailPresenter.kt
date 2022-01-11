@@ -1,9 +1,11 @@
 package uddug.com.naukoteka.presentation.chat_flow.chat_detail
 
+import com.stfalcon.chatkit.commons.models.IMessage
 import moxy.InjectViewState
 import toothpick.InjectConstructor
 import uddug.com.domain.entities.AttachmentPhotoEntity
 import uddug.com.domain.interactors.dialogs.DialogsInteractor
+import uddug.com.domain.repositories.dialogs.models.ChatMessage
 import uddug.com.domain.repositories.dialogs.models.ChatPreview
 import uddug.com.naukoteka.data.ChatAttachmentOption
 import uddug.com.naukoteka.data.ChatOption

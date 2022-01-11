@@ -1,10 +1,12 @@
 package uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.core.os.bundleOf
 import com.stfalcon.chatkit.commons.ImageLoader
+import com.stfalcon.chatkit.commons.models.IMessage
 import com.stfalcon.chatkit.messages.MessageHolders
 import com.stfalcon.chatkit.messages.MessageInput.AttachmentsListener
 import com.stfalcon.chatkit.messages.MessageInput.InputListener
@@ -38,7 +40,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
     OnMessageLongClickListener<ChatMessage>,
     InputListener,
     AttachmentsListener, MessagesListAdapter.OnLoadMoreListener,
-    MessagesListAdapter.SelectionListener, MessagesListAdapter.OnMessageViewClickListener<ChatMessage> {
+    MessagesListAdapter.SelectionListener{
 
     companion object {
 
@@ -151,6 +153,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
     }
 
     override fun onSelectionChanged(count: Int) {
+        Log.d("TAG", "onSelectionChanged: $count")
         presenter.onMessageLongClick()
         this.selectionCount = count
     }
@@ -162,6 +165,10 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
     override fun toggleSelectionMode(messagesSelected: Boolean) {
         holderPayload!!.isMessagesSelected.postValue(messagesSelected)
         if (messagesSelected) {
+            holderPayload!!.selectedMessagesId.postValue(
+                messagesAdapter!!.selectedMessages[messagesAdapter!!.selectedMessages.size - 1]
+                    .id
+            )
             contentView.run {
                 selectedMessagesOptionsLl.visibility = View.VISIBLE
                 tvCancel.visibility = View.VISIBLE
@@ -180,10 +187,6 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
                 ivMenu.visibility = View.VISIBLE
             }
         }
-    }
-
-    override fun onMessageViewClick(view: View?, message: ChatMessage?) {
-        TODO("Not yet implemented")
     }
 
     private fun initAdapter() {

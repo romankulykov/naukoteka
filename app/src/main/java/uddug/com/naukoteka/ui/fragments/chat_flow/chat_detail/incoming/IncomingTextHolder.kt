@@ -26,12 +26,19 @@ class IncomingTextHolder(itemView: View, var anyPayload: Any?) :
 
     override fun onBind(data: IMessage) {
         initDropInChat()
-        //TODO refactor
         (payload as Payload).isMessagesSelected.observe(itemView.context as LifecycleOwner,
             {
                     data -> contentView.checkboxInTextMessage.isVisible = data
             })
-        //
+        (payload as Payload).selectedMessagesId.observe(itemView.context as LifecycleOwner,
+            {
+                    id ->
+                if (id == -1)
+                    contentView.checkboxInTextMessage.isChecked = false
+                if (id == data.id.toInt())
+                    contentView.checkboxInTextMessage.isChecked = true
+
+            })
         with(contentView) {
             data.run {
                 messageUserAvatar.load(

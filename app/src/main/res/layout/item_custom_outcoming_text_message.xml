@@ -7,13 +7,14 @@
     android:paddingBottom="8dp">
 
     <CheckBox
+        android:id="@+id/checkbox_out_text_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/checkbox_out_text_message"
         android:layout_gravity="center"
-        tools:visibility="visible"
+        android:layout_marginStart="5dp"
+        android:button="@drawable/chat_checkbox"
         android:visibility="gone"
-        android:layout_marginStart="5dp"/>
+        tools:visibility="visible" />
 
     <LinearLayout
         android:id="@id/bubble"
