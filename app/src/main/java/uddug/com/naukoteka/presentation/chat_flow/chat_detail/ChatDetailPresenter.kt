@@ -71,13 +71,12 @@ open class ChatDetailPresenter(
 
     fun onMessageClick(message: ChatMessage) {
         if (isMessagesSelected) {
-            var isSelect : Boolean
-            if (selectedMessages.contains(message)) {
+            val isSelect = if (selectedMessages.contains(message)) {
                 selectedMessages.remove(message)
-                isSelect = false
+                false
             } else {
                 selectedMessages.add(message)
-                isSelect = true
+                true
             }
             viewState.toggleMessage(message, selectedMessages, isSelect)
         } else {

@@ -23,11 +23,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_arrow_back" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:id="@+id/cl_header"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/barrierTopAction"
             app:layout_constraintStart_toEndOf="@id/iv_arrow_back"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -45,9 +47,10 @@
             <LinearLayout
                 android:id="@+id/ll_chat_name"
                 android:layout_width="0dp"
+                android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="9dp"
-                android:layout_marginTop="8dp"
+                android:layout_weight="1"
                 android:orientation="vertical"
                 app:layout_constraintStart_toEndOf="@id/iv_chat_image"
                 app:layout_constraintTop_toTopOf="parent">
@@ -57,8 +60,11 @@
                     style="@style/TextViewStyle.Subtitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:ellipsize="end"
                     android:fontFamily="@font/golos_text_regular"
-                    android:text="@string/graduate_work" />
+                    android:lines="1"
+                    android:singleLine="true"
+                    tools:text="@tools:sample/lorem/random" />
 
                 <TextView
                     android:id="@+id/tv_count_people_or_status"
@@ -70,7 +76,15 @@
 
             </LinearLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrierTopAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:barrierDirection="start"
+            app:constraint_referenced_ids="iv_call,iv_video_chat,iv_menu,tv_cancel" />
 
         <ImageView
             android:id="@+id/iv_call"
@@ -110,8 +124,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
+            android:fontFamily="@font/golos_text_medium"
             android:padding="10dp"
             android:text="@string/cancel"
+            android:textColor="@color/object_main"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -183,32 +199,32 @@
                     android:id="@+id/iv_delete"
                     android:layout_width="wrap_content"
                     android:layout_height="64dp"
-                    android:background="@color/fon_space"
                     android:layout_weight="1"
+                    android:background="@color/fon_space"
                     android:src="@drawable/ic_vector_delete" />
 
                 <ImageButton
                     android:id="@+id/iv_copy"
                     android:layout_width="wrap_content"
                     android:layout_height="64dp"
-                    android:background="@color/fon_space"
                     android:layout_weight="1"
+                    android:background="@color/fon_space"
                     android:src="@drawable/ic_vector_copy" />
 
                 <ImageButton
                     android:id="@+id/iv_load"
                     android:layout_width="wrap_content"
                     android:layout_height="64dp"
-                    android:background="@color/fon_space"
                     android:layout_weight="1"
+                    android:background="@color/fon_space"
                     android:src="@drawable/ic_vector_load" />
 
                 <ImageButton
                     android:id="@+id/iv_forward"
                     android:layout_width="wrap_content"
                     android:layout_height="64dp"
-                    android:background="@color/fon_space"
                     android:layout_weight="1"
+                    android:background="@color/fon_space"
                     android:src="@drawable/ic_vector_forward" />
 
 

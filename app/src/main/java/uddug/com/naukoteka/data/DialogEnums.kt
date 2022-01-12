@@ -83,17 +83,34 @@ enum class ChatOption(val textResId: Int, val imageResId: Int) : BottomSheetDial
     ADD_PARTICIPANT(R.string.add_participant, R.drawable.ic_u_plus),
 }
 
-enum class ChatLongPressMenu(val textResId: Int, val imageResId: Int) {
-    ANCHOR_CHAT(R.string.anchor_chat, R.drawable.ic_pushpin),
-    HIDE_CHAT(R.string.hide_chat, R.drawable.ic_fi_eye),
-    DISABLE_NOTIFICATIONS(R.string.disable_notifications, R.drawable.ic_bell),
-    CLEAR_THE_HISTORY(R.string.clear_the_history, R.drawable.ic_clear_history),
-    BLOCK(R.string.swipe_block, R.drawable.ic_arrow_down_circle)
-}
-
 enum class ChatAttachmentOption(val textResId: Int) {
     PHOTO_OR_VIDEO(R.string.photo_or_video),
     FILE(R.string.file),
     CONTACT(R.string.contact),
     INTERROGATION(R.string.interrogation)
+}
+
+interface PopupWindowMenu {
+    val textResId: Int
+    val imageResId: Int
+}
+
+enum class ChatClickMenu(override val textResId: Int, override val imageResId: Int) :
+    PopupWindowMenu {
+    ANSWER(R.string.chat_message_popup_menu_answer, R.drawable.ic_popup_menu_answer),
+    COPY(R.string.chat_message_popup_menu_copy, R.drawable.ic_popup_menu_copy),
+    FORWARD(R.string.chat_message_popup_menu_forward, R.drawable.ic_popup_menu_forward),
+    EDIT(R.string.chat_message_popup_menu_edit, R.drawable.ic_popup_menu_edit),
+    PIN(R.string.chat_message_popup_menu_pin, R.drawable.ic_popup_menu_pin),
+    DELETE(R.string.chat_message_popup_menu_delete, R.drawable.ic_vector_delete),
+    SELECT(R.string.chat_message_popup_menu_select, R.drawable.ic_popup_menu_select),
+}
+
+enum class DialogLongPressMenu(override val textResId: Int, override val imageResId: Int) :
+    PopupWindowMenu {
+    ANCHOR_CHAT(R.string.anchor_chat, R.drawable.ic_pushpin),
+    HIDE_CHAT(R.string.hide_chat, R.drawable.ic_fi_eye),
+    DISABLE_NOTIFICATIONS(R.string.disable_notifications, R.drawable.ic_bell),
+    CLEAR_THE_HISTORY(R.string.clear_the_history, R.drawable.ic_clear_history),
+    BLOCK(R.string.swipe_block, R.drawable.ic_arrow_down_circle)
 }

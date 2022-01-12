@@ -101,7 +101,6 @@
     <string name="chat_time">пт</string>
     <string name="chat_count_of_message">17</string>
 
-    <string name="graduate_work">Дипломная работа</string>
     <string name="chat_count_people">18 участников</string>
     <string name="message">Сообщение</string>
     <string name="swipe_return">Вернуть</string>
@@ -178,6 +177,13 @@
     <string name="block">Заблокировать</string>
     <string name="online">Online</string>
     <string name="recently">Recently</string>
+    <string name="chat_message_popup_menu_answer">Ответить</string>
+    <string name="chat_message_popup_menu_copy">Скопировать</string>
+    <string name="chat_message_popup_menu_forward">Переслать</string>
+    <string name="chat_message_popup_menu_edit">Изменить</string>
+    <string name="chat_message_popup_menu_pin">Закрепить</string>
+    <string name="chat_message_popup_menu_delete">Удалить</string>
+    <string name="chat_message_popup_menu_select">Выбрать</string>
 
 
 </resources>

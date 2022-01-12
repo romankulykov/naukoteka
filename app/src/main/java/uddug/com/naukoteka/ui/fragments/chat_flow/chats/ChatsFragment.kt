@@ -10,7 +10,7 @@ import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import uddug.com.domain.repositories.dialogs.models.ChatsPreview
 import uddug.com.naukoteka.R
-import uddug.com.naukoteka.data.ChatLongPressMenu
+import uddug.com.naukoteka.data.DialogLongPressMenu
 import uddug.com.naukoteka.data.ChatSwipeTitleOption
 import uddug.com.naukoteka.data.ChatTitleActionDialog
 import uddug.com.naukoteka.databinding.FragmentChatsBinding
@@ -51,8 +51,6 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
         )
     }
 
-    private lateinit var longOptions: ArrayList<ChatLongPressMenu>
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         contentView.run {
@@ -88,13 +86,13 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
 
     private fun showPopupLongPressMenu(v: View) {
         contentView.run {
-            longOptions = ArrayList()
+            val longOptions = ArrayList<DialogLongPressMenu>()
             longOptions.run {
-                add(ChatLongPressMenu.ANCHOR_CHAT)
-                add(ChatLongPressMenu.HIDE_CHAT)
-                add(ChatLongPressMenu.DISABLE_NOTIFICATIONS)
-                add(ChatLongPressMenu.CLEAR_THE_HISTORY)
-                add(ChatLongPressMenu.BLOCK)
+                add(DialogLongPressMenu.ANCHOR_CHAT)
+                add(DialogLongPressMenu.HIDE_CHAT)
+                add(DialogLongPressMenu.DISABLE_NOTIFICATIONS)
+                add(DialogLongPressMenu.CLEAR_THE_HISTORY)
+                add(DialogLongPressMenu.BLOCK)
             }
             var child =
                 LayoutInflater.from(requireContext()).inflate(R.layout.popup_long_press_menu, null)

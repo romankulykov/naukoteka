@@ -1,11 +1,14 @@
 package uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
+import android.widget.PopupWindow
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.RecyclerView
 import com.stfalcon.chatkit.commons.ImageLoader
 import com.stfalcon.chatkit.messages.MessageHolders
 import com.stfalcon.chatkit.messages.MessageInput.AttachmentsListener
@@ -16,11 +19,13 @@ import moxy.presenter.ProvidePresenter
 import uddug.com.domain.repositories.dialogs.models.*
 import uddug.com.naukoteka.GlideApp
 import uddug.com.naukoteka.R
+import uddug.com.naukoteka.data.ChatClickMenu
 import uddug.com.naukoteka.data.ChatOptionsDialog
 import uddug.com.naukoteka.databinding.FragmentChatDetailBinding
 import uddug.com.naukoteka.global.base.BaseFragment
 import uddug.com.naukoteka.presentation.chat_flow.chat_detail.ChatDetailPresenter
 import uddug.com.naukoteka.presentation.chat_flow.chat_detail.ChatDetailView
+import uddug.com.naukoteka.ui.adapters.long_press_menu.LongPressMenuAdapter
 import uddug.com.naukoteka.ui.custom.square_toast.ToastInfo
 import uddug.com.naukoteka.ui.dialogs.chat_option.AttachmentOptionsDialog
 import uddug.com.naukoteka.ui.dialogs.chat_option.ChatOptionsDialogType
@@ -40,8 +45,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
     AttachmentsListener,
     MessagesListAdapter.OnMessageViewLongClickListener<ChatMessage>,
     MessagesListAdapter.OnMessageViewClickListener<ChatMessage>,
-    MessagesListAdapter.OnLoadMoreListener/*,
-    MessagesListAdapter.SelectionListener*/ {
+    MessagesListAdapter.OnLoadMoreListener {
 
     companion object {
 
@@ -153,8 +157,38 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
         presenter.onMessageLongClick(message)
     }
 
-    override fun onMessageViewClick(view: View?, message: ChatMessage) {
-        presenter.onMessageClick(message)
+    override fun onMessageViewClick(view: View, message: ChatMessage) {
+        if (presenter.isMessagesSelected) {
+            presenter.onMessageClick(message)
+        } else {
+            showPopupLongPressMenu(view, message)
+        }
+    }
+
+    private fun showPopupLongPressMenu(v: View, message: ChatMessage) {
+        contentView.run {
+            val child =
+                LayoutInflater.from(requireContext()).inflate(R.layout.popup_long_press_menu, null)
+            val popupWindow = PopupWindow(requireContext())
+            val longPressMenuAdapter = LongPressMenuAdapter { menuItem ->
+                if (menuItem == ChatClickMenu.SELECT) {
+                    presenter.onMessageLongClick(message)
+                }
+                popupWindow.dismiss()
+            }
+            with(popupWindow) {
+                contentView = child
+                setBackgroundDrawable(null)
+                elevation = 12F
+                isFocusable = true
+                isOutsideTouchable = true
+                showAsDropDown(v, 0, 0)
+                with(child) {
+                    findViewById<RecyclerView>(R.id.rv_popup_long_press_menu).adapter =
+                        longPressMenuAdapter.apply { setItems(ChatClickMenu.values().toList()) }
+                }
+            }
+        }
     }
 
     override fun showMessages(messages: List<ChatMessage>) {
