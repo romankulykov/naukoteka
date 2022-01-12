@@ -1,6 +1,5 @@
 package uddug.com.naukoteka.presentation.chat_flow.chat_detail
 
-import com.stfalcon.chatkit.commons.models.IMessage
 import moxy.InjectViewState
 import toothpick.InjectConstructor
 import uddug.com.domain.entities.AttachmentPhotoEntity
@@ -18,12 +17,12 @@ import uddug.com.naukoteka.navigation.Screens
 open class ChatDetailPresenter(
     val router: AppRouter,
     private val dialogsInteractor: DialogsInteractor,
-) :
-    BasePresenterImpl<ChatDetailView>() {
+) : BasePresenterImpl<ChatDetailView>() {
 
     var chatPreview: ChatPreview? = null
 
     var isMessagesSelected = false
+    var selectedMessages = hashSetOf<ChatMessage>()
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
@@ -62,16 +61,40 @@ open class ChatDetailPresenter(
         router.navigateTo(Screens.GroupScreen(isProfile = false))
     }
 
-    fun onMessageLongClick() {
-        isMessagesSelected = true
+    fun onMessageLongClick(message: ChatMessage) {
+        if (!isMessagesSelected) {
+            isMessagesSelected = true
+            viewState.toggleSelectionMode(isMessagesSelected, message)
+        }
+        onMessageClick(message)
+    }
+
+    fun onMessageClick(message: ChatMessage) {
+        if (isMessagesSelected) {
+            var isSelect : Boolean
+            if (selectedMessages.contains(message)) {
+                selectedMessages.remove(message)
+                isSelect = false
+            } else {
+                selectedMessages.add(message)
+                isSelect = true
+            }
+            viewState.toggleMessage(message, selectedMessages, isSelect)
+        } else {
+            // TODO show context menu near message
+        }
+    }
+
+    fun clearSelection() {
+        isMessagesSelected = false
         viewState.toggleSelectionMode(isMessagesSelected)
+        selectedMessages.clear()
     }
 
 
     fun exit() {
         if (isMessagesSelected) {
-            isMessagesSelected = false
-            viewState.toggleSelectionMode(isMessagesSelected)
+            clearSelection()
         } else {
             router.exit()
         }

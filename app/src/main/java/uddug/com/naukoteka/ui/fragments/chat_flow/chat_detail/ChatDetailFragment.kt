@@ -1,17 +1,16 @@
 package uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.core.os.bundleOf
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import com.stfalcon.chatkit.commons.ImageLoader
-import com.stfalcon.chatkit.commons.models.IMessage
 import com.stfalcon.chatkit.messages.MessageHolders
 import com.stfalcon.chatkit.messages.MessageInput.AttachmentsListener
 import com.stfalcon.chatkit.messages.MessageInput.InputListener
 import com.stfalcon.chatkit.messages.MessagesListAdapter
-import com.stfalcon.chatkit.messages.MessagesListAdapter.OnMessageLongClickListener
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import uddug.com.domain.repositories.dialogs.models.*
@@ -37,10 +36,12 @@ import kotlin.random.Random
 
 class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
     ChatDetailView, BackButtonListener,
-    OnMessageLongClickListener<ChatMessage>,
     InputListener,
-    AttachmentsListener, MessagesListAdapter.OnLoadMoreListener,
-    MessagesListAdapter.SelectionListener{
+    AttachmentsListener,
+    MessagesListAdapter.OnMessageViewLongClickListener<ChatMessage>,
+    MessagesListAdapter.OnMessageViewClickListener<ChatMessage>,
+    MessagesListAdapter.OnLoadMoreListener/*,
+    MessagesListAdapter.SelectionListener*/ {
 
     companion object {
 
@@ -102,7 +103,6 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
 
         }
         initAdapter()
-        messagesAdapter?.enableSelectionMode(this)
         imageLoader = ImageLoader { imageView: ImageView?, url: String?, payload: Any? ->
             if (imageView != null) {
                 GlideApp.with(this)
@@ -115,9 +115,6 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
     override fun onBackPressed(): Boolean {
         presenter.exit()
         return true
-    }
-
-    override fun onMessageLongClick(message: ChatMessage?) {
     }
 
     override fun onSubmit(input: CharSequence?): Boolean {
@@ -152,45 +149,47 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
         }
     }
 
-    override fun onSelectionChanged(count: Int) {
-        Log.d("TAG", "onSelectionChanged: $count")
-        presenter.onMessageLongClick()
-        this.selectionCount = count
+    override fun onMessageViewLongClick(view: View?, message: ChatMessage) {
+        presenter.onMessageLongClick(message)
+    }
+
+    override fun onMessageViewClick(view: View?, message: ChatMessage) {
+        presenter.onMessageClick(message)
     }
 
     override fun showMessages(messages: List<ChatMessage>) {
         messagesAdapter?.addToEnd(messages, false)
     }
 
-    override fun toggleSelectionMode(messagesSelected: Boolean) {
-        holderPayload!!.isMessagesSelected.postValue(messagesSelected)
-        if (messagesSelected) {
-            holderPayload!!.selectedMessagesId.postValue(
-                messagesAdapter!!.selectedMessages[messagesAdapter!!.selectedMessages.size - 1]
-                    .id
-            )
-            contentView.run {
-                selectedMessagesOptionsLl.visibility = View.VISIBLE
-                tvCancel.visibility = View.VISIBLE
-                llInput.visibility = View.GONE
-                ivCall.visibility = View.GONE
-                ivVideoChat.visibility = View.GONE
-                ivMenu.visibility = View.GONE
-            }
-        } else {
-            contentView.run {
-                selectedMessagesOptionsLl.visibility = View.GONE
-                tvCancel.visibility = View.GONE
-                llInput.visibility = View.VISIBLE
-                ivCall.visibility = View.VISIBLE
-                ivVideoChat.visibility = View.VISIBLE
-                ivMenu.visibility = View.VISIBLE
-            }
+    override fun toggleSelectionMode(messagesSelected: Boolean, message: ChatMessage?) {
+        holderPayload?.publish(ChatSelectionStatus.ToggleSelectionMode(messagesSelected, message))
+        contentView.run {
+            selectedMessagesOptionsLl.isVisible = messagesSelected
+            tvCancel.isVisible = messagesSelected
+            ivCall.isGone = messagesSelected
+            ivVideoChat.isGone = messagesSelected
+            ivMenu.isGone = messagesSelected
         }
+    }
+
+    override fun toggleMessage(
+        message: ChatMessage,
+        selectedMessages: HashSet<ChatMessage>,
+        isSelected: Boolean
+    ) {
+        holderPayload?.publish(
+            ChatSelectionStatus.ToggleSelectionMessage(
+                message,
+                selectedMessages.toList(),
+                isSelected
+            )
+        )
+
     }
 
     private fun initAdapter() {
         holderPayload = Payload()
+
         val holdersConfig = MessageHolders()
             .setIncomingTextConfig(
                 IncomingTextHolder::class.java,
@@ -214,7 +213,8 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
             )
         messagesAdapter =
             MessagesListAdapter(senderId, holdersConfig, imageLoader)
-        messagesAdapter?.setOnMessageLongClickListener(this)
+        messagesAdapter?.setOnMessageViewLongClickListener(this)
+        messagesAdapter?.setOnMessageViewClickListener(this)
         messagesAdapter?.setLoadMoreListener(this)
         contentView.messagesList.setAdapter(messagesAdapter)
     }

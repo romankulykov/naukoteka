@@ -1,16 +1,34 @@
 package uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail
 
-import androidx.lifecycle.MutableLiveData
+import com.jakewharton.rxrelay2.PublishRelay
+import uddug.com.domain.repositories.dialogs.models.ChatMessage
 
 open class Payload {
     var dropInActivity: IDropInActivity? = null
-    var dropInChat: IDropInChat? = null
-    val isMessagesSelected = MutableLiveData<Boolean>()
-    val selectedMessagesId = MutableLiveData<Int>()
-}
+    var dropInChat: PublishRelay<ChatSelectionStatus> = PublishRelay.create()
+    var lastPublishedStatus: ChatSelectionStatus? = null
 
-interface IDropInChat {
-    fun droppedInChat(something: Any)
+    private var selectedMessages: List<ChatMessage>? = null
+
+    val isSelectionMode: Boolean
+        get() = when (lastPublishedStatus) {
+            is ChatSelectionStatus.ToggleSelectionMessage -> true
+            is ChatSelectionStatus.ToggleSelectionMode -> (lastPublishedStatus as ChatSelectionStatus.ToggleSelectionMode).isSelectionState
+            null -> false
+        }
+
+    fun getPossibleSelectedMessage(messageId: Int): ChatMessage? {
+        return selectedMessages?.find { it.id == messageId }
+    }
+
+    fun publish(chatSelectionStatus: ChatSelectionStatus) {
+        lastPublishedStatus = chatSelectionStatus
+        if (chatSelectionStatus is ChatSelectionStatus.ToggleSelectionMessage) {
+            selectedMessages = chatSelectionStatus.selectedMessages
+        }
+        dropInChat.accept(chatSelectionStatus)
+    }
+
 }
 
 interface IDropInActivity {

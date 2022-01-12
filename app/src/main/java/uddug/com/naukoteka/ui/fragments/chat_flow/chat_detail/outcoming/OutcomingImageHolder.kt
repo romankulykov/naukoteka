@@ -1,5 +1,6 @@
 package uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.outcoming
 
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
@@ -9,7 +10,6 @@ import com.stfalcon.chatkit.utils.DateFormatter
 import uddug.com.naukoteka.GlideApp
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.ItemCustomOutcomingImageMessageBinding
-import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.IDropInChat
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.Payload
 
 class OutcomingImageHolder(itemView: View, var anyPayload: Any?) :
@@ -45,11 +45,9 @@ class OutcomingImageHolder(itemView: View, var anyPayload: Any?) :
     fun initDropInChat() {
         if (anyPayload != null) {
             if (anyPayload is Payload) {
-                (payload as Payload).dropInChat = object : IDropInChat {
-                    override fun droppedInChat(nothing: Any) {
-                        // TODO when need to call something from activity to chat message
-                    }
-                }
+                (payload as Payload).dropInChat?.subscribe({
+                    Log.d("GTGAGA","ADADS")
+                })
                 // if need something drop in activity
                 //(payload as Payload).dropInActivity?.droppedInActivity(Any())
             }

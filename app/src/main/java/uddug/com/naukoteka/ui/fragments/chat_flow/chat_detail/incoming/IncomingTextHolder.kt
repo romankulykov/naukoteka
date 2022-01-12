@@ -2,43 +2,21 @@ package uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.incoming
 
 import android.view.View
 import android.widget.LinearLayout
-import androidx.core.view.isVisible
-import androidx.lifecycle.LifecycleOwner
 import com.stfalcon.chatkit.commons.models.IMessage
-import com.stfalcon.chatkit.messages.MessageHolders
 import com.stfalcon.chatkit.utils.DateFormatter
-import io.reactivex.Observable
-import io.reactivex.Scheduler
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.ItemCustomIncomingTextMessageBinding
-import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.IDropInChat
-import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.Payload
+import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.base.BaseMessageHolder
 import uddug.com.naukoteka.utils.ui.load
-import java.util.*
 
-class IncomingTextHolder(itemView: View, var anyPayload: Any?) :
-    MessageHolders.BaseMessageViewHolder<IMessage>(itemView, anyPayload) {
+class IncomingTextHolder(itemView: View, override var anyPayload: Any?) :
+    BaseMessageHolder(itemView, anyPayload) {
 
-    val contentView: ItemCustomIncomingTextMessageBinding =
+    override val contentView: ItemCustomIncomingTextMessageBinding =
         ItemCustomIncomingTextMessageBinding.bind(itemView)
 
     override fun onBind(data: IMessage) {
-        initDropInChat()
-        (payload as Payload).isMessagesSelected.observe(itemView.context as LifecycleOwner,
-            {
-                    data -> contentView.checkboxInTextMessage.isVisible = data
-            })
-        (payload as Payload).selectedMessagesId.observe(itemView.context as LifecycleOwner,
-            {
-                    id ->
-                if (id == -1)
-                    contentView.checkboxInTextMessage.isChecked = false
-                if (id == data.id.toInt())
-                    contentView.checkboxInTextMessage.isChecked = true
-
-            })
+        super.onBind(data)
         with(contentView) {
             data.run {
                 messageUserAvatar.load(
@@ -58,21 +36,5 @@ class IncomingTextHolder(itemView: View, var anyPayload: Any?) :
         }
     }
 
-    fun initDropInChat() {
-        if (anyPayload != null) {
-            if (anyPayload is Payload) {
-                (payload as Payload).dropInChat = object : IDropInChat {
-                    override fun droppedInChat(something: Any) {
-                        // TODO when need to call something from activity to chat message
-//                        if (something is Boolean) {
-//                            contentView.checkboxInTextMessage.isVisible = something
-//                        }
-                    }
-                }
-                // if need something drop in activity
-                //(payload as Payload).dropInActivity?.droppedInActivity(Any())
-            }
-        }
-    }
 
 }

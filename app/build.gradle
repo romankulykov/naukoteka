@@ -136,6 +136,7 @@ dependencies {
     implementation data.retrofitRxJava
 
     implementation presentation.rxJavaKotlin
+    implementation presentation.rxRelay
     implementation presentation.rxJava
     implementation presentation.rxJavaAndroid
 

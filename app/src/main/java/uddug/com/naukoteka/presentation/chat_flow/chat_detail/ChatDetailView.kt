@@ -6,6 +6,7 @@ import moxy.viewstate.strategy.StateStrategyType
 import uddug.com.domain.repositories.dialogs.models.ChatMessage
 import uddug.com.naukoteka.global.views.InformativeView
 import uddug.com.naukoteka.global.views.LoadingView
+import java.util.*
 
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface ChatDetailView : MvpView, LoadingView, InformativeView {
@@ -23,6 +24,11 @@ interface ChatDetailView : MvpView, LoadingView, InformativeView {
     fun showInterrogation()
     fun showAttachmentOptionDialog()
     fun showMessages(messages: List<ChatMessage>)
-    fun toggleSelectionMode(messagesSelected: Boolean)
+    fun toggleSelectionMode(messagesSelected: Boolean, message: ChatMessage? = null)
+    fun toggleMessage(
+        message: ChatMessage,
+        selectedMessages: HashSet<ChatMessage>,
+        isSelected: Boolean
+    )
 
 }
