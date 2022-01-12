@@ -8,11 +8,12 @@ import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
+import uddug.com.domain.repositories.dialogs.models.ChatPreview
 import uddug.com.domain.repositories.dialogs.models.ChatsPreview
 import uddug.com.naukoteka.R
-import uddug.com.naukoteka.data.DialogLongPressMenu
 import uddug.com.naukoteka.data.ChatSwipeTitleOption
 import uddug.com.naukoteka.data.ChatTitleActionDialog
+import uddug.com.naukoteka.data.DialogLongPressMenu
 import uddug.com.naukoteka.databinding.FragmentChatsBinding
 import uddug.com.naukoteka.global.base.BaseFragment
 import uddug.com.naukoteka.presentation.chat_flow.chats.ChatsPresenter
@@ -84,20 +85,22 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
         }.show()
     }
 
-    private fun showPopupLongPressMenu(v: View) {
+    private fun showPopupLongPressMenu(chatPreview: ChatPreview, v: View) {
         contentView.run {
-            val longOptions = ArrayList<DialogLongPressMenu>()
-            longOptions.run {
-                add(DialogLongPressMenu.ANCHOR_CHAT)
-                add(DialogLongPressMenu.HIDE_CHAT)
-                add(DialogLongPressMenu.DISABLE_NOTIFICATIONS)
-                add(DialogLongPressMenu.CLEAR_THE_HISTORY)
-                add(DialogLongPressMenu.BLOCK)
-            }
             var child =
                 LayoutInflater.from(requireContext()).inflate(R.layout.popup_long_press_menu, null)
             val popupWindow = PopupWindow(requireContext())
-            val longPressMenuAdapter = LongPressMenuAdapter { popupWindow.dismiss() }
+            val longPressMenuAdapter = LongPressMenuAdapter {
+                when (it) {
+                    DialogLongPressMenu.BLOCK -> {
+                        showSwipeClick(ChatSwipeParams(chatPreview, ChatSwipeTitleOption.BLOCK))
+                    }
+                    DialogLongPressMenu.CLEAR_THE_HISTORY -> {
+                        showSwipeClick(ChatSwipeParams(chatPreview, ChatSwipeTitleOption.CLEAR))
+                    }
+                }
+                popupWindow.dismiss()
+            }
             with(popupWindow) {
                 contentView = child
                 setBackgroundDrawable(null)
@@ -107,7 +110,11 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
                 showAsDropDown(v, 0, 0)
                 with(child) {
                     findViewById<RecyclerView>(R.id.rv_popup_long_press_menu).adapter =
-                        longPressMenuAdapter.apply { setItems(longOptions) }
+                        longPressMenuAdapter.apply {
+                            setItems(
+                                DialogLongPressMenu.values().toList()
+                            )
+                        }
                 }
             }
         }

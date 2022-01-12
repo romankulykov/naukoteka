@@ -17,7 +17,7 @@ data class ChatSwipeParams(val chatListEntity: ChatPreview, val chatSwipeOption:
 
 class ChatsAdapter(
     private val onChatClick: (ChatPreview) -> Unit,
-    private val onChatLongClick: (View) -> Unit,
+    private val onChatLongClick: (ChatPreview, View) -> Unit,
     private val onSwipeClick: (ChatSwipeParams) -> Unit
 ) :
     BaseAdapter<ChatPreview, ChatsAdapter.ViewHolder>() {
@@ -38,7 +38,7 @@ class ChatsAdapter(
                     ivPhoto.load(dialogImage?.fullPath, placeholder = R.drawable.ic_glide_image_error)
                     clChat.setOnClickListener { onChatClick.invoke(item) }
                     clChat.setOnLongClickListener {
-                        onChatLongClick.invoke(itemView)
+                        onChatLongClick.invoke(item, itemView)
                         true
                     }
                     swipeLayout.addDrag(SwipeLayout.DragEdge.Right, clSwipeContentRight)
