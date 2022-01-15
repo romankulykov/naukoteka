@@ -3,6 +3,7 @@ package uddug.com.domain.repositories.dialogs.models
 import android.os.Parcelable
 import com.stfalcon.chatkit.commons.models.IUser
 import kotlinx.parcelize.Parcelize
+import uddug.com.domain.ApiConstants
 import uddug.com.domain.repositories.Section
 import java.util.*
 
@@ -32,7 +33,7 @@ data class ChatPreview(
 @Parcelize
 data class LastMessageChatPreview(
     val id: Int,
-    val text: String,
+    val text: String?,
     val type: Int,
     val files: List<AttachmentChatPreview>,
     val ownerId: String?,
@@ -77,5 +78,5 @@ data class AttachmentChatPreview(
     val filename: String?,
     val contentType: ContentType?
 ) : Parcelable {
-    val fullPath get() = "https://stage.naukotheka.ru/" + path
+    val fullPath get() = ApiConstants.API_ENDPOINT_FILES_BASE + path
 }

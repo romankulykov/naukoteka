@@ -95,6 +95,7 @@ dependencies {
 
     implementation ui.glide
     implementation ui.glideAnnotation
+    implementation ui.glideIntegration
     kapt ui.glideProcessor
 
     implementation ui.cicerone

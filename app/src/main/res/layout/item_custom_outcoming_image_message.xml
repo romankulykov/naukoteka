@@ -1,14 +1,28 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:gravity="end"
     android:minWidth="200dp"
     android:minHeight="200dp">
 
+    <CheckBox
+        android:id="@+id/cb_selected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:button="@drawable/chat_checkbox"
+        android:clickable="false"
+        android:focusable="false"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@id/bubble"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="12dp"
@@ -53,4 +67,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

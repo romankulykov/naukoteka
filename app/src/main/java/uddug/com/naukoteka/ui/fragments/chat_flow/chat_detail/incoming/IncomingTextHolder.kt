@@ -19,12 +19,7 @@ class IncomingTextHolder(itemView: View, override var anyPayload: Any?) :
         super.onBind(data)
         with(contentView) {
             data.run {
-                messageUserAvatar.load(
-                    user.avatar,
-                    error = R.drawable.ic_placeholder_user,
-                    placeholder = R.drawable.ic_placeholder_user,
-                    withAnimation = false
-                )
+                messageUserAvatar.load(user.avatar, placeholder = R.drawable.ic_placeholder_user)
                 nameUser.text = user.name
                 messageText.text = text
                 val lp = messageText.layoutParams.apply {

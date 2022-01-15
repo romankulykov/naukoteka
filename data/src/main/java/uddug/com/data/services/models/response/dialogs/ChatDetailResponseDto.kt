@@ -11,7 +11,7 @@ data class ChatMessageDto(
     @SerializedName("id")
     val id: Int,
     @SerializedName("text")
-    val text: String,
+    val text: String?,
     @SerializedName("type")
     val type: Int,
     @SerializedName("files")

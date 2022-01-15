@@ -1,5 +1,6 @@
 package uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,9 @@ import com.stfalcon.chatkit.messages.MessageInput.InputListener
 import com.stfalcon.chatkit.messages.MessagesListAdapter
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
+import toothpick.ktp.delegate.inject
+import uddug.com.data.cache.token.UserTokenCache
+import uddug.com.data.cache.user_uuid.UserUUIDCache
 import uddug.com.domain.repositories.dialogs.models.*
 import uddug.com.naukoteka.GlideApp
 import uddug.com.naukoteka.R
@@ -56,13 +60,16 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
         }
     }
 
+    private val userUUID: UserUUIDCache by inject()
+
     private val chat get() = arguments?.getParcelable<ChatPreview>(CHAT_PREVIEW)
 
     var messagesAdapter: MessagesListAdapter<ChatMessage>? = null
 
     private val TOTAL_MESSAGES_COUNT = 100
 
-    val senderId = "12345"
+    val senderId get() = userUUID.requireEntity
+
     var imageLoader: ImageLoader? = null
 
     private var selectionCount = 0
@@ -121,7 +128,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
         return true
     }
 
-    override fun onSubmit(input: CharSequence?): Boolean {
+    override fun onSubmit(input: CharSequence): Boolean {
         messagesAdapter?.addToStart(
             ChatMessage(
                 Random(1000).nextInt(1, 9999),
@@ -141,6 +148,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
                 )
             ), true
         )
+        presenter.sendMessage(input.toString())
         return true
     }
 

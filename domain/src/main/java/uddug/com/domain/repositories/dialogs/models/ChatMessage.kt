@@ -3,13 +3,14 @@ package uddug.com.domain.repositories.dialogs.models
 import com.stfalcon.chatkit.commons.models.IMessage
 import com.stfalcon.chatkit.commons.models.IUser
 import com.stfalcon.chatkit.commons.models.MessageContentType
+import uddug.com.domain.ApiConstants
 import java.util.*
 
 enum class MessageType(val type: Int) { TEXT(1), SYSTEM(5) }
 
 data class ChatMessage(
     val id: Int,
-    private val text: String,
+    private val text: String?,
     val type: MessageType,
     val files: List<AttachmentChatPreview>,
     val ownerId: String?,
@@ -24,7 +25,7 @@ data class ChatMessage(
         return id.toString()
     }
 
-    override fun getText(): String {
+    override fun getText(): String? {
         return text
     }
 

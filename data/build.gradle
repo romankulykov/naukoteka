@@ -11,5 +11,6 @@ dependencies {
     implementation ui.chatkit
 
     implementation lib.domain
+    implementation data.socket
 
 }

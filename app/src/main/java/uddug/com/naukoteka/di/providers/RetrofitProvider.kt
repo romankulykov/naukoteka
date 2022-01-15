@@ -1,19 +1,19 @@
 package uddug.com.naukoteka.di.providers
 
 import com.google.gson.Gson
-import uddug.com.naukoteka.di.ServerUrl
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import toothpick.InjectConstructor
+import uddug.com.naukoteka.di.ServerUrl
 import javax.inject.Provider
 
 @InjectConstructor
 class RetrofitProvider(
     @ServerUrl private val serverUrl: String,
     private val okHttpClient: OkHttpClient,
-    private val gson : Gson
+    private val gson: Gson
 ) : Provider<Retrofit> {
     override fun get(): Retrofit =
         Retrofit.Builder()

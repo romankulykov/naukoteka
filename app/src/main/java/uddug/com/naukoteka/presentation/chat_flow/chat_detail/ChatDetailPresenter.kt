@@ -1,11 +1,14 @@
 package uddug.com.naukoteka.presentation.chat_flow.chat_detail
 
 import moxy.InjectViewState
+import org.json.JSONObject
 import toothpick.InjectConstructor
+import uddug.com.data.repositories.websockets.WebSocketRepositoryImpl
 import uddug.com.domain.entities.AttachmentPhotoEntity
 import uddug.com.domain.interactors.dialogs.DialogsInteractor
 import uddug.com.domain.repositories.dialogs.models.ChatMessage
 import uddug.com.domain.repositories.dialogs.models.ChatPreview
+import uddug.com.domain.repositories.websockets.WebSocketRepository
 import uddug.com.naukoteka.data.ChatAttachmentOption
 import uddug.com.naukoteka.data.ChatOption
 import uddug.com.naukoteka.global.base.BasePresenterImpl
@@ -17,7 +20,9 @@ import uddug.com.naukoteka.navigation.Screens
 open class ChatDetailPresenter(
     val router: AppRouter,
     private val dialogsInteractor: DialogsInteractor,
-) : BasePresenterImpl<ChatDetailView>() {
+    private val webSocketRepository: WebSocketRepository
+) :
+    BasePresenterImpl<ChatDetailView>() {
 
     var chatPreview: ChatPreview? = null
 
@@ -26,6 +31,10 @@ open class ChatDetailPresenter(
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
+        webSocketRepository.open()
+            .await {
+
+            }
     }
 
     fun getChat(chatPreview: ChatPreview) {
@@ -97,5 +106,15 @@ open class ChatDetailPresenter(
         } else {
             router.exit()
         }
+    }
+
+    fun sendMessage(message: String) {
+        val json = JSONObject().apply {
+            put("dialog", chatPreview!!.dialogId)
+            put("cType", 1)
+            put("text", message)
+        }
+        webSocketRepository.emit("message", json)
+            .await {  }
     }
 }

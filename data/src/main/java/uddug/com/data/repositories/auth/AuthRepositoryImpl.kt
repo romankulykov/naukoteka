@@ -2,28 +2,29 @@ package uddug.com.data.repositories.auth
 
 import io.reactivex.Completable
 import io.reactivex.Single
+import toothpick.InjectConstructor
 import uddug.com.data.cache.cookies.CookiesCache
-import uddug.com.data.cache.user_id.UserIdCache
+import uddug.com.data.cache.user_uuid.UserUUIDCache
 import uddug.com.data.services.AuthApiService
 import uddug.com.data.services.models.request.auth.*
 import uddug.com.domain.entities.EmailNotFreeException
 import uddug.com.domain.repositories.auth.AuthRepository
 import uddug.com.domain.repositories.auth.models.SessionAttributes
 import uddug.com.domain.repositories.auth.models.SocialType
-import toothpick.InjectConstructor
 
 @InjectConstructor
 class AuthRepositoryImpl(
     private val authApiService: AuthApiService,
     private val mapper: AuthRepositoryMapper,
     private val cookiesCache: CookiesCache,
-    private val userIdCache: UserIdCache,
+    private val userUUIDCache: UserUUIDCache,
 ) : AuthRepository {
 
 
     override fun loginEmail(login: String, password: String): Completable {
         return authApiService.login(AuthRequestDto(login, password))
             .flatMapCompletable {
+                userUUIDCache.entity = it.userStatus.id
                 Completable.complete()
             }
     }
@@ -35,7 +36,7 @@ class AuthRepositoryImpl(
     override fun register(login: String, password: String): Completable {
         return authApiService.register(RegisterRequestDto(login, password))
             .flatMapCompletable {
-                userIdCache.entity = it.userStatus.id
+                userUUIDCache.entity = it.userStatus.id
                 Completable.complete()
             }
     }

@@ -15,6 +15,7 @@ import uddug.com.data.repositories.auth.AuthRepositoryImpl
 import uddug.com.data.repositories.dialogs.DialogsRepositoryImpl
 import uddug.com.data.repositories.user_profile.UserProfileRepositoryImpl
 import uddug.com.data.repositories.users.UsersSearchRepositoryImpl
+import uddug.com.data.repositories.websockets.WebSocketRepositoryImpl
 import uddug.com.data.services.AuthApiService
 import uddug.com.data.services.DialogsApiService
 import uddug.com.data.services.UserProfileApiService
@@ -25,6 +26,7 @@ import uddug.com.domain.repositories.auth.AuthRepository
 import uddug.com.domain.repositories.dialogs.DialogsRepository
 import uddug.com.domain.repositories.user_profile.UserProfileRepository
 import uddug.com.domain.repositories.users_search.UsersSearchRepository
+import uddug.com.domain.repositories.websockets.WebSocketRepository
 import uddug.com.domain.utils.logging.ILogger
 import uddug.com.naukoteka.di.ServerUrl
 import uddug.com.naukoteka.di.providers.*
@@ -62,6 +64,7 @@ class AppModule(application: Application) : Module() {
         bind(UserProfileRepository::class.java).to(UserProfileRepositoryImpl::class.java)
         bind(DialogsRepository::class.java).to(DialogsRepositoryImpl::class.java)
         bind(UsersSearchRepository::class.java).to(UsersSearchRepositoryImpl::class.java)
+        bind(WebSocketRepository::class.java).to(WebSocketRepositoryImpl::class.java)
 
     }
 
