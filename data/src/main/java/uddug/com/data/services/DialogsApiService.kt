@@ -1,5 +1,6 @@
 package uddug.com.data.services
 
+import io.reactivex.Completable
 import io.reactivex.Single
 import retrofit2.http.*
 import uddug.com.data.services.models.request.dialogs.CreateDialogRequestDto
@@ -29,5 +30,8 @@ interface DialogsApiService {
     fun dialogCreate(
         @Body createDialogRequest: CreateDialogRequestDto? = null,
     ): Single<CreateDialogResponseDto>
+
+    @DELETE("v1/dialogs/{id}")
+    fun deleteDialog(@Path("id") dialogId: Int): Completable
 
 }

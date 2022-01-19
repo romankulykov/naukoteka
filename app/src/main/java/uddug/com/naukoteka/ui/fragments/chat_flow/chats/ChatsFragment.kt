@@ -64,6 +64,10 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
         chatsAdapter.setItems(chatsPreview.dialogs)
     }
 
+    override fun deleteChat(dialog: ChatPreview) {
+        chatsAdapter.removeItem(dialog)
+    }
+
     private fun showSwipeClick(chatSwipeParams: ChatSwipeParams) {
         val title = getString(
             when (chatSwipeParams.chatSwipeOption) {
@@ -79,7 +83,9 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
         ) {
             (it as? ChatSwipeTitleOption)?.let {
                 when (it) {
-
+                    ChatSwipeTitleOption.CLEAR -> {
+                        presenter.deleteDialog(chatSwipeParams.chatListEntity)
+                    }
                 }
             }
         }.show()

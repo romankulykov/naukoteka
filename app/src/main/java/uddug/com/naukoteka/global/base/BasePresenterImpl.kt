@@ -3,6 +3,7 @@ package uddug.com.naukoteka.global.base
 import android.content.Context
 import com.google.gson.Gson
 import io.reactivex.Completable
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
@@ -124,6 +125,15 @@ abstract class BasePresenterImpl<V : MvpView> : MvpPresenter<V>() {
     }.also { it.connect() }
 
     protected fun <R> Observable<R>.await(
+        withProgress: Boolean = true,
+        onError: OnError = ::onError,
+        onComplete: OnComplete = {},
+        onSuccess: OnSuccess<R>
+    ) = subscribe(withProgress, this@BasePresenterImpl, onError, onComplete) { response ->
+        onSuccess(response)
+    }.also { it.connect() }
+
+    protected fun <R> Flowable<R>.await(
         withProgress: Boolean = true,
         onError: OnError = ::onError,
         onComplete: OnComplete = {},

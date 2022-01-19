@@ -26,7 +26,7 @@ class ChatAddContactFragment : BaseFragment(R.layout.fragment_chat_add_contact),
         return getScope().getInstance(ChatAddContactPresenter::class.java)
     }
 
-    private val chatAddContactAdapter = ChatAddContactAdapter()
+    private val chatAddContactAdapter by lazy { ChatAddContactAdapter(presenter::onUserClick) }
 
     override val contentView by viewBinding(FragmentChatAddContactBinding::bind)
 

@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.core.view.isGone
-import uddug.com.domain.repositories.ChatContact
 import uddug.com.domain.repositories.Section
 import uddug.com.domain.repositories.SectionType
 import uddug.com.domain.repositories.dialogs.models.UserChatPreview
@@ -13,7 +12,7 @@ import uddug.com.naukoteka.databinding.ListItemSearchContactsBinding
 import uddug.com.naukoteka.global.base.BaseStickyAdapter
 import uddug.com.naukoteka.global.base.BaseViewHolder
 
-class ChatAddContactAdapter :
+class ChatAddContactAdapter(private val userClick: (UserChatPreview) -> Unit) :
     BaseStickyAdapter<Section, BaseViewHolder<Section>>() {
 
     override val listItemView: Int = R.layout.list_item_search_contacts
@@ -29,7 +28,8 @@ class ChatAddContactAdapter :
             val binding = ListItemSearchContactsBinding.bind(itemView)
             binding.tvNameContact.text = item.getName()
             if (item is UserChatPreview) {
-                binding.tvNickname.text = "@"+item.nickname
+                binding.tvNickname.text = "@" + item.nickname
+                binding.root.setOnClickListener { userClick(item) }
             }
             binding.viewDivider.isGone = item.positionInSection == item.maxPosition
         }

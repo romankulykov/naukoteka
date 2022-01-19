@@ -7,8 +7,6 @@ import uddug.com.naukoteka.global.base.BasePresenterImpl
 import uddug.com.naukoteka.global.views.LoadingView
 import moxy.MvpView
 
-typealias OnNext<R> = (response: R) -> Unit
-
 @SuppressLint("CheckResult")
 fun <T, V : MvpView> Observable<T>.subscribe(
     withProgress: Boolean,

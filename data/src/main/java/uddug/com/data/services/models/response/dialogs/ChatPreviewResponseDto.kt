@@ -28,9 +28,9 @@ data class ChatPreviewDto(
     @SerializedName("lastMessage")
     val lastMessage: LastMessageChatPreviewDto?,
     @SerializedName("users")
-    val users: List<UserChatPreviewDto>,
+    val users: List<UserChatPreviewDto>?,
     @SerializedName("unreadMessages")
-    val unreadMessages: Int,
+    val unreadMessages: Int?,
     @SerializedName("interlocutor")
     val interlocutor: UserChatPreviewDto?
 )

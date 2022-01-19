@@ -1,11 +1,12 @@
 package uddug.com.domain.repositories.websockets
 
 import io.reactivex.Completable
-import org.json.JSONObject
+import io.reactivex.Flowable
 
 interface WebSocketRepository {
     fun close(): Completable
     fun open(): Completable
-    fun emit(eventName: String,  args : JSONObject): Completable
-    fun send( args : JSONObject): Completable
+    fun emit(args: Any, eventName: String = "message"): Completable
+    fun send(args: Any): Completable
+    fun <T> observe(type: Class<T>, selector: String): Flowable<T>
 }

@@ -1,12 +1,12 @@
 package uddug.com.naukoteka.di.utils.http
 
+import okhttp3.Interceptor
+import okhttp3.Response
+import toothpick.InjectConstructor
 import uddug.com.domain.entities.HttpException
 import uddug.com.domain.entities.ServerApiError
 import uddug.com.domain.utils.logging.ILogger
 import uddug.com.naukoteka.utils.getApiError
-import okhttp3.Interceptor
-import okhttp3.Response
-import toothpick.InjectConstructor
 
 @InjectConstructor
 class ErrorTransformerInterceptor constructor(

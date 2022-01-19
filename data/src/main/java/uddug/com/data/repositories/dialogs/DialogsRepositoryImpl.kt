@@ -1,5 +1,6 @@
 package uddug.com.data.repositories.dialogs
 
+import io.reactivex.Completable
 import io.reactivex.Single
 import toothpick.InjectConstructor
 import uddug.com.data.services.DialogsApiService
@@ -25,19 +26,30 @@ class DialogsRepositoryImpl(
             .map { dialogsRepositoryMapper.mapChatPreviewToDomain(it) }
     }
 
-    override fun getChatMessages(chatPreview: ChatPreview): Single<List<ChatMessage>> {
-        return dialogsApiService.dialogsDetail(chatPreview.dialogId)
+    override fun getChatMessages(
+        chatPreview: ChatPreview,
+        lastMessageId: Int?,
+        limit: Int
+    ): Single<List<ChatMessage>> {
+        return dialogsApiService.dialogsDetail(chatPreview.dialogId, lastMessageId, limit)
             .map { messages ->
                 messages
                     // TODO think up maybe null owner id it is deleted account ?
                     .filter { !it.ownerId.isNullOrBlank() }
-                    .map { dialogsRepositoryMapper.mapDialogDetailToDomain(it, chatPreview) }
+                    .map { chatMessage ->
+                        val user = chatPreview.users?.find { it.userId == chatMessage.ownerId }
+                        dialogsRepositoryMapper.mapDialogDetailToDomain(chatMessage, user)
+                    }
             }
     }
 
-    override fun createDialog(name: String, uuids: List<String>): Single<Int> {
+    override fun createDialog(name: String?, uuids: List<String>): Single<Int> {
         return dialogsApiService.dialogCreate(CreateDialogRequestDto(name, uuids))
             .map { it.id }
+    }
+
+    override fun deleteDialog(dialogId: Int): Completable {
+        return dialogsApiService.deleteDialog(dialogId)
     }
 
 }

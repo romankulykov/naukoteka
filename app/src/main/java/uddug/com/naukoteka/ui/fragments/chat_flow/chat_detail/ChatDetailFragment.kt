@@ -66,8 +66,6 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
 
     var messagesAdapter: MessagesListAdapter<ChatMessage>? = null
 
-    private val TOTAL_MESSAGES_COUNT = 100
-
     val senderId get() = userUUID.requireEntity
 
     var imageLoader: ImageLoader? = null
@@ -129,25 +127,6 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
     }
 
     override fun onSubmit(input: CharSequence): Boolean {
-        messagesAdapter?.addToStart(
-            ChatMessage(
-                Random(1000).nextInt(1, 9999),
-                input.toString(),
-                MessageType.TEXT,
-                emptyList(),
-                senderId,
-                Calendar.getInstance(),
-                emptyList(),
-                UserChatPreview(
-                    null,
-                    senderId,
-                    false,
-                    "My Name is ",
-                    "My nick name",
-                    Calendar.getInstance()
-                )
-            ), true
-        )
         presenter.sendMessage(input.toString())
         return true
     }
@@ -157,8 +136,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
     }
 
     override fun onLoadMore(page: Int, totalItemsCount: Int) {
-        if (totalItemsCount < TOTAL_MESSAGES_COUNT) {
-        }
+        presenter.loadMore(page)
     }
 
     override fun onMessageViewLongClick(view: View?, message: ChatMessage) {
@@ -199,8 +177,15 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
         }
     }
 
-    override fun showMessages(messages: List<ChatMessage>) {
+    override fun showMessages(messages: List<ChatMessage>, needToClear: Boolean) {
+        if (needToClear) {
+            messagesAdapter?.clear()
+        }
         messagesAdapter?.addToEnd(messages, false)
+    }
+
+    override fun addToStart(message: ChatMessage) {
+        messagesAdapter?.addToStart(message, true)
     }
 
     override fun toggleSelectionMode(messagesSelected: Boolean, message: ChatMessage?) {

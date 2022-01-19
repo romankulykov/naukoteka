@@ -1,14 +1,12 @@
 package uddug.com.naukoteka.presentation.chat_flow.chat_detail
 
 import moxy.InjectViewState
-import org.json.JSONObject
 import toothpick.InjectConstructor
-import uddug.com.data.repositories.websockets.WebSocketRepositoryImpl
 import uddug.com.domain.entities.AttachmentPhotoEntity
 import uddug.com.domain.interactors.dialogs.DialogsInteractor
 import uddug.com.domain.repositories.dialogs.models.ChatMessage
 import uddug.com.domain.repositories.dialogs.models.ChatPreview
-import uddug.com.domain.repositories.websockets.WebSocketRepository
+import uddug.com.domain.utils.logging.ILogger
 import uddug.com.naukoteka.data.ChatAttachmentOption
 import uddug.com.naukoteka.data.ChatOption
 import uddug.com.naukoteka.global.base.BasePresenterImpl
@@ -20,9 +18,12 @@ import uddug.com.naukoteka.navigation.Screens
 open class ChatDetailPresenter(
     val router: AppRouter,
     private val dialogsInteractor: DialogsInteractor,
-    private val webSocketRepository: WebSocketRepository
+    private val logger: ILogger
 ) :
     BasePresenterImpl<ChatDetailView>() {
+
+    private val pageLimit: Int = 10
+    private var loadMore = false
 
     var chatPreview: ChatPreview? = null
 
@@ -31,16 +32,25 @@ open class ChatDetailPresenter(
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        webSocketRepository.open()
+        dialogsInteractor.openSocket()
             .await {
 
             }
+        dialogsInteractor.observe()
+            .await(withProgress = false) { message ->
+                logger.debug(message.toString())
+                viewState.addToStart(message)
+            }
+
     }
 
     fun getChat(chatPreview: ChatPreview) {
         this.chatPreview = chatPreview
-        dialogsInteractor.getDialogMessages(chatPreview)
-            .await { viewState.showMessages(it) }
+        dialogsInteractor.getDialogMessages(chatPreview, pageLimit)
+            .await {
+                loadMore = it.size == pageLimit
+                viewState.showMessages(it)
+            }
     }
 
     fun onChatOptionClick(chatOption: ChatOption) {
@@ -109,12 +119,18 @@ open class ChatDetailPresenter(
     }
 
     fun sendMessage(message: String) {
-        val json = JSONObject().apply {
-            put("dialog", chatPreview!!.dialogId)
-            put("cType", 1)
-            put("text", message)
-        }
-        webSocketRepository.emit("message", json)
-            .await {  }
+        dialogsInteractor.pushTextMessage(chatPreview!!.dialogId, message)
+            .await {
+
+            }
     }
+
+    fun loadMore(page : Int) {
+        if (loadMore /*&& page != dialogsInteractor.messages.size*/) {
+            viewState.showLoading(true)
+            getChat(chatPreview!!)
+        }
+    }
+
+
 }

@@ -28,4 +28,11 @@ class ChatsPresenter(
     fun exit() {
         router.exit()
     }
+
+    fun deleteDialog(dialog: ChatPreview) {
+        dialogsInteractor.deletePersonalDialog(dialog.dialogId)
+            .await {
+                viewState.deleteChat(dialog)
+            }
+    }
 }

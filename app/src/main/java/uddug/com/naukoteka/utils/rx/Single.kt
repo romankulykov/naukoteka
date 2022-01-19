@@ -7,8 +7,6 @@ import uddug.com.naukoteka.global.base.BasePresenterImpl
 import uddug.com.naukoteka.global.views.LoadingView
 import moxy.MvpView
 
-typealias OnSuccess<R> = (response: R) -> Unit
-typealias OnError = (throwable: Throwable) -> Unit
 
 
 @SuppressLint("CheckResult")

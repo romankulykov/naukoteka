@@ -3,6 +3,7 @@ package uddug.com.naukoteka.ui.fragments.chat_flow.chats
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import com.bumptech.glide.request.RequestOptions
 import com.daimajia.swipe.SwipeLayout
 import uddug.com.domain.repositories.dialogs.models.ChatPreview
 import uddug.com.naukoteka.GlideApp
@@ -13,7 +14,10 @@ import uddug.com.naukoteka.global.base.BaseAdapter
 import uddug.com.naukoteka.global.base.BaseViewHolder
 import uddug.com.naukoteka.utils.ui.load
 
-data class ChatSwipeParams(val chatListEntity: ChatPreview, val chatSwipeOption: ChatSwipeTitleOption)
+data class ChatSwipeParams(
+    val chatListEntity: ChatPreview,
+    val chatSwipeOption: ChatSwipeTitleOption
+)
 
 class ChatsAdapter(
     private val onChatClick: (ChatPreview) -> Unit,
@@ -35,7 +39,11 @@ class ChatsAdapter(
                 item.run {
                     tvNameContact.text = dialogName
                     tvTextOfMessage.text = lastMessage?.text
-                    ivPhoto.load(dialogImage?.fullPath, placeholder = R.drawable.ic_glide_image_error)
+                    ivPhoto.load(
+                        dialogImage?.fullPath,
+                        placeholder = R.drawable.ic_glide_image_error,
+                        requestOptions = RequestOptions.centerCropTransform()
+                    )
                     clChat.setOnClickListener { onChatClick.invoke(item) }
                     clChat.setOnLongClickListener {
                         onChatLongClick.invoke(item, itemView)

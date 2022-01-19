@@ -1,26 +1,27 @@
 package uddug.com.naukoteka.utils.rx
 
 import android.annotation.SuppressLint
-import io.reactivex.Completable
+import io.reactivex.Flowable
 import io.reactivex.disposables.Disposable
+import moxy.MvpView
 import uddug.com.naukoteka.global.base.BasePresenterImpl
 import uddug.com.naukoteka.global.views.LoadingView
-import moxy.MvpView
 
 @SuppressLint("CheckResult")
-fun <V : MvpView> Completable.subscribe(
+fun <T, V : MvpView> Flowable<T>.subscribe(
     withProgress: Boolean,
     presenter: BasePresenterImpl<V>,
     onError: (throwable: Throwable) -> Unit,
-    onComplete: OnComplete
+    onComplete: () -> Unit,
+    onNext: OnNext<T>
 ): Disposable {
 
     if (withProgress) {
         (presenter.viewState as? LoadingView)?.showLoading(true)
     }
-    return doOnComplete { if (withProgress) (presenter.viewState as? LoadingView)?.showLoading(false) }
+    return doOnNext { if (withProgress) (presenter.viewState as? LoadingView)?.showLoading(false) }
         .doOnError { if (withProgress) (presenter.viewState as? LoadingView)?.showLoading(false) }
-        .subscribe(onComplete, onError)
+        .subscribe(onNext, onError, onComplete)
 
 }
 

@@ -18,7 +18,7 @@
         android:visibility="gone"
         tools:visibility="visible" />
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@id/messageUserAvatar"
         android:layout_width="32dp"
         android:layout_height="32dp"
@@ -27,6 +27,7 @@
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
         tools:src="@tools:sample/avatars" />
 
     <androidx.constraintlayout.widget.ConstraintLayout

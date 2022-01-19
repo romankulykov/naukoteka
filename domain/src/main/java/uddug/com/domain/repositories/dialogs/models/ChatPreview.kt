@@ -25,8 +25,8 @@ data class ChatPreview(
     val firstMessageId: Int?,
     val dialogImage: AttachmentChatPreview?,
     val lastMessage: LastMessageChatPreview?,
-    val users: List<UserChatPreview>,
-    val unreadMessages: Int,
+    val users: List<UserChatPreview>?,
+    val unreadMessages: Int?,
     val interlocutor: UserChatPreview?,
 ) : Parcelable
 
@@ -78,5 +78,5 @@ data class AttachmentChatPreview(
     val filename: String?,
     val contentType: ContentType?
 ) : Parcelable {
-    val fullPath get() = ApiConstants.API_ENDPOINT_FILES_BASE + path
+    val fullPath get() = path?.run { ApiConstants.API_ENDPOINT_FILES_BASE + this }
 }

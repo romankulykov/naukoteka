@@ -25,7 +25,7 @@ class DialogsRepositoryMapper {
             firstMessageId = firstMessageId,
             dialogImage = mapAttachmentToDomain(dialogImage),
             lastMessage = mapLastMessageChatDomain(lastMessage),
-            users = users.map { mapUserChatToDomain(it)!! },
+            users = users?.map { mapUserChatToDomain(it)!! },
             unreadMessages = unreadMessages,
             interlocutor = mapUserChatToDomain(interlocutor),
         )
@@ -38,7 +38,7 @@ class DialogsRepositoryMapper {
             }
             DialogType.GROUP -> {
                 if (chatPreviewDto.dialogName.isNullOrBlank()) {
-                    chatPreviewDto.users.joinToString(", ") { it.nicknameOrFullName }
+                    chatPreviewDto.users!!.joinToString(", ") { it.nicknameOrFullName }
                 } else {
                     chatPreviewDto.dialogName
                 }
@@ -78,7 +78,7 @@ class DialogsRepositoryMapper {
         )
     }
 
-    fun mapDialogDetailToDomain(dto: ChatMessageDto, chatPreview: ChatPreview) = dto.run {
+    fun mapDialogDetailToDomain(dto: ChatMessageDto, user: UserChatPreview?) = dto.run {
         ChatMessage(
             id = id,
             text = text,
@@ -87,7 +87,7 @@ class DialogsRepositoryMapper {
             ownerId = ownerId,
             createdAt = createdAt,
             read = read.map { it.entries.first().run { Pair(key, value.toInt()) } },
-            user = chatPreview.users.find { it.userId == ownerId }
+            user = user
         )
     }
 
