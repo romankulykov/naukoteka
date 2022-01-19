@@ -15,9 +15,9 @@ import uddug.com.naukoteka.ui.fragments.tabs_holder.TabsHolderFragment
 @InjectConstructor
 class NavigationHelper(val fragmentActivity: FragmentActivity) : INavigationHelper {
 
-    private val supportFragmentManager by lazy { fragmentActivity.supportFragmentManager }
-    private val tabsHolderFragment by lazy { supportFragmentManager.findFragmentByTag(Screens.TABS_HOLDER_FRAGMENT) as TabsHolderFragment }
-    private val tabsHolderChildFragmentManager by lazy { tabsHolderFragment.childFragmentManager }
+    private val supportFragmentManager get() = fragmentActivity.supportFragmentManager
+    private val tabsHolderFragment get() = supportFragmentManager.findFragmentByTag(Screens.TABS_HOLDER_FRAGMENT) as TabsHolderFragment
+    private val tabsHolderChildFragmentManager get() = tabsHolderFragment.childFragmentManager
 
     override fun onTabSelect(navBarItem: Screens.BottomNavigationTab, newRoot: Boolean) {
         if (newRoot) {
