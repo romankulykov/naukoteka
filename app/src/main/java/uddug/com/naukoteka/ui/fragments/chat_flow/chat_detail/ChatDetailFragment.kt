@@ -37,6 +37,7 @@ import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.incoming.IncomingI
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.incoming.IncomingTextHolder
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.outcoming.OutcomingImageHolder
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.outcoming.OutcomingTextHolder
+import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.system_message.SystemMessageViewHolder
 import uddug.com.naukoteka.utils.BackButtonListener
 import uddug.com.naukoteka.utils.ui.wasOnlineTenMinutesAgo
 import uddug.com.naukoteka.utils.viewBinding
@@ -49,11 +50,14 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
     AttachmentsListener,
     MessagesListAdapter.OnMessageViewLongClickListener<ChatMessage>,
     MessagesListAdapter.OnMessageViewClickListener<ChatMessage>,
-    MessagesListAdapter.OnLoadMoreListener {
+    MessagesListAdapter.OnLoadMoreListener,
+    MessageHolders.ContentChecker<ChatMessage> {
 
     companion object {
 
         private const val CHAT_PREVIEW = "ChatDetailFragment.CHAT_PREVIEW"
+
+        private const val CONTENT_TYPE_SYSTEM_MESSAGE: Byte = 1
 
         fun newInstance(chat: ChatPreview) = ChatDetailFragment().apply {
             arguments = bundleOf(CHAT_PREVIEW to chat)
@@ -118,6 +122,13 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
                     .load(url)
                     .placeholder(R.drawable.ic_glide_image_error).into(imageView)
             }
+        }
+    }
+
+    override fun hasContentFor(message: ChatMessage?, type: Byte): Boolean {
+        return when (type) {
+            CONTENT_TYPE_SYSTEM_MESSAGE -> message?.type == MessageType.SYSTEM && message.text?.isNotEmpty() == true
+            else -> false
         }
     }
 
@@ -218,6 +229,13 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
         holderPayload = Payload()
 
         val holdersConfig = MessageHolders()
+            .registerContentType(
+                CONTENT_TYPE_SYSTEM_MESSAGE,
+                SystemMessageViewHolder::class.java,
+                R.layout.item_custom_system_message,
+                SystemMessageViewHolder::class.java,
+                R.layout.item_custom_system_message, this
+            )
             .setIncomingTextConfig(
                 IncomingTextHolder::class.java,
                 R.layout.item_custom_incoming_text_message,

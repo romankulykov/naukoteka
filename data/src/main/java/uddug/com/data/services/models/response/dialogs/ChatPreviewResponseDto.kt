@@ -47,7 +47,7 @@ data class LastMessageChatPreviewDto(
     @SerializedName("ownerId")
     val ownerId: String?,
     @SerializedName("createdAt")
-    val createdAt: String
+    val createdAt: Calendar?
 )
 
 data class UserChatPreviewDto(

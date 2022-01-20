@@ -118,35 +118,51 @@ abstract class BasePresenterImpl<V : MvpView> : MvpPresenter<V>() {
 
     protected fun <R> Single<R>.await(
         withProgress: Boolean = true,
+        withRefreshProgress: Boolean = false,
         onError: OnError = ::onError,
         onSuccess: OnSuccess<R>
-    ) = subscribe(withProgress, this@BasePresenterImpl, onError) { response ->
+    ) = subscribe(withProgress, withRefreshProgress, this@BasePresenterImpl, onError) { response ->
         onSuccess(response)
     }.also { it.connect() }
 
     protected fun <R> Observable<R>.await(
         withProgress: Boolean = true,
+        withRefreshProgress: Boolean = false,
         onError: OnError = ::onError,
         onComplete: OnComplete = {},
         onSuccess: OnSuccess<R>
-    ) = subscribe(withProgress, this@BasePresenterImpl, onError, onComplete) { response ->
+    ) = subscribe(
+        withProgress,
+        withRefreshProgress,
+        this@BasePresenterImpl,
+        onError,
+        onComplete
+    ) { response ->
         onSuccess(response)
     }.also { it.connect() }
 
     protected fun <R> Flowable<R>.await(
         withProgress: Boolean = true,
+        withRefreshProgress: Boolean = false,
         onError: OnError = ::onError,
         onComplete: OnComplete = {},
         onSuccess: OnSuccess<R>
-    ) = subscribe(withProgress, this@BasePresenterImpl, onError, onComplete) { response ->
+    ) = subscribe(
+        withProgress,
+        withRefreshProgress,
+        this@BasePresenterImpl,
+        onError,
+        onComplete
+    ) { response ->
         onSuccess(response)
     }.also { it.connect() }
 
     protected fun Completable.await(
         withProgress: Boolean = true,
+        withRefreshProgress: Boolean = false,
         onError: OnError = ::onError,
         onComplete: OnComplete
-    ) = subscribe(withProgress, this@BasePresenterImpl, onError) {
+    ) = subscribe(withProgress, withRefreshProgress, this@BasePresenterImpl, onError) {
         onComplete()
     }.also { it.connect() }
 

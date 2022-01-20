@@ -15,10 +15,27 @@ class ChatsPresenter(
     val router: AppRouter
 ) : BasePresenterImpl<ChatsView>() {
 
+    var isFirstLaunched = true
+
+    override fun attachView(view: ChatsView?) {
+        super.attachView(view)
+        if (!isFirstLaunched) {
+            getDialogs(withProgress = false, withRefresh = false)
+        }
+    }
+
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
+        getDialogs()
+        isFirstLaunched = false
+    }
+
+    fun getDialogs(withProgress: Boolean = false, withRefresh: Boolean = true) {
         dialogsInteractor.getDialogs()
-            .await { viewState.showChats(it) }
+            .await(
+                withProgress = withProgress,
+                withRefreshProgress = withRefresh
+            ) { viewState.showChats(it) }
     }
 
     fun onChatClick(chat: ChatPreview) {
@@ -31,7 +48,7 @@ class ChatsPresenter(
 
     fun deleteDialog(dialog: ChatPreview) {
         dialogsInteractor.deletePersonalDialog(dialog.dialogId)
-            .await {
+            .await(withProgress = false) {
                 viewState.deleteChat(dialog)
             }
     }

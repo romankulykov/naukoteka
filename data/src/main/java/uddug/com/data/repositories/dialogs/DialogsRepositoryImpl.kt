@@ -3,17 +3,17 @@ package uddug.com.data.repositories.dialogs
 import io.reactivex.Completable
 import io.reactivex.Single
 import toothpick.InjectConstructor
+import uddug.com.data.cache.user_uuid.UserUUIDCache
 import uddug.com.data.services.DialogsApiService
 import uddug.com.data.services.models.request.dialogs.CreateDialogRequestDto
 import uddug.com.domain.repositories.dialogs.DialogsRepository
-import uddug.com.domain.repositories.dialogs.models.ChatMessage
-import uddug.com.domain.repositories.dialogs.models.ChatPreview
-import uddug.com.domain.repositories.dialogs.models.ChatsPreview
+import uddug.com.domain.repositories.dialogs.models.*
 
 @InjectConstructor
 class DialogsRepositoryImpl(
     private val dialogsApiService: DialogsApiService,
     private val dialogsRepositoryMapper: DialogsRepositoryMapper,
+    private val userUUID: UserUUIDCache,
 ) : DialogsRepository {
 
     override fun getChatsPreview(): Single<ChatsPreview> {
@@ -35,17 +35,27 @@ class DialogsRepositoryImpl(
             .map { messages ->
                 messages
                     // TODO think up maybe null owner id it is deleted account ?
-                    .filter { !it.ownerId.isNullOrBlank() }
                     .map { chatMessage ->
-                        val user = chatPreview.users?.find { it.userId == chatMessage.ownerId }
+                        val user = if (chatMessage.ownerId == null) {
+                            // messages with null ownerId means that it is system message
+                            UserChatPreview(null, userUUID.requireEntity, false, "", "", null)
+                        } else if (chatPreview.dialogType == DialogType.GROUP) {
+                            chatPreview.users?.find { it.userId == chatMessage.ownerId }
+                        } else {
+                            if (userUUID.entity == chatMessage.ownerId) {
+                                UserChatPreview(null, userUUID.requireEntity, false, "", "", null)
+                            } else {
+                                chatPreview.interlocutor
+                            }
+                        }
                         dialogsRepositoryMapper.mapDialogDetailToDomain(chatMessage, user)
                     }
             }
     }
 
-    override fun createDialog(name: String?, uuids: List<String>): Single<Int> {
+    override fun createDialog(name: String?, uuids: List<String>): Single<Pair<Int, Boolean>> {
         return dialogsApiService.dialogCreate(CreateDialogRequestDto(name, uuids))
-            .map { it.id }
+            .map { Pair(it.id, it.isAlreadyExist == true) }
     }
 
     override fun deleteDialog(dialogId: Int): Completable {

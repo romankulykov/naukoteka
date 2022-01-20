@@ -16,7 +16,7 @@ interface DialogsRepository {
         limit: Int = 10,
     ): Single<List<ChatMessage>>
 
-    fun createDialog(name: String?, uuids: List<String>): Single<Int>
+    fun createDialog(name: String?, uuids: List<String>): Single<Pair<Int, Boolean>>
     fun deleteDialog(dialogId: Int): Completable
 
 }

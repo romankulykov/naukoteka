@@ -20,7 +20,6 @@ import java.util.*
 class DialogsInteractor(
     private val dialogsRepository: DialogsRepository,
     private val webSocketRepository: WebSocketRepository,
-    private val gson: Gson,
     private val schedulers: SchedulersProvider
 ) {
 
@@ -56,7 +55,7 @@ class DialogsInteractor(
 
     private fun makeDialog(name: String? = null, uuids: List<String>): Single<ChatPreview> {
         return dialogsRepository.createDialog(name, uuids)
-            .flatMap { dialogsRepository.getChatDetailInfo(it) }
+            .flatMap { (id, _) -> dialogsRepository.getChatDetailInfo(id) }
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
     }

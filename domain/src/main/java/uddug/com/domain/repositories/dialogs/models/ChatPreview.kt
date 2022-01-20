@@ -37,7 +37,7 @@ data class LastMessageChatPreview(
     val type: Int,
     val files: List<AttachmentChatPreview>,
     val ownerId: String?,
-    val createdAt: String
+    val createdAt: Calendar?
 ) : Parcelable
 
 @Parcelize

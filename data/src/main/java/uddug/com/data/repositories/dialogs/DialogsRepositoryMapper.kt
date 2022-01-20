@@ -82,7 +82,8 @@ class DialogsRepositoryMapper {
         ChatMessage(
             id = id,
             text = text,
-            type = MessageType.values().find { it.type == type } ?: MessageType.TEXT,
+            type = if (ownerId == null) MessageType.SYSTEM else MessageType.values()
+                .find { it.type == type } ?: MessageType.TEXT,
             files = files.map { mapAttachmentToDomain(it)!! },
             ownerId = ownerId,
             createdAt = createdAt,

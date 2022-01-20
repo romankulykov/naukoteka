@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.PopupWindow
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import uddug.com.domain.repositories.dialogs.models.ChatPreview
@@ -23,7 +24,8 @@ import uddug.com.naukoteka.ui.dialogs.chat_option.ChatOptionsDialogType
 import uddug.com.naukoteka.utils.BackButtonListener
 import uddug.com.naukoteka.utils.viewBinding
 
-class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButtonListener {
+class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButtonListener,
+    SwipeRefreshLayout.OnRefreshListener {
 
     companion object {
         private const val KEY_TITLE = "ChatsFragment.KEY_TITLE"
@@ -56,6 +58,7 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
         super.onViewCreated(view, savedInstanceState)
         contentView.run {
             rvChatList.adapter = chatsAdapter
+            srlList.setOnRefreshListener(this@ChatsFragment)
         }
 
     }
@@ -126,9 +129,17 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
         }
     }
 
+    override fun showRefreshLoading(show: Boolean) {
+        contentView.srlList.isRefreshing = show
+    }
+
     override fun onBackPressed(): Boolean {
         presenter.exit()
         return true
+    }
+
+    override fun onRefresh() {
+        presenter.getDialogs()
     }
 
 }
