@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_chat_list"
@@ -23,5 +24,35 @@
             tools:listitem="@layout/list_item_chat" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_create_new_chat"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="bottom"
+        android:visibility="gone"
+        android:paddingBottom="@dimen/bottom_menu_height"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/chats_you_dont_have_created_chats_or_group"
+            android:textColor="@color/object_inactive" />
+
+        <TextView
+            android:id="@+id/tv_create_chat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:text="@string/chats_start_new_chat"
+            android:textColor="@color/object_main" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

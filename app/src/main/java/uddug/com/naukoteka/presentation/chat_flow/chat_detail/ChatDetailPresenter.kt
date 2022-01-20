@@ -119,7 +119,7 @@ open class ChatDetailPresenter(
     }
 
     fun sendMessage(message: String) {
-        dialogsInteractor.pushTextMessage(chatPreview!!.dialogId, message)
+        dialogsInteractor.pushTextMessage(chatPreview!!, message)
             .await {
 
             }

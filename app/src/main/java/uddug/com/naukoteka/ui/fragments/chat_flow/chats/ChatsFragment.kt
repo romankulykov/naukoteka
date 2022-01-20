@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.PopupWindow
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import moxy.presenter.InjectPresenter
@@ -58,12 +59,17 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
         super.onViewCreated(view, savedInstanceState)
         contentView.run {
             rvChatList.adapter = chatsAdapter
+            tvCreateChat.setOnClickListener { presenter.showCreateChat() }
             srlList.setOnRefreshListener(this@ChatsFragment)
         }
 
     }
 
     override fun showChats(chatsPreview: ChatsPreview) {
+        contentView.run {
+            srlList.isVisible = chatsPreview.dialogs.isNotEmpty()
+            llCreateNewChat.isVisible = chatsPreview.dialogs.isEmpty()
+        }
         chatsAdapter.setItems(chatsPreview.dialogs)
     }
 

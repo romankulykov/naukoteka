@@ -52,4 +52,9 @@ class ChatsPresenter(
                 viewState.deleteChat(dialog)
             }
     }
+
+    fun showCreateChat() {
+        router.navigateTo(Screens.ChatAddContact())
+    }
+
 }

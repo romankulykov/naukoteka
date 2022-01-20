@@ -1,6 +1,5 @@
 package uddug.com.domain.interactors.dialogs
 
-import com.google.gson.Gson
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
@@ -24,6 +23,7 @@ class DialogsInteractor(
 ) {
 
     var messages = linkedSetOf<ChatMessage>()
+    var chatPreview: ChatPreview? = null
 
     fun getDialogs(): Single<ChatsPreview> {
         return dialogsRepository.getChatsPreview()
@@ -69,10 +69,15 @@ class DialogsInteractor(
     fun openSocket() = webSocketRepository.open()
     fun closeSocket() = webSocketRepository.close()
 
+    // TODO pass chatPreview here, earlier we should inject it in presenter as module
     fun observe(): Flowable<ChatMessage> {
         return webSocketRepository.observe(SocketMessageResponseDto::class.java, "")
             .map {
                 it.run {
+                    val user = messages.find { it.user?.userId == owner }?.user
+                        ?: chatPreview?.users?.find { it.userId == owner }
+                        ?: chatPreview?.interlocutor
+
                     val message = ChatMessage(
                         id,
                         text,
@@ -81,7 +86,7 @@ class DialogsInteractor(
                         owner,
                         Calendar.getInstance(),
                         emptyList(),
-                        messages.find { it.user?.userId == owner }?.user
+                        user
                     )
                     messages.add(message)
                     message
@@ -90,8 +95,15 @@ class DialogsInteractor(
             .observeOn(schedulers.ui())
     }
 
-    fun pushTextMessage(dialogId: Int, message: String): Completable {
-        return webSocketRepository.emit(SocketPushMessageRequestDto(dialogId, 1, message))
+    fun pushTextMessage(chatPreview: ChatPreview, message: String): Completable {
+        this.chatPreview = chatPreview
+        return webSocketRepository.emit(
+            SocketPushMessageRequestDto(
+                chatPreview.dialogId,
+                1,
+                message
+            )
+        )
     }
 
 }
