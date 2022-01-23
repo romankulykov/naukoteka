@@ -52,12 +52,15 @@ data class UserChatPreview(
 
     val nicknameOrFullName get() = nickname ?: fullName
 
+    val fullNameOrNickname: String
+        get() = if (fullName.isBlank()) nickname ?: "Empty name" else fullName
+
     override fun getId(): String {
         return userId
     }
 
     override fun getName(): String {
-        return fullName
+        return fullNameOrNickname
     }
 
     override fun getAvatar(): String? {
