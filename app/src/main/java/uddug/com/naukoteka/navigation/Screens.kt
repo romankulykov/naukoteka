@@ -67,11 +67,8 @@ object Screens {
 
     fun Login() = FragmentScreen(LOGIN) { LoginFragment() }
 
-    fun Profile(isProfile: Boolean) =
-        FragmentScreen(PROFILE) { ChatDetailInfoFragment.newInstance(isProfile = true) }
-
-    fun GroupScreen(isProfile: Boolean) =
-        FragmentScreen(GROUP_SCREEN) { ChatDetailInfoFragment.newInstance(isProfile = false) }
+    fun ChatInfoScreen(chatPreview: ChatPreview) =
+        FragmentScreen(GROUP_SCREEN) { ChatDetailInfoFragment.newInstance(chatPreview) }
 
     fun SearchInChapterScreen() =
         FragmentScreen(SEARCH_IN_CHAPTER_SCREEN) { SearchInChapterFragment() }

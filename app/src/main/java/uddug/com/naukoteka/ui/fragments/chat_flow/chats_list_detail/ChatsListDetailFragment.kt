@@ -40,7 +40,7 @@ class ChatsListDetailFragment : BaseFragment(R.layout.fragment_chat_list),
                 isUserInputEnabled = false
             }
             chatEdit.setOnClickListener { presenter.showCreateChat() }
-            tvChange.setOnClickListener { presenter.showProfile() }
+            tvChange.setOnClickListener {  }
             TabLayoutMediator(tabLayout, viewPager) { tab, position ->
                 tab.text = context?.getString(titles[position])
             }.attach()

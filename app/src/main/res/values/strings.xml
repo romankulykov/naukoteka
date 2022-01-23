@@ -165,9 +165,8 @@
     <string name="duration_audio">0:12</string>
     <string name="description_of_group">Описание группы</string>
     <string name="project_work">Проектная работа, все для вас и других участников группы</string>
-    <string name="count_of_participants">%d УЧАСТНИКА</string>
-    <string name="name_group">Дипломная работа</string>
-    <string name="count">%d участника</string>
+    <string name="count_participants_format">%d участника</string>
+    <string name="recent">Недавно</string>
     <string name="clear_chat_with">Очистить чат с %s?</string>
     <string name="clear_chat">Очистить чат</string>
     <string name="block_chat_with">Заблокировать чат с %s?</string>

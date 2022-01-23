@@ -3,12 +3,14 @@ package uddug.com.naukoteka.ui.fragments.chat_flow.profile
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
+import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import com.google.android.material.tabs.TabLayoutMediator
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
-import uddug.com.domain.repositories.dialogs.models.UserChatPreview
+import uddug.com.domain.repositories.dialogs.models.ChatPreview
+import uddug.com.domain.repositories.dialogs.models.DialogType
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.FragmentChatDetailInfoBinding
 import uddug.com.naukoteka.global.base.BaseFragment
@@ -16,10 +18,10 @@ import uddug.com.naukoteka.presentation.chat_flow.profile.ChatDetailInfoPresente
 import uddug.com.naukoteka.presentation.chat_flow.profile.ChatDetailInfoView
 import uddug.com.naukoteka.ui.fragments.chat_flow.create_group.CreateGroupAdapter
 import uddug.com.naukoteka.utils.BackButtonListener
+import uddug.com.naukoteka.utils.ui.load
 import uddug.com.naukoteka.utils.viewBinding
 
-class ChatDetailInfoFragment :
-    BaseFragment(R.layout.fragment_chat_detail_info),
+class ChatDetailInfoFragment : BaseFragment(R.layout.fragment_chat_detail_info),
     ChatDetailInfoView, BackButtonListener {
 
     @InjectPresenter
@@ -31,9 +33,9 @@ class ChatDetailInfoFragment :
     }
 
     companion object {
-        private const val KEY_TITLE = "ChatDetailInfoFragment.KEY_TITLE"
-        fun newInstance(isProfile: Boolean) = ChatDetailInfoFragment().apply {
-            arguments = bundleOf().apply { putBoolean(KEY_TITLE, isProfile) }
+        private const val CHAT_PREVIEW = "ChatDetailInfoFragment.CHAT_PREVIEW"
+        fun newInstance(chatPreview: ChatPreview) = ChatDetailInfoFragment().apply {
+            arguments = bundleOf(CHAT_PREVIEW to chatPreview)
         }
     }
 
@@ -44,7 +46,7 @@ class ChatDetailInfoFragment :
         R.string.audio,
     )
 
-    private val thisIsProfile get() = arguments?.getBoolean(KEY_TITLE) ?: false
+    private val chatPreview get() = arguments?.getParcelable<ChatPreview>(CHAT_PREVIEW)!!
 
     private val createGroupAdapter by lazy { CreateGroupAdapter(presenter::onParticipantRemove) }
 
@@ -60,22 +62,42 @@ class ChatDetailInfoFragment :
             TabLayoutMediator(tabLayout, viewPager) { tab, position ->
                 tab.text = getString(titles[position])
             }.attach()
-            rvParticipants.adapter = createGroupAdapter
-            if (!thisIsProfile) {
-                tvNameContact.text = getString(R.string.name_group)
-                btnGoToProfile.isInvisible = true
-                viewDivider1.isInvisible = true
-                llSearch.isVisible = false
-                llMenu.isVisible = false
-                viewBand.isVisible = false
-                tvDescriptionGroup.isVisible = true
-                tvProjectWork.isVisible = true
-                tvCountParticipants.isVisible = true
-                rvParticipants.isVisible = true
-                llEmail.isVisible = false
-                viewDivider2.isVisible = false
-                llUserName.isVisible = false
+
+            chatPreview.dialogImage?.fullPath?.let { path ->
+                if (path.isNotEmpty()) {
+                    ivPhoto.load(chatPreview.dialogImage?.fullPath)
+                    ivPlaceholder.isVisible = false
+                }
             }
+
+            rvParticipants.adapter = createGroupAdapter
+            tvNameContact.text = chatPreview.dialogName
+            tvStatus.text = if (chatPreview.dialogType == DialogType.GROUP) {
+                getString(R.string.count_participants_format, chatPreview.users?.size)
+            } else {
+                getString(R.string.recent)
+            }
+            btnGoToProfile.isVisible = chatPreview.dialogType == DialogType.PERSONAL
+            llEmail.isVisible = chatPreview.dialogType == DialogType.PERSONAL
+            tvEmailValue.text = chatPreview.interlocutor?.nicknameOrFullName
+
+            llUserName.isVisible = chatPreview.dialogType == DialogType.PERSONAL
+            tvUserNameValue.text = chatPreview.interlocutor?.nicknameOrFullName
+            viewDivider1.isInvisible = chatPreview.dialogType == DialogType.GROUP
+
+            tvDescriptionGroup.isVisible = chatPreview.dialogType == DialogType.GROUP
+            tvDescriptionGroupValue.isVisible = chatPreview.dialogType == DialogType.GROUP
+            tvDescriptionGroupValue.text = chatPreview.dialogName
+
+            tvCountParticipants.isVisible = chatPreview.dialogType == DialogType.GROUP
+            tvCountParticipants.text =
+                getString(R.string.count_participants_format, chatPreview.users?.size)
+            rvParticipants.isVisible = chatPreview.dialogType == DialogType.GROUP
+            rvParticipants.adapter =
+                createGroupAdapter.apply { chatPreview.users?.let { setItems(it) } }
+
+            viewDivider2.isVisible = chatPreview.dialogType == DialogType.PERSONAL
+
         }
     }
 
@@ -84,15 +106,4 @@ class ChatDetailInfoFragment :
         return true
     }
 
-    override fun showParticipants(participants: List<UserChatPreview>) {
-        createGroupAdapter.setItems(participants)
-        contentView.run {
-            tvStatus.text = getString(R.string.count, createGroupAdapter.itemCount)
-            tvCountParticipants.text = getString(
-                R.string.count_of_participants,
-                createGroupAdapter.itemCount
-            )
-        }
-
-    }
 }

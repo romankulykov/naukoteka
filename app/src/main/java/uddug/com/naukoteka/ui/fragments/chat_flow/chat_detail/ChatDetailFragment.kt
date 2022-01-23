@@ -1,6 +1,5 @@
 package uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +17,6 @@ import com.stfalcon.chatkit.messages.MessagesListAdapter
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import toothpick.ktp.delegate.inject
-import uddug.com.data.cache.token.UserTokenCache
 import uddug.com.data.cache.user_uuid.UserUUIDCache
 import uddug.com.domain.repositories.dialogs.models.*
 import uddug.com.naukoteka.GlideApp
@@ -42,7 +40,6 @@ import uddug.com.naukoteka.utils.BackButtonListener
 import uddug.com.naukoteka.utils.ui.wasOnlineTenMinutesAgo
 import uddug.com.naukoteka.utils.viewBinding
 import java.util.*
-import kotlin.random.Random
 
 class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
     ChatDetailView, BackButtonListener,
@@ -74,8 +71,6 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
 
     var imageLoader: ImageLoader? = null
 
-    private var selectionCount = 0
-
     private var holderPayload: Payload? = null
 
     override val contentView by viewBinding(FragmentChatDetailBinding::bind)
@@ -106,7 +101,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
             input.setInputListener(this@ChatDetailFragment)
             input.setAttachmentsListener(this@ChatDetailFragment)
             ivMenu.setOnClickListener { showOptionsDialog() }
-            clHeader.setOnClickListener { presenter.toGroupScreen() }
+            clHeader.setOnClickListener { presenter.onHeaderClick() }
             ivArrowBack.setOnClickListener { onBackPressed() }
             tvCancel.setOnClickListener { onBackPressed() }
             ivDelete.setOnClickListener { showMessage(ToastInfo("Your custom click handler")) }

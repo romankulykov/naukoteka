@@ -76,8 +76,10 @@ open class ChatDetailPresenter(
 
     }
 
-    fun toGroupScreen() {
-        router.navigateTo(Screens.GroupScreen(isProfile = false))
+    fun onHeaderClick() {
+        if (chatPreview != null) {
+            router.navigateTo(Screens.ChatInfoScreen(chatPreview!!))
+        }
     }
 
     fun onMessageLongClick(message: ChatMessage) {
@@ -125,7 +127,7 @@ open class ChatDetailPresenter(
             }
     }
 
-    fun loadMore(page : Int) {
+    fun loadMore(page: Int) {
         if (loadMore /*&& page != dialogsInteractor.messages.size*/) {
             viewState.showLoading(true)
             getChat(chatPreview!!)
