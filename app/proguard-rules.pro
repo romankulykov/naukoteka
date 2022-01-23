@@ -38,3 +38,5 @@
 -keepclassmembers class * {
     toothpick.ktp.delegate.* *;
 }
+-keep class org.json.**
+-keepclassmembers,includedescriptorclasses class org.json.** { *; }

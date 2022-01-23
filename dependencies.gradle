@@ -74,6 +74,7 @@ ext {
             retrofitRxJava : "com.squareup.retrofit2:adapter-rxjava2:$versionRetrofit",
             retrofitLogging: "com.squareup.okhttp3:logging-interceptor:4.9.0",
             gsonConverter  : "com.squareup.retrofit2:converter-gson:$versionRetrofit",
+            // update gson to 2.8.9 and check proguard without newr rules about json
             gson           : 'com.google.code.gson:gson:2.8.6',
             socket         : "io.socket:socket.io-client:0.8.3"
 
