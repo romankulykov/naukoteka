@@ -145,7 +145,7 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
     }
 
     override fun onRefresh() {
-        presenter.getDialogs()
+        presenter.getDialogs(true)
     }
 
 }

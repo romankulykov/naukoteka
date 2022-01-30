@@ -4,6 +4,7 @@ import moxy.InjectViewState
 import toothpick.InjectConstructor
 import uddug.com.domain.interactors.dialogs.DialogsInteractor
 import uddug.com.domain.repositories.dialogs.models.ChatPreview
+import uddug.com.naukoteka.global.SwipeRefreshLoading
 import uddug.com.naukoteka.global.base.BasePresenterImpl
 import uddug.com.naukoteka.navigation.AppRouter
 import uddug.com.naukoteka.navigation.Screens
@@ -18,23 +19,20 @@ class ChatsPresenter(
     var isFirstLaunched = true
 
     override fun attachView(view: ChatsView?) {
+        getDialogs(isFirstLaunched)
         super.attachView(view)
-        if (!isFirstLaunched) {
-            getDialogs(withProgress = false, withRefresh = false)
-        }
     }
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        getDialogs()
         isFirstLaunched = false
     }
 
-    fun getDialogs(withProgress: Boolean = false, withRefresh: Boolean = true) {
+    fun getDialogs(withProgress : Boolean) {
         dialogsInteractor.getDialogs()
             .await(
                 withProgress = withProgress,
-                withRefreshProgress = withRefresh
+                loaderType = SwipeRefreshLoading
             ) { viewState.showChats(it) }
     }
 
