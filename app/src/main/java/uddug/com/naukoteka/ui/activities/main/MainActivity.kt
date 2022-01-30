@@ -156,10 +156,6 @@ class MainActivity : BaseActivity(), RouterProvider, MainView {
         }
     }
 
-    override fun showRefreshLoading(show: Boolean) {
-
-    }
-
     override fun getDelegate(): AppCompatDelegate {
         return LocaleChangerAppCompatDelegate(super.getDelegate())
     }

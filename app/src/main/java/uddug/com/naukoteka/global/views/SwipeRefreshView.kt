@@ -4,8 +4,9 @@ import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy
 import moxy.viewstate.strategy.StateStrategyType
 
-interface LoadingView: MvpView {
+interface SwipeRefreshView : MvpView {
 
     @StateStrategyType(AddToEndSingleStrategy::class)
-    fun showLoading(show: Boolean)
+    fun showRefreshLoading(show: Boolean)
+
 }

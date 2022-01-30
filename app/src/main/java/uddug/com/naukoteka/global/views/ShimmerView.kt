@@ -1,11 +1,11 @@
 package uddug.com.naukoteka.global.views
 
-import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy
 import moxy.viewstate.strategy.StateStrategyType
 
-interface LoadingView: MvpView {
+interface ShimmerView {
 
     @StateStrategyType(AddToEndSingleStrategy::class)
-    fun showLoading(show: Boolean)
+    fun showShimmerLoading(show: Boolean)
+
 }

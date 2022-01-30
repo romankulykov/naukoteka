@@ -7,9 +7,10 @@ import moxy.viewstate.strategy.AddToEndSingleStrategy
 import moxy.viewstate.strategy.StateStrategyType
 import uddug.com.domain.repositories.dialogs.models.ChatPreview
 import uddug.com.domain.repositories.dialogs.models.ChatsPreview
+import uddug.com.naukoteka.global.views.SwipeRefreshView
 
 @StateStrategyType(AddToEndSingleStrategy::class)
-interface ChatsView : MvpView, LoadingView, InformativeView {
+interface ChatsView : MvpView, LoadingView, SwipeRefreshView, InformativeView {
 
     fun showChats(chatsPreview: ChatsPreview)
     fun deleteChat(dialog: ChatPreview)

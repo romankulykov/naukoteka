@@ -59,9 +59,6 @@ abstract class BaseFragment(layoutResId: Int) : MvpAppCompatFragment(layoutResId
         (activity as? LoadingView)?.showLoading(show)
     }
 
-    override fun showRefreshLoading(show: Boolean) {
-    }
-
     override fun showInfoMessage(message: Int?) {
         (activity as? InformativeView)?.showInfoMessage(message)
     }

@@ -28,6 +28,8 @@ import retrofit2.HttpException
 import toothpick.Scope
 import toothpick.ktp.KTP
 import toothpick.ktp.delegate.inject
+import uddug.com.naukoteka.global.LoaderType
+import uddug.com.naukoteka.global.ProgressLoading
 import java.net.SocketTimeoutException
 
 abstract class BasePresenterImpl<V : MvpView> : MvpPresenter<V>() {
@@ -118,52 +120,53 @@ abstract class BasePresenterImpl<V : MvpView> : MvpPresenter<V>() {
 
     protected fun <R> Single<R>.await(
         withProgress: Boolean = true,
-        withRefreshProgress: Boolean = false,
+        loaderType: LoaderType = ProgressLoading,
         onError: OnError = ::onError,
         onSuccess: OnSuccess<R>
-    ) = subscribe(withProgress, withRefreshProgress, this@BasePresenterImpl, onError) { response ->
+    ) = subscribe(
+        loaderType.apply { this.withProgress = withProgress },
+        this@BasePresenterImpl,
+        onError
+    ) { response ->
         onSuccess(response)
     }.also { it.connect() }
 
     protected fun <R> Observable<R>.await(
         withProgress: Boolean = true,
-        withRefreshProgress: Boolean = false,
+        loaderType: LoaderType = ProgressLoading,
         onError: OnError = ::onError,
         onComplete: OnComplete = {},
         onSuccess: OnSuccess<R>
     ) = subscribe(
-        withProgress,
-        withRefreshProgress,
-        this@BasePresenterImpl,
-        onError,
-        onComplete
-    ) { response ->
-        onSuccess(response)
-    }.also { it.connect() }
-
-    protected fun <R> Flowable<R>.await(
-        withProgress: Boolean = true,
-        withRefreshProgress: Boolean = false,
-        onError: OnError = ::onError,
-        onComplete: OnComplete = {},
-        onSuccess: OnSuccess<R>
-    ) = subscribe(
-        withProgress,
-        withRefreshProgress,
-        this@BasePresenterImpl,
-        onError,
-        onComplete
+        loaderType.apply { this.withProgress = withProgress },
+        this@BasePresenterImpl, onError, onComplete
     ) { response ->
         onSuccess(response)
     }.also { it.connect() }
 
     protected fun Completable.await(
         withProgress: Boolean = true,
-        withRefreshProgress: Boolean = false,
+        loaderType: LoaderType = ProgressLoading,
         onError: OnError = ::onError,
         onComplete: OnComplete
-    ) = subscribe(withProgress, withRefreshProgress, this@BasePresenterImpl, onError) {
+    ) = subscribe(
+        loaderType.apply { this.withProgress = withProgress },
+        this@BasePresenterImpl, onError
+    ) {
         onComplete()
+    }.also { it.connect() }
+
+    protected fun <R> Flowable<R>.await(
+        withProgress: Boolean = true,
+        loaderType: LoaderType = ProgressLoading,
+        onError: OnError = ::onError,
+        onComplete: OnComplete = {},
+        onSuccess: OnSuccess<R>
+    ) = subscribe(
+        loaderType.apply { this.withProgress = withProgress },
+        this@BasePresenterImpl, onError, onComplete
+    ) { response ->
+        onSuccess(response)
     }.also { it.connect() }
 
 
