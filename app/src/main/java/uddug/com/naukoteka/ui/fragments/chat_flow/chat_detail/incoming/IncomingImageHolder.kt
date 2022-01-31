@@ -1,7 +1,9 @@
 package uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.incoming
 
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.view.isGone
 import android.widget.ProgressBar
 import com.stfalcon.chatkit.commons.models.MessageContentType
 import com.stfalcon.chatkit.utils.DateFormatter
@@ -41,6 +43,14 @@ class IncomingImageHolder(itemView: View, override var anyPayload: Any?) : BaseI
                     load(data.imageUrl, placeholder = R.drawable.ic_glide_image_error)
                     scaleType = ImageView.ScaleType.CENTER_INSIDE
                 }
+
+                val lp = messageText.layoutParams.apply {
+                    height = 0; width = ViewGroup.LayoutParams.WRAP_CONTENT;
+                }
+                messageText.layoutParams = lp
+                messageText.text = text
+                messageText.isGone = text.isNullOrBlank()
+
                 itemView.setOnClickListener {
                     (payload as Payload).dropInActivity?.droppedInActivity(imageUrl!!)
                 }

@@ -44,6 +44,19 @@
             tools:src="@tools:sample/avatars" />
 
         <TextView
+            android:id="@id/messageText"
+            style="@style/TextViewStyle.Usual"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/golos_text_regular"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageOutcoming"
+            tools:text="@tools:sample/lorem" />
+
+        <TextView
             android:id="@id/messageTime"
             style="@style/TextViewStyle"
             android:layout_width="wrap_content"
@@ -51,7 +64,7 @@
             android:fontFamily="@font/golos_text_regular"
             android:textColor="@color/text_message_blue"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageOutcoming"
+            app:layout_constraintTop_toBottomOf="@+id/messageText"
             tools:text="12:12" />
 
         <ProgressBar
@@ -61,8 +74,9 @@
             android:layout_marginEnd="75dp"
             android:elevation="10dp"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/imageOutcoming"
+            app:layout_constraintEnd_toEndOf="@+id/imageOutcoming"
+            app:layout_constraintStart_toStartOf="@+id/imageOutcoming"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
