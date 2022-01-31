@@ -18,6 +18,9 @@ class ChatsPresenter(
 
     var isFirstLaunched = true
 
+    private val pageLimit: Int = 10
+    private var loadMore = false
+
     override fun attachView(view: ChatsView?) {
         getDialogs(isFirstLaunched)
         super.attachView(view)
@@ -28,12 +31,15 @@ class ChatsPresenter(
         isFirstLaunched = false
     }
 
-    fun getDialogs(withProgress : Boolean) {
-        dialogsInteractor.getDialogs()
+    fun getDialogs(withProgress: Boolean, lastDialogId: Int? = null) {
+        dialogsInteractor.getDialogs(pageLimit, lastDialogId)
             .await(
                 withProgress = withProgress,
                 loaderType = SwipeRefreshLoading
-            ) { viewState.showChats(it) }
+            ) {
+                loadMore = it.dialogs.size == pageLimit
+                viewState.showChats(it, lastDialogId == null, loadMore)
+            }
     }
 
     fun onChatClick(chat: ChatPreview) {

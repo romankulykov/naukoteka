@@ -10,23 +10,27 @@ import uddug.com.domain.repositories.dialogs.models.ChatMessage
 import uddug.com.domain.repositories.dialogs.models.ChatPreview
 import uddug.com.domain.repositories.dialogs.models.ChatsPreview
 import uddug.com.domain.repositories.dialogs.models.MessageType
+import uddug.com.domain.repositories.files.FilesRepository
 import uddug.com.domain.repositories.websockets.WebSocketRepository
+import uddug.com.domain.repositories.websockets.models.SocketFileRequestDto
 import uddug.com.domain.repositories.websockets.models.SocketMessageResponseDto
 import uddug.com.domain.repositories.websockets.models.SocketPushMessageRequestDto
+import java.io.File
 import java.util.*
 
 @InjectConstructor
 class DialogsInteractor(
     private val dialogsRepository: DialogsRepository,
     private val webSocketRepository: WebSocketRepository,
+    private val filesRepository: FilesRepository,
     private val schedulers: SchedulersProvider
 ) {
 
     var messages = linkedSetOf<ChatMessage>()
     var chatPreview: ChatPreview? = null
 
-    fun getDialogs(): Single<ChatsPreview> {
-        return dialogsRepository.getChatsPreview()
+    fun getDialogs(limit: Int, lastMessageId: Int? = null): Single<ChatsPreview> {
+        return dialogsRepository.getChatsPreview(limit, lastMessageId)
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
     }
@@ -95,13 +99,33 @@ class DialogsInteractor(
             .observeOn(schedulers.ui())
     }
 
-    fun pushTextMessage(chatPreview: ChatPreview, message: String): Completable {
+    fun pushTextMessage(
+        chatPreview: ChatPreview,
+        text: String? = null,
+        files: List<File>? = null
+    ): Completable {
         this.chatPreview = chatPreview
+
+        if (!files.isNullOrEmpty()) {
+            return filesRepository.sendFiles(files)
+                .subscribeOn(schedulers.io())
+                .observeOn(schedulers.ui())
+                .flatMapCompletable {
+                    webSocketRepository.emit(
+                        SocketPushMessageRequestDto(
+                            dialog = chatPreview.dialogId,
+                            cType = 1,
+                            text = text,
+                            files = it.map { SocketFileRequestDto(it.id, it.fileType) })
+                    )
+                }
+        }
+
         return webSocketRepository.emit(
             SocketPushMessageRequestDto(
-                chatPreview.dialogId,
-                1,
-                message
+                dialog = chatPreview.dialogId,
+                cType = 1,
+                text = text
             )
         )
     }

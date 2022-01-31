@@ -36,6 +36,7 @@ ext {
             lifecycleCommon        : "androidx.lifecycle:lifecycle-common-java8:2.2.0",
             cicerone               : "com.github.terrakok:cicerone:7.1",
             dotsIndicator          : 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2',
+            endlessAdapter         : 'com.rockerhieu:rv-adapter-endless:1.1',
             maskedEditText         : 'ru.egslava:MaskedEditText:1.0.5',
             chatkit                : 'com.github.stfalcon-studio:Chatkit:0.4.1',
             swipeLayout            : "com.daimajia.swipelayout:library:1.2.0",

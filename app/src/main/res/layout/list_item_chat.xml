@@ -236,6 +236,20 @@
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
             tools:src="@tools:sample/avatars" />
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_online_indicator"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            app:strokeWidth="1dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="2dp"
+            app:strokeColor="@color/text_main"
+            android:src="@color/green"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_photo"
+            app:layout_constraintEnd_toEndOf="@+id/iv_photo"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+            />
+
         <TextView
             android:id="@+id/tv_name_contact"
             style="@style/TextViewStyle.Subtitle"

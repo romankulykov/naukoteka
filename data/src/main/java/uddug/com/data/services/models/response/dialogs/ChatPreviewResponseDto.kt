@@ -65,6 +65,10 @@ data class UserChatPreviewDto(
     val status: Calendar?
 ) {
     val nicknameOrFullName get() = nickname ?: fullName
+
+    val fullNameOrNickname: String
+        get() = if (fullName.isBlank()) nickname ?: "Empty name" else fullName
+
 }
 
 data class AttachmentChatPreviewDto(

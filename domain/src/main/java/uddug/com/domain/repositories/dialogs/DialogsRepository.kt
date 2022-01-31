@@ -8,7 +8,7 @@ import uddug.com.domain.repositories.dialogs.models.ChatsPreview
 
 interface DialogsRepository {
 
-    fun getChatsPreview(): Single<ChatsPreview>
+    fun getChatsPreview(limit: Int, lastMessageId: Int? = null): Single<ChatsPreview>
     fun getChatDetailInfo(id: Int): Single<ChatPreview>
     fun getChatMessages(
         chatPreview: ChatPreview,

@@ -5,16 +5,16 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import uddug.com.naukoteka.ui.fragments.chat_flow.chats.ChatsFragment
 
-class ChatsDetailAdapter(fragment: Fragment, titles: ArrayList<Int>?) :
+class ChatsDetailAdapter(fragment: Fragment) :
     FragmentStateAdapter(fragment) {
 
     private val fragments =
         mutableListOf(
-            ChatsFragment.newInstance(titles),
-            ChatsFragment.newInstance(titles),
-            ChatsFragment.newInstance(titles),
-            ChatsFragment.newInstance(titles),
-            ChatsFragment.newInstance(titles),
+            ChatsFragment(),
+            ChatsFragment(),
+            ChatsFragment(),
+            ChatsFragment(),
+            ChatsFragment(),
         )
 
     override fun getItemCount() = fragments.size

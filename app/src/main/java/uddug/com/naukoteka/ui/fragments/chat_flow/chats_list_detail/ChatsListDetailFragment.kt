@@ -35,7 +35,7 @@ class ChatsListDetailFragment : BaseFragment(R.layout.fragment_chat_list),
     override fun initView() {
         contentView.run {
             viewPager.run {
-                adapter = ChatsDetailAdapter(this@ChatsListDetailFragment, titles)
+                adapter = ChatsDetailAdapter(this@ChatsListDetailFragment)
                 offscreenPageLimit = 5
                 isUserInputEnabled = false
             }

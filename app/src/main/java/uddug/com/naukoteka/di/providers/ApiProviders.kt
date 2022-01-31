@@ -2,10 +2,7 @@ package uddug.com.naukoteka.di.providers
 
 import retrofit2.Retrofit
 import toothpick.InjectConstructor
-import uddug.com.data.services.AuthApiService
-import uddug.com.data.services.DialogsApiService
-import uddug.com.data.services.UserProfileApiService
-import uddug.com.data.services.UsersSearchApiService
+import uddug.com.data.services.*
 import uddug.com.data.services.auth.AuthApiHolder
 import uddug.com.domain.repositories.users_search.UsersSearchRepository
 import javax.inject.Provider
@@ -44,4 +41,12 @@ class UsersSearchApiProvider(
 ) : Provider<UsersSearchApiService> {
     override fun get() =
         retrofit.create(UsersSearchApiService::class.java)
+}
+
+@InjectConstructor
+class FilesApiServiceProvider(
+    private val retrofit: Retrofit,
+) : Provider<FilesApiService> {
+    override fun get() =
+        retrofit.create(FilesApiService::class.java)
 }

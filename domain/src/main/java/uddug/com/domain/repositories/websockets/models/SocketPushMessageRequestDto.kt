@@ -8,5 +8,14 @@ data class SocketPushMessageRequestDto(
     @SerializedName("cType")
     val cType: Int,
     @SerializedName("text")
-    val text: String
+    val text: String? = null,
+    @SerializedName("files")
+    val files: List<SocketFileRequestDto>? = null
+)
+
+data class SocketFileRequestDto(
+    @SerializedName("id")
+    val id: String,
+    @SerializedName("fileType")
+    val fileType: String?
 )

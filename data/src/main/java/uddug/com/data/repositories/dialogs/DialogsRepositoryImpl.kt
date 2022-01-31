@@ -16,8 +16,10 @@ class DialogsRepositoryImpl(
     private val userUUID: UserUUIDCache,
 ) : DialogsRepository {
 
-    override fun getChatsPreview(): Single<ChatsPreview> {
-        return dialogsApiService.dialogs()
+    override fun getChatsPreview(
+        limit: Int, lastMessageId: Int?,
+    ): Single<ChatsPreview> {
+        return dialogsApiService.dialogs(limit, lastMessageId)
             .map { dialogsRepositoryMapper.mapChatsPreviewToDomain(it) }
     }
 

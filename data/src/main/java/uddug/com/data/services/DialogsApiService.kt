@@ -12,7 +12,10 @@ import uddug.com.data.services.models.response.dialogs.CreateDialogResponseDto
 interface DialogsApiService {
 
     @GET("v1/dialogs")
-    fun dialogs(): Single<ChatPreviewResponseDto>
+    fun dialogs(
+        @Query("limit") limit: Int? = null,
+        @Query("lastMessageId") lastMessageId: Int? = null,
+    ): Single<ChatPreviewResponseDto>
 
     @GET("v1/dialogs/{id}")
     fun dialogsDetail(

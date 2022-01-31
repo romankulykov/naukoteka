@@ -12,6 +12,7 @@ import uddug.com.naukoteka.data.ChatOption
 import uddug.com.naukoteka.global.base.BasePresenterImpl
 import uddug.com.naukoteka.navigation.AppRouter
 import uddug.com.naukoteka.navigation.Screens
+import java.io.File
 
 @InjectConstructor
 @InjectViewState
@@ -24,6 +25,7 @@ open class ChatDetailPresenter(
 
     private val pageLimit: Int = 10
     private var loadMore = false
+    private var files = arrayListOf<File>()
 
     var chatPreview: ChatPreview? = null
 
@@ -120,10 +122,10 @@ open class ChatDetailPresenter(
         }
     }
 
-    fun sendMessage(message: String) {
-        dialogsInteractor.pushTextMessage(chatPreview!!, message)
+    fun sendMessage(text: String) {
+        dialogsInteractor.pushTextMessage(chatPreview!!, text, files)
             .await {
-
+                files.clear()
             }
     }
 
@@ -132,6 +134,10 @@ open class ChatDetailPresenter(
             viewState.showLoading(true)
             getChat(chatPreview!!)
         }
+    }
+
+    fun addFile(file: File) {
+        files.add(file)
     }
 
 

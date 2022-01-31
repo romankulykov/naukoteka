@@ -101,6 +101,7 @@ dependencies {
     implementation ui.cicerone
     implementation ui.firebaseCrashlytics
     implementation ui.dotsIndicator
+    implementation ui.endlessAdapter
     implementation ui.maskedEditText
     implementation ui.keyboardVisibility
 

@@ -19,11 +19,11 @@ class DialogsRepositoryMapper {
         val dialogType = DialogType.values().find { it.type == dialogType } ?: DialogType.PERSONAL
         ChatPreview(
             dialogId = dialogId,
-            dialogName = fillChatName(dto, dialogType),
+            dialogName = fillChatName(this, dialogType),
             dialogType = dialogType,
             messageId = messageId,
             firstMessageId = firstMessageId,
-            dialogImage = mapAttachmentToDomain(dialogImage),
+            dialogImage = mapAttachmentToDomain(dialogImage ?: interlocutor?.image),
             lastMessage = mapLastMessageChatDomain(lastMessage),
             users = users?.map { mapUserChatToDomain(it)!! },
             unreadMessages = unreadMessages,
@@ -34,7 +34,7 @@ class DialogsRepositoryMapper {
     private fun fillChatName(chatPreviewDto: ChatPreviewDto, dialogType: DialogType): String {
         return when (dialogType) {
             DialogType.PERSONAL -> {
-                chatPreviewDto.interlocutor?.nicknameOrFullName.toString()
+                chatPreviewDto.interlocutor?.fullNameOrNickname.toString()
             }
             DialogType.GROUP -> {
                 if (chatPreviewDto.dialogName.isNullOrBlank()) {

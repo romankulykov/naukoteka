@@ -1,19 +1,23 @@
 package uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail
 
+import android.Manifest
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.PopupWindow
+import androidx.core.net.toFile
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.request.RequestOptions
 import com.stfalcon.chatkit.commons.ImageLoader
 import com.stfalcon.chatkit.messages.MessageHolders
 import com.stfalcon.chatkit.messages.MessageInput.AttachmentsListener
 import com.stfalcon.chatkit.messages.MessageInput.InputListener
 import com.stfalcon.chatkit.messages.MessagesListAdapter
+import gun0912.tedbottompicker.TedBottomPicker
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import toothpick.ktp.delegate.inject
@@ -37,8 +41,10 @@ import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.outcoming.Outcomin
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.outcoming.OutcomingTextHolder
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.system_message.SystemMessageViewHolder
 import uddug.com.naukoteka.utils.BackButtonListener
+import uddug.com.naukoteka.utils.ui.load
 import uddug.com.naukoteka.utils.ui.wasOnlineTenMinutesAgo
 import uddug.com.naukoteka.utils.viewBinding
+import uddug.com.naukoteka.utils.withPermissions
 import java.util.*
 
 class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
@@ -98,6 +104,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
                     getString(R.string.recently)
                 }
             }
+            ivChatImage.load(chat?.dialogImage?.fullPath)
             input.setInputListener(this@ChatDetailFragment)
             input.setAttachmentsListener(this@ChatDetailFragment)
             ivMenu.setOnClickListener { showOptionsDialog() }
@@ -302,10 +309,20 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
     }
 
     override fun showAttachmentOptionDialog() {
-        AttachmentOptionsDialog(
-            requireActivity(), presenter::onChatAttachmentOptionClick,
+        /*AttachmentOptionsDialog(
+            requireActivity(), presenter::onChatAttachmentOptionClick
+        ) {
+
             presenter::onPhotoAttachmentClick
-        ).show()
+        }.show()*/
+        context?.withPermissions(
+            Manifest.permission.CAMERA,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        ) {
+            TedBottomPicker.with(activity).show {
+                presenter.addFile(it.toFile())
+            }
+        }
     }
 
 }

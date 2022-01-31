@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.PopupWindow
-import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.rockerhieu.rvadapter.endless.EndlessRecyclerViewAdapter
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import uddug.com.domain.repositories.dialogs.models.ChatPreview
@@ -26,18 +26,10 @@ import uddug.com.naukoteka.utils.BackButtonListener
 import uddug.com.naukoteka.utils.viewBinding
 
 class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButtonListener,
+    EndlessRecyclerViewAdapter.RequestToLoadMoreListener,
     SwipeRefreshLayout.OnRefreshListener {
 
-    companion object {
-        private const val KEY_TITLE = "ChatsFragment.KEY_TITLE"
-
-        fun newInstance(titlesList: ArrayList<Int>?) = ChatsFragment().apply {
-            arguments = bundleOf().apply { putIntegerArrayList(KEY_TITLE, titlesList) }
-        }
-    }
-
     override val contentView by viewBinding(FragmentChatsBinding::bind)
-
 
     @InjectPresenter
     lateinit var presenter: ChatsPresenter
@@ -45,6 +37,16 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
     @ProvidePresenter
     fun providePresenter(): ChatsPresenter {
         return getScope().getInstance(ChatsPresenter::class.java)
+    }
+
+    private val endlessAdapter by lazy {
+        EndlessRecyclerViewAdapter(
+            context,
+            chatsAdapter,
+            this,
+            R.layout.pagination_progress_bar,
+            false
+        )
     }
 
     private val chatsAdapter by lazy {
@@ -58,19 +60,23 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         contentView.run {
-            rvChatList.adapter = chatsAdapter
+            rvChatList.adapter = endlessAdapter
             tvCreateChat.setOnClickListener { presenter.showCreateChat() }
             srlList.setOnRefreshListener(this@ChatsFragment)
         }
 
     }
 
-    override fun showChats(chatsPreview: ChatsPreview) {
+    override fun showChats(chatsPreview: ChatsPreview, needClear: Boolean, loadMore: Boolean) {
         contentView.run {
             srlList.isVisible = chatsPreview.dialogs.isNotEmpty()
             llCreateNewChat.isVisible = chatsPreview.dialogs.isEmpty()
         }
-        chatsAdapter.setItems(chatsPreview.dialogs)
+        if (needClear) {
+            chatsAdapter.clear()
+        }
+        chatsAdapter.addItems(chatsPreview.dialogs)
+        endlessAdapter.onDataReady(loadMore)
     }
 
     override fun deleteChat(dialog: ChatPreview) {
@@ -146,6 +152,10 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
 
     override fun onRefresh() {
         presenter.getDialogs(true)
+    }
+
+    override fun onLoadMoreRequested() {
+        presenter.getDialogs(false, chatsAdapter.getItems()?.last()?.lastMessage?.id)
     }
 
 }

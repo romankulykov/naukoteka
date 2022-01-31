@@ -13,17 +13,16 @@ import toothpick.config.Module
 import uddug.com.data.NaukotekaCookieJar
 import uddug.com.data.repositories.auth.AuthRepositoryImpl
 import uddug.com.data.repositories.dialogs.DialogsRepositoryImpl
+import uddug.com.data.repositories.files.FilesRepositoryImpl
 import uddug.com.data.repositories.user_profile.UserProfileRepositoryImpl
 import uddug.com.data.repositories.users.UsersSearchRepositoryImpl
 import uddug.com.data.repositories.websockets.WebSocketRepositoryImpl
-import uddug.com.data.services.AuthApiService
-import uddug.com.data.services.DialogsApiService
-import uddug.com.data.services.UserProfileApiService
-import uddug.com.data.services.UsersSearchApiService
+import uddug.com.data.services.*
 import uddug.com.data.services.auth.AuthApiHolder
 import uddug.com.domain.SchedulersProvider
 import uddug.com.domain.repositories.auth.AuthRepository
 import uddug.com.domain.repositories.dialogs.DialogsRepository
+import uddug.com.domain.repositories.files.FilesRepository
 import uddug.com.domain.repositories.user_profile.UserProfileRepository
 import uddug.com.domain.repositories.users_search.UsersSearchRepository
 import uddug.com.domain.repositories.websockets.WebSocketRepository
@@ -63,6 +62,8 @@ class AppModule(application: Application) : Module() {
         bind(AuthRepository::class.java).to(AuthRepositoryImpl::class.java)
         bind(UserProfileRepository::class.java).to(UserProfileRepositoryImpl::class.java)
         bind(DialogsRepository::class.java).to(DialogsRepositoryImpl::class.java)
+        bind(FilesApiService::class.java).toProvider(FilesApiServiceProvider::class.java).singleton()
+        bind(FilesRepository::class.java).to(FilesRepositoryImpl::class.java)
         bind(UsersSearchRepository::class.java).to(UsersSearchRepositoryImpl::class.java)
         bind(WebSocketRepository::class.java).to(WebSocketRepositoryImpl::class.java)
 
