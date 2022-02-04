@@ -7,9 +7,13 @@ Toothpick (DI)
 ViewBinding
 Room
 Glide
+WebSockets
 Modularization: data, domain, app
 
-API: https://stage.naukotheka.ru/api/a/swagger-ui/index.html?configUrl=/api/a/api-docs/swagger-config#/custom-controller/isEmailFree
+API: 
+https://stage.naukotheka.ru/api/core/webjars/swagger-ui/index.html?configUrl=/api/core/api-docs/swagger-config
+https://stage.naukotheka.ru/api/a/swagger-ui/index.html?configUrl=/api/a/api-docs/swagger-config
+https://stage.naukotheka.ru/api/chat/static/index.html
 
 How to run tests:
 1) Open app/src/test/java
@@ -40,10 +44,17 @@ How to run tests:
 |   └---repositories - logging wrapper
 |   |   └---auth - work with login\registration\recovery
 |   |   └---user_profile - work with user profile
+|   |   └---dialogs - work with user dialogs\chats
+|   |   └---files - work with files
+|   |   └---users - work with users
+|   |   └---websockets - work with websockets
 |   |
 |   └---services - classes for work with api services
 |   |   └---AuthApiService - working with a/login-actions endpoint
 |   |   └---UserProfileApiService - working with core/user_profile endpoint
+|   |   └---DialogsApiService - working with v1/dialogs endpoint
+|   |   └---FilesApiService - working with core/files endpoint
+|   |   └---UsersSearchApiService - working with v1/users/search endpoint
 |
 |---domain - Runs business logic independent of other layers. Ideally, this is a pure Kotlin package with no android dependencies.
 |   └---entities - contain common domain entities (ApiExceptions, StatusCodes and etc.)
