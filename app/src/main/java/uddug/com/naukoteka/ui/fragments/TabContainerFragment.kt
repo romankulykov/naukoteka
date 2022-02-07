@@ -6,6 +6,7 @@ import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.Navigator
 import toothpick.ktp.KTP
 import toothpick.ktp.delegate.inject
+import uddug.com.domain.interactors.account.SessionInteractor
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.FragmentTabContainerBinding
 import uddug.com.naukoteka.di.modules.FlowNavigationModule
@@ -33,6 +34,7 @@ class TabContainerFragment : BaseFragment(R.layout.fragment_tab_container), Rout
     }
 
     val ciceroneHolder: TabCiceroneHolder by inject()
+    val sessionInteractor: SessionInteractor by inject()
 
     val containerName: Screens.BottomNavigationTab
         get() = arguments!!.getSerializable(TAB_CONTAINER_NAME) as Screens.BottomNavigationTab
@@ -56,6 +58,10 @@ class TabContainerFragment : BaseFragment(R.layout.fragment_tab_container), Rout
             .openSubScope(containerName.tabName)
             .installModules(FlowNavigationModule(router))
         super.onCreate(savedInstanceState)
+        sessionInteractor.getSessionExpirationObservable()
+            .subscribe {
+                router.replaceScreen(Screens.Login())
+            }
     }
 
     override fun onDestroyView() {

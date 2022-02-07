@@ -21,6 +21,8 @@ data class ChatPreviewDto(
     val dialogType: Int,
     @SerializedName("messageId")
     val messageId: Int?,
+    @SerializedName("isPinned")
+    val isPinned: Int?,
     @SerializedName("firstMessageId")
     val firstMessageId: Int?,
     @SerializedName("dialogImage")

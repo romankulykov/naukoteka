@@ -37,4 +37,10 @@ interface DialogsApiService {
     @DELETE("v1/dialogs/{id}")
     fun deleteDialog(@Path("id") dialogId: Int): Completable
 
+    @POST("v1/dialogs/pin/{id}")
+    fun pinDialog(@Path("id") dialogId: Int): Completable
+
+    @POST("v1/dialogs/unpin/{id}")
+    fun unpinDialog(@Path("id") dialogId: Int): Completable
+
 }

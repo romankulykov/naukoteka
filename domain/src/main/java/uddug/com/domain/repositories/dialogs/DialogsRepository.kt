@@ -18,5 +18,7 @@ interface DialogsRepository {
 
     fun createDialog(name: String?, uuids: List<String>): Single<Pair<Int, Boolean>>
     fun deleteDialog(dialogId: Int): Completable
+    fun pinChat(dialogId: Int) : Completable
+    fun unPinChat(dialogId: Int) : Completable
 
 }

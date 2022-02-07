@@ -21,6 +21,7 @@ data class ChatPreview(
     val dialogId: Int,
     val dialogName: String,
     val dialogType: DialogType,
+    var isPinned: Boolean,
     val messageId: Int?,
     val firstMessageId: Int?,
     val dialogImage: AttachmentChatPreview?,

@@ -83,11 +83,16 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
         chatsAdapter.removeItem(dialog)
     }
 
+    override fun updateAfterTogglePin(dialog: ChatPreview) {
+        chatsAdapter.updateItem(dialog)
+    }
+
     private fun showSwipeClick(chatSwipeParams: ChatSwipeParams) {
         val title = getString(
             when (chatSwipeParams.chatSwipeOption) {
                 ChatSwipeTitleOption.BLOCK -> R.string.block_chat_with
                 ChatSwipeTitleOption.CLEAR -> R.string.clear_chat_with
+                ChatSwipeTitleOption.PIN_TOGGLE -> if (chatSwipeParams.chatListEntity.isPinned) R.string.unpin_chat_with else R.string.pin_chat_with
                 else -> R.string.clear_chat_with
             },
             chatSwipeParams.chatListEntity.dialogName
@@ -100,6 +105,9 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
                 when (it) {
                     ChatSwipeTitleOption.CLEAR -> {
                         presenter.deleteDialog(chatSwipeParams.chatListEntity)
+                    }
+                    ChatSwipeTitleOption.PIN_TOGGLE -> {
+                        presenter.togglePin(chatSwipeParams.chatListEntity)
                     }
                 }
             }

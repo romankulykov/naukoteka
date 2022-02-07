@@ -4,6 +4,7 @@ dependencies {
 
     implementation data.gson
     implementation ui.chatkit
+    implementation presentation.rxRelay
 
 
 }

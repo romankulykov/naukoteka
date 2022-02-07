@@ -14,5 +14,6 @@ interface ChatsView : MvpView, LoadingView, SwipeRefreshView, InformativeView {
 
     fun showChats(chatsPreview: ChatsPreview, needClear: Boolean, loadMore: Boolean)
     fun deleteChat(dialog: ChatPreview)
+    fun updateAfterTogglePin(dialog: ChatPreview)
 
 }

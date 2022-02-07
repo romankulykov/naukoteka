@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.google.gson.Gson
+import medved.studio.domain.repositories.session.SessionRepository
 import okhttp3.CookieJar
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -14,6 +15,7 @@ import uddug.com.data.NaukotekaCookieJar
 import uddug.com.data.repositories.auth.AuthRepositoryImpl
 import uddug.com.data.repositories.dialogs.DialogsRepositoryImpl
 import uddug.com.data.repositories.files.FilesRepositoryImpl
+import uddug.com.data.repositories.session.SessionRepositoryImpl
 import uddug.com.data.repositories.user_profile.UserProfileRepositoryImpl
 import uddug.com.data.repositories.users.UsersSearchRepositoryImpl
 import uddug.com.data.repositories.websockets.WebSocketRepositoryImpl
@@ -45,6 +47,7 @@ class AppModule(application: Application) : Module() {
             .toInstance("https://stage.naukotheka.ru/api/")
         bind(CookieJar::class.java).to(NaukotekaCookieJar::class.java)
 
+        bind(SessionRepository::class.java).to(SessionRepositoryImpl::class.java)
         bind(OkHttpClient::class.java).toProvider(OkHttpProvider::class.java).singleton()
         bind(Retrofit::class.java).toProvider(RetrofitProvider::class.java).singleton()
 

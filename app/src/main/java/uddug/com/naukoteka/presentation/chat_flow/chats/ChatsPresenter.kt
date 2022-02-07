@@ -61,4 +61,10 @@ class ChatsPresenter(
         router.navigateTo(Screens.ChatAddContact())
     }
 
+    fun togglePin(chatListEntity: ChatPreview) {
+        dialogsInteractor.togglePin(chatListEntity)
+            .await { viewState.updateAfterTogglePin(it) }
+
+    }
+
 }

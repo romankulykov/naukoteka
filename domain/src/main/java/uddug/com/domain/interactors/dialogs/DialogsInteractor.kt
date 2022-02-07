@@ -64,8 +64,23 @@ class DialogsInteractor(
             .observeOn(schedulers.ui())
     }
 
+    fun getChatDetailInfo(id: Int): Single<ChatPreview> {
+        return dialogsRepository.getChatDetailInfo(id)
+            .subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
+    }
+
     fun deletePersonalDialog(dialogId: Int): Completable {
         return dialogsRepository.deleteDialog(dialogId)
+            .subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
+    }
+
+    fun togglePin(chatListEntity: ChatPreview): Single<ChatPreview> {
+        return (if (chatListEntity.isPinned) dialogsRepository.unPinChat(chatListEntity.dialogId)
+        else dialogsRepository.pinChat(chatListEntity.dialogId)).toSingle {}
+            .flatMap { dialogsRepository.getChatDetailInfo(chatListEntity.dialogId) }
+            .map { chatListEntity.apply { isPinned = it.isPinned } }
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
     }

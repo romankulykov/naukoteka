@@ -6,6 +6,7 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
+import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.tabs.TabLayoutMediator
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
@@ -18,6 +19,8 @@ import uddug.com.naukoteka.presentation.chat_flow.profile.ChatDetailInfoPresente
 import uddug.com.naukoteka.presentation.chat_flow.profile.ChatDetailInfoView
 import uddug.com.naukoteka.ui.fragments.chat_flow.create_group.CreateGroupAdapter
 import uddug.com.naukoteka.utils.BackButtonListener
+import uddug.com.naukoteka.utils.getColorCompat
+import uddug.com.naukoteka.utils.ui.TextDrawable
 import uddug.com.naukoteka.utils.ui.load
 import uddug.com.naukoteka.utils.viewBinding
 
@@ -63,11 +66,19 @@ class ChatDetailInfoFragment : BaseFragment(R.layout.fragment_chat_detail_info),
                 tab.text = getString(titles[position])
             }.attach()
 
-            chatPreview.dialogImage?.fullPath?.let { path ->
-                if (path.isNotEmpty()) {
-                    ivPhoto.load(chatPreview.dialogImage?.fullPath)
-                    ivPlaceholder.isVisible = false
-                }
+            if (chatPreview.dialogImage?.fullPath == null) {
+                val drawable = TextDrawable.builder()
+                    .buildRound(
+                        text = chatPreview.dialogName.split(" ").map { it.first() }.joinToString(""),
+                        color = requireContext().getColorCompat(R.color.object_main)
+                    )
+                ivPhoto.setImageDrawable(drawable)
+            } else {
+                ivPhoto.load(
+                    chatPreview.dialogImage?.fullPath,
+                    placeholder = R.drawable.ic_glide_image_error,
+                    requestOptions = RequestOptions.centerCropTransform()
+                )
             }
 
             rvParticipants.adapter = createGroupAdapter

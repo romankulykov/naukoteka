@@ -3,6 +3,7 @@ package uddug.com.naukoteka.ui.fragments.chat_flow.chats
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import com.bumptech.glide.request.RequestOptions
 import com.daimajia.swipe.SwipeLayout
@@ -13,6 +14,7 @@ import uddug.com.naukoteka.data.ChatSwipeTitleOption
 import uddug.com.naukoteka.databinding.ListItemChatBinding
 import uddug.com.naukoteka.global.base.BaseAdapter
 import uddug.com.naukoteka.global.base.BaseViewHolder
+import uddug.com.naukoteka.utils.getColorCompat
 import uddug.com.naukoteka.utils.ui.*
 
 data class ChatSwipeParams(
@@ -53,11 +55,22 @@ class ChatsAdapter(
                     tvCountMessage.isVisible = isThereUnreadMessage
                     tvCountMessage.text = unreadMessages.toString()
 
-                    ivPhoto.load(
-                        dialogImage?.fullPath,
-                        placeholder = R.drawable.ic_glide_image_error,
-                        requestOptions = RequestOptions.centerCropTransform()
-                    )
+                    if (dialogImage?.fullPath == null) {
+                        val drawable = TextDrawable.builder()
+                            .buildRound(
+                                text = dialogName.split(" ").map { it.first() }.joinToString(""),
+                                color = getContext().getColorCompat(R.color.object_main)
+                                )
+                        ivPhoto.setImageDrawable(drawable)
+                    } else {
+                        ivPhoto.load(
+                            dialogImage?.fullPath,
+                            placeholder = R.drawable.ic_glide_image_error,
+                            requestOptions = RequestOptions.centerCropTransform()
+                        )
+                    }
+                    viewTop.isInvisible = adapterPosition == 0
+                    clChat.setBackgroundColor(getContext().getColorCompat(if (item.isPinned) R.color.object_disabled else R.color.text_main))
                     clChat.setOnClickListener { onChatClick.invoke(item) }
                     clChat.setOnLongClickListener {
                         onChatLongClick.invoke(item, itemView)
@@ -65,6 +78,7 @@ class ChatsAdapter(
                     }
                     swipeLayout.addDrag(SwipeLayout.DragEdge.Right, clSwipeContentRight)
                     swipeLayout.addDrag(SwipeLayout.DragEdge.Left, clSwipeContentLeft)
+                    ivPin.isVisible = item.isPinned
                     clearButtonBgView.run {
                         setOnClickListener {
                             onSwipeClick(ChatSwipeParams(item, ChatSwipeTitleOption.CLEAR))
@@ -76,6 +90,11 @@ class ChatsAdapter(
                             onSwipeClick(ChatSwipeParams(item, ChatSwipeTitleOption.BLOCK))
                         }
                         isVisible = dialogType == DialogType.PERSONAL
+                    }
+                    anchorButtonBgView.run {
+                        setOnClickListener {
+                            onSwipeClick(ChatSwipeParams(item, ChatSwipeTitleOption.PIN_TOGGLE))
+                        }
                     }
                 }
             }

@@ -41,6 +41,8 @@ import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.outcoming.Outcomin
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.outcoming.OutcomingTextHolder
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.system_message.SystemMessageViewHolder
 import uddug.com.naukoteka.utils.BackButtonListener
+import uddug.com.naukoteka.utils.getColorCompat
+import uddug.com.naukoteka.utils.ui.TextDrawable
 import uddug.com.naukoteka.utils.ui.load
 import uddug.com.naukoteka.utils.ui.wasOnlineTenMinutesAgo
 import uddug.com.naukoteka.utils.viewBinding
@@ -104,7 +106,20 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
                     getString(R.string.recently)
                 }
             }
-            ivChatImage.load(chat?.dialogImage?.fullPath)
+            if (chat?.dialogImage?.fullPath == null) {
+                val drawable = TextDrawable.builder()
+                    .buildRound(
+                        text = chat?.dialogName!!.split(" ").map { it.first() }.joinToString(""),
+                        color = requireContext().getColorCompat(R.color.object_main)
+                    )
+                ivChatImage.setImageDrawable(drawable)
+            } else {
+                ivChatImage.load(
+                    chat?.dialogImage?.fullPath,
+                    placeholder = R.drawable.ic_glide_image_error,
+                    requestOptions = RequestOptions.centerCropTransform()
+                )
+            }
             input.setInputListener(this@ChatDetailFragment)
             input.setAttachmentsListener(this@ChatDetailFragment)
             ivMenu.setOnClickListener { showOptionsDialog() }

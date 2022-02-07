@@ -168,6 +168,8 @@
     <string name="count_participants_format">%d участника</string>
     <string name="recent">Недавно</string>
     <string name="clear_chat_with">Очистить чат с %s?</string>
+    <string name="pin_chat_with">Закрепить чат с %s?</string>
+    <string name="unpin_chat_with">Открепить чат с %s?</string>
     <string name="clear_chat">Очистить чат</string>
     <string name="block_chat_with">Заблокировать чат с %s?</string>
     <string name="block">Заблокировать</string>
