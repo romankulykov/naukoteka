@@ -9,9 +9,18 @@ import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.exceptions.CompositeException
+import moxy.MvpPresenter
+import moxy.MvpView
+import okhttp3.ResponseBody
+import retrofit2.HttpException
+import toothpick.Scope
+import toothpick.ktp.KTP
+import toothpick.ktp.delegate.inject
 import uddug.com.domain.entities.*
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.di.DI
+import uddug.com.naukoteka.global.LoaderType
+import uddug.com.naukoteka.global.ProgressLoading
 import uddug.com.naukoteka.global.views.InformativeView
 import uddug.com.naukoteka.global.views.LoadingView
 import uddug.com.naukoteka.ui.custom.square_toast.SquareToast
@@ -21,15 +30,6 @@ import uddug.com.naukoteka.utils.rx.OnComplete
 import uddug.com.naukoteka.utils.rx.OnError
 import uddug.com.naukoteka.utils.rx.OnSuccess
 import uddug.com.naukoteka.utils.rx.subscribe
-import moxy.MvpPresenter
-import moxy.MvpView
-import okhttp3.ResponseBody
-import retrofit2.HttpException
-import toothpick.Scope
-import toothpick.ktp.KTP
-import toothpick.ktp.delegate.inject
-import uddug.com.naukoteka.global.LoaderType
-import uddug.com.naukoteka.global.ProgressLoading
 import java.net.SocketTimeoutException
 
 abstract class BasePresenterImpl<V : MvpView> : MvpPresenter<V>() {
@@ -56,8 +56,12 @@ abstract class BasePresenterImpl<V : MvpView> : MvpPresenter<V>() {
         compositeDisposable.add(this)
     }
 
-    override fun onDestroy() {
+    fun disposeAll() {
         compositeDisposable.dispose()
+    }
+
+    override fun onDestroy() {
+        disposeAll()
     }
 
     protected fun onError(throwable: Throwable) {

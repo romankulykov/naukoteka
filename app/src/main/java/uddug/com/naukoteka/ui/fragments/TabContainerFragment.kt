@@ -34,7 +34,6 @@ class TabContainerFragment : BaseFragment(R.layout.fragment_tab_container), Rout
     }
 
     val ciceroneHolder: TabCiceroneHolder by inject()
-    val sessionInteractor: SessionInteractor by inject()
 
     val containerName: Screens.BottomNavigationTab
         get() = arguments!!.getSerializable(TAB_CONTAINER_NAME) as Screens.BottomNavigationTab
@@ -58,10 +57,6 @@ class TabContainerFragment : BaseFragment(R.layout.fragment_tab_container), Rout
             .openSubScope(containerName.tabName)
             .installModules(FlowNavigationModule(router))
         super.onCreate(savedInstanceState)
-        sessionInteractor.getSessionExpirationObservable()
-            .subscribe {
-                router.replaceScreen(Screens.Login())
-            }
     }
 
     override fun onDestroyView() {

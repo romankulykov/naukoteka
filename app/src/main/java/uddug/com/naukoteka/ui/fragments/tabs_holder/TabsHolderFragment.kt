@@ -8,6 +8,8 @@ import android.os.Looper
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import moxy.presenter.InjectPresenter
+import moxy.presenter.ProvidePresenter
 import toothpick.ktp.delegate.inject
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.FragmentTabsHolderBinding
@@ -16,6 +18,9 @@ import uddug.com.naukoteka.global.views.BottomNavigationView
 import uddug.com.naukoteka.navigation.AppRouter
 import uddug.com.naukoteka.navigation.INavigationHelper
 import uddug.com.naukoteka.navigation.Screens
+import uddug.com.naukoteka.presentation.chat_flow.links.LinksPresenter
+import uddug.com.naukoteka.presentation.tabs_holder.TabsHolderPresenter
+import uddug.com.naukoteka.presentation.tabs_holder.TabsHolderView
 import uddug.com.naukoteka.utils.ActivityResultListener
 import uddug.com.naukoteka.utils.BackButtonListener
 import uddug.com.naukoteka.utils.RouterProvider
@@ -24,7 +29,15 @@ import uddug.com.naukoteka.utils.viewBinding
 
 class TabsHolderFragment : BaseFragment(R.layout.fragment_tabs_holder), BottomNavigationView,
     RouterProvider,
-    BackButtonListener, ActivityResultListener {
+    BackButtonListener, ActivityResultListener, TabsHolderView {
+
+    @InjectPresenter
+    lateinit var presenter: TabsHolderPresenter
+
+    @ProvidePresenter
+    fun providePresenter(): TabsHolderPresenter {
+        return getScope().getInstance(TabsHolderPresenter::class.java)
+    }
 
     override val contentView by viewBinding(FragmentTabsHolderBinding::bind)
 
