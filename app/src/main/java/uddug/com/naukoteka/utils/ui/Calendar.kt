@@ -3,6 +3,7 @@ package uddug.com.naukoteka.utils.ui
 import android.annotation.SuppressLint
 import org.joda.time.DateTime
 import org.joda.time.Days
+import org.joda.time.Minutes
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -11,7 +12,8 @@ const val HOUR_MINUTE_FORMAT = "HH:mm"
 const val MONTH_DATE_YEAR_FORMAT = "dd.MM.y"
 
 fun Calendar?.wasOnlineTenMinutesAgo(): Boolean {
-    return true
+    return Minutes.minutesBetween(DateTime(Calendar.getInstance()), DateTime(this))
+        .isLessThan(Minutes.minutes(10))
 }
 
 @SuppressLint("SimpleDateFormat")

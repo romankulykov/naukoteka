@@ -3,6 +3,8 @@ package uddug.com.domain.interactors.users_search
 import io.reactivex.Single
 import toothpick.InjectConstructor
 import uddug.com.domain.SchedulersProvider
+import uddug.com.domain.entities.HttpException
+import uddug.com.domain.entities.ServerApiError
 import uddug.com.domain.repositories.Header
 import uddug.com.domain.repositories.Section
 import uddug.com.domain.repositories.users_search.UsersSearchRepository
@@ -14,8 +16,17 @@ class UsersSearchInteractor(
 ) {
 
     fun usersSearch(query: String): Single<List<Section>> {
-        return usersSearchRepository.searchUsers(query)
-            .map { it.sortByFirstLetter() }
+        return if (query.isEmpty()) {
+            Single.just(emptyList())
+        } else {
+            usersSearchRepository.searchUsers(query)
+                .onErrorReturn {
+                    if ((it as HttpException).statusCode == ServerApiError.NotFound) {
+                        emptyList()
+                    } else throw it
+                }
+                .map { it.sortByFirstLetter() }
+        }
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
     }

@@ -2,6 +2,8 @@ package uddug.com.naukoteka.ui.fragments.chat_flow.search_in_chapter
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
+import androidx.core.widget.doAfterTextChanged
 import com.google.android.material.tabs.TabLayoutMediator
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.FragmentSearchInChapterBinding
@@ -27,6 +29,10 @@ class SearchInChapterFragment : BaseFragment(R.layout.fragment_search_in_chapter
         contentView.run {
             viewPager.adapter = profileAdapter
             tvCancel.setOnClickListener { requireActivity().onBackPressed() }
+            etSearchChat.doAfterTextChanged {
+                ivClear.isVisible = it.toString().isNotEmpty()
+            }
+            ivClear.setOnClickListener { etSearchChat.setText("") }
             TabLayoutMediator(tabLayout, viewPager) { tab, position ->
                 tab.text = getString(titles[position])
             }.attach()

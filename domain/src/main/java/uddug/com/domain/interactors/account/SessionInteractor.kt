@@ -2,7 +2,7 @@ package uddug.com.domain.interactors.account
 
 import io.reactivex.Completable
 import io.reactivex.Observable
-import medved.studio.domain.repositories.session.SessionRepository
+import uddug.com.domain.repositories.session.SessionRepository
 import uddug.com.domain.SchedulersProvider
 import uddug.com.domain.broadcasting.session.SessionExpirationBus
 import javax.inject.Inject

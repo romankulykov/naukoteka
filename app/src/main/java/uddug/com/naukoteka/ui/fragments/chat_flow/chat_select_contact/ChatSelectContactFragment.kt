@@ -44,7 +44,9 @@ class ChatSelectContactFragment : BaseFragment(R.layout.fragment_select_contact)
             etSearchContact.doAfterTextChanged {
                 presenter.onQueryFilter(it.toString())
                 ivSearch.isVisible = etSearchContact.text.isEmpty()
+                ivClear.isVisible = etSearchContact.text.isNotEmpty()
             }
+            ivClear.setOnClickListener { etSearchContact.setText("") }
 
             rvSelectedContacts.adapter = chatSelectContactAdapter
             rvSelectedContactsTop.adapter = pickedChatSelectContactAdapter

@@ -47,20 +47,25 @@ open class ChatDetailPresenter(
     }
 
     fun getChat(chatPreview: ChatPreview) {
-        this.chatPreview = chatPreview
-        dialogsInteractor.getDialogMessages(chatPreview, pageLimit)
-            .await {
-                loadMore = it.size == pageLimit
-                viewState.showMessages(it)
-            }
+        if (this.chatPreview == null) {
+            this.chatPreview = chatPreview
+            dialogsInteractor.getDialogMessages(chatPreview, pageLimit)
+                .await {
+                    loadMore = it.size == pageLimit
+                    viewState.showMessages(it)
+                }
+        }
     }
 
     fun onChatOptionClick(chatOption: ChatOption) {
         when (chatOption) {
-            ChatOption.SEARCH_BY_CONVERSATION -> viewState.showDialogSearchByConversation()
-            ChatOption.INTERVIEW_MATERIALS -> viewState.showDialogInterviewMaterials()
+            ChatOption.SEARCH_BY_CONVERSATION -> router.navigateTo(Screens.SearchInChapterScreen())
+            ChatOption.INTERVIEW_MATERIALS -> router.navigateTo(Screens.SearchInChapterScreen())
             ChatOption.DISABLE_NOTIFICATIONS -> viewState.showDisableNotifications()
-            ChatOption.CLEAR_THE_HISTORY -> viewState.showClearTheHistory()
+            ChatOption.CLEAR_THE_HISTORY -> {
+                dialogsInteractor.deletePersonalDialog(chatPreview!!.dialogId)
+                    .await { router.exit() }
+            }
             ChatOption.ADD_PARTICIPANT -> viewState.showDialogAddParticipant()
         }
     }

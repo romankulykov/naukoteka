@@ -7,6 +7,7 @@ import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.ListItemSelectedContactsTopBinding
 import uddug.com.naukoteka.global.base.BaseAdapter
 import uddug.com.naukoteka.global.base.BaseViewHolder
+import uddug.com.naukoteka.utils.ui.load
 
 class PickedChatSelectContactAdapter(private val onContactClick: (UserChatPreview) -> Unit) :
     BaseAdapter<UserChatPreview, PickedChatSelectContactAdapter.ViewHolder>() {
@@ -28,7 +29,8 @@ class PickedChatSelectContactAdapter(private val onContactClick: (UserChatPrevie
         override fun updateView(item: UserChatPreview) {
             rootView.run {
                 item.run {
-                    tvNameContact.text = item.getName()
+                    ivContact.load(item.avatar)
+                    tvNameContact.text = item.name
                     itemView.setOnClickListener {
                         onContactClick.invoke(item)
                     }

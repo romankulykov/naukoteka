@@ -11,6 +11,7 @@ import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.ListItemSearchContactsBinding
 import uddug.com.naukoteka.global.base.BaseStickyAdapter
 import uddug.com.naukoteka.global.base.BaseViewHolder
+import uddug.com.naukoteka.utils.ui.load
 
 class ChatAddContactAdapter(private val userClick: (UserChatPreview) -> Unit) :
     BaseStickyAdapter<Section, BaseViewHolder<Section>>() {
@@ -28,6 +29,7 @@ class ChatAddContactAdapter(private val userClick: (UserChatPreview) -> Unit) :
             val binding = ListItemSearchContactsBinding.bind(itemView)
             binding.tvNameContact.text = item.getName()
             if (item is UserChatPreview) {
+                binding.ivContact.load(item.avatar)
                 binding.tvNickname.text = "@" + item.nickname
                 binding.root.setOnClickListener { userClick(item) }
             }

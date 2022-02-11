@@ -16,6 +16,7 @@ import uddug.com.naukoteka.global.base.BaseAdapter
 import uddug.com.naukoteka.global.base.BaseViewHolder
 import uddug.com.naukoteka.utils.getColorCompat
 import uddug.com.naukoteka.utils.ui.*
+import kotlin.random.Random
 
 data class ChatSwipeParams(
     val chatListEntity: ChatPreview,
@@ -50,6 +51,7 @@ class ChatsAdapter(
                     val isThereUnreadMessage = unreadMessages != null && unreadMessages!! > 0
                     tvCountMessage.isVisible = isThereUnreadMessage
                     tvCountMessage.text = unreadMessages.toString()
+                    ivOnlineIndicator.isVisible = Random.nextBoolean()
 
                     if (dialogImage?.fullPath == null) {
                         val drawable = TextDrawable.builder()

@@ -11,7 +11,6 @@ import java.util.*
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface ChatDetailView : MvpView, LoadingView, InformativeView {
 
-    fun showDialogSearchByConversation()
     fun showDialogInterviewMaterials()
     fun showDisableNotifications()
     fun showClearTheHistory()

@@ -79,6 +79,18 @@
             app:layout_constraintStart_toStartOf="@id/et_search_contact"
             app:layout_constraintTop_toTopOf="@id/et_search_contact" />
 
+        <ImageView
+            android:id="@+id/iv_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/et_search_contact"
+            app:layout_constraintTop_toTopOf="@+id/et_search_contact"
+            app:layout_constraintEnd_toEndOf="@+id/et_search_contact"
+            app:srcCompat="@drawable/ic_close_participant" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView

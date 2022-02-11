@@ -1,7 +1,7 @@
 package uddug.com.data.repositories.session
 
 import io.reactivex.Completable
-import medved.studio.domain.repositories.session.SessionRepository
+import uddug.com.domain.repositories.session.SessionRepository
 import toothpick.InjectConstructor
 import uddug.com.data.cache.CacheComposite
 import uddug.com.domain.utils.logging.ILogger

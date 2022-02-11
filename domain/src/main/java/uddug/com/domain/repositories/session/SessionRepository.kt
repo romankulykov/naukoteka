@@ -1,4 +1,4 @@
-package medved.studio.domain.repositories.session
+package uddug.com.domain.repositories.session
 
 import io.reactivex.Completable
 

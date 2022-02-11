@@ -37,7 +37,9 @@ class ChatAddContactFragment : BaseFragment(R.layout.fragment_chat_add_contact),
             etSearchContact.doAfterTextChanged {
                 presenter.onQueryFilter(it.toString())
                 ivSearch.isVisible = etSearchContact.text.isEmpty()
+                ivClear.isVisible = etSearchContact.text.isNotEmpty()
             }
+            ivClear.setOnClickListener { etSearchContact.setText("") }
 
             tvCreateGroup.setOnClickListener { presenter.toCreateGroup() }
             rvContacts.adapter = chatAddContactAdapter

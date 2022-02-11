@@ -26,6 +26,7 @@ import uddug.com.domain.repositories.dialogs.models.*
 import uddug.com.naukoteka.GlideApp
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.data.ChatClickMenu
+import uddug.com.naukoteka.data.ChatOption
 import uddug.com.naukoteka.data.ChatOptionsDialog
 import uddug.com.naukoteka.databinding.FragmentChatDetailBinding
 import uddug.com.naukoteka.global.base.BaseFragment
@@ -281,10 +282,6 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
         contentView.messagesList.setAdapter(messagesAdapter)
     }
 
-    override fun showDialogSearchByConversation() {
-
-    }
-
     override fun showDialogInterviewMaterials() {
 
     }
@@ -304,7 +301,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
     override fun showOptionsDialog() {
         ChatOptionsDialogType(
             requireActivity(), ChatOptionsDialog
-        ) { presenter::onChatOptionClick }.show()
+        ) { presenter.onChatOptionClick(it as ChatOption) }.show()
     }
 
     override fun showPhotoOrVideo() {

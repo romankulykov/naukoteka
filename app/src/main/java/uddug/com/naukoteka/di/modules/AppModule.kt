@@ -6,7 +6,7 @@ import android.content.SharedPreferences
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.google.gson.Gson
-import medved.studio.domain.repositories.session.SessionRepository
+import uddug.com.domain.repositories.session.SessionRepository
 import okhttp3.CookieJar
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

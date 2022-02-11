@@ -64,7 +64,7 @@ data class UserChatPreviewDto(
     @SerializedName("nickname")
     val nickname: String?,
     @SerializedName("status")
-    val status: Calendar?
+    val status: StatusDto?
 ) {
     val nicknameOrFullName get() = nickname ?: fullName
 
@@ -84,4 +84,11 @@ data class AttachmentChatPreviewDto(
     val filename: String?,
     @SerializedName("contentType")
     val contentType: String?
+)
+
+data class StatusDto(
+    @SerializedName("isOnline")
+    val isOnline: Boolean,
+    @SerializedName("lastSeen")
+    val lastSeen: Calendar
 )

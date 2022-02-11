@@ -11,6 +11,7 @@ import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.ListItemSelectedContactsBinding
 import uddug.com.naukoteka.global.base.BaseStickyAdapter
 import uddug.com.naukoteka.global.base.BaseViewHolder
+import uddug.com.naukoteka.utils.ui.load
 
 class ChatSelectContactAdapter(
     private val onContactClick: (UserChatPreview) -> Unit
@@ -38,6 +39,7 @@ class ChatSelectContactAdapter(
         override fun updateView(item: Section) {
             if (item is UserChatPreview) {
                 binding.run {
+                    ivContact.load(item.avatar)
                     tvNameContact.text = item.getName()
                     tvNickname.text = "@" + item.nickname
                     cbSelectContact.isChecked =
