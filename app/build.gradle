@@ -123,6 +123,8 @@ dependencies {
     implementation presentation.moxyKtx
     kapt presentation.moxyCompiler
 
+    implementation presentation.jodaTime
+
     implementation presentation.inject
     implementation presentation.toothpick
     implementation presentation.toothpickX

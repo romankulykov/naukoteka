@@ -45,11 +45,7 @@ class ChatsAdapter(
                     val lastMessageExist = lastMessage?.createdAt != null
                     tvTime.isVisible = lastMessageExist
                     lastMessage?.createdAt?.let { lastMessageDate ->
-                        tvTime.text = if (lastMessageDate.isTodayDate()) {
-                            lastMessageDate.hourMinuteFormat()
-                        } else {
-                            lastMessageDate.monthDateYearFormat()
-                        }
+                        tvTime.text = lastMessageDate.getDateFormatChatList()
                     }
                     val isThereUnreadMessage = unreadMessages != null && unreadMessages!! > 0
                     tvCountMessage.isVisible = isThereUnreadMessage
