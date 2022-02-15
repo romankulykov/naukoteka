@@ -22,9 +22,8 @@ class FilesRepositoryImpl(
             builder.addFormDataPart(
                 "files",
                 file.name,
-                RequestBody.create(MediaType.parse("multipart/form-data"), file.readBytes())
+                RequestBody.create(MediaType.parse("image/jpeg"), file.readBytes())
             )
-            
         }
         return filesApiService.sendFiles(builder.build().parts())
             .map { it.map { filesRepositoryMapper.mapFilesToDomain(it) } }
