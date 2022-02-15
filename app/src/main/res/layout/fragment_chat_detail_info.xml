@@ -17,9 +17,9 @@
         <ImageView
             android:id="@+id/bg_semicircle"
             android:layout_width="0dp"
-            android:scaleX="1.2"
             android:layout_height="wrap_content"
             android:alpha="0.9"
+            android:scaleX="1.2"
             android:src="@drawable/bg_semicircle_profile"
             android:translationY="-236dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -71,18 +71,7 @@
             app:layout_constraintEnd_toEndOf="@id/bg_semicircle"
             app:layout_constraintStart_toStartOf="@id/bg_semicircle"
             app:layout_constraintTop_toBottomOf="@id/cl_back"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-            app:srcCompat="@drawable/bg_rounded_corners_6dp_count_message" />
-
-        <ImageView
-            android:id="@+id/iv_placeholder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_fi_camera"
-            app:layout_constraintBottom_toBottomOf="@id/iv_photo"
-            app:layout_constraintEnd_toEndOf="@id/iv_photo"
-            app:layout_constraintStart_toStartOf="@id/iv_photo"
-            app:layout_constraintTop_toTopOf="@id/iv_photo" />
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
 
         <TextView
             android:id="@+id/tv_name_contact"

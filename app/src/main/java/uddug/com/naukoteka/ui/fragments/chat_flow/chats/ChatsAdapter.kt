@@ -54,9 +54,10 @@ class ChatsAdapter(
                     ivOnlineIndicator.isVisible = Random.nextBoolean()
 
                     if (dialogImage?.fullPath == null) {
+                        val previewTextImage = dialogName.split(" ").filter { it.isNotBlank() }
                         val drawable = TextDrawable.builder()
                             .buildRound(
-                                text = dialogName.split(" ").map { it.first() }.joinToString(""),
+                                text = previewTextImage.map { it.first() }.joinToString(""),
                                 color = getContext().getColorCompat(R.color.object_main)
                                 )
                         ivPhoto.setImageDrawable(drawable)

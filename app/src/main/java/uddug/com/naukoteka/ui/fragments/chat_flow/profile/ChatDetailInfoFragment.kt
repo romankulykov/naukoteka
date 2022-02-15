@@ -67,9 +67,10 @@ class ChatDetailInfoFragment : BaseFragment(R.layout.fragment_chat_detail_info),
             }.attach()
 
             if (chatPreview.dialogImage?.fullPath == null) {
+                val previewTextImage = chatPreview.dialogName.split(" ").filter { it.isNotBlank() }
                 val drawable = TextDrawable.builder()
                     .buildRound(
-                        text = chatPreview.dialogName.split(" ").map { it.first() }.joinToString(""),
+                        text = previewTextImage.map { it.first() }.joinToString(""),
                         color = requireContext().getColorCompat(R.color.object_main)
                     )
                 ivPhoto.setImageDrawable(drawable)
