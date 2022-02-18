@@ -15,8 +15,9 @@ import uddug.com.naukoteka.databinding.ListItemChatBinding
 import uddug.com.naukoteka.global.base.BaseAdapter
 import uddug.com.naukoteka.global.base.BaseViewHolder
 import uddug.com.naukoteka.utils.getColorCompat
-import uddug.com.naukoteka.utils.ui.*
-import kotlin.random.Random
+import uddug.com.naukoteka.utils.ui.TextDrawable
+import uddug.com.naukoteka.utils.ui.getDateFormatChatList
+import uddug.com.naukoteka.utils.ui.load
 
 data class ChatSwipeParams(
     val chatListEntity: ChatPreview,
@@ -32,6 +33,13 @@ class ChatsAdapter(
 
     override fun newViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(R.layout.list_item_chat, parent)
+
+    private var onlineUsersUUIDs = arrayListOf<String>()
+
+    fun updateStatuses(onlineUsers: List<String>) {
+        onlineUsersUUIDs.addAll(onlineUsers)
+        notifyDataSetChanged()
+    }
 
     inner class ViewHolder(@LayoutRes layoutRes: Int, parent: ViewGroup) :
         BaseViewHolder<ChatPreview>(layoutRes, parent) {
@@ -51,7 +59,8 @@ class ChatsAdapter(
                     val isThereUnreadMessage = unreadMessages != null && unreadMessages!! > 0
                     tvCountMessage.isVisible = isThereUnreadMessage
                     tvCountMessage.text = unreadMessages.toString()
-                    ivOnlineIndicator.isVisible = Random.nextBoolean()
+                    ivOnlineIndicator.isVisible =
+                        onlineUsersUUIDs?.contains(item.interlocutor?.userId) == true
 
                     if (dialogImage?.fullPath == null) {
                         val previewTextImage = dialogName.split(" ").filter { it.isNotBlank() }
@@ -59,7 +68,7 @@ class ChatsAdapter(
                             .buildRound(
                                 text = previewTextImage.map { it.first() }.joinToString(""),
                                 color = getContext().getColorCompat(R.color.object_main)
-                                )
+                            )
                         ivPhoto.setImageDrawable(drawable)
                     } else {
                         ivPhoto.load(

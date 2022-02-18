@@ -17,5 +17,5 @@ data class SocketFileRequestDto(
     @SerializedName("id")
     val id: String,
     @SerializedName("fileType")
-    val fileType: String?
+    val fileType: Int?
 )

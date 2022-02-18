@@ -1,8 +1,12 @@
 package uddug.com.naukoteka.ui.dialogs.chat_option
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.provider.MediaStore.Files.FileColumns.*
 import androidx.fragment.app.FragmentActivity
-import uddug.com.domain.entities.AttachmentPhotoEntity
+import toothpick.ktp.delegate.inject
+import uddug.com.domain.entities.AndroidFileEntity
+import uddug.com.domain.interactors.internal.AndroidFilesInteractor
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.data.ChatAttachmentOption
 import uddug.com.naukoteka.databinding.AttachmentFileDialogBinding
@@ -13,19 +17,21 @@ import uddug.com.naukoteka.ui.adapters.attachment_options.AttachmentPhotoAdapter
 class AttachmentOptionsDialog(
     private val fragmentActivity: FragmentActivity,
     private val chatAttachmentOptionListener: (ChatAttachmentOption) -> Unit,
-    private val chatAttachmentPhotoListener: (AttachmentPhotoEntity) -> Unit
+    private val chatAttachmentPhotoListener: (AndroidFileEntity) -> Unit
 ) :
     BaseBottomSheetDialog(fragmentActivity) {
 
     override val layoutRes: Int = R.layout.attachment_file_dialog
     override val contentView by lazy { AttachmentFileDialogBinding.inflate(layoutInflater) }
+    private val fileSource: AndroidFilesInteractor by inject()
 
     init {
+        getScope()
+            .inject(this)
         setContentView(contentView.root)
     }
 
     private lateinit var options: ArrayList<ChatAttachmentOption>
-    private lateinit var photos: ArrayList<AttachmentPhotoEntity>
 
     private val chatAttachmentOptionsAdapter by lazy {
         AttachmentOptionsAdapter {
@@ -34,13 +40,14 @@ class AttachmentOptionsDialog(
         }
     }
 
-    private val photoAttachmentAdapter by lazy {
+    val photoAttachmentAdapter by lazy {
         AttachmentPhotoAdapter {
             dismiss()
             chatAttachmentPhotoListener(it)
         }
     }
 
+    @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         options = ArrayList()
@@ -50,22 +57,18 @@ class AttachmentOptionsDialog(
             add(ChatAttachmentOption.CONTACT)
             add(ChatAttachmentOption.INTERROGATION)
         }
-        photos = ArrayList()
-        photos.run {
-            add(AttachmentPhotoEntity(R.drawable.ic_logo))
-            add(AttachmentPhotoEntity(R.drawable.ic_logo))
-            add(AttachmentPhotoEntity(R.drawable.ic_logo))
-            add(AttachmentPhotoEntity(R.drawable.ic_logo))
-            add(AttachmentPhotoEntity(R.drawable.ic_logo))
-            add(AttachmentPhotoEntity(R.drawable.ic_logo))
-            add(AttachmentPhotoEntity(R.drawable.ic_logo))
-        }
         contentView.run {
             rvAttachmentOptions.adapter = chatAttachmentOptionsAdapter
             chatAttachmentOptionsAdapter.setItems(options)
             btnCancel.setOnClickListener { dismiss() }
             rvPhotos.adapter = photoAttachmentAdapter
-            photoAttachmentAdapter.setItems(photos)
         }
+        fileSource.allFile("$MEDIA_TYPE=$MEDIA_TYPE_IMAGE OR $MEDIA_TYPE=$MEDIA_TYPE_VIDEO")
+            .subscribe(this::showPhotos) { }
     }
+
+    fun showPhotos(files: List<AndroidFileEntity>) {
+        photoAttachmentAdapter.setItems(files)
+    }
+
 }

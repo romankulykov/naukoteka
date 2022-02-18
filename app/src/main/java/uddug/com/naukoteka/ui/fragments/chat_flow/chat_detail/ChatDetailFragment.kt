@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.PopupWindow
-import androidx.core.net.toFile
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -17,12 +16,14 @@ import com.stfalcon.chatkit.messages.MessageHolders
 import com.stfalcon.chatkit.messages.MessageInput.AttachmentsListener
 import com.stfalcon.chatkit.messages.MessageInput.InputListener
 import com.stfalcon.chatkit.messages.MessagesListAdapter
-import gun0912.tedbottompicker.TedBottomPicker
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import toothpick.ktp.delegate.inject
 import uddug.com.data.cache.user_uuid.UserUUIDCache
-import uddug.com.domain.repositories.dialogs.models.*
+import uddug.com.domain.repositories.dialogs.models.ChatMessage
+import uddug.com.domain.repositories.dialogs.models.ChatPreview
+import uddug.com.domain.repositories.dialogs.models.DialogType
+import uddug.com.domain.repositories.dialogs.models.MessageType
 import uddug.com.naukoteka.GlideApp
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.data.ChatClickMenu
@@ -48,7 +49,7 @@ import uddug.com.naukoteka.utils.ui.load
 import uddug.com.naukoteka.utils.ui.wasOnlineTenMinutesAgo
 import uddug.com.naukoteka.utils.viewBinding
 import uddug.com.naukoteka.utils.withPermissions
-import java.util.*
+import java.io.File
 
 class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
     ChatDetailView, BackButtonListener,
@@ -81,6 +82,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
     var imageLoader: ImageLoader? = null
 
     private var holderPayload: Payload? = null
+    private var attachmentOptionsDialog: AttachmentOptionsDialog? = null
 
     override val contentView by viewBinding(FragmentChatDetailBinding::bind)
 
@@ -157,12 +159,36 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
     }
 
     override fun onSubmit(input: CharSequence): Boolean {
+        val files = attachmentOptionsDialog?.photoAttachmentAdapter?.selectedOptions ?: emptyList()
+        files.forEach { presenter.addFile(File(it.path)) }
+        attachmentOptionsDialog = null
         presenter.sendMessage(input.toString())
         return true
     }
 
     override fun onAddAttachments() {
-        showAttachmentOptionDialog()
+        context?.withPermissions(
+            Manifest.permission.CAMERA,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        ) {
+            if (attachmentOptionsDialog == null) {
+                attachmentOptionsDialog = AttachmentOptionsDialog(
+                    requireActivity(), presenter::onChatAttachmentOptionClick
+                ) {
+
+                    presenter::onPhotoAttachmentClick
+                }
+            }
+            attachmentOptionsDialog?.show()
+        }
+        /*context?.withPermissions(
+            Manifest.permission.CAMERA,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        ) {
+            TedBottomPicker.with(activity).show {
+                presenter.addFile(it.toFile())
+            }
+        }*/
     }
 
     override fun onLoadMore(page: Int, totalItemsCount: Int) {
@@ -320,22 +346,4 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
     override fun showInterrogation() {
 
     }
-
-    override fun showAttachmentOptionDialog() {
-        /*AttachmentOptionsDialog(
-            requireActivity(), presenter::onChatAttachmentOptionClick
-        ) {
-
-            presenter::onPhotoAttachmentClick
-        }.show()*/
-        context?.withPermissions(
-            Manifest.permission.CAMERA,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-        ) {
-            TedBottomPicker.with(activity).show {
-                presenter.addFile(it.toFile())
-            }
-        }
-    }
-
 }

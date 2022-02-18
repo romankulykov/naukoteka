@@ -3,6 +3,7 @@ package uddug.com.naukoteka.presentation.chat_flow.chats
 import moxy.InjectViewState
 import toothpick.InjectConstructor
 import uddug.com.domain.interactors.dialogs.DialogsInteractor
+import uddug.com.domain.interactors.users_search.UsersSearchInteractor
 import uddug.com.domain.repositories.dialogs.models.ChatPreview
 import uddug.com.naukoteka.global.SwipeRefreshLoading
 import uddug.com.naukoteka.global.base.BasePresenterImpl
@@ -13,6 +14,7 @@ import uddug.com.naukoteka.navigation.Screens
 @InjectViewState
 class ChatsPresenter(
     private val dialogsInteractor: DialogsInteractor,
+    private val usersSearchInteractor: UsersSearchInteractor,
     val router: AppRouter
 ) : BasePresenterImpl<ChatsView>() {
 
@@ -38,8 +40,14 @@ class ChatsPresenter(
                 loaderType = SwipeRefreshLoading
             ) {
                 loadMore = it.dialogs.size == pageLimit
+                loadUsersStatuses(it.dialogs)
                 viewState.showChats(it, lastDialogId == null, loadMore)
             }
+    }
+
+    fun loadUsersStatuses(dialogs: List<ChatPreview>) {
+        usersSearchInteractor.getUsersChatStatuses(dialogs)
+            .await(withProgress = false) { viewState.updateOnlineStatus(it) }
     }
 
     fun onChatClick(chat: ChatPreview) {

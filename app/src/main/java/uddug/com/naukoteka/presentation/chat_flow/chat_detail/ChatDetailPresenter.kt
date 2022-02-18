@@ -2,7 +2,7 @@ package uddug.com.naukoteka.presentation.chat_flow.chat_detail
 
 import moxy.InjectViewState
 import toothpick.InjectConstructor
-import uddug.com.domain.entities.AttachmentPhotoEntity
+import uddug.com.domain.entities.AndroidFileEntity
 import uddug.com.domain.interactors.dialogs.DialogsInteractor
 import uddug.com.domain.repositories.dialogs.models.ChatMessage
 import uddug.com.domain.repositories.dialogs.models.ChatPreview
@@ -79,7 +79,7 @@ open class ChatDetailPresenter(
         }
     }
 
-    fun onPhotoAttachmentClick(attachmentPhotoEntity: AttachmentPhotoEntity) {
+    fun onPhotoAttachmentClick(attachmentPhotoEntity: AndroidFileEntity) {
 
     }
 

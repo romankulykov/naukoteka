@@ -21,7 +21,7 @@ class DialogsRepositoryMapper {
             dialogId = dialogId,
             dialogName = fillChatName(this, dialogType),
             dialogType = dialogType,
-            isPinned = isPinned == 1,
+            isPinned = (isPinned as? Boolean)?.run { this } ?: (isPinned as? Int?)?.run { this == 1 } ?: (isPinned as? Double?)?.run { this == 1.0 } == true,
             messageId = messageId,
             firstMessageId = firstMessageId,
             dialogImage = mapAttachmentToDomain(dialogImage ?: interlocutor?.image),

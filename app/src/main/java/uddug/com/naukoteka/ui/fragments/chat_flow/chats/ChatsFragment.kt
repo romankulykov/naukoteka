@@ -12,6 +12,7 @@ import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import uddug.com.domain.repositories.dialogs.models.ChatPreview
 import uddug.com.domain.repositories.dialogs.models.ChatsPreview
+import uddug.com.domain.repositories.users_search.models.UserStatus
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.data.ChatSwipeTitleOption
 import uddug.com.naukoteka.data.ChatTitleActionDialog
@@ -85,6 +86,10 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
 
     override fun updateAfterTogglePin(dialog: ChatPreview) {
         chatsAdapter.updateItem(dialog)
+    }
+
+    override fun updateOnlineStatus(onlineUsers: List<String>) {
+        chatsAdapter.updateStatuses(onlineUsers)
     }
 
     private fun showSwipeClick(chatSwipeParams: ChatSwipeParams) {

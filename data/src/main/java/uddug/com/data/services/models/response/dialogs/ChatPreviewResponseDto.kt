@@ -22,7 +22,7 @@ data class ChatPreviewDto(
     @SerializedName("messageId")
     val messageId: Int?,
     @SerializedName("isPinned")
-    val isPinned: Int?,
+    val isPinned: Any?,
     @SerializedName("firstMessageId")
     val firstMessageId: Int?,
     @SerializedName("dialogImage")
@@ -90,5 +90,5 @@ data class StatusDto(
     @SerializedName("isOnline")
     val isOnline: Boolean,
     @SerializedName("lastSeen")
-    val lastSeen: Calendar
+    val lastSeen: Calendar?
 )

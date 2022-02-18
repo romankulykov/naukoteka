@@ -15,6 +15,7 @@ import org.json.JSONObject
 import toothpick.InjectConstructor
 import uddug.com.data.cache.token.UserTokenCache
 import uddug.com.data.utils.fromJson
+import uddug.com.domain.repositories.websockets.models.SocketReadMessageResponseDto
 import uddug.com.domain.utils.logging.ILogger
 
 @InjectConstructor
@@ -45,7 +46,12 @@ class WebSocketDelegate(
             }
             .filter { json ->
                 try {
-                    gson.fromJson(json, type) != null
+                    val readType = gson.fromJson(json, SocketReadMessageResponseDto::class.java)
+                    if (readType.action != null) {
+                        false
+                    } else {
+                        gson.fromJson(json, type) != null
+                    }
                 } catch (e: Throwable) {
                     false
                 }

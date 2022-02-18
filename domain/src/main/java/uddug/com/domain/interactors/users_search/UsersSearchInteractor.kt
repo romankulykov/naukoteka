@@ -7,7 +7,10 @@ import uddug.com.domain.entities.HttpException
 import uddug.com.domain.entities.ServerApiError
 import uddug.com.domain.repositories.Header
 import uddug.com.domain.repositories.Section
+import uddug.com.domain.repositories.dialogs.models.ChatPreview
+import uddug.com.domain.repositories.dialogs.models.DialogType
 import uddug.com.domain.repositories.users_search.UsersSearchRepository
+import uddug.com.domain.repositories.users_search.models.UserStatus
 
 @InjectConstructor
 class UsersSearchInteractor(
@@ -27,6 +30,21 @@ class UsersSearchInteractor(
                 }
                 .map { it.sortByFirstLetter() }
         }
+            .subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
+    }
+
+    fun getUsersChatStatuses(chats: List<ChatPreview>): Single<List<String>> {
+        val usersToFind =
+            chats.filter { it.dialogType == DialogType.PERSONAL && it.interlocutor != null }
+                .map { it.interlocutor!!.userId }.distinct()
+
+        return getUsersStatus(usersToFind)
+            .map { it.filter { it.status.isOnline }.map { it.userId } }
+    }
+
+    fun getUsersStatus(usersUUIDs: List<String>): Single<List<UserStatus>> {
+        return usersSearchRepository.usersStatus(usersUUIDs)
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
     }

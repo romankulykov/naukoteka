@@ -6,14 +6,11 @@ import io.reactivex.Single
 import toothpick.InjectConstructor
 import uddug.com.domain.SchedulersProvider
 import uddug.com.domain.repositories.dialogs.DialogsRepository
-import uddug.com.domain.repositories.dialogs.models.ChatMessage
-import uddug.com.domain.repositories.dialogs.models.ChatPreview
-import uddug.com.domain.repositories.dialogs.models.ChatsPreview
-import uddug.com.domain.repositories.dialogs.models.MessageType
+import uddug.com.domain.repositories.dialogs.models.*
 import uddug.com.domain.repositories.files.FilesRepository
 import uddug.com.domain.repositories.websockets.WebSocketRepository
+import uddug.com.domain.repositories.websockets.models.SocketChatMessageResponseDto
 import uddug.com.domain.repositories.websockets.models.SocketFileRequestDto
-import uddug.com.domain.repositories.websockets.models.SocketMessageResponseDto
 import uddug.com.domain.repositories.websockets.models.SocketPushMessageRequestDto
 import java.io.File
 import java.util.*
@@ -90,7 +87,7 @@ class DialogsInteractor(
 
     // TODO pass chatPreview here, earlier we should inject it in presenter as module
     fun observe(): Flowable<ChatMessage> {
-        return webSocketRepository.observe(SocketMessageResponseDto::class.java, "")
+        return webSocketRepository.observe(SocketChatMessageResponseDto::class.java, "")
             .map {
                 it.run {
                     val user = messages.find { it.user?.userId == owner }?.user
@@ -98,14 +95,24 @@ class DialogsInteractor(
                         ?: chatPreview?.interlocutor
 
                     val message = ChatMessage(
-                        id,
-                        text,
-                        MessageType.values().find { it.type == cType } ?: MessageType.TEXT,
-                        emptyList(),
-                        owner,
-                        Calendar.getInstance(),
-                        emptyList(),
-                        user
+                        id = id,
+                        text = text,
+                        type = MessageType.values().find { it.type == cType } ?: MessageType.TEXT,
+                        files = files?.map {
+                            it.run {
+                                AttachmentChatPreview(
+                                    id = id,
+                                    path = path,
+                                    fileType = filetype,
+                                    filename = filename,
+                                    contentType = ContentType.values()
+                                        .find { it.type == contenttype })
+                            }
+                        } ?: emptyList(),
+                        ownerId = owner,
+                        createdAt = Calendar.getInstance(),
+                        read = emptyList(),
+                        user = user
                     )
                     messages.add(message)
                     message
@@ -126,12 +133,13 @@ class DialogsInteractor(
                 .subscribeOn(schedulers.io())
                 .observeOn(schedulers.ui())
                 .flatMapCompletable {
+                    val fileType = 100
                     webSocketRepository.emit(
                         SocketPushMessageRequestDto(
                             dialog = chatPreview.dialogId,
                             cType = 1,
                             text = text,
-                            files = it.map { SocketFileRequestDto(it.id, it.fileType) })
+                            files = it.map { SocketFileRequestDto(it.id, fileType) })
                     )
                 }
         }
