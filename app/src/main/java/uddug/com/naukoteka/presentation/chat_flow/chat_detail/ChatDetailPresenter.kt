@@ -19,6 +19,7 @@ import java.io.File
 open class ChatDetailPresenter(
     val router: AppRouter,
     private val dialogsInteractor: DialogsInteractor,
+    private val chatPreview: ChatPreview,
     private val logger: ILogger
 ) :
     BasePresenterImpl<ChatDetailView>() {
@@ -27,13 +28,14 @@ open class ChatDetailPresenter(
     private var loadMore = false
     private var files = arrayListOf<File>()
 
-    var chatPreview: ChatPreview? = null
-
     var isMessagesSelected = false
     var selectedMessages = hashSetOf<ChatMessage>()
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
+        viewState.initChatAdapter()
+        viewState.initChat(chatPreview)
+        getChat(chatPreview)
         dialogsInteractor.openSocket()
             .await {
 
@@ -47,35 +49,32 @@ open class ChatDetailPresenter(
     }
 
     fun getChat(chatPreview: ChatPreview) {
-        if (this.chatPreview == null) {
-            this.chatPreview = chatPreview
-            dialogsInteractor.getDialogMessages(chatPreview, pageLimit)
-                .await {
-                    loadMore = it.size == pageLimit
-                    viewState.showMessages(it)
-                }
-        }
+        dialogsInteractor.getDialogMessages(chatPreview, pageLimit)
+            .await {
+                loadMore = it.size == pageLimit
+                viewState.showMessages(it)
+            }
     }
 
     fun onChatOptionClick(chatOption: ChatOption) {
         when (chatOption) {
             ChatOption.SEARCH_BY_CONVERSATION -> router.navigateTo(Screens.SearchInChapterScreen())
             ChatOption.INTERVIEW_MATERIALS -> router.navigateTo(Screens.SearchInChapterScreen())
-            ChatOption.DISABLE_NOTIFICATIONS -> viewState.showDisableNotifications()
+            ChatOption.DISABLE_NOTIFICATIONS -> { }
             ChatOption.CLEAR_THE_HISTORY -> {
                 dialogsInteractor.deletePersonalDialog(chatPreview!!.dialogId)
                     .await { router.exit() }
             }
-            ChatOption.ADD_PARTICIPANT -> viewState.showDialogAddParticipant()
+            ChatOption.ADD_PARTICIPANT -> {}
         }
     }
 
     fun onChatAttachmentOptionClick(chatAttachmentOption: ChatAttachmentOption) {
         when (chatAttachmentOption) {
-            ChatAttachmentOption.PHOTO_OR_VIDEO -> viewState.showPhotoOrVideo()
-            ChatAttachmentOption.FILE -> viewState.showFile()
-            ChatAttachmentOption.CONTACT -> viewState.showContact()
-            ChatAttachmentOption.INTERROGATION -> viewState.showInterrogation()
+            /*ChatAttachmentOption.PHOTO_OR_VIDEO -> viewState.showPhotoOrVideo()*/
+            /*ChatAttachmentOption.FILE -> viewState.showFile()*/
+            /*ChatAttachmentOption.CONTACT -> viewState.showContact()*/
+            /*ChatAttachmentOption.INTERROGATION -> viewState.showInterrogation()*/
         }
     }
 
@@ -84,9 +83,7 @@ open class ChatDetailPresenter(
     }
 
     fun onHeaderClick() {
-        if (chatPreview != null) {
-            router.navigateTo(Screens.ChatInfoScreen(chatPreview!!))
-        }
+        router.navigateTo(Screens.ChatInfoScreen(chatPreview))
     }
 
     fun onMessageLongClick(message: ChatMessage) {
@@ -128,7 +125,7 @@ open class ChatDetailPresenter(
     }
 
     fun sendMessage(text: String) {
-        dialogsInteractor.pushTextMessage(chatPreview!!, text, files)
+        dialogsInteractor.pushTextMessage(chatPreview, text, files)
             .await {
                 files.clear()
             }
@@ -136,8 +133,7 @@ open class ChatDetailPresenter(
 
     fun loadMore(page: Int) {
         if (loadMore /*&& page != dialogsInteractor.messages.size*/) {
-            viewState.showLoading(true)
-            getChat(chatPreview!!)
+            getChat(chatPreview)
         }
     }
 

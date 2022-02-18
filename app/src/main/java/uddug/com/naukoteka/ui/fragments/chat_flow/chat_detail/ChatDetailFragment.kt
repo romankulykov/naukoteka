@@ -1,7 +1,7 @@
 package uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail
 
 import android.Manifest
-import android.os.Bundle
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
@@ -18,6 +18,7 @@ import com.stfalcon.chatkit.messages.MessageInput.InputListener
 import com.stfalcon.chatkit.messages.MessagesListAdapter
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
+import toothpick.Toothpick
 import toothpick.ktp.delegate.inject
 import uddug.com.data.cache.user_uuid.UserUUIDCache
 import uddug.com.domain.repositories.dialogs.models.ChatMessage
@@ -30,6 +31,8 @@ import uddug.com.naukoteka.data.ChatClickMenu
 import uddug.com.naukoteka.data.ChatOption
 import uddug.com.naukoteka.data.ChatOptionsDialog
 import uddug.com.naukoteka.databinding.FragmentChatDetailBinding
+import uddug.com.naukoteka.di.DI
+import uddug.com.naukoteka.di.modules.ChatDetailModule
 import uddug.com.naukoteka.global.base.BaseFragment
 import uddug.com.naukoteka.presentation.chat_flow.chat_detail.ChatDetailPresenter
 import uddug.com.naukoteka.presentation.chat_flow.chat_detail.ChatDetailView
@@ -73,7 +76,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
 
     private val userUUID: UserUUIDCache by inject()
 
-    private val chat get() = arguments?.getParcelable<ChatPreview>(CHAT_PREVIEW)
+    private val chat get() = arguments?.getParcelable<ChatPreview>(CHAT_PREVIEW)!!
 
     var messagesAdapter: MessagesListAdapter<ChatMessage>? = null
 
@@ -83,6 +86,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
 
     private var holderPayload: Payload? = null
     private var attachmentOptionsDialog: AttachmentOptionsDialog? = null
+    private var messageChatsParcelable: Parcelable? = null
 
     override val contentView by viewBinding(FragmentChatDetailBinding::bind)
 
@@ -91,26 +95,26 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
 
     @ProvidePresenter
     fun providePresenter(): ChatDetailPresenter {
-        return getScope().getInstance(ChatDetailPresenter::class.java)
+        val scope = getScope().openSubScope(DI.CHAT_DETAIL_SCOPE)
+        scope.installModules(ChatDetailModule(chat))
+        return scope.getInstance(ChatDetailPresenter::class.java)
+            .also { Toothpick.closeScope(DI.CHAT_DETAIL_SCOPE) }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        presenter.getChat(chat!!)
-
+    override fun initChat(chat: ChatPreview) {
         contentView.run {
-            tvChat.text = chat?.dialogName
-            tvCountPeopleOrStatus.text = if (chat?.dialogType == DialogType.GROUP) {
-                getString(R.string.participants_count_format, chat?.users?.size.toString())
+            tvChat.text = chat.dialogName
+            tvCountPeopleOrStatus.text = if (chat.dialogType == DialogType.GROUP) {
+                getString(R.string.participants_count_format, chat.users?.size.toString())
             } else {
-                if (chat?.interlocutor?.lastOnline.wasOnlineTenMinutesAgo()) {
+                if (chat.interlocutor?.lastOnline.wasOnlineTenMinutesAgo()) {
                     getString(R.string.online)
                 } else {
                     getString(R.string.recently)
                 }
             }
-            if (chat?.dialogImage?.fullPath == null) {
-                val previewTextImage = chat?.dialogName!!.split(" ").filter { it.isNotBlank() }
+            if (chat.dialogImage?.fullPath == null) {
+                val previewTextImage = chat.dialogName!!.split(" ").filter { it.isNotBlank() }
                 val drawable = TextDrawable.builder()
                     .buildRound(
                         text = previewTextImage.map { it.first() }.joinToString(""),
@@ -119,7 +123,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
                 ivChatImage.setImageDrawable(drawable)
             } else {
                 ivChatImage.load(
-                    chat?.dialogImage?.fullPath,
+                    chat.dialogImage?.fullPath,
                     placeholder = R.drawable.ic_glide_image_error,
                     requestOptions = RequestOptions.centerCropTransform()
                 )
@@ -134,16 +138,14 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
             ivCopy.setOnClickListener { showMessage(ToastInfo("Your custom click handler")) }
             ivLoad.setOnClickListener { showMessage(ToastInfo("Your custom click handler")) }
             ivForward.setOnClickListener { showMessage(ToastInfo("Your custom click handler")) }
+            messagesList.setAdapter(messagesAdapter)
+            messagesList.layoutManager?.onRestoreInstanceState(messageChatsParcelable)
+        }
+    }
 
-        }
-        initAdapter()
-        imageLoader = ImageLoader { imageView: ImageView?, url: String?, payload: Any? ->
-            if (imageView != null) {
-                GlideApp.with(this)
-                    .load(url)
-                    .placeholder(R.drawable.ic_glide_image_error).into(imageView)
-            }
-        }
+    override fun onPause() {
+        super.onPause()
+        messageChatsParcelable = contentView.messagesList.layoutManager?.onSaveInstanceState()
     }
 
     override fun hasContentFor(message: ChatMessage?, type: Byte): Boolean {
@@ -181,14 +183,6 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
             }
             attachmentOptionsDialog?.show()
         }
-        /*context?.withPermissions(
-            Manifest.permission.CAMERA,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-        ) {
-            TedBottomPicker.with(activity).show {
-                presenter.addFile(it.toFile())
-            }
-        }*/
     }
 
     override fun onLoadMore(page: Int, totalItemsCount: Int) {
@@ -270,8 +264,16 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
 
     }
 
-    private fun initAdapter() {
+    override fun initChatAdapter() {
         holderPayload = Payload()
+
+        imageLoader = ImageLoader { imageView: ImageView?, url: String?, payload: Any? ->
+            if (imageView != null) {
+                GlideApp.with(this)
+                    .load(url)
+                    .placeholder(R.drawable.ic_glide_image_error).into(imageView)
+            }
+        }
 
         val holdersConfig = MessageHolders()
             .registerContentType(
@@ -306,44 +308,11 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
         messagesAdapter?.setOnMessageViewLongClickListener(this)
         messagesAdapter?.setOnMessageViewClickListener(this)
         messagesAdapter?.setLoadMoreListener(this)
-        contentView.messagesList.setAdapter(messagesAdapter)
     }
 
-    override fun showDialogInterviewMaterials() {
-
-    }
-
-    override fun showDisableNotifications() {
-
-    }
-
-    override fun showClearTheHistory() {
-
-    }
-
-    override fun showDialogAddParticipant() {
-
-    }
-
-    override fun showOptionsDialog() {
+    fun showOptionsDialog() {
         ChatOptionsDialogType(
             requireActivity(), ChatOptionsDialog
         ) { presenter.onChatOptionClick(it as ChatOption) }.show()
-    }
-
-    override fun showPhotoOrVideo() {
-
-    }
-
-    override fun showFile() {
-
-    }
-
-    override fun showContact() {
-
-    }
-
-    override fun showInterrogation() {
-
     }
 }
