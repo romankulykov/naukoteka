@@ -1,7 +1,6 @@
 package uddug.com.naukoteka.ui.fragments.chat_flow.chats
 
 import android.os.Bundle
-import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.PopupWindow
@@ -113,7 +112,11 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
         )
         ChatOptionsDialogType(
             requireActivity(),
-            ChatTitleActionDialog(title, chatSwipeParams.chatSwipeOption)
+            ChatTitleActionDialog(
+                title,
+                chatSwipeParams.chatSwipeOption,
+                chatSwipeParams.chatListEntity
+            )
         ) {
             (it as? ChatSwipeTitleOption)?.let {
                 when (it) {
@@ -141,6 +144,8 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
                     DialogLongPressMenu.CLEAR_THE_HISTORY -> {
                         showSwipeClick(ChatSwipeParams(chatPreview, ChatSwipeTitleOption.CLEAR))
                     }
+                    DialogLongPressMenu.PIN_CHAT -> presenter.togglePin(chatPreview)
+                    DialogLongPressMenu.UNPIN_CHAT -> presenter.togglePin(chatPreview)
                 }
                 popupWindow.dismiss()
             }
@@ -155,7 +160,11 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
                     findViewById<RecyclerView>(R.id.rv_popup_long_press_menu).adapter =
                         longPressMenuAdapter.apply {
                             setItems(
-                                DialogLongPressMenu.values().toList()
+                                DialogLongPressMenu.values().toList().filter {
+                                    (it != DialogLongPressMenu.UNPIN_CHAT && it != DialogLongPressMenu.PIN_CHAT) ||
+                                            it == DialogLongPressMenu.UNPIN_CHAT && chatPreview.isPinned ||
+                                            it == DialogLongPressMenu.PIN_CHAT && !chatPreview.isPinned
+                                }
                             )
                         }
                 }

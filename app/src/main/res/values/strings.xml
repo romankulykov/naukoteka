@@ -115,7 +115,8 @@
     <string name="file">Файл</string>
     <string name="contact">Контакт</string>
     <string name="interrogation">Опрос</string>
-    <string name="anchor_chat">Закрепить чат</string>
+    <string name="pin_chat">Закрепить чат</string>
+    <string name="unpin_chat">Открепить чат</string>
     <string name="hide_chat">Скрыть чат</string>
     <string name="back">Назад</string>
     <string name="write_message">Написать сообщение</string>
@@ -180,6 +181,7 @@
     <string name="chat_message_popup_menu_forward">Переслать</string>
     <string name="chat_message_popup_menu_edit">Изменить</string>
     <string name="chat_message_popup_menu_pin">Закрепить</string>
+    <string name="chat_message_popup_menu_unpin">Открепить</string>
     <string name="chat_message_popup_menu_delete">Удалить</string>
     <string name="chat_message_popup_menu_select">Выбрать</string>
     <string name="chats_you_dont_have_created_chats_or_group">У вас еще нет созданный чатов или групп.\nНо вы можете их создать. Начните искать</string>

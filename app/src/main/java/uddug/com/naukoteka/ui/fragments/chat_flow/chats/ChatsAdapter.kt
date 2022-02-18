@@ -104,6 +104,7 @@ class ChatsAdapter(
                         isVisible = dialogType == DialogType.PERSONAL
                     }
                     anchorButtonBgView.run {
+                        tvAnchorChat.setText(if (isPinned) R.string.chat_message_popup_menu_unpin else R.string.chat_message_popup_menu_pin)
                         setOnClickListener {
                             onSwipeClick(ChatSwipeParams(item, ChatSwipeTitleOption.PIN_TOGGLE))
                         }

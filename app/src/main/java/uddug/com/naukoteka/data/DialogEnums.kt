@@ -1,6 +1,7 @@
 package uddug.com.naukoteka.data
 
 import android.view.Gravity
+import uddug.com.domain.repositories.dialogs.models.ChatPreview
 import uddug.com.naukoteka.R
 
 sealed class BottomSheetDialog {
@@ -24,7 +25,7 @@ sealed class BottomSheetDialog {
                             textId = when (option) {
                                 ChatSwipeTitleOption.BLOCK -> R.string.swipe_block
                                 ChatSwipeTitleOption.CLEAR -> R.string.clear_chat
-                                ChatSwipeTitleOption.PIN_TOGGLE -> R.string.anchor_chat
+                                ChatSwipeTitleOption.PIN_TOGGLE -> if (chatPreview.isPinned) R.string.unpin_chat else R.string.pin_chat
                             },
                             clickable = true,
                             titleActionOption = option
@@ -38,7 +39,11 @@ sealed class BottomSheetDialog {
 }
 
 object ChatOptionsDialog : BottomSheetDialog()
-data class ChatTitleActionDialog(val title: String, val option: ChatSwipeTitleOption) :
+data class ChatTitleActionDialog(
+    val title: String,
+    val option: ChatSwipeTitleOption,
+    val chatPreview: ChatPreview
+) :
     BottomSheetDialog()
 
 
@@ -109,7 +114,8 @@ enum class ChatClickMenu(override val textResId: Int, override val imageResId: I
 
 enum class DialogLongPressMenu(override val textResId: Int, override val imageResId: Int) :
     PopupWindowMenu {
-    ANCHOR_CHAT(R.string.anchor_chat, R.drawable.ic_pushpin),
+    PIN_CHAT(R.string.pin_chat, R.drawable.ic_pushpin),
+    UNPIN_CHAT(R.string.unpin_chat, R.drawable.ic_pushpin),
     HIDE_CHAT(R.string.hide_chat, R.drawable.ic_fi_eye),
     DISABLE_NOTIFICATIONS(R.string.disable_notifications, R.drawable.ic_bell),
     CLEAR_THE_HISTORY(R.string.clear_the_history, R.drawable.ic_clear_history),
