@@ -34,6 +34,10 @@ class ChatsAdapter(
     override fun newViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(R.layout.list_item_chat, parent)
 
+    override fun getPosition(newItem: ChatPreview): Int? {
+        return getItems()?.indexOfFirst { it.dialogId == newItem.dialogId }
+    }
+
     private var onlineUsersUUIDs = arrayListOf<String>()
 
     fun updateStatuses(onlineUsers: List<String>) {

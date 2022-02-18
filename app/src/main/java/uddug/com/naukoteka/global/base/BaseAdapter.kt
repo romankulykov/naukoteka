@@ -3,7 +3,6 @@ package uddug.com.naukoteka.global.base
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import java.util.*
 
 
 abstract class BaseAdapter<T, VH : BaseViewHolder<T>> : RecyclerView.Adapter<VH> {
@@ -74,8 +73,12 @@ abstract class BaseAdapter<T, VH : BaseViewHolder<T>> : RecyclerView.Adapter<VH>
         return true
     }
 
+    open fun getPosition(newItem: T): Int? {
+        return getItems()?.indexOf(newItem)
+    }
+
     open fun updateItem(newItem: T): Boolean {
-        val position = getItems()?.indexOf(newItem)
+        val position = getPosition(newItem)
         return position?.let {
             if (position < 0 || position >= itemCount) return false
             items?.set(position, newItem)

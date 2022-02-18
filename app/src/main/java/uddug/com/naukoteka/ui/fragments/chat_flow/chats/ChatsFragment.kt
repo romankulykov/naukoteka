@@ -1,6 +1,7 @@
 package uddug.com.naukoteka.ui.fragments.chat_flow.chats
 
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.PopupWindow
@@ -12,7 +13,6 @@ import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import uddug.com.domain.repositories.dialogs.models.ChatPreview
 import uddug.com.domain.repositories.dialogs.models.ChatsPreview
-import uddug.com.domain.repositories.users_search.models.UserStatus
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.data.ChatSwipeTitleOption
 import uddug.com.naukoteka.data.ChatTitleActionDialog
@@ -68,16 +68,25 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
 
     }
 
-    override fun showChats(chatsPreview: ChatsPreview, needClear: Boolean, loadMore: Boolean) {
+    override fun showChats(
+        chatsPreview: ChatsPreview,
+        needClear: Boolean,
+        loadMore: Boolean,
+        onlyUpdateExist: Boolean
+    ) {
         contentView.run {
             srlList.isVisible = chatsPreview.dialogs.isNotEmpty()
             llCreateNewChat.isVisible = chatsPreview.dialogs.isEmpty()
         }
-        if (needClear) {
-            chatsAdapter.clear()
+        if (onlyUpdateExist) {
+            chatsAdapter.updateItems(chatsPreview.dialogs)
+        } else {
+            if (needClear) {
+                chatsAdapter.clear()
+            }
+            chatsAdapter.addItems(chatsPreview.dialogs)
+            endlessAdapter.onDataReady(loadMore)
         }
-        chatsAdapter.addItems(chatsPreview.dialogs)
-        endlessAdapter.onDataReady(loadMore)
     }
 
     override fun deleteChat(dialog: ChatPreview) {

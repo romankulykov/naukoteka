@@ -39,6 +39,9 @@ class UsersSearchInteractor(
             chats.filter { it.dialogType == DialogType.PERSONAL && it.interlocutor != null }
                 .map { it.interlocutor!!.userId }.distinct()
 
+        if (usersToFind.isEmpty()) {
+            return Single.just(emptyList())
+        }
         return getUsersStatus(usersToFind)
             .map { it.filter { it.status.isOnline }.map { it.userId } }
     }

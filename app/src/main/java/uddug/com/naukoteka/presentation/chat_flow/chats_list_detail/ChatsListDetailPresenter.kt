@@ -14,11 +14,6 @@ class ChatsListDetailPresenter(
     private val userTokenCache: UserTokenCache
 ) : BasePresenterImpl<ChatsListDetailView>() {
 
-    override fun onFirstViewAttach() {
-        super.onFirstViewAttach()
-        viewState.initView()
-    }
-
     fun exit() {
         router.exit()
     }

@@ -9,6 +9,5 @@ import uddug.com.naukoteka.global.views.LoadingView
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface ChatsListDetailView : MvpView, LoadingView, InformativeView {
 
-    fun initView()
 
 }

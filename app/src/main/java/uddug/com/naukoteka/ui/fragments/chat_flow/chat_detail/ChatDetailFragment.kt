@@ -86,7 +86,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
 
     private var holderPayload: Payload? = null
     private var attachmentOptionsDialog: AttachmentOptionsDialog? = null
-    private var messageChatsParcelable: Parcelable? = null
+    private var messageRecyclerViewState: Parcelable? = null
 
     override val contentView by viewBinding(FragmentChatDetailBinding::bind)
 
@@ -139,13 +139,13 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
             ivLoad.setOnClickListener { showMessage(ToastInfo("Your custom click handler")) }
             ivForward.setOnClickListener { showMessage(ToastInfo("Your custom click handler")) }
             messagesList.setAdapter(messagesAdapter)
-            messagesList.layoutManager?.onRestoreInstanceState(messageChatsParcelable)
+            messagesList.layoutManager?.onRestoreInstanceState(messageRecyclerViewState)
         }
     }
 
     override fun onPause() {
         super.onPause()
-        messageChatsParcelable = contentView.messagesList.layoutManager?.onSaveInstanceState()
+        messageRecyclerViewState = contentView.messagesList.layoutManager?.onSaveInstanceState()
     }
 
     override fun hasContentFor(message: ChatMessage?, type: Byte): Boolean {

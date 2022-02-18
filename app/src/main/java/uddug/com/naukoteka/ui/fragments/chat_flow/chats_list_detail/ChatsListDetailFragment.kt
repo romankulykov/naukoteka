@@ -1,5 +1,8 @@
 package uddug.com.naukoteka.ui.fragments.chat_flow.chats_list_detail
 
+import android.os.Bundle
+import android.os.Parcelable
+import android.view.View
 import com.google.android.material.tabs.TabLayoutMediator
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
@@ -24,6 +27,8 @@ class ChatsListDetailFragment : BaseFragment(R.layout.fragment_chat_list),
         return getScope().getInstance(ChatsListDetailPresenter::class.java)
     }
 
+    private val chatsAdapter get() =  ChatsDetailAdapter(this)
+
     val titles = arrayListOf(
         R.string.chat_all,
         R.string.chat_groups,
@@ -32,10 +37,11 @@ class ChatsListDetailFragment : BaseFragment(R.layout.fragment_chat_list),
         R.string.chat_hidden
     )
 
-    override fun initView() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         contentView.run {
             viewPager.run {
-                adapter = ChatsDetailAdapter(this@ChatsListDetailFragment)
+                adapter = chatsAdapter
                 offscreenPageLimit = 5
                 isUserInputEnabled = false
             }

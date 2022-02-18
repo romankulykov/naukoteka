@@ -24,7 +24,7 @@ class ChatsPresenter(
     private var loadMore = false
 
     override fun attachView(view: ChatsView?) {
-        getDialogs(isFirstLaunched)
+        getDialogs(isFirstLaunched, onlyUpdateExist = !isFirstLaunched)
         super.attachView(view)
     }
 
@@ -33,7 +33,11 @@ class ChatsPresenter(
         isFirstLaunched = false
     }
 
-    fun getDialogs(withProgress: Boolean, lastDialogId: Int? = null) {
+    fun getDialogs(
+        withProgress: Boolean,
+        lastDialogId: Int? = null,
+        onlyUpdateExist: Boolean = false
+    ) {
         dialogsInteractor.getDialogs(pageLimit, lastDialogId)
             .await(
                 withProgress = withProgress,
@@ -41,7 +45,7 @@ class ChatsPresenter(
             ) {
                 loadMore = it.dialogs.size == pageLimit
                 loadUsersStatuses(it.dialogs)
-                viewState.showChats(it, lastDialogId == null, loadMore)
+                viewState.showChats(it, lastDialogId == null, loadMore, onlyUpdateExist)
             }
     }
 
