@@ -18,7 +18,6 @@ import uddug.com.naukoteka.global.views.BottomNavigationView
 import uddug.com.naukoteka.navigation.AppRouter
 import uddug.com.naukoteka.navigation.INavigationHelper
 import uddug.com.naukoteka.navigation.Screens
-import uddug.com.naukoteka.presentation.chat_flow.links.LinksPresenter
 import uddug.com.naukoteka.presentation.tabs_holder.TabsHolderPresenter
 import uddug.com.naukoteka.presentation.tabs_holder.TabsHolderView
 import uddug.com.naukoteka.utils.ActivityResultListener

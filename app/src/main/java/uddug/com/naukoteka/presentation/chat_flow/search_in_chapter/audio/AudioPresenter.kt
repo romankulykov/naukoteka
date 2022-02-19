@@ -1,4 +1,4 @@
-package uddug.com.naukoteka.presentation.chat_flow.audio
+package uddug.com.naukoteka.presentation.chat_flow.search_in_chapter.audio
 
 import moxy.InjectViewState
 import toothpick.InjectConstructor

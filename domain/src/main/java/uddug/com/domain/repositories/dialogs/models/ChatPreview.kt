@@ -16,20 +16,39 @@ data class ChatsPreview(
     val count: Int
 )
 
+sealed class ChatMessageUI(
+    open val dialogId: Int,
+    open val dialogName: String,
+    open val dialogImage: AttachmentChatPreview?,
+    open val message: String?,
+    open val messageId: Int?,
+    open val messageCreatedAt: Calendar?,
+)
+
 @Parcelize
 data class ChatPreview(
-    val dialogId: Int,
-    val dialogName: String,
+    override val dialogId: Int,
+    override val dialogName: String,
     val dialogType: DialogType,
     var isPinned: Boolean,
-    val messageId: Int?,
+    override val messageId: Int?,
     val firstMessageId: Int?,
-    val dialogImage: AttachmentChatPreview?,
+    override val dialogImage: AttachmentChatPreview?,
     val lastMessage: LastMessageChatPreview?,
     val users: List<UserChatPreview>?,
     val unreadMessages: Int?,
     val interlocutor: UserChatPreview?,
-) : Parcelable
+) : Parcelable,
+    ChatMessageUI(
+        dialogId = dialogId,
+        dialogName = dialogName,
+        dialogImage = dialogImage,
+        message = lastMessage?.text,
+        messageId = lastMessage?.id,
+        messageCreatedAt = lastMessage?.createdAt,
+    ) {
+
+}
 
 @Parcelize
 data class LastMessageChatPreview(
@@ -84,3 +103,14 @@ data class AttachmentChatPreview(
 ) : Parcelable {
     val fullPath get() = path?.run { ApiConstants.API_ENDPOINT_FILES_BASE + this }
 }
+
+@Parcelize
+data class SearchMessagesInDialogs(
+    override val dialogId: Int,
+    override val dialogImage: AttachmentChatPreview?,
+    override val dialogName: String,
+    override val message: String?,
+    override val messageId: Int,
+    override val messageCreatedAt: Calendar,
+) : Parcelable,
+    ChatMessageUI(dialogId, dialogName, dialogImage, message, messageId, messageCreatedAt)

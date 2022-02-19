@@ -4,19 +4,22 @@ import android.annotation.SuppressLint
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.core.view.isGone
+import com.bumptech.glide.request.RequestOptions
 import uddug.com.domain.repositories.Section
 import uddug.com.domain.repositories.SectionType
 import uddug.com.domain.repositories.dialogs.models.UserChatPreview
 import uddug.com.naukoteka.R
-import uddug.com.naukoteka.databinding.ListItemSearchContactsBinding
+import uddug.com.naukoteka.databinding.ListItemContactBinding
 import uddug.com.naukoteka.global.base.BaseStickyAdapter
 import uddug.com.naukoteka.global.base.BaseViewHolder
+import uddug.com.naukoteka.utils.getColorCompat
+import uddug.com.naukoteka.utils.ui.TextDrawable
 import uddug.com.naukoteka.utils.ui.load
 
 class ChatAddContactAdapter(private val userClick: (UserChatPreview) -> Unit) :
     BaseStickyAdapter<Section, BaseViewHolder<Section>>() {
 
-    override val listItemView: Int = R.layout.list_item_search_contacts
+    override val listItemView: Int = R.layout.list_item_contact
 
     override fun newItemViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<Section> =
         ViewHolder(listItemView, parent)
@@ -26,14 +29,29 @@ class ChatAddContactAdapter(private val userClick: (UserChatPreview) -> Unit) :
 
         @SuppressLint("SetTextI18n")
         override fun updateView(item: Section) {
-            val binding = ListItemSearchContactsBinding.bind(itemView)
-            binding.tvNameContact.text = item.getName()
-            if (item is UserChatPreview) {
-                binding.ivContact.load(item.avatar)
-                binding.tvNickname.text = "@" + item.nickname
-                binding.root.setOnClickListener { userClick(item) }
+            val binding = ListItemContactBinding.bind(itemView)
+            binding.run {
+                tvNameContact.text = item.getName()
+                if (item is UserChatPreview) {
+                    if (item.avatar.isNullOrEmpty()) {
+                        val previewTextImage = item.getName().split(" ").filter { it.isNotBlank() }
+                        val drawable = TextDrawable.builder()
+                            .buildRound(
+                                text = previewTextImage.map { it.first() }.joinToString(""),
+                                color = getContext().getColorCompat(R.color.object_main)
+                            )
+                        ivContact.setImageDrawable(drawable)
+                    } else {
+                        ivContact.load(
+                            item.avatar,
+                            requestOptions = RequestOptions.centerCropTransform()
+                        )
+                    }
+                    tvNickname.text = "@" + item.nickname
+                    root.setOnClickListener { userClick(item) }
+                }
+                viewDivider.isGone = item.positionInSection == item.maxPosition
             }
-            binding.viewDivider.isGone = item.positionInSection == item.maxPosition
         }
     }
 

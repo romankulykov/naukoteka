@@ -1,4 +1,4 @@
-package uddug.com.naukoteka.ui.fragments.chat_flow.files
+package uddug.com.naukoteka.ui.fragments.chat_flow.search_in_chapter.files
 
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes

@@ -1,4 +1,4 @@
-package uddug.com.naukoteka.ui.fragments.chat_flow.files
+package uddug.com.naukoteka.ui.fragments.chat_flow.search_in_chapter.files
 
 import android.os.Bundle
 import android.view.View
@@ -8,8 +8,8 @@ import uddug.com.domain.entities.FilesEntity
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.FragmentFilesBinding
 import uddug.com.naukoteka.global.base.BaseFragment
-import uddug.com.naukoteka.presentation.chat_flow.files.FilesPresenter
-import uddug.com.naukoteka.presentation.chat_flow.files.FilesView
+import uddug.com.naukoteka.presentation.chat_flow.search_in_chapter.files.FilesPresenter
+import uddug.com.naukoteka.presentation.chat_flow.search_in_chapter.files.FilesView
 import uddug.com.naukoteka.utils.BackButtonListener
 import uddug.com.naukoteka.utils.viewBinding
 

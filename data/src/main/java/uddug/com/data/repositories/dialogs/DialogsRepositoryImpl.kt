@@ -2,6 +2,7 @@ package uddug.com.data.repositories.dialogs
 
 import io.reactivex.Completable
 import io.reactivex.Single
+import io.reactivex.rxkotlin.zipWith
 import toothpick.InjectConstructor
 import uddug.com.data.cache.user_uuid.UserUUIDCache
 import uddug.com.data.services.DialogsApiService
@@ -70,6 +71,27 @@ class DialogsRepositoryImpl(
 
     override fun unPinChat(dialogId: Int): Completable {
         return dialogsApiService.unpinDialog(dialogId)
+    }
+
+    override fun searchDialogs(query: String, limit: Int): Single<List<SearchDialogs>> {
+        return dialogsApiService.searchDialogs(query, limit)
+            .map { it.map { dialogsRepositoryMapper.mapSearchDialog(it) } }
+    }
+
+    override fun searchMessagesInDialogs(
+        dialogId: Int,
+        query: String,
+        limit: Int
+    ): Single<List<SearchMessagesInDialogs>> {
+        return dialogsApiService.searchMessagesInDialog(dialogId, query, limit)
+            .onErrorReturnItem(emptyList())
+            .zipWith(dialogsApiService.getChatDetailInfo(dialogId))
+            .map { (foundMessages, chatInfo) ->
+                foundMessages.map { messageDto ->
+                    val message = messageDto.toChatMessage()
+                    dialogsRepositoryMapper.mapMessageToSearchMessageDomain(message, chatInfo)
+                }
+            }
     }
 
 

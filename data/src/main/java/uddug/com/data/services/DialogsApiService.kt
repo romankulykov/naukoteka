@@ -4,10 +4,7 @@ import io.reactivex.Completable
 import io.reactivex.Single
 import retrofit2.http.*
 import uddug.com.data.services.models.request.dialogs.CreateDialogRequestDto
-import uddug.com.data.services.models.response.dialogs.ChatMessageDto
-import uddug.com.data.services.models.response.dialogs.ChatPreviewDto
-import uddug.com.data.services.models.response.dialogs.ChatPreviewResponseDto
-import uddug.com.data.services.models.response.dialogs.CreateDialogResponseDto
+import uddug.com.data.services.models.response.dialogs.*
 
 interface DialogsApiService {
 
@@ -16,6 +13,19 @@ interface DialogsApiService {
         @Query("limit") limit: Int? = null,
         @Query("lastMessageId") lastMessageId: Int? = null,
     ): Single<ChatPreviewResponseDto>
+
+    @GET("v1/dialogs/search")
+    fun searchDialogs(
+        @Query("searchField") searchField: String,
+        @Query("limit") limit: Int? = null,
+    ): Single<List<SearchDialogResponseDto>>
+
+    @GET("v1/dialogs/search-messages/{dialogId}")
+    fun searchMessagesInDialog(
+        @Path("dialogId") id: Int,
+        @Query("searchField") searchField: String,
+        @Query("limit") limit: Int? = null,
+    ): Single<List<SearchChatMessageDto>>
 
     @GET("v1/dialogs/{id}")
     fun dialogsDetail(

@@ -2,9 +2,7 @@ package uddug.com.domain.repositories.dialogs
 
 import io.reactivex.Completable
 import io.reactivex.Single
-import uddug.com.domain.repositories.dialogs.models.ChatMessage
-import uddug.com.domain.repositories.dialogs.models.ChatPreview
-import uddug.com.domain.repositories.dialogs.models.ChatsPreview
+import uddug.com.domain.repositories.dialogs.models.*
 
 interface DialogsRepository {
 
@@ -18,7 +16,9 @@ interface DialogsRepository {
 
     fun createDialog(name: String?, uuids: List<String>): Single<Pair<Int, Boolean>>
     fun deleteDialog(dialogId: Int): Completable
-    fun pinChat(dialogId: Int) : Completable
-    fun unPinChat(dialogId: Int) : Completable
+    fun pinChat(dialogId: Int): Completable
+    fun unPinChat(dialogId: Int): Completable
+    fun searchDialogs(query: String, limit: Int): Single<List<SearchDialogs>>
+    fun searchMessagesInDialogs(dialogId: Int, query: String, limit: Int): Single<List<SearchMessagesInDialogs>>
 
 }

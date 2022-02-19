@@ -152,6 +152,8 @@
     <string name="email_value">ivan@smirnov.com</string>
     <string name="user_name">Имя пользователя</string>
     <string name="user_name_value">@smirnov</string>
+    <string name="chats">Чаты</string>
+    <string name="messages">Сообщения</string>
     <string name="media">Медиа</string>
     <string name="links">Ссылки</string>
     <string name="files">Файлы</string>

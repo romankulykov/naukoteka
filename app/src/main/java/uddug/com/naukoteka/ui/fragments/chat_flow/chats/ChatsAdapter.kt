@@ -7,6 +7,7 @@ import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import com.bumptech.glide.request.RequestOptions
 import com.daimajia.swipe.SwipeLayout
+import uddug.com.domain.repositories.dialogs.models.ChatMessageUI
 import uddug.com.domain.repositories.dialogs.models.ChatPreview
 import uddug.com.domain.repositories.dialogs.models.DialogType
 import uddug.com.naukoteka.R
@@ -25,16 +26,16 @@ data class ChatSwipeParams(
 )
 
 class ChatsAdapter(
-    private val onChatClick: (ChatPreview) -> Unit,
+    private val onChatClick: (ChatMessageUI) -> Unit,
     private val onChatLongClick: (ChatPreview, View) -> Unit,
     private val onSwipeClick: (ChatSwipeParams) -> Unit
 ) :
-    BaseAdapter<ChatPreview, ChatsAdapter.ViewHolder>() {
+    BaseAdapter<ChatMessageUI, ChatsAdapter.ViewHolder>() {
 
     override fun newViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(R.layout.list_item_chat, parent)
 
-    override fun getPosition(newItem: ChatPreview): Int? {
+    override fun getPosition(newItem: ChatMessageUI): Int? {
         return getItems()?.indexOfFirst { it.dialogId == newItem.dialogId }
     }
 
@@ -46,26 +47,22 @@ class ChatsAdapter(
     }
 
     inner class ViewHolder(@LayoutRes layoutRes: Int, parent: ViewGroup) :
-        BaseViewHolder<ChatPreview>(layoutRes, parent) {
+        BaseViewHolder<ChatMessageUI>(layoutRes, parent) {
 
         private val rootView: ListItemChatBinding get() = ListItemChatBinding.bind(itemView)
 
-        override fun updateView(item: ChatPreview) {
+        override fun updateView(item: ChatMessageUI) {
             rootView.run {
                 item.run {
+                    viewTop.isInvisible = adapterPosition == 0
+
                     tvNameContact.text = dialogName
-                    tvTextOfMessage.text = lastMessage?.text
-                    val lastMessageExist = lastMessage?.createdAt != null
+                    tvTextOfMessage.text = message
+                    val lastMessageExist = messageCreatedAt != null
                     tvTime.isVisible = lastMessageExist
-                    lastMessage?.createdAt?.let { lastMessageDate ->
+                    messageCreatedAt?.let { lastMessageDate ->
                         tvTime.text = lastMessageDate.getDateFormatChatList()
                     }
-                    val isThereUnreadMessage = unreadMessages != null && unreadMessages!! > 0
-                    tvCountMessage.isVisible = isThereUnreadMessage
-                    tvCountMessage.text = unreadMessages.toString()
-                    ivOnlineIndicator.isVisible =
-                        onlineUsersUUIDs?.contains(item.interlocutor?.userId) == true
-
                     if (dialogImage?.fullPath == null) {
                         val previewTextImage = dialogName.split(" ").filter { it.isNotBlank() }
                         val drawable = TextDrawable.builder()
@@ -81,37 +78,53 @@ class ChatsAdapter(
                             requestOptions = RequestOptions.centerCropTransform()
                         )
                     }
-                    viewTop.isInvisible = adapterPosition == 0
-                    clChat.setBackgroundColor(getContext().getColorCompat(if (item.isPinned) R.color.object_disabled else R.color.text_main))
-                    clChat.setOnClickListener { onChatClick.invoke(item) }
-                    clChat.setOnLongClickListener {
-                        onChatLongClick.invoke(item, itemView)
-                        true
+                    clChat.setOnClickListener { onChatClick.invoke(this) }
+
+                    clSwipeContentLeft.isVisible = item is ChatPreview
+                    clSwipeContentRight.isVisible = item is ChatPreview
+
+                    if (item is ChatPreview) initChatPreview(item)
+                }
+            }
+        }
+
+        private fun ListItemChatBinding.initChatPreview(chatPreview: ChatPreview) {
+            chatPreview.run {
+                val isThereUnreadMessage = unreadMessages != null && unreadMessages!! > 0
+                tvCountMessage.isVisible = isThereUnreadMessage
+                tvCountMessage.text = unreadMessages.toString()
+                ivOnlineIndicator.isVisible =
+                    onlineUsersUUIDs.contains(interlocutor?.userId) == true
+                clChat.setBackgroundColor(getContext().getColorCompat(if (isPinned) R.color.object_disabled else R.color.text_main))
+                clChat.setOnLongClickListener {
+                    onChatLongClick.invoke(this, itemView)
+                    true
+                }
+                swipeLayout.addDrag(SwipeLayout.DragEdge.Right, clSwipeContentRight)
+                swipeLayout.addDrag(SwipeLayout.DragEdge.Left, clSwipeContentLeft)
+                ivPin.isVisible = isPinned
+                clearButtonBgView.run {
+                    setOnClickListener {
+                        onSwipeClick(ChatSwipeParams(chatPreview, ChatSwipeTitleOption.CLEAR))
                     }
-                    swipeLayout.addDrag(SwipeLayout.DragEdge.Right, clSwipeContentRight)
-                    swipeLayout.addDrag(SwipeLayout.DragEdge.Left, clSwipeContentLeft)
-                    ivPin.isVisible = item.isPinned
-                    clearButtonBgView.run {
-                        setOnClickListener {
-                            onSwipeClick(ChatSwipeParams(item, ChatSwipeTitleOption.CLEAR))
-                        }
-                        isVisible = dialogType == DialogType.PERSONAL
+                    isVisible = dialogType == DialogType.PERSONAL
+                }
+                blockButtonBgView.run {
+                    setOnClickListener {
+                        onSwipeClick(ChatSwipeParams(chatPreview, ChatSwipeTitleOption.BLOCK))
                     }
-                    blockButtonBgView.run {
-                        setOnClickListener {
-                            onSwipeClick(ChatSwipeParams(item, ChatSwipeTitleOption.BLOCK))
-                        }
-                        isVisible = dialogType == DialogType.PERSONAL
-                    }
-                    anchorButtonBgView.run {
-                        tvAnchorChat.setText(if (isPinned) R.string.chat_message_popup_menu_unpin else R.string.chat_message_popup_menu_pin)
-                        setOnClickListener {
-                            onSwipeClick(ChatSwipeParams(item, ChatSwipeTitleOption.PIN_TOGGLE))
-                        }
+                    isVisible = dialogType == DialogType.PERSONAL
+                }
+                anchorButtonBgView.run {
+                    tvAnchorChat.setText(if (isPinned) R.string.chat_message_popup_menu_unpin else R.string.chat_message_popup_menu_pin)
+                    setOnClickListener {
+                        onSwipeClick(ChatSwipeParams(chatPreview, ChatSwipeTitleOption.PIN_TOGGLE))
                     }
                 }
             }
         }
+
     }
 
 }
+

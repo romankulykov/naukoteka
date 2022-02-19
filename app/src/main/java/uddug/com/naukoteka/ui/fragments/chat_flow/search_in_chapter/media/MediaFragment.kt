@@ -1,4 +1,4 @@
-package uddug.com.naukoteka.ui.fragments.chat_flow.media
+package uddug.com.naukoteka.ui.fragments.chat_flow.search_in_chapter.media
 
 import android.os.Bundle
 import android.view.View
@@ -8,8 +8,8 @@ import uddug.com.domain.entities.MediaEntity
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.FragmentMediaBinding
 import uddug.com.naukoteka.global.base.BaseFragment
-import uddug.com.naukoteka.presentation.chat_flow.media.MediaPresenter
-import uddug.com.naukoteka.presentation.chat_flow.media.MediaView
+import uddug.com.naukoteka.presentation.chat_flow.search_in_chapter.media.MediaPresenter
+import uddug.com.naukoteka.presentation.chat_flow.search_in_chapter.media.MediaView
 import uddug.com.naukoteka.utils.BackButtonListener
 import uddug.com.naukoteka.utils.viewBinding
 

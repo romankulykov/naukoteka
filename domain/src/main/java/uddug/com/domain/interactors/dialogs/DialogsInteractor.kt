@@ -2,6 +2,7 @@ package uddug.com.domain.interactors.dialogs
 
 import io.reactivex.Completable
 import io.reactivex.Flowable
+import io.reactivex.Observable
 import io.reactivex.Single
 import toothpick.InjectConstructor
 import uddug.com.domain.SchedulersProvider
@@ -151,6 +152,23 @@ class DialogsInteractor(
                 text = text
             )
         )
+    }
+
+    fun searchDialogs(query: String, limit: Int): Single<List<SearchDialogs>> {
+        return dialogsRepository.searchDialogs(query, limit)
+            .subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
+    }
+
+    fun searchMessagesInDialog(query: String, limit : Int): Single<List<SearchMessagesInDialogs>> {
+        val pageLimit = 10
+        return dialogsRepository.getChatsPreview(pageLimit)
+            .flattenAsObservable { it.dialogs }
+            .flatMap { dialogsRepository.searchMessagesInDialogs(it.dialogId, query, pageLimit).toObservable() }
+            .toList()
+            .map { it.flatten() }
+            .subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
     }
 
 }

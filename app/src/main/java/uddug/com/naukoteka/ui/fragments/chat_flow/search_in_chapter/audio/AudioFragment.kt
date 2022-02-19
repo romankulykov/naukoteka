@@ -1,4 +1,4 @@
-package uddug.com.naukoteka.ui.fragments.chat_flow.audio
+package uddug.com.naukoteka.ui.fragments.chat_flow.search_in_chapter.audio
 
 import android.os.Bundle
 import android.view.View
@@ -8,8 +8,8 @@ import uddug.com.domain.entities.AudioEntity
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.FragmentAudioBinding
 import uddug.com.naukoteka.global.base.BaseFragment
-import uddug.com.naukoteka.presentation.chat_flow.audio.AudioPresenter
-import uddug.com.naukoteka.presentation.chat_flow.audio.AudioView
+import uddug.com.naukoteka.presentation.chat_flow.search_in_chapter.audio.AudioPresenter
+import uddug.com.naukoteka.presentation.chat_flow.search_in_chapter.audio.AudioView
 import uddug.com.naukoteka.utils.BackButtonListener
 import uddug.com.naukoteka.utils.viewBinding
 

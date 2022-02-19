@@ -4,6 +4,7 @@ import moxy.InjectViewState
 import toothpick.InjectConstructor
 import uddug.com.domain.interactors.dialogs.DialogsInteractor
 import uddug.com.domain.interactors.users_search.UsersSearchInteractor
+import uddug.com.domain.repositories.dialogs.models.ChatMessageUI
 import uddug.com.domain.repositories.dialogs.models.ChatPreview
 import uddug.com.naukoteka.global.SwipeRefreshLoading
 import uddug.com.naukoteka.global.base.BasePresenterImpl
@@ -54,8 +55,10 @@ class ChatsPresenter(
             .await(withProgress = false) { viewState.updateOnlineStatus(it) }
     }
 
-    fun onChatClick(chat: ChatPreview) {
-        router.navigateTo(Screens.ChatDetail(chat))
+    fun onChatClick(chat: ChatMessageUI) {
+        if (chat is ChatPreview) {
+            router.navigateTo(Screens.ChatDetail(chat))
+        }
     }
 
     fun exit() {

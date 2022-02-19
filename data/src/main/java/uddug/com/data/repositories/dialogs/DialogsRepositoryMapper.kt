@@ -3,6 +3,7 @@ package uddug.com.data.repositories.dialogs
 import toothpick.InjectConstructor
 import uddug.com.data.services.models.response.dialogs.*
 import uddug.com.domain.repositories.dialogs.models.*
+import java.util.*
 
 @InjectConstructor
 class DialogsRepositoryMapper {
@@ -79,6 +80,16 @@ class DialogsRepositoryMapper {
         )
     }
 
+    fun mapSearchDialog(dto: SearchDialogResponseDto) = dto.run {
+        SearchDialogs(
+            id = id,
+            dialogName = dialogName,
+            fullName = fullName,
+            nickname = nickname,
+            image = mapAttachmentToDomain(image)
+        )
+    }
+
     fun mapDialogDetailToDomain(dto: ChatMessageDto, user: UserChatPreview?) = dto.run {
         ChatMessage(
             id = id,
@@ -91,6 +102,23 @@ class DialogsRepositoryMapper {
             read = read.map { it.entries.first().run { Pair(key, value.toInt()) } },
             user = user
         )
+    }
+
+    fun mapMessageToSearchMessageDomain(
+        messageDto: ChatMessageDto,
+        chatDto: ChatPreviewDto,
+    ): SearchMessagesInDialogs {
+        val dialogType =
+            DialogType.values().find { it.type == chatDto.dialogType } ?: DialogType.PERSONAL
+        return SearchMessagesInDialogs(
+            dialogId = chatDto.dialogId,
+            dialogImage = mapAttachmentToDomain(chatDto.users?.find { it.userId == messageDto.ownerId }?.image),
+            dialogName = fillChatName(chatDto, dialogType),
+            message = messageDto.text,
+            messageId = messageDto.id,
+            messageCreatedAt = Calendar.getInstance()
+        )
+
     }
 
 

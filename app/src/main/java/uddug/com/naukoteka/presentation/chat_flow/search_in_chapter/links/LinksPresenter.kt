@@ -1,4 +1,4 @@
-package uddug.com.naukoteka.presentation.chat_flow.links
+package uddug.com.naukoteka.presentation.chat_flow.search_in_chapter.links
 
 import moxy.InjectViewState
 import toothpick.InjectConstructor
