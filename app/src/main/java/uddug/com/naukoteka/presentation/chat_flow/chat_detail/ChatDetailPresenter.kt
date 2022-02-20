@@ -1,5 +1,6 @@
 package uddug.com.naukoteka.presentation.chat_flow.chat_detail
 
+import io.reactivex.Observable
 import moxy.InjectViewState
 import toothpick.InjectConstructor
 import uddug.com.domain.entities.AndroidFileEntity
@@ -60,7 +61,7 @@ open class ChatDetailPresenter(
         when (chatOption) {
             ChatOption.SEARCH_BY_CONVERSATION -> router.navigateTo(Screens.SearchInChapterScreen())
             ChatOption.INTERVIEW_MATERIALS -> router.navigateTo(Screens.SearchInChapterScreen())
-            ChatOption.DISABLE_NOTIFICATIONS -> { }
+            ChatOption.DISABLE_NOTIFICATIONS -> {}
             ChatOption.CLEAR_THE_HISTORY -> {
                 dialogsInteractor.deletePersonalDialog(chatPreview!!.dialogId)
                     .await { router.exit() }
@@ -76,10 +77,6 @@ open class ChatDetailPresenter(
             /*ChatAttachmentOption.CONTACT -> viewState.showContact()*/
             /*ChatAttachmentOption.INTERROGATION -> viewState.showInterrogation()*/
         }
-    }
-
-    fun onPhotoAttachmentClick(attachmentPhotoEntity: AndroidFileEntity) {
-
     }
 
     fun onHeaderClick() {
@@ -109,6 +106,19 @@ open class ChatDetailPresenter(
         }
     }
 
+    fun sendFiles(files: List<AndroidFileEntity>) {
+        Observable.fromIterable(files)
+            .flatMapCompletable {
+                dialogsInteractor.pushTextMessage(chatPreview, null, listOf(File(it.path)))
+            }
+            .await { clearFiles() }
+    }
+
+    private fun clearFiles() {
+        this.files.clear()
+        viewState.clearFiles()
+    }
+
     fun clearSelection() {
         isMessagesSelected = false
         viewState.toggleSelectionMode(isMessagesSelected)
@@ -126,13 +136,11 @@ open class ChatDetailPresenter(
 
     fun sendMessage(text: String) {
         dialogsInteractor.pushTextMessage(chatPreview, text, files)
-            .await {
-                files.clear()
-            }
+            .await { clearFiles() }
     }
 
-    fun loadMore(page: Int) {
-        if (loadMore /*&& page != dialogsInteractor.messages.size*/) {
+    fun loadMore() {
+        if (loadMore) {
             getChat(chatPreview)
         }
     }

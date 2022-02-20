@@ -168,6 +168,10 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
         return true
     }
 
+    override fun clearFiles() {
+        attachmentOptionsDialog = null
+    }
+
     override fun onAddAttachments() {
         context?.withPermissions(
             Manifest.permission.CAMERA,
@@ -175,10 +179,10 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
         ) {
             if (attachmentOptionsDialog == null) {
                 attachmentOptionsDialog = AttachmentOptionsDialog(
-                    requireActivity(), presenter::onChatAttachmentOptionClick
+                    requireActivity(), presenter::onChatAttachmentOptionClick, presenter::sendFiles
                 ) {
 
-                    presenter::onPhotoAttachmentClick
+                    showInfoMessage("On camera click")
                 }
             }
             attachmentOptionsDialog?.show()
@@ -186,7 +190,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
     }
 
     override fun onLoadMore(page: Int, totalItemsCount: Int) {
-        presenter.loadMore(page)
+        presenter.loadMore()
     }
 
     override fun onMessageViewLongClick(view: View?, message: ChatMessage) {

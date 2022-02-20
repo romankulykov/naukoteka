@@ -17,7 +17,8 @@ import uddug.com.naukoteka.ui.adapters.attachment_options.AttachmentPhotoAdapter
 class AttachmentOptionsDialog(
     private val fragmentActivity: FragmentActivity,
     private val chatAttachmentOptionListener: (ChatAttachmentOption) -> Unit,
-    private val chatAttachmentPhotoListener: (AndroidFileEntity) -> Unit
+    private val sendFiles: (List<AndroidFileEntity>) -> Unit,
+    private val onCameraClick: () -> Unit
 ) :
     BaseBottomSheetDialog(fragmentActivity) {
 
@@ -34,32 +35,46 @@ class AttachmentOptionsDialog(
     private lateinit var options: ArrayList<ChatAttachmentOption>
 
     private val chatAttachmentOptionsAdapter by lazy {
-        AttachmentOptionsAdapter {
+        AttachmentOptionsAdapter(onAttachmentOptionClick = {
+            if (it == ChatAttachmentOption.SEND_PHOTO) {
+                sendFiles(photoAttachmentAdapter.selectedOptions.toList())
+            } else {
+                chatAttachmentOptionListener(it)
+            }
             dismiss()
-            chatAttachmentOptionListener(it)
-        }
+        })
     }
 
     val photoAttachmentAdapter by lazy {
-        AttachmentPhotoAdapter {
-            dismiss()
-            chatAttachmentPhotoListener(it)
+        AttachmentPhotoAdapter(
+            onCameraClick = {
+                dismiss()
+                onCameraClick()
+            },
+            onPhotosCheckedListener = { selectedSize -> initAttachmentOptions(selectedSize) })
+    }
+
+    private fun initAttachmentOptions(selectedSize: Int = 0) {
+        options = ArrayList()
+        if (selectedSize == 0) {
+            options.run {
+                add(ChatAttachmentOption.PHOTO_OR_VIDEO)
+                add(ChatAttachmentOption.FILE)
+                add(ChatAttachmentOption.CONTACT)
+                add(ChatAttachmentOption.INTERROGATION)
+            }
+        } else {
+            options.add(ChatAttachmentOption.SEND_PHOTO)
         }
+        chatAttachmentOptionsAdapter.setItems(options)
     }
 
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        options = ArrayList()
-        options.run {
-            add(ChatAttachmentOption.PHOTO_OR_VIDEO)
-            add(ChatAttachmentOption.FILE)
-            add(ChatAttachmentOption.CONTACT)
-            add(ChatAttachmentOption.INTERROGATION)
-        }
         contentView.run {
             rvAttachmentOptions.adapter = chatAttachmentOptionsAdapter
-            chatAttachmentOptionsAdapter.setItems(options)
+            initAttachmentOptions()
             btnCancel.setOnClickListener { dismiss() }
             rvPhotos.adapter = photoAttachmentAdapter
         }
@@ -68,7 +83,13 @@ class AttachmentOptionsDialog(
     }
 
     fun showPhotos(files: List<AndroidFileEntity>) {
-        photoAttachmentAdapter.setItems(files)
+        photoAttachmentAdapter.setItems(
+            arrayListOf(
+                AndroidFileEntity(
+                    "",
+                    0
+                )
+            ).apply { addAll(files) })
     }
 
 }

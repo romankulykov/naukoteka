@@ -29,6 +29,7 @@ class AttachmentOptionsAdapter(private val onAttachmentOptionClick: ((ChatAttach
                     tvTextOptionAttachment.text = getContext().getString(textResId)
                 }
                 dividerOption.isVisible = adapterPosition < itemCount - 1
+                root.setOnClickListener { onAttachmentOptionClick?.invoke(item) }
             }
         }
     }

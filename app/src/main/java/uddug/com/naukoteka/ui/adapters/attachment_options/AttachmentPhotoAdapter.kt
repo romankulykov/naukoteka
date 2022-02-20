@@ -10,7 +10,10 @@ import uddug.com.naukoteka.global.base.BaseAdapter
 import uddug.com.naukoteka.global.base.BaseViewHolder
 import uddug.com.naukoteka.utils.ui.load
 
-class AttachmentPhotoAdapter(private val onPhotoClick: ((AndroidFileEntity) -> Unit)?) :
+class AttachmentPhotoAdapter(
+    private val onCameraClick: () -> Unit,
+    private val onPhotosCheckedListener: (Int) -> Unit
+) :
     BaseAdapter<AndroidFileEntity, AttachmentPhotoAdapter.ViewHolder>() {
 
     val selectedOptions = mutableSetOf<AndroidFileEntity>()
@@ -29,7 +32,11 @@ class AttachmentPhotoAdapter(private val onPhotoClick: ((AndroidFileEntity) -> U
         override fun updateView(item: AndroidFileEntity) {
             rootView.run {
                 item.run {
-                    ivPhoto.load(path)
+                    if (path.isNullOrEmpty()) {
+                        ivPhoto.setImageResource(R.drawable.back_gradient_drawable_corners_12dp)
+                    } else {
+                        ivPhoto.load(path)
+                    }
                     ivMakeAPhoto.isVisible = adapterPosition == 0
                     cbCheckPhoto.isVisible = adapterPosition != 0
                     cbCheckPhoto.setOnCheckedChangeListener { buttonView, isChecked ->
@@ -38,6 +45,12 @@ class AttachmentPhotoAdapter(private val onPhotoClick: ((AndroidFileEntity) -> U
                         } else {
                             selectedOptions.remove(item)
                         }
+                        onPhotosCheckedListener(selectedOptions.size)
+                    }
+                    if (adapterPosition == 0) {
+                        root.setOnClickListener { onCameraClick() }
+                    } else {
+                        root.setOnClickListener { cbCheckPhoto.isChecked = !cbCheckPhoto.isChecked }
                     }
 
                 }

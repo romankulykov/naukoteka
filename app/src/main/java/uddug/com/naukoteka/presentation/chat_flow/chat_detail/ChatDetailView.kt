@@ -27,5 +27,6 @@ interface ChatDetailView : MvpView, LoadingView, InformativeView {
     fun initChat(chat: ChatPreview)
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun initChatAdapter()
+    fun clearFiles()
 
 }

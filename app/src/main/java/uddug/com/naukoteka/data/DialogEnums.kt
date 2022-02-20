@@ -93,7 +93,8 @@ enum class ChatAttachmentOption(val textResId: Int) {
     PHOTO_OR_VIDEO(R.string.photo_or_video),
     FILE(R.string.file),
     CONTACT(R.string.contact),
-    INTERROGATION(R.string.interrogation)
+    INTERROGATION(R.string.interrogation),
+    SEND_PHOTO(R.string.send_photos)
 }
 
 interface PopupWindowMenu {

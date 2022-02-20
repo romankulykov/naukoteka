@@ -115,6 +115,7 @@
     <string name="file">Файл</string>
     <string name="contact">Контакт</string>
     <string name="interrogation">Опрос</string>
+    <string name="send_photos">Отправить фото</string>
     <string name="pin_chat">Закрепить чат</string>
     <string name="unpin_chat">Открепить чат</string>
     <string name="hide_chat">Скрыть чат</string>
