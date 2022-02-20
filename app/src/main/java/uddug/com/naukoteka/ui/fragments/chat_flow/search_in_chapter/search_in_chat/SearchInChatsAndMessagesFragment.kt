@@ -36,12 +36,18 @@ class SearchInChatsAndMessagesFragment :
         ChatsAdapter({ presenter.onChatClick(it.dialogId) }, { _, _ -> }, {})
     }
 
+    private var lastQuery: String = ""
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         contentView.run {
             rvChats.adapter = chatsAdapter
             rvMessages.adapter = messagesAdapter
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
     }
 
     fun search(query: String) {
@@ -65,8 +71,12 @@ class SearchInChatsAndMessagesFragment :
         contentView.llChats.isVisible = dialogs.isNotEmpty()
     }
 
-    override fun showMessages(messages: List<SearchMessagesInDialogs>) {
-        messagesAdapter.setItems(messages)
+    override fun showMessages(messages: List<SearchMessagesInDialogs>, query: String) {
+        if (this.lastQuery != query) {
+            lastQuery = query
+            messagesAdapter.clear()
+        }
+        messagesAdapter.addItems(messages)
         contentView.llMessages.isVisible = messages.isNotEmpty()
     }
 

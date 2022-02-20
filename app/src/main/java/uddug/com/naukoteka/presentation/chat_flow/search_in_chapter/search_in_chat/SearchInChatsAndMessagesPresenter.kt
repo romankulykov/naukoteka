@@ -3,9 +3,7 @@ package uddug.com.naukoteka.presentation.chat_flow.search_in_chapter.search_in_c
 import moxy.InjectViewState
 import toothpick.InjectConstructor
 import uddug.com.domain.interactors.dialogs.DialogsInteractor
-import uddug.com.domain.repositories.dialogs.models.ChatMessageUI
 import uddug.com.domain.repositories.dialogs.models.ChatPreview
-import uddug.com.domain.repositories.dialogs.models.UserChatPreview
 import uddug.com.naukoteka.global.base.BasePresenterImpl
 import uddug.com.naukoteka.navigation.AppRouter
 import uddug.com.naukoteka.navigation.Screens
@@ -20,16 +18,14 @@ class SearchInChatsAndMessagesPresenter(
     private var limitDialogs: Int = 10
     private var limitMessages: Int = 10
 
-    override fun onFirstViewAttach() {
-        super.onFirstViewAttach()
-    }
-
-    fun onChatClick(dialogId : Int) {
+    fun onChatClick(dialogId: Int) {
         dialogsInteractor.getChatDetailInfo(dialogId)
             .await { chatPreview -> gotoChat(chatPreview) }
     }
+
     fun gotoChat(chatPreview: ChatPreview) {
-        router.newScreenChainFrom(Screens.TabsHolder(), Screens.ChatDetail(chatPreview))
+        //router.newScreenChainFrom(Screens.TabsHolder(), Screens.ChatDetail(chatPreview))
+        router.navigateTo(Screens.ChatDetail(chatPreview))
     }
 
     fun search(query: String) {
@@ -39,7 +35,7 @@ class SearchInChatsAndMessagesPresenter(
 
     fun searchMessages(query: String) {
         dialogsInteractor.searchMessagesInDialog(query, limitMessages)
-            .await { viewState.showMessages(it) }
+            .await { viewState.showMessages(it, query) }
     }
 
 

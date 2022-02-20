@@ -1,5 +1,6 @@
 package uddug.com.naukoteka.ui.fragments.chat_flow.profile
 
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import uddug.com.naukoteka.ui.fragments.chat_flow.search_in_chapter.audio.AudioFragment
@@ -12,6 +13,10 @@ class ChatDetailInfoAdapter(
     private val fm: Fragment,
     private val isGlobalSearch: Boolean = false
 ) : FragmentStateAdapter(fm) {
+
+    init {
+        Log.d("TAG", "gag")
+    }
 
     private val fragments =
         mutableListOf<Fragment>().apply {
@@ -28,5 +33,7 @@ class ChatDetailInfoAdapter(
 
     override fun getItemCount(): Int = fragments.size
 
-    override fun createFragment(position: Int): Fragment = fragments[position]
+    override fun createFragment(position: Int): Fragment {
+        return fragments[position]
+    }
 }
