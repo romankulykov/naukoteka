@@ -75,6 +75,7 @@ class DialogsRepositoryImpl(
 
     override fun searchDialogs(query: String, limit: Int): Single<List<SearchDialogs>> {
         return dialogsApiService.searchDialogs(query, limit)
+            .onErrorReturnItem(emptyList())
             .map { it.map { dialogsRepositoryMapper.mapSearchDialog(it) } }
     }
 
