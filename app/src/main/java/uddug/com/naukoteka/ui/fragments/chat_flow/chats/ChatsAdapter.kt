@@ -79,9 +79,9 @@ class ChatsAdapter(
                         )
                     }
                     clChat.setOnClickListener { onChatClick.invoke(this) }
+                    tvCountMessage.isVisible = item is ChatPreview
 
-                    clSwipeContentLeft.isVisible = item is ChatPreview
-                    clSwipeContentRight.isVisible = item is ChatPreview
+                    swipeLayout.isSwipeEnabled = item is ChatPreview
 
                     if (item is ChatPreview) initChatPreview(item)
                 }
