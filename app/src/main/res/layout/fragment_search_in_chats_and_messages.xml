@@ -10,6 +10,20 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/tv_empty_label"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/golos_text_regular"
+            android:gravity="center"
+            android:paddingStart="20dp"
+            android:paddingTop="50dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="40dp"
+            android:text="@string/in_order_to_start_search_input_something"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
         <LinearLayout
             android:id="@+id/ll_chats"
             android:layout_width="match_parent"

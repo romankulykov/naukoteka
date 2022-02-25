@@ -160,12 +160,25 @@ class DialogsInteractor(
             .observeOn(schedulers.ui())
     }
 
-    fun searchMessagesInDialog(query: String, limit : Int): Observable<List<SearchMessagesInDialogs>> {
+    fun searchMessages(query: String, limit: Int): Observable<List<SearchMessagesInDialogs>> {
         val pageLimit = 10
         return dialogsRepository.getChatsPreview(pageLimit)
             .flattenAsObservable { it.dialogs }
-            .flatMap { dialogsRepository.searchMessagesInDialogs(it.dialogId, query, pageLimit).toObservable() }
+            .flatMap {
+                dialogsRepository.searchMessagesInDialogs(it.dialogId, query, pageLimit)
+                    .toObservable()
+            }
             .filter { it.isNotEmpty() }
+            .subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
+    }
+
+    fun searchMessagesInDialog(
+        dialogId: Int,
+        query: String,
+        limit: Int
+    ): Single<List<SearchMessagesInDialogs>> {
+        return dialogsRepository.searchMessagesInDialogs(dialogId, query, limit)
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
     }

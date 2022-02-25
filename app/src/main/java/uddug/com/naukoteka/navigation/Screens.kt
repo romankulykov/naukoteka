@@ -1,31 +1,31 @@
 package uddug.com.naukoteka.navigation
 
-import uddug.com.naukoteka.ui.fragments.tabs_holder.TabsHolderFragment
 import android.content.Intent
 import android.net.Uri
 import com.github.terrakok.cicerone.androidx.ActivityScreen
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 import uddug.com.domain.repositories.dialogs.models.ChatPreview
 import uddug.com.domain.repositories.dialogs.models.UserChatPreview
-import uddug.com.naukoteka.ui.fragments.chat_flow.chat_add_contact.ChatAddContactFragment
 import uddug.com.naukoteka.ui.fragments.StubFragment
 import uddug.com.naukoteka.ui.fragments.TabContainerFragment
-import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.ChatDetailFragment
-import uddug.com.naukoteka.ui.fragments.chat_flow.chat_select_contact.ChatSelectContactFragment
-import uddug.com.naukoteka.ui.fragments.chat_flow.chats_list_detail.ChatsListDetailFragment
-import uddug.com.naukoteka.ui.fragments.chat_flow.create_group.CreateGroupFragment
 import uddug.com.naukoteka.ui.fragments.auth_flow.login.LoginFragment
 import uddug.com.naukoteka.ui.fragments.auth_flow.password_recovery.PasswordRecoveryFragment
-import uddug.com.naukoteka.ui.fragments.chat_flow.profile.ChatDetailInfoFragment
 import uddug.com.naukoteka.ui.fragments.auth_flow.registration_first_step.RegistrationFirstStepFragment
 import uddug.com.naukoteka.ui.fragments.auth_flow.registration_second_step.RegistrationSecondStepFragment
 import uddug.com.naukoteka.ui.fragments.auth_flow.registration_third_step.RegistrationThirdStepFragment
 import uddug.com.naukoteka.ui.fragments.auth_flow.short_info_profile.ShortInfoProfileFragment
 import uddug.com.naukoteka.ui.fragments.auth_flow.signed_up.SignedUpFinishedFragment
-import uddug.com.naukoteka.ui.fragments.splash.SplashFragment
 import uddug.com.naukoteka.ui.fragments.auth_flow.tutorial.TutorialFragment
 import uddug.com.naukoteka.ui.fragments.auth_flow.web_view_auth.WebViewAuthFragment
+import uddug.com.naukoteka.ui.fragments.chat_flow.chat_add_contact.ChatAddContactFragment
+import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.ChatDetailFragment
+import uddug.com.naukoteka.ui.fragments.chat_flow.chat_select_contact.ChatSelectContactFragment
+import uddug.com.naukoteka.ui.fragments.chat_flow.chats_list_detail.ChatsListDetailFragment
+import uddug.com.naukoteka.ui.fragments.chat_flow.create_group.CreateGroupFragment
+import uddug.com.naukoteka.ui.fragments.chat_flow.profile.ChatDetailInfoFragment
 import uddug.com.naukoteka.ui.fragments.chat_flow.search_in_chapter.SearchInChapterFragment
+import uddug.com.naukoteka.ui.fragments.splash.SplashFragment
+import uddug.com.naukoteka.ui.fragments.tabs_holder.TabsHolderFragment
 import java.io.Serializable
 
 
@@ -70,8 +70,8 @@ object Screens {
     fun ChatInfoScreen(chatPreview: ChatPreview) =
         FragmentScreen(GROUP_SCREEN) { ChatDetailInfoFragment.newInstance(chatPreview) }
 
-    fun SearchInChapterScreen() =
-        FragmentScreen(SEARCH_IN_CHAPTER_SCREEN) { SearchInChapterFragment() }
+    fun SearchInChapterScreen(dialogId: Int? = null) =
+        FragmentScreen(SEARCH_IN_CHAPTER_SCREEN) { SearchInChapterFragment.newInstance(dialogId) }
 
     fun RegistrationFirstStep() =
         FragmentScreen(REGISTRATION_FIRST_STEP) { RegistrationFirstStepFragment() }
@@ -115,8 +115,11 @@ object Screens {
 
     fun ChatAddContact() = FragmentScreen(CHAT_ADD_CONTACT) { ChatAddContactFragment() }
     fun ChatCreateGroup() = FragmentScreen(CHAT_CREATE_GROUP) { ChatSelectContactFragment() }
-    fun ChatDetail(chat : ChatPreview) = FragmentScreen(CHAT_DETAIL) { ChatDetailFragment.newInstance(chat) }
-    fun CreateGroup(selectedContacts: List<UserChatPreview>) = FragmentScreen(CREATE_GROUP) { CreateGroupFragment.newInstance(selectedContacts) }
+    fun ChatDetail(chat: ChatPreview) =
+        FragmentScreen(CHAT_DETAIL) { ChatDetailFragment.newInstance(chat) }
+
+    fun CreateGroup(selectedContacts: List<UserChatPreview>) =
+        FragmentScreen(CREATE_GROUP) { CreateGroupFragment.newInstance(selectedContacts) }
 
 
     fun ScreenByTag(tag: String?): FragmentScreen {

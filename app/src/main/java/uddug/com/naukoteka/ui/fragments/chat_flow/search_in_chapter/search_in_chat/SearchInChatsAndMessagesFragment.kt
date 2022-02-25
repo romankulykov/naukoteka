@@ -5,11 +5,13 @@ import android.view.View
 import androidx.core.view.isVisible
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
+import toothpick.Scope
 import uddug.com.domain.repositories.dialogs.models.SearchDialogs
 import uddug.com.domain.repositories.dialogs.models.SearchMessagesInDialogs
 import uddug.com.domain.repositories.dialogs.models.UserChatPreview
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.FragmentSearchInChatsAndMessagesBinding
+import uddug.com.naukoteka.di.DI
 import uddug.com.naukoteka.global.base.BaseFragment
 import uddug.com.naukoteka.presentation.chat_flow.search_in_chapter.search_in_chat.SearchInChatsAndMessagesPresenter
 import uddug.com.naukoteka.presentation.chat_flow.search_in_chapter.search_in_chat.SearchInChatsAndMessagesView
@@ -22,13 +24,14 @@ class SearchInChatsAndMessagesFragment :
     SearchInChatsAndMessagesView {
 
     override val contentView by viewBinding(FragmentSearchInChatsAndMessagesBinding::bind)
+    private val localScope: Scope = getScope().openSubScope(DI.SEARCH_IN_CHAT_SCOPE)
 
     @InjectPresenter
     lateinit var presenter: SearchInChatsAndMessagesPresenter
 
     @ProvidePresenter
     fun providePresenter(): SearchInChatsAndMessagesPresenter {
-        return getScope().getInstance(SearchInChatsAndMessagesPresenter::class.java)
+        return localScope.getInstance(SearchInChatsAndMessagesPresenter::class.java)
     }
 
     private val chatsAdapter by lazy { ChatAddContactAdapter { presenter.onChatClick(it.userId.toInt()) } }
@@ -43,11 +46,13 @@ class SearchInChatsAndMessagesFragment :
         contentView.run {
             rvChats.adapter = chatsAdapter
             rvMessages.adapter = messagesAdapter
+            toggleTextInputLabelVisibility()
         }
     }
 
-    override fun onPause() {
-        super.onPause()
+    private fun toggleTextInputLabelVisibility() {
+        contentView.tvEmptyLabel.isVisible =
+            chatsAdapter.itemCount == 0 && messagesAdapter.itemCount == 0
     }
 
     fun search(query: String) {
@@ -69,6 +74,7 @@ class SearchInChatsAndMessagesFragment :
             }
         })
         contentView.llChats.isVisible = dialogs.isNotEmpty()
+        toggleTextInputLabelVisibility()
     }
 
     override fun showMessages(messages: List<SearchMessagesInDialogs>, query: String) {
@@ -78,6 +84,7 @@ class SearchInChatsAndMessagesFragment :
         }
         messagesAdapter.addItems(messages)
         contentView.llMessages.isVisible = messages.isNotEmpty()
+        toggleTextInputLabelVisibility()
     }
 
 

@@ -3,7 +3,6 @@ package uddug.com.naukoteka.ui.fragments.chat_flow.profile
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
-import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import com.bumptech.glide.request.RequestOptions
@@ -110,7 +109,14 @@ class ChatDetailInfoFragment : BaseFragment(R.layout.fragment_chat_detail_info),
 
             viewDivider2.isVisible = chatPreview.dialogType == DialogType.PERSONAL
 
+            llSearch.setOnClickListener { presenter.navigateToSearch(chatPreview.dialogId) }
+
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        contentView.viewPager.adapter = null
     }
 
     override fun onBackPressed(): Boolean {

@@ -5,6 +5,7 @@ import toothpick.InjectConstructor
 import uddug.com.domain.repositories.dialogs.models.UserChatPreview
 import uddug.com.naukoteka.global.base.BasePresenterImpl
 import uddug.com.naukoteka.navigation.AppRouter
+import uddug.com.naukoteka.navigation.Screens
 
 
 @InjectConstructor
@@ -21,6 +22,10 @@ class ChatDetailInfoPresenter(val router: AppRouter) : BasePresenterImpl<ChatDet
     }
 
     fun onParticipantRemove(participantsEntity: UserChatPreview) {
+    }
+
+    fun navigateToSearch(dialogId : Int) {
+        router.navigateTo(Screens.SearchInChapterScreen(dialogId))
     }
 
 }

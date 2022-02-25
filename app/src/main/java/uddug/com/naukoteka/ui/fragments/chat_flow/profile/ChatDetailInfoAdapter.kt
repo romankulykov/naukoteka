@@ -11,7 +11,7 @@ import uddug.com.naukoteka.ui.fragments.chat_flow.search_in_chapter.search_in_ch
 
 class ChatDetailInfoAdapter(
     private val fm: Fragment,
-    private val isGlobalSearch: Boolean = false
+    private val withChatMessageSearch: Boolean = false,
 ) : FragmentStateAdapter(fm) {
 
     init {
@@ -20,7 +20,7 @@ class ChatDetailInfoAdapter(
 
     private val fragments =
         mutableListOf<Fragment>().apply {
-            if (isGlobalSearch) {
+            if (withChatMessageSearch) {
                 add(SearchInChatsAndMessagesFragment())
             }
             addAll(listOf(MediaFragment(), LinksFragment(), FilesFragment(), AudioFragment()))

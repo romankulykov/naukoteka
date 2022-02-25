@@ -189,6 +189,7 @@
     <string name="chat_message_popup_menu_select">Выбрать</string>
     <string name="chats_you_dont_have_created_chats_or_group">У вас еще нет созданный чатов или групп.\nНо вы можете их создать. Начните искать</string>
     <string name="chats_start_new_chat"><u>Начать новый чат</u></string>
+    <string name="in_order_to_start_search_input_something">Для того чтобы начать поиск начните что-то вводить</string>
 
 
 </resources>
