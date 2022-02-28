@@ -1,5 +1,11 @@
 package uddug.com.naukoteka.presentation.chat_flow.chat_detail
 
+import android.Manifest
+import android.app.DownloadManager
+import android.content.Context
+import android.net.Uri
+import android.os.Environment
+import androidx.core.content.ContextCompat
 import io.reactivex.Observable
 import moxy.InjectViewState
 import toothpick.InjectConstructor
@@ -13,6 +19,9 @@ import uddug.com.naukoteka.data.ChatOption
 import uddug.com.naukoteka.global.base.BasePresenterImpl
 import uddug.com.naukoteka.navigation.AppRouter
 import uddug.com.naukoteka.navigation.Screens
+import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.DropInChatEvent
+import uddug.com.naukoteka.utils.ui.toast
+import uddug.com.naukoteka.utils.withPermissions
 import java.io.File
 
 @InjectConstructor
@@ -21,7 +30,8 @@ open class ChatDetailPresenter(
     val router: AppRouter,
     private val dialogsInteractor: DialogsInteractor,
     private val chatPreview: ChatPreview,
-    private val logger: ILogger
+    private val logger: ILogger,
+    private val context: Context,
 ) :
     BasePresenterImpl<ChatDetailView>() {
 
@@ -73,7 +83,7 @@ open class ChatDetailPresenter(
     fun onChatAttachmentOptionClick(chatAttachmentOption: ChatAttachmentOption) {
         when (chatAttachmentOption) {
             /*ChatAttachmentOption.PHOTO_OR_VIDEO -> viewState.showPhotoOrVideo()*/
-            /*ChatAttachmentOption.FILE -> viewState.showFile()*/
+            ChatAttachmentOption.FILE -> viewState.pickFiles()
             /*ChatAttachmentOption.CONTACT -> viewState.showContact()*/
             /*ChatAttachmentOption.INTERROGATION -> viewState.showInterrogation()*/
         }
@@ -147,6 +157,42 @@ open class ChatDetailPresenter(
 
     fun addFile(file: File) {
         files.add(file)
+    }
+
+    private fun downloadFile(url: String) {
+        context.withPermissions(
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        ) {
+            context.toast("Загрузка файла начата")
+            val downloadManager =
+                ContextCompat.getSystemService(context, DownloadManager::class.java)
+            val request =
+                DownloadManager.Request(Uri.parse(url))
+            request.setAllowedNetworkTypes(
+                DownloadManager.Request.NETWORK_WIFI or
+                        DownloadManager.Request.NETWORK_MOBILE
+            )
+            val name = url.split("/").last()
+
+            request.setTitle(name)
+            request.setDescription("Downloading file...")
+
+            request.allowScanningByMediaScanner()
+            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, name)
+            request.setMimeType("*/*")
+            downloadManager!!.enqueue(request)
+        }
+    }
+
+    fun handleDropInChatEvent(something: DropInChatEvent) {
+        when (something) {
+            is DropInChatEvent.DownloadFileEvent -> {
+                router.navigateTo(Screens.OpenBrowser(something.url))
+                //downloadFile(something.url)
+            }
+        }
     }
 
 

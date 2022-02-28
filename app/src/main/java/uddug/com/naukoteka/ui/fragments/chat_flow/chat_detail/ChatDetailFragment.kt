@@ -1,6 +1,9 @@
 package uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail
 
 import android.Manifest
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
@@ -21,10 +24,8 @@ import moxy.presenter.ProvidePresenter
 import toothpick.Toothpick
 import toothpick.ktp.delegate.inject
 import uddug.com.data.cache.user_uuid.UserUUIDCache
-import uddug.com.domain.repositories.dialogs.models.ChatMessage
-import uddug.com.domain.repositories.dialogs.models.ChatPreview
-import uddug.com.domain.repositories.dialogs.models.DialogType
-import uddug.com.domain.repositories.dialogs.models.MessageType
+import uddug.com.domain.entities.AndroidFileEntity
+import uddug.com.domain.repositories.dialogs.models.*
 import uddug.com.naukoteka.GlideApp
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.data.ChatClickMenu
@@ -40,22 +41,22 @@ import uddug.com.naukoteka.ui.adapters.long_press_menu.LongPressMenuAdapter
 import uddug.com.naukoteka.ui.custom.square_toast.ToastInfo
 import uddug.com.naukoteka.ui.dialogs.chat_option.AttachmentOptionsDialog
 import uddug.com.naukoteka.ui.dialogs.chat_option.ChatOptionsDialogType
+import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.incoming.IncomingFileHolder
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.incoming.IncomingImageHolder
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.incoming.IncomingTextHolder
+import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.outcoming.OutcomingFileHolder
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.outcoming.OutcomingImageHolder
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.outcoming.OutcomingTextHolder
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.system_message.SystemMessageViewHolder
-import uddug.com.naukoteka.utils.BackButtonListener
-import uddug.com.naukoteka.utils.getColorCompat
+import uddug.com.naukoteka.utils.*
+import uddug.com.naukoteka.utils.net.extractPath
 import uddug.com.naukoteka.utils.ui.TextDrawable
+import uddug.com.naukoteka.utils.ui.chooseFromStorage
 import uddug.com.naukoteka.utils.ui.load
-import uddug.com.naukoteka.utils.ui.wasOnlineTenMinutesAgo
-import uddug.com.naukoteka.utils.viewBinding
-import uddug.com.naukoteka.utils.withPermissions
 import java.io.File
 
 class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
-    ChatDetailView, BackButtonListener,
+    ChatDetailView, BackButtonListener, ActivityResultListener,
     InputListener,
     AttachmentsListener,
     MessagesListAdapter.OnMessageViewLongClickListener<ChatMessage>,
@@ -68,6 +69,9 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
         private const val CHAT_PREVIEW = "ChatDetailFragment.CHAT_PREVIEW"
 
         private const val CONTENT_TYPE_SYSTEM_MESSAGE: Byte = 1
+        private const val CONTENT_TYPE_FILE: Byte = 2
+
+        private const val REQUEST_CODE_FILE = 1001
 
         fun newInstance(chat: ChatPreview) = ChatDetailFragment().apply {
             arguments = bundleOf(CHAT_PREVIEW to chat)
@@ -107,11 +111,9 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
             tvCountPeopleOrStatus.text = if (chat.dialogType == DialogType.GROUP) {
                 getString(R.string.participants_count_format, chat.users?.size.toString())
             } else {
-                if (chat.interlocutor?.lastOnline.wasOnlineTenMinutesAgo()) {
+                if (chat.interlocutor?.isOnline == true) {
                     getString(R.string.online)
-                } else {
-                    getString(R.string.recently)
-                }
+                } else ""
             }
             if (chat.dialogImage?.fullPath == null) {
                 val previewTextImage = chat.dialogName!!.split(" ").filter { it.isNotBlank() }
@@ -151,6 +153,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
     override fun hasContentFor(message: ChatMessage?, type: Byte): Boolean {
         return when (type) {
             CONTENT_TYPE_SYSTEM_MESSAGE -> message?.type == MessageType.SYSTEM && message.text?.isNotEmpty() == true
+            CONTENT_TYPE_FILE -> message?.files?.any { it.contentType != ContentType.IMAGE } == true
             else -> false
         }
     }
@@ -170,6 +173,45 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
 
     override fun clearFiles() {
         attachmentOptionsDialog = null
+    }
+
+    override fun pickFiles() {
+        context?.withPermissions(
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        ) {
+            requireActivity().chooseFromStorage(REQUEST_CODE_FILE)
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int, permissions: Array<out String>, grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
+    override fun onFragmentResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode != Activity.RESULT_OK) return
+        if (requestCode == REQUEST_CODE_FILE) {
+            data?.clipData?.let { clipData ->
+                val uris = arrayListOf<Uri>()
+                for (i in 0 until clipData.itemCount) {
+                    val uri = clipData.getItemAt(i).uri
+                    uris.add(uri)
+                }
+                presenter.sendFiles(
+                    uris.mapNotNull { it.extractPath() }.map { AndroidFileEntity(it, 0) })
+            } ?: data?.data?.let {
+                presenter.sendFiles(
+                    listOf(
+                        AndroidFileEntity(
+                            it.extractPath()!!,
+                            0
+                        )
+                    )
+                )
+            }
+        }
     }
 
     override fun onAddAttachments() {
@@ -270,6 +312,12 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
 
     override fun initChatAdapter() {
         holderPayload = Payload()
+        holderPayload?.dropInActivity = object : IDropInActivity {
+
+            override fun droppedInActivity(something: DropInChatEvent) {
+                presenter.handleDropInChatEvent(something)
+            }
+        }
 
         imageLoader = ImageLoader { imageView: ImageView?, url: String?, payload: Any? ->
             if (imageView != null) {
@@ -286,6 +334,16 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
                 R.layout.item_custom_system_message,
                 SystemMessageViewHolder::class.java,
                 R.layout.item_custom_system_message, this
+            )
+            .registerContentType(
+                CONTENT_TYPE_FILE,
+                IncomingFileHolder::class.java,
+                holderPayload,
+                R.layout.item_custom_incoming_file_message,
+                OutcomingFileHolder::class.java,
+                holderPayload,
+                R.layout.item_custom_outcoming_file_message,
+                this
             )
             .setIncomingTextConfig(
                 IncomingTextHolder::class.java,

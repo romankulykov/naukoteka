@@ -55,7 +55,6 @@ class DialogsRepositoryMapper {
             isAdmin = isAdmin == 1 || isAdmin == true,
             fullName = fullName,
             nickname = nickname,
-            lastOnline = status?.lastSeen
         )
     }
 

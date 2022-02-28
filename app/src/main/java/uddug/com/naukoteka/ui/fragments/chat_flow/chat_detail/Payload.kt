@@ -32,5 +32,9 @@ open class Payload {
 }
 
 interface IDropInActivity {
-    fun droppedInActivity(something: Any)
+    fun droppedInActivity(something: DropInChatEvent)
+}
+
+sealed class DropInChatEvent {
+    data class DownloadFileEvent(val url : String) : DropInChatEvent()
 }

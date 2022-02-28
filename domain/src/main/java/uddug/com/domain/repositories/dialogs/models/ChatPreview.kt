@@ -8,7 +8,12 @@ import uddug.com.domain.repositories.Section
 import java.util.*
 
 enum class DialogType(val type: Int) { PERSONAL(1), GROUP(2) }
-enum class ContentType(val type: String) { AUDIO("audio/mpeg"), VIDEO("video/mp4"), IMAGE("image/jpeg") }
+enum class ContentType(val type: String) {
+    AUDIO("audio/mpeg"),
+    VIDEO("video/mp4"),
+    IMAGE("image/jpeg"),
+    PDF("application/pdf")
+}
 
 data class ChatsPreview(
     val dialogs: List<ChatPreview>,
@@ -43,12 +48,10 @@ data class ChatPreview(
         dialogId = dialogId,
         dialogName = dialogName,
         dialogImage = dialogImage,
-        message = lastMessage?.text,
+        message = lastMessage?.text ?: lastMessage?.files?.first()?.filename,
         messageId = lastMessage?.id,
         messageCreatedAt = lastMessage?.createdAt,
-    ) {
-
-}
+    )
 
 @Parcelize
 data class LastMessageChatPreview(
@@ -67,7 +70,7 @@ data class UserChatPreview(
     val isAdmin: Boolean,
     val fullName: String,
     val nickname: String?,
-    val lastOnline: Calendar?
+    var isOnline: Boolean = false
 ) : IUser, Parcelable, Section() {
 
     val nicknameOrFullName get() = nickname ?: fullName

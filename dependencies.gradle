@@ -45,7 +45,7 @@ ext {
             stickyHeader           : "com.shuhart.stickyheader:stickyheader:1.0.6",
             localeChanger          : "com.github.franmontiel:LocaleChanger:$versionLocaleChanger",
             tedbottompicker        : 'gun0912.ted:tedbottompicker:2.0.1',
-            tedpermission          : 'gun0912.ted:tedpermission:2.2.2'
+            tedpermission          : 'gun0912.ted:tedpermission:2.2.2',
     ]
 
     presentation = [

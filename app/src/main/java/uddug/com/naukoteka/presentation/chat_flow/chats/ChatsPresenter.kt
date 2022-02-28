@@ -23,6 +23,7 @@ class ChatsPresenter(
 
     private val pageLimit: Int = 10
     private var loadMore = false
+    private var whoOnline = mutableSetOf<String>()
 
     override fun attachView(view: ChatsView?) {
         getDialogs(isFirstLaunched, onlyUpdateExist = !isFirstLaunched)
@@ -52,11 +53,15 @@ class ChatsPresenter(
 
     fun loadUsersStatuses(dialogs: List<ChatPreview>) {
         usersSearchInteractor.getUsersChatStatuses(dialogs)
-            .await(withProgress = false) { viewState.updateOnlineStatus(it) }
+            .await(withProgress = false) {
+                whoOnline.addAll(it)
+                viewState.updateOnlineStatus(it)
+            }
     }
 
     fun onChatClick(chat: ChatMessageUI) {
         if (chat is ChatPreview) {
+            chat.interlocutor?.isOnline = whoOnline.contains(chat.interlocutor?.userId)
             router.navigateTo(Screens.ChatDetail(chat))
         }
     }

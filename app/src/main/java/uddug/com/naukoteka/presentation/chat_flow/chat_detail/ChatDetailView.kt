@@ -2,7 +2,6 @@ package uddug.com.naukoteka.presentation.chat_flow.chat_detail
 
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy
-import moxy.viewstate.strategy.AddToEndStrategy
 import moxy.viewstate.strategy.OneExecutionStateStrategy
 import moxy.viewstate.strategy.StateStrategyType
 import uddug.com.domain.repositories.dialogs.models.ChatMessage
@@ -22,11 +21,16 @@ interface ChatDetailView : MvpView, LoadingView, InformativeView {
 
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun showMessages(messages: List<ChatMessage>, needToClear: Boolean = false)
+
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun addToStart(message: ChatMessage)
     fun initChat(chat: ChatPreview)
+
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun initChatAdapter()
     fun clearFiles()
+
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun pickFiles()
 
 }

@@ -22,7 +22,7 @@
     </style>
 
     <style name="TextViewStyle.Usual.Regular">
-        <item name="android:fontFamily">@font/golos_black</item>
+        <item name="android:fontFamily">@font/golos_text_regular</item>
     </style>
 
     <style name="TextViewStyle.Subtitle">

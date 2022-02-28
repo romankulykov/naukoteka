@@ -69,7 +69,6 @@ class SearchInChatsAndMessagesFragment :
                     isAdmin = false,
                     fullName = fullName,
                     nickname = nickname,
-                    lastOnline = null
                 )
             }
         })

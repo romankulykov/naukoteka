@@ -24,7 +24,7 @@ class CreateGroupAdapter(private val onParticipantRemove: (UserChatPreview) -> U
         override fun updateView(item: UserChatPreview) {
             val binding = ListItemParticipantsBinding.bind(itemView)
             binding.tvNameParticipant.text = item.name
-            binding.tvStatusParticipant.isVisible = item.lastOnline.wasOnlineTenMinutesAgo()
+            binding.tvStatusParticipant.isVisible = item.isOnline
             binding.tvLabelAdmin.isVisible = item.isAdmin
             binding.ivRemove.isGone = item.isAdmin
             binding.viewDivider.isGone = adapterPosition == itemCount - 1

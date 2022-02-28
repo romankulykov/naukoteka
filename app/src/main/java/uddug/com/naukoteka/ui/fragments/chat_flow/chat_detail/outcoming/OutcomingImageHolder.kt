@@ -42,7 +42,7 @@ class OutcomingImageHolder(itemView: View, override var anyPayload: Any?) :
                 messageText.isGone = text.isNullOrBlank()
 
                 itemView.setOnClickListener {
-                    (payload as Payload).dropInActivity?.droppedInActivity(imageUrl!!)
+                    //(payload as Payload).dropInActivity?.droppedInActivity(imageUrl!!)
                 }
             }
         }

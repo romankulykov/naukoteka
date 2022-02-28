@@ -1,0 +1,136 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <CheckBox
+        android:id="@+id/cb_selected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:button="@drawable/chat_checkbox"
+        android:clickable="false"
+        android:focusable="false"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@id/messageUserAvatar"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+        tools:src="@tools:sample/avatars" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@id/bubble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/back_darkgrey"
+        android:background="@drawable/bubble_incoming_message"
+        android:paddingStart="12dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="8dp"
+        app:layout_constraintStart_toEndOf="@id/messageUserAvatar"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/nameUser"
+            style="@style/TextViewStyle.Usual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/golos_text_regular"
+            android:textColor="@color/name_message_color"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@tools:sample/lorem" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/fileIncoming"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_baseline_insert_drive_file_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nameUser"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/iv_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_arrow_downward_24"
+            app:layout_constraintBottom_toBottomOf="@+id/fileIncoming"
+            app:layout_constraintEnd_toEndOf="@+id/fileIncoming"
+            app:layout_constraintStart_toStartOf="@+id/fileIncoming"
+            app:layout_constraintTop_toTopOf="@+id/fileIncoming" />
+
+        <TextView
+            android:id="@+id/tv_file_name"
+            style="@style/TextViewStyle.Usual.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/tv_file_size"
+            app:layout_constraintStart_toEndOf="@+id/fileIncoming"
+            app:layout_constraintTop_toTopOf="@+id/fileIncoming"
+            tools:text="21.png" />
+
+        <TextView
+            android:id="@+id/tv_file_size"
+            style="@style/TextViewStyle.Usual.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/fileIncoming"
+            app:layout_constraintStart_toEndOf="@+id/fileIncoming"
+            app:layout_constraintTop_toBottomOf="@+id/tv_file_name"
+            tools:text="2.5 mb" />
+
+        <TextView
+            android:id="@id/messageText"
+            style="@style/TextViewStyle.Usual"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/golos_text_regular"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fileIncoming"
+            tools:text="@tools:sample/lorem" />
+
+        <TextView
+            android:id="@id/messageTime"
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/golos_text_regular"
+            android:textColor="@color/text_inactive"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/messageText"
+            tools:text="11:00" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
