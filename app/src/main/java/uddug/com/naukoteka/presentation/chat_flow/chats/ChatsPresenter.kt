@@ -71,7 +71,7 @@ class ChatsPresenter(
     }
 
     fun deleteDialog(dialog: ChatPreview) {
-        dialogsInteractor.deletePersonalDialog(dialog.dialogId)
+        dialogsInteractor.clearDialog(dialog.dialogId)
             .await(withProgress = false) {
                 viewState.deleteChat(dialog)
             }

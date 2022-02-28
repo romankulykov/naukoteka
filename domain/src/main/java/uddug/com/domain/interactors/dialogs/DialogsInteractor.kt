@@ -68,6 +68,12 @@ class DialogsInteractor(
             .observeOn(schedulers.ui())
     }
 
+    fun clearDialog(dialogId: Int) : Completable{
+        return dialogsRepository.clearDialog(dialogId)
+            .subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
+    }
+
     fun deletePersonalDialog(dialogId: Int): Completable {
         return dialogsRepository.deleteDialog(dialogId)
             .subscribeOn(schedulers.io())

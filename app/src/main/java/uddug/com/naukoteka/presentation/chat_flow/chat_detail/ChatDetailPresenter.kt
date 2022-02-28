@@ -73,7 +73,7 @@ open class ChatDetailPresenter(
             ChatOption.INTERVIEW_MATERIALS -> router.navigateTo(Screens.SearchInChapterScreen())
             ChatOption.DISABLE_NOTIFICATIONS -> {}
             ChatOption.CLEAR_THE_HISTORY -> {
-                dialogsInteractor.deletePersonalDialog(chatPreview!!.dialogId)
+                dialogsInteractor.clearDialog(chatPreview.dialogId)
                     .await { router.exit() }
             }
             ChatOption.ADD_PARTICIPANT -> {}

@@ -65,6 +65,10 @@ class DialogsRepositoryImpl(
         return dialogsApiService.deleteDialog(dialogId)
     }
 
+    override fun clearDialog(dialogId: Int): Completable {
+        return dialogsApiService.clearDialog(dialogId)
+    }
+
     override fun pinChat(dialogId: Int): Completable {
         return dialogsApiService.pinDialog(dialogId)
     }
