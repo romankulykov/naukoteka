@@ -3,6 +3,7 @@ package uddug.com.naukoteka.presentation.chat_flow.chats
 import moxy.InjectViewState
 import toothpick.InjectConstructor
 import uddug.com.domain.interactors.dialogs.DialogsInteractor
+import uddug.com.domain.interactors.messages.MessagesInteractor
 import uddug.com.domain.interactors.users_search.UsersSearchInteractor
 import uddug.com.domain.repositories.dialogs.models.ChatMessageUI
 import uddug.com.domain.repositories.dialogs.models.ChatPreview
@@ -16,6 +17,7 @@ import uddug.com.naukoteka.navigation.Screens
 class ChatsPresenter(
     private val dialogsInteractor: DialogsInteractor,
     private val usersSearchInteractor: UsersSearchInteractor,
+    private val messagesInteractor: MessagesInteractor,
     val router: AppRouter
 ) : BasePresenterImpl<ChatsView>() {
 
@@ -85,6 +87,13 @@ class ChatsPresenter(
         dialogsInteractor.togglePin(chatListEntity)
             .await { getDialogs(true) }
 
+    }
+
+    fun readMessages(dialogId: Int) {
+        dialogsInteractor.getChatDetailInfo(dialogId)
+            .flatMap { dialogsInteractor.getDialogMessages(it, 50) }
+            .flatMapCompletable { messagesInteractor.readMessages(dialogId, it.map { it.id }) }
+            .await {  }
     }
 
 }

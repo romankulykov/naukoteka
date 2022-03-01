@@ -50,3 +50,11 @@ class FilesApiServiceProvider(
     override fun get() =
         retrofit.create(FilesApiService::class.java)
 }
+
+@InjectConstructor
+class MessagesApiServiceProvider(
+    private val retrofit: Retrofit,
+) : Provider<MessagesApiService> {
+    override fun get() =
+        retrofit.create(MessagesApiService::class.java)
+}

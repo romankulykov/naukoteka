@@ -115,6 +115,11 @@ class ChatsAdapter(
                     }
                     isVisible = dialogType == DialogType.PERSONAL
                 }
+                readButtonBgView.run {
+                    setOnClickListener {
+                        onSwipeClick(ChatSwipeParams(chatPreview, ChatSwipeTitleOption.READ))
+                    }
+                }
                 anchorButtonBgView.run {
                     tvAnchorChat.setText(if (isPinned) R.string.chat_message_popup_menu_unpin else R.string.chat_message_popup_menu_pin)
                     setOnClickListener {

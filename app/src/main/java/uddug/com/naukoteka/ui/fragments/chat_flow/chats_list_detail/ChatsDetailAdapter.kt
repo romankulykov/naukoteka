@@ -14,7 +14,6 @@ class ChatsDetailAdapter(fragment: Fragment) :
             ChatsFragment(),
             ChatsFragment(),
             ChatsFragment(),
-            ChatsFragment(),
         )
 
     override fun getItemCount() = fragments.size

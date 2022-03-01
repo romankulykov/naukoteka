@@ -15,6 +15,7 @@ import uddug.com.data.NaukotekaCookieJar
 import uddug.com.data.repositories.auth.AuthRepositoryImpl
 import uddug.com.data.repositories.dialogs.DialogsRepositoryImpl
 import uddug.com.data.repositories.files.FilesRepositoryImpl
+import uddug.com.data.repositories.messages.MessagesRepositoryImpl
 import uddug.com.data.repositories.session.SessionRepositoryImpl
 import uddug.com.data.repositories.user_profile.UserProfileRepositoryImpl
 import uddug.com.data.repositories.users.UsersSearchRepositoryImpl
@@ -25,6 +26,7 @@ import uddug.com.domain.SchedulersProvider
 import uddug.com.domain.repositories.auth.AuthRepository
 import uddug.com.domain.repositories.dialogs.DialogsRepository
 import uddug.com.domain.repositories.files.FilesRepository
+import uddug.com.domain.repositories.messages.MessagesRepository
 import uddug.com.domain.repositories.user_profile.UserProfileRepository
 import uddug.com.domain.repositories.users_search.UsersSearchRepository
 import uddug.com.domain.repositories.websockets.WebSocketRepository
@@ -67,6 +69,8 @@ class AppModule(application: Application) : Module() {
         bind(DialogsRepository::class.java).to(DialogsRepositoryImpl::class.java)
         bind(FilesApiService::class.java).toProvider(FilesApiServiceProvider::class.java).singleton()
         bind(FilesRepository::class.java).to(FilesRepositoryImpl::class.java)
+        bind(MessagesApiService::class.java).toProvider(MessagesApiServiceProvider::class.java).singleton()
+        bind(MessagesRepository::class.java).to(MessagesRepositoryImpl::class.java)
         bind(UsersSearchRepository::class.java).to(UsersSearchRepositoryImpl::class.java)
         bind(WebSocketRepository::class.java).to(WebSocketRepositoryImpl::class.java)
 

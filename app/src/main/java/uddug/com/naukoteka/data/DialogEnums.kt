@@ -26,6 +26,7 @@ sealed class BottomSheetDialog {
                                 ChatSwipeTitleOption.BLOCK -> R.string.swipe_block
                                 ChatSwipeTitleOption.CLEAR -> R.string.clear_chat
                                 ChatSwipeTitleOption.PIN_TOGGLE -> if (chatPreview.isPinned) R.string.unpin_chat else R.string.pin_chat
+                                ChatSwipeTitleOption.READ -> R.string.swipe_read
                             },
                             clickable = true,
                             titleActionOption = option
@@ -64,7 +65,7 @@ data class ChatOptionEntity(val chatOption: ChatOption) : BottomSheetDialogEntit
     option = chatOption
 )
 
-enum class ChatSwipeTitleOption : BottomSheetDialogOption { PIN_TOGGLE, CLEAR, BLOCK }
+enum class ChatSwipeTitleOption : BottomSheetDialogOption { PIN_TOGGLE, CLEAR, BLOCK, READ }
 
 data class TitleDialogEntity(
     val text: String? = null,

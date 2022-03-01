@@ -11,6 +11,7 @@ import moxy.InjectViewState
 import toothpick.InjectConstructor
 import uddug.com.domain.entities.AndroidFileEntity
 import uddug.com.domain.interactors.dialogs.DialogsInteractor
+import uddug.com.domain.interactors.messages.MessagesInteractor
 import uddug.com.domain.repositories.dialogs.models.ChatMessage
 import uddug.com.domain.repositories.dialogs.models.ChatPreview
 import uddug.com.domain.utils.logging.ILogger
@@ -29,6 +30,7 @@ import java.io.File
 open class ChatDetailPresenter(
     val router: AppRouter,
     private val dialogsInteractor: DialogsInteractor,
+    private val messagesInteractor: MessagesInteractor,
     private val chatPreview: ChatPreview,
     private val logger: ILogger,
     private val context: Context,
@@ -55,14 +57,16 @@ open class ChatDetailPresenter(
             .await(withProgress = false) { message ->
                 logger.debug(message.toString())
                 viewState.addToStart(message)
+                readMessages(listOf(message.id))
             }
 
     }
 
-    fun getChat(chatPreview: ChatPreview) {
+    private fun getChat(chatPreview: ChatPreview) {
         dialogsInteractor.getDialogMessages(chatPreview, pageLimit)
             .await {
                 loadMore = it.size == pageLimit
+                readMessages(it.map { it.id })
                 viewState.showMessages(it)
             }
     }
@@ -70,7 +74,7 @@ open class ChatDetailPresenter(
     fun onChatOptionClick(chatOption: ChatOption) {
         when (chatOption) {
             ChatOption.SEARCH_BY_CONVERSATION -> router.navigateTo(Screens.SearchInChapterScreen())
-            ChatOption.INTERVIEW_MATERIALS -> router.navigateTo(Screens.SearchInChapterScreen())
+            ChatOption.INTERVIEW_MATERIALS -> router.navigateTo(Screens.ChatInfoScreen(chatPreview))
             ChatOption.DISABLE_NOTIFICATIONS -> {}
             ChatOption.CLEAR_THE_HISTORY -> {
                 dialogsInteractor.clearDialog(chatPreview.dialogId)
@@ -157,6 +161,11 @@ open class ChatDetailPresenter(
 
     fun addFile(file: File) {
         files.add(file)
+    }
+
+    fun readMessages(messages: List<Int>) {
+        messagesInteractor.readMessages(chatPreview.dialogId, messages)
+            .await { }
     }
 
     private fun downloadFile(url: String) {

@@ -31,7 +31,6 @@ class ChatsListDetailFragment : BaseFragment(R.layout.fragment_chat_list),
 
     val titles = arrayListOf(
         R.string.chat_all,
-        R.string.chat_groups,
         R.string.chat_studies,
         R.string.chat_work,
         R.string.chat_hidden
@@ -42,7 +41,7 @@ class ChatsListDetailFragment : BaseFragment(R.layout.fragment_chat_list),
         contentView.run {
             viewPager.run {
                 adapter = chatsAdapter
-                offscreenPageLimit = 5
+                offscreenPageLimit = 4
                 isUserInputEnabled = false
             }
             chatEdit.setOnClickListener { presenter.showCreateChat() }

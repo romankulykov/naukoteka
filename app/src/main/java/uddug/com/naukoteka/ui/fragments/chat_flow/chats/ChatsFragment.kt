@@ -101,34 +101,38 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
     }
 
     private fun showSwipeClick(chatSwipeParams: ChatSwipeParams) {
-        val title = getString(
-            when (chatSwipeParams.chatSwipeOption) {
-                ChatSwipeTitleOption.BLOCK -> R.string.block_chat_with
-                ChatSwipeTitleOption.CLEAR -> R.string.clear_chat_with
-                ChatSwipeTitleOption.PIN_TOGGLE -> if (chatSwipeParams.chatListEntity.isPinned) R.string.unpin_chat_with else R.string.pin_chat_with
-                else -> R.string.clear_chat_with
-            },
-            chatSwipeParams.chatListEntity.dialogName
-        )
-        ChatOptionsDialogType(
-            requireActivity(),
-            ChatTitleActionDialog(
-                title,
-                chatSwipeParams.chatSwipeOption,
-                chatSwipeParams.chatListEntity
+        if (chatSwipeParams.chatSwipeOption == ChatSwipeTitleOption.READ) {
+            presenter.readMessages(chatSwipeParams.chatListEntity.dialogId)
+        } else {
+            val title = getString(
+                when (chatSwipeParams.chatSwipeOption) {
+                    ChatSwipeTitleOption.BLOCK -> R.string.block_chat_with
+                    ChatSwipeTitleOption.CLEAR -> R.string.clear_chat_with
+                    ChatSwipeTitleOption.PIN_TOGGLE -> if (chatSwipeParams.chatListEntity.isPinned) R.string.unpin_chat_with else R.string.pin_chat_with
+                    else -> R.string.clear_chat_with
+                },
+                chatSwipeParams.chatListEntity.dialogName
             )
-        ) {
-            (it as? ChatSwipeTitleOption)?.let {
-                when (it) {
-                    ChatSwipeTitleOption.CLEAR -> {
-                        presenter.deleteDialog(chatSwipeParams.chatListEntity)
-                    }
-                    ChatSwipeTitleOption.PIN_TOGGLE -> {
-                        presenter.togglePin(chatSwipeParams.chatListEntity)
+            ChatOptionsDialogType(
+                requireActivity(),
+                ChatTitleActionDialog(
+                    title,
+                    chatSwipeParams.chatSwipeOption,
+                    chatSwipeParams.chatListEntity
+                )
+            ) {
+                (it as? ChatSwipeTitleOption)?.let {
+                    when (it) {
+                        ChatSwipeTitleOption.CLEAR -> {
+                            presenter.deleteDialog(chatSwipeParams.chatListEntity)
+                        }
+                        ChatSwipeTitleOption.PIN_TOGGLE -> {
+                            presenter.togglePin(chatSwipeParams.chatListEntity)
+                        }
                     }
                 }
-            }
-        }.show()
+            }.show()
+        }
     }
 
     private fun showPopupLongPressMenu(chatPreview: ChatPreview, v: View) {
