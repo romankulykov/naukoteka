@@ -2,6 +2,7 @@ package uddug.com.naukoteka.data
 
 import android.view.Gravity
 import uddug.com.domain.repositories.dialogs.models.ChatPreview
+import uddug.com.domain.repositories.dialogs.models.DialogType
 import uddug.com.naukoteka.R
 
 sealed class BottomSheetDialog {
@@ -9,7 +10,16 @@ sealed class BottomSheetDialog {
     fun create(): ArrayList<BottomSheetDialogEntity> {
         return when (this) {
             is ChatOptionsDialog -> ArrayList<BottomSheetDialogEntity>().apply {
-                addAll(ChatOption.values().map { ChatOptionEntity(it) })
+                val options = ArrayList<ChatOption>().apply {
+                    add(ChatOption.SEARCH_BY_CONVERSATION)
+                    add(ChatOption.INTERVIEW_MATERIALS)
+                    add(ChatOption.DISABLE_NOTIFICATIONS)
+                    add(ChatOption.CLEAR_THE_HISTORY)
+                    if (chatPreview.dialogType == DialogType.GROUP) {
+                        add(ChatOption.ADD_PARTICIPANT)
+                    }
+                }
+                addAll(options.map { ChatOptionEntity(it) })
             }
             is ChatTitleActionDialog -> {
                 ArrayList<BottomSheetDialogEntity>().apply {
@@ -39,7 +49,7 @@ sealed class BottomSheetDialog {
 
 }
 
-object ChatOptionsDialog : BottomSheetDialog()
+data class ChatOptionsDialog(val chatPreview: ChatPreview) : BottomSheetDialog()
 data class ChatTitleActionDialog(
     val title: String,
     val option: ChatSwipeTitleOption,

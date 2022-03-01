@@ -8,11 +8,12 @@ import uddug.com.domain.repositories.Section
 import java.util.*
 
 enum class DialogType(val type: Int) { PERSONAL(1), GROUP(2) }
-enum class ContentType(val type: String) {
+enum class ContentType(val type: String? = null) {
     AUDIO("audio/mpeg"),
     VIDEO("video/mp4"),
     IMAGE("image/jpeg"),
-    PDF("application/pdf")
+    PDF("application/pdf"),
+    OTHER
 }
 
 data class ChatsPreview(
@@ -98,11 +99,11 @@ data class UserChatPreview(
 
 @Parcelize
 data class AttachmentChatPreview(
-    val id: String?,
+    val id: String? = null,
     val path: String?,
-    val fileType: Int?,
-    val filename: String?,
-    val contentType: ContentType?
+    val fileType: Int? = null,
+    val filename: String? = null,
+    val contentType: ContentType? = null
 ) : Parcelable {
     val fullPath get() = path?.run { ApiConstants.API_ENDPOINT_FILES_BASE + this }
 }

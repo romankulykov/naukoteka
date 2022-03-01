@@ -5,13 +5,12 @@ import androidx.fragment.app.FragmentActivity
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.data.BottomSheetDialog
 import uddug.com.naukoteka.data.BottomSheetDialogOption
-import uddug.com.naukoteka.data.ChatOption
 import uddug.com.naukoteka.databinding.AdditionalOptionsDialogBinding
 import uddug.com.naukoteka.global.base.BaseBottomSheetDialog
 import uddug.com.naukoteka.ui.adapters.additional_options.AdditionalOptionsAdapter
 
 class ChatOptionsDialogType(
-    private val fragmentActivity: FragmentActivity,
+    fragmentActivity: FragmentActivity,
     private val bottomSheetDialogType: BottomSheetDialog,
     private val chatOptionListener: (BottomSheetDialogOption) -> Unit
 ) :
@@ -24,8 +23,6 @@ class ChatOptionsDialogType(
         setContentView(contentView.root)
     }
 
-    private lateinit var options: ArrayList<ChatOption>
-
     private val chatOptionsAdapter by lazy {
         AdditionalOptionsAdapter {
             dismiss()
@@ -35,15 +32,9 @@ class ChatOptionsDialogType(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        options = ArrayList()
 
-        options.run {
-            add(ChatOption.SEARCH_BY_CONVERSATION)
-            add(ChatOption.INTERVIEW_MATERIALS)
-            add(ChatOption.DISABLE_NOTIFICATIONS)
-            add(ChatOption.CLEAR_THE_HISTORY)
-            add(ChatOption.ADD_PARTICIPANT)
-        }
+        // TODO check is dialog personal or not and show appropriate
+
         contentView.run {
             rvAdditionalOptions.adapter = chatOptionsAdapter
             chatOptionsAdapter.setItems(bottomSheetDialogType.create())

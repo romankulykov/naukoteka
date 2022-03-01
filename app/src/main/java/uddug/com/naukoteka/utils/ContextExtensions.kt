@@ -33,10 +33,18 @@ fun Context.useStyledAttributes(
 fun TextView.textColor(@ColorRes colorId: Int) = setTextColor(context.color(colorId))
 
 @SuppressLint("UseCompatLoadingForColorStateLists")
-fun Context.color(@ColorRes resId: Int) = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) getColor(resId) else resources.getColor(resId)
+fun Context.color(@ColorRes resId: Int) =
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) getColor(resId) else resources.getColor(
+        resId
+    )
 
 fun Context.getDrawableCompat(drawableId: Int): Drawable {
     return ContextCompat.getDrawable(this, drawableId)!!
+}
+
+fun Context.showKeyboard() {
+    val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+    imm!!.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
 }
 
 fun Fragment.hideKeyboard() {

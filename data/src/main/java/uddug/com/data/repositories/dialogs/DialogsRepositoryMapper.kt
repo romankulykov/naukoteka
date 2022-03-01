@@ -120,5 +120,17 @@ class DialogsRepositoryMapper {
 
     }
 
+    fun mapSearchMediaContentToDomain(dto: SearchMediaResponseDto) =
+        dto.run {
+            SearchMedia(
+                messageId = messageId,
+                dialogId = dialogId,
+                category = category,
+                mediaType = mediaType,
+                text = text,
+                attachment = mapAttachmentToDomain(attachment)!!
+            )
+        }
+
 
 }

@@ -20,6 +20,15 @@ interface DialogsApiService {
         @Query("limit") limit: Int? = null,
     ): Single<List<SearchDialogResponseDto>>
 
+    @GET("v1/dialogs/media/{dialogId}")
+    fun searchMedia(
+        @Path("dialogId") dialogId: Int,
+        @Query("category") category: Int,
+        @Query("lastMessageId") lastMessageId: Int? = null,
+        @Query("limit") limit: Int? = null,
+        @Query("mediaClasses") mediaClasses: List<Int>? = null,
+    ): Single<List<SearchMediaResponseDto>>
+
     @GET("v1/dialogs/search-messages/{dialogId}")
     fun searchMessagesInDialog(
         @Path("dialogId") id: Int,

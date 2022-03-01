@@ -6,6 +6,7 @@ import io.reactivex.Observable
 import io.reactivex.Single
 import toothpick.InjectConstructor
 import uddug.com.domain.SchedulersProvider
+import uddug.com.domain.entities.MediaCategory
 import uddug.com.domain.repositories.dialogs.DialogsRepository
 import uddug.com.domain.repositories.dialogs.models.*
 import uddug.com.domain.repositories.files.FilesRepository
@@ -68,7 +69,7 @@ class DialogsInteractor(
             .observeOn(schedulers.ui())
     }
 
-    fun clearDialog(dialogId: Int) : Completable{
+    fun clearDialog(dialogId: Int): Completable {
         return dialogsRepository.clearDialog(dialogId)
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
@@ -162,6 +163,22 @@ class DialogsInteractor(
 
     fun searchDialogs(query: String, limit: Int): Single<List<SearchDialogs>> {
         return dialogsRepository.searchDialogs(query, limit)
+            .subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
+    }
+
+    fun searchMediaContent(
+        dialogId: Int,
+        category: MediaCategory,
+        lastMessageId: Int? = null,
+        limit: Int? = null
+    ): Single<List<SearchMedia>> {
+        return dialogsRepository.searchMediaContent(
+            dialogId,
+            MediaCategory.values().find { it == category }!!.category,
+            lastMessageId,
+            limit
+        )
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
     }

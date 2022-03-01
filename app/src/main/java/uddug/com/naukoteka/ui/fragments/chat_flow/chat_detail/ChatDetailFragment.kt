@@ -53,6 +53,7 @@ import uddug.com.naukoteka.utils.net.extractPath
 import uddug.com.naukoteka.utils.ui.TextDrawable
 import uddug.com.naukoteka.utils.ui.chooseFromStorage
 import uddug.com.naukoteka.utils.ui.load
+import uddug.com.naukoteka.utils.ui.takePhoto
 import java.io.File
 
 class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
@@ -72,6 +73,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
         private const val CONTENT_TYPE_FILE: Byte = 2
 
         private const val REQUEST_CODE_FILE = 1001
+        private const val REQUEST_CODE_CAMERA = 1002
 
         fun newInstance(chat: ChatPreview) = ChatDetailFragment().apply {
             arguments = bundleOf(CHAT_PREVIEW to chat)
@@ -91,6 +93,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
     private var holderPayload: Payload? = null
     private var attachmentOptionsDialog: AttachmentOptionsDialog? = null
     private var messageRecyclerViewState: Parcelable? = null
+    private var photoPath: String? = null
 
     override val contentView by viewBinding(FragmentChatDetailBinding::bind)
 
@@ -211,6 +214,10 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
                     )
                 )
             }
+        } else if (requestCode == REQUEST_CODE_CAMERA) {
+            if (photoPath != null) {
+                presenter.sendFiles(listOf(AndroidFileEntity(photoPath!!, 0)))
+            }
         }
     }
 
@@ -223,8 +230,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
                 attachmentOptionsDialog = AttachmentOptionsDialog(
                     requireActivity(), presenter::onChatAttachmentOptionClick, presenter::sendFiles
                 ) {
-
-                    showInfoMessage("On camera click")
+                    photoPath = requireActivity().takePhoto(REQUEST_CODE_CAMERA)
                 }
             }
             attachmentOptionsDialog?.show()
@@ -374,7 +380,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
 
     fun showOptionsDialog() {
         ChatOptionsDialogType(
-            requireActivity(), ChatOptionsDialog
+            requireActivity(), ChatOptionsDialog(chat)
         ) { presenter.onChatOptionClick(it as ChatOption) }.show()
     }
 }

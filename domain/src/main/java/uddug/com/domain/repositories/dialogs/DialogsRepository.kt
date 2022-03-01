@@ -20,6 +20,17 @@ interface DialogsRepository {
     fun pinChat(dialogId: Int): Completable
     fun unPinChat(dialogId: Int): Completable
     fun searchDialogs(query: String, limit: Int): Single<List<SearchDialogs>>
-    fun searchMessagesInDialogs(dialogId: Int, query: String, limit: Int): Single<List<SearchMessagesInDialogs>>
+    fun searchMediaContent(
+        dialogId: Int,
+        category: Int,
+        lastMessageId: Int? = null,
+        limit: Int?
+    ): Single<List<SearchMedia>>
+
+    fun searchMessagesInDialogs(
+        dialogId: Int,
+        query: String,
+        limit: Int
+    ): Single<List<SearchMessagesInDialogs>>
 
 }

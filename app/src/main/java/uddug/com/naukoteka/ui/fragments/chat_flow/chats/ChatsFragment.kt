@@ -190,7 +190,7 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
     }
 
     override fun onLoadMoreRequested() {
-        presenter.getDialogs(false, chatsAdapter.getItems()?.last()?.messageId)
+        presenter.getDialogs(false, chatsAdapter.getItems()?.lastOrNull()?.messageId)
     }
 
 }

@@ -83,6 +83,16 @@ class DialogsRepositoryImpl(
             .map { it.map { dialogsRepositoryMapper.mapSearchDialog(it) } }
     }
 
+    override fun searchMediaContent(
+        dialogId: Int,
+        category: Int,
+        lastMessageId: Int?,
+        limit: Int?
+    ): Single<List<SearchMedia>> {
+        return dialogsApiService.searchMedia(dialogId, category, lastMessageId, limit)
+            .map { it.map { dialogsRepositoryMapper.mapSearchMediaContentToDomain(it) } }
+    }
+
     override fun searchMessagesInDialogs(
         dialogId: Int,
         query: String,

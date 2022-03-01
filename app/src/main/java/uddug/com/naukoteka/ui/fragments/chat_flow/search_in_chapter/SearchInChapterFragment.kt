@@ -13,6 +13,7 @@ import uddug.com.naukoteka.di.DI
 import uddug.com.naukoteka.di.modules.SearchInChatModule
 import uddug.com.naukoteka.global.base.BaseFragment
 import uddug.com.naukoteka.ui.fragments.chat_flow.profile.ChatDetailInfoAdapter
+import uddug.com.naukoteka.utils.showKeyboard
 import uddug.com.naukoteka.utils.ui.afterTextChangedDelay
 import uddug.com.naukoteka.utils.viewBinding
 
@@ -67,6 +68,8 @@ class SearchInChapterFragment : BaseFragment(R.layout.fragment_search_in_chapter
             TabLayoutMediator(tabLayout, viewPager) { tab, position ->
                 tab.text = getString(titles[position])
             }.attach()
+            etSearchChat.requestFocus()
+            requireContext().showKeyboard()
         }
     }
 

@@ -73,7 +73,7 @@ open class ChatDetailPresenter(
 
     fun onChatOptionClick(chatOption: ChatOption) {
         when (chatOption) {
-            ChatOption.SEARCH_BY_CONVERSATION -> router.navigateTo(Screens.SearchInChapterScreen())
+            ChatOption.SEARCH_BY_CONVERSATION -> router.navigateTo(Screens.SearchInChapterScreen(chatPreview.dialogId))
             ChatOption.INTERVIEW_MATERIALS -> router.navigateTo(Screens.ChatInfoScreen(chatPreview))
             ChatOption.DISABLE_NOTIFICATIONS -> {}
             ChatOption.CLEAR_THE_HISTORY -> {

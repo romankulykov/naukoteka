@@ -5,8 +5,10 @@ import android.view.View
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import uddug.com.domain.entities.FilesEntity
+import uddug.com.domain.repositories.dialogs.models.SearchMedia
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.FragmentFilesBinding
+import uddug.com.naukoteka.di.DI
 import uddug.com.naukoteka.global.base.BaseFragment
 import uddug.com.naukoteka.presentation.chat_flow.search_in_chapter.files.FilesPresenter
 import uddug.com.naukoteka.presentation.chat_flow.search_in_chapter.files.FilesView
@@ -21,9 +23,10 @@ class FilesFragment : BaseFragment(R.layout.fragment_files),
 
     @ProvidePresenter
     fun providePresenter(): FilesPresenter {
-        return getScope().getInstance(FilesPresenter::class.java)
+        return localScope.getInstance(FilesPresenter::class.java)
     }
 
+    private val localScope by lazy { getScope().openSubScope(DI.SEARCH_IN_CHAT_SCOPE) }
     override val contentView by viewBinding(FragmentFilesBinding::bind)
 
     private val filesAdapter = FilesAdapter()
@@ -40,7 +43,7 @@ class FilesFragment : BaseFragment(R.layout.fragment_files),
         return true
     }
 
-    override fun showFiles(files: List<FilesEntity>) {
+    override fun showFiles(files: List<SearchMedia>) {
         filesAdapter.setItems(files)
     }
 }
