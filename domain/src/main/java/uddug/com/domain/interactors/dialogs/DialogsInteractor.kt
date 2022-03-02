@@ -120,7 +120,8 @@ class DialogsInteractor(
                         ownerId = owner,
                         createdAt = Calendar.getInstance(),
                         read = emptyList(),
-                        user = user
+                        user = user,
+                        chatPreview = chatPreview
                     )
                     messages.add(message)
                     message

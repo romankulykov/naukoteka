@@ -1,12 +1,15 @@
 package uddug.com.data.repositories.dialogs
 
 import toothpick.InjectConstructor
+import uddug.com.data.cache.user_uuid.UserUUIDCache
 import uddug.com.data.services.models.response.dialogs.*
 import uddug.com.domain.repositories.dialogs.models.*
 import java.util.*
 
 @InjectConstructor
-class DialogsRepositoryMapper {
+class DialogsRepositoryMapper(
+    private val userUUID: UserUUIDCache,
+) {
 
     fun mapChatsPreviewToDomain(dto: ChatPreviewResponseDto) = dto.run {
         ChatsPreview(
@@ -89,7 +92,7 @@ class DialogsRepositoryMapper {
         )
     }
 
-    fun mapDialogDetailToDomain(dto: ChatMessageDto, user: UserChatPreview?) = dto.run {
+    fun mapDialogDetailToDomain(dto: ChatMessageDto, chatPreview: ChatPreview?) = dto.run {
         ChatMessage(
             id = id,
             text = text,
@@ -99,8 +102,25 @@ class DialogsRepositoryMapper {
             ownerId = ownerId,
             createdAt = createdAt,
             read = read.map { it.entries.first().run { Pair(key, value.toInt()) } },
-            user = user
+            user = getUser(this, chatPreview),
+            chatPreview = chatPreview,
         )
+    }
+
+    fun getUser(chatMessage: ChatMessageDto, chatPreview: ChatPreview?): UserChatPreview? {
+        val user = if (chatMessage.ownerId == null) {
+            // messages with null ownerId means that it is system message
+            UserChatPreview(null, userUUID.requireEntity, false, "", "")
+        } else if (chatPreview?.dialogType == DialogType.GROUP) {
+            chatPreview.users?.find { it.userId == chatMessage.ownerId }
+        } else {
+            if (userUUID.entity == chatMessage.ownerId) {
+                UserChatPreview(null, userUUID.requireEntity, false, "", "")
+            } else {
+                chatPreview?.interlocutor
+            }
+        }
+        return user
     }
 
     fun mapMessageToSearchMessageDomain(

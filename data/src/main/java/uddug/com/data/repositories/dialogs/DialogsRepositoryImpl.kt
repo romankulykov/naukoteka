@@ -39,19 +39,7 @@ class DialogsRepositoryImpl(
                 messages
                     // TODO think up maybe null owner id it is deleted account ?
                     .map { chatMessage ->
-                        val user = if (chatMessage.ownerId == null) {
-                            // messages with null ownerId means that it is system message
-                            UserChatPreview(null, userUUID.requireEntity, false, "", "")
-                        } else if (chatPreview.dialogType == DialogType.GROUP) {
-                            chatPreview.users?.find { it.userId == chatMessage.ownerId }
-                        } else {
-                            if (userUUID.entity == chatMessage.ownerId) {
-                                UserChatPreview(null, userUUID.requireEntity, false, "", "")
-                            } else {
-                                chatPreview.interlocutor
-                            }
-                        }
-                        dialogsRepositoryMapper.mapDialogDetailToDomain(chatMessage, user)
+                        dialogsRepositoryMapper.mapDialogDetailToDomain(chatMessage, chatPreview)
                     }
             }
     }

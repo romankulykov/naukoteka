@@ -16,7 +16,8 @@ data class ChatMessage(
     val ownerId: String?,
     val createdAt: Calendar,
     val read: List<Pair<String, Int>>,
-    val user: UserChatPreview?
+    val user: UserChatPreview?,
+    val chatPreview: ChatPreview?,
 ) : IMessage,
     MessageContentType.Image,
     MessageContentType {
