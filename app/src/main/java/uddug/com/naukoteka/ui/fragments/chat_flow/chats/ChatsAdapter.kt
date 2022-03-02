@@ -32,6 +32,8 @@ class ChatsAdapter(
 ) :
     BaseAdapter<ChatMessageUI, ChatsAdapter.ViewHolder>() {
 
+    private var visibleItemView: View? = null
+
     override fun newViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(R.layout.list_item_chat, parent)
 
@@ -45,6 +47,8 @@ class ChatsAdapter(
         onlineUsersUUIDs.addAll(onlineUsers)
         notifyDataSetChanged()
     }
+
+    fun getHeightItem() = visibleItemView?.height ?: 0
 
     inner class ViewHolder(@LayoutRes layoutRes: Int, parent: ViewGroup) :
         BaseViewHolder<ChatMessageUI>(layoutRes, parent) {
@@ -86,6 +90,7 @@ class ChatsAdapter(
                     swipeLayout.isSwipeEnabled = item is ChatPreview
 
                     if (item is ChatPreview) initChatPreview(item)
+                    itemView.post { visibleItemView = itemView }
                 }
             }
         }

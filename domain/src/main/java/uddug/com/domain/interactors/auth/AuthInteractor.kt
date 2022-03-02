@@ -14,7 +14,7 @@ class AuthInteractor(
     private val schedulers: SchedulersProvider,
 ) {
 
-    fun testLogin() = login("a@example.local", "Abcd!2345")
+    fun testLogin() = login("a@example.local", "79kLZp>KMCyi")
 
     fun login(login: String, password: String): Completable {
         return authRepository.loginEmail(login, password)

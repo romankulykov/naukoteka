@@ -22,8 +22,14 @@ import uddug.com.naukoteka.presentation.chat_flow.chats.ChatsPresenter
 import uddug.com.naukoteka.presentation.chat_flow.chats.ChatsView
 import uddug.com.naukoteka.ui.adapters.long_press_menu.LongPressMenuAdapter
 import uddug.com.naukoteka.ui.dialogs.chat_option.ChatOptionsDialogType
+import uddug.com.naukoteka.ui.fragments.chat_flow.chats_list_detail.ChatsListDetailFragment
 import uddug.com.naukoteka.utils.BackButtonListener
+import uddug.com.naukoteka.utils.ui.applyDim
+import uddug.com.naukoteka.utils.ui.clearDim
+import uddug.com.naukoteka.utils.ui.getScreenHeight
+import uddug.com.naukoteka.utils.ui.px
 import uddug.com.naukoteka.utils.viewBinding
+
 
 class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButtonListener,
     EndlessRecyclerViewAdapter.RequestToLoadMoreListener,
@@ -143,7 +149,7 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
 
     private fun showPopupLongPressMenu(chatPreview: ChatPreview, v: View) {
         contentView.run {
-            var child =
+            val child =
                 LayoutInflater.from(requireContext()).inflate(R.layout.popup_long_press_menu, null)
             val popupWindow = PopupWindow(requireContext())
             val longPressMenuAdapter = LongPressMenuAdapter {
@@ -166,10 +172,8 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
             with(popupWindow) {
                 contentView = child
                 setBackgroundDrawable(null)
-                elevation = 12F
                 isFocusable = true
                 isOutsideTouchable = true
-                showAsDropDown(v, 0, 0)
                 with(child) {
                     findViewById<RecyclerView>(R.id.rv_popup_long_press_menu).adapter =
                         longPressMenuAdapter.apply {
@@ -191,6 +195,25 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
                             setItems(items)
                         }
                 }
+
+                val screenHeight = requireActivity().getScreenHeight()
+                val coordinateY = v.y
+                val topBarHeight =
+                    (parentFragment as? ChatsListDetailFragment)?.getAppBarLayoutHeight() ?: 0
+                val bottomBarHeight = 87.px
+
+                val heightPossibleToDisplayPopup = screenHeight - topBarHeight - bottomBarHeight
+                val heightListItem = chatsAdapter.getHeightItem()
+                val realTapOnScreenCoordinate = coordinateY + topBarHeight + heightListItem
+                if (realTapOnScreenCoordinate > heightPossibleToDisplayPopup) {
+                    val diff = realTapOnScreenCoordinate - heightPossibleToDisplayPopup
+                    showAsDropDown(v, 0, -diff.toInt())
+                } else showAsDropDown(v, 0, 0)
+
+                applyDim(0.6f)
+                setOnDismissListener { clearDim() }
+
+
             }
         }
     }

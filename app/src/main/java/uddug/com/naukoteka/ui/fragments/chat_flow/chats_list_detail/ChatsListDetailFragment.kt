@@ -54,6 +54,9 @@ class ChatsListDetailFragment : BaseFragment(R.layout.fragment_chat_list),
         }
     }
 
+    fun getAppBarLayoutHeight() = contentView.appBarLayoutChats.height
+    fun getAppBarLayoutMeasuredHeight() = contentView.appBarLayoutChats.measuredHeight
+
     override fun onBackPressed(): Boolean {
         presenter.exit()
         return true
