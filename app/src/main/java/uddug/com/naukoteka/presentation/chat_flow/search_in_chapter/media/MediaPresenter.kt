@@ -16,11 +16,11 @@ import uddug.com.naukoteka.navigation.AppRouter
 class MediaPresenter(
     val router: AppRouter,
     private val dialogsInteractor: DialogsInteractor,
-    private val searchInChat: SearchInChatModule.SearchInChatParams,
 ) : BasePresenterImpl<MediaView>() {
 
     private val pageLimit: Int = 10
     private var loadMore = false
+    var searchInChat: SearchInChatModule.SearchInChatParams? = null
 
     private fun listOfMedia(): ArrayList<SearchMedia> {
         val entities = arrayListOf<SearchMedia>()
@@ -66,17 +66,12 @@ class MediaPresenter(
         return entities
     }
 
-    override fun onFirstViewAttach() {
-        super.onFirstViewAttach()
-        obtainData()
-    }
-
     fun obtainData(
         withProgress: Boolean = true, lastMessageId: Int? = null,
     ) {
-        if (searchInChat.dialogId != null) {
+        if (searchInChat?.dialogId != null) {
             dialogsInteractor.searchMediaContent(
-                searchInChat.dialogId,
+                searchInChat!!.dialogId!!,
                 MediaCategory.IMAGE_VIDEO,
                 lastMessageId,
                 pageLimit

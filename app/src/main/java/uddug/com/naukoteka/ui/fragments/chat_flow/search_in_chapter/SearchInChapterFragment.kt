@@ -6,6 +6,7 @@ import android.view.View
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import com.google.android.material.tabs.TabLayoutMediator
+import toothpick.Scope
 import toothpick.ktp.KTP
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.FragmentSearchInChapterBinding
@@ -46,12 +47,14 @@ class SearchInChapterFragment : BaseFragment(R.layout.fragment_search_in_chapter
 
     private var localQuery: String = ""
 
-    private val localScope by lazy { getScope().openSubScope(DI.SEARCH_IN_CHAT_SCOPE) }
+    override fun getScope(): Scope {
+        return super.getScope().openSubScope(DI.SEARCH_IN_CHAT_SCOPE)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         KTP.closeScope(DI.SEARCH_IN_CHAT_SCOPE)
-        localScope.installModules(SearchInChatModule(if (dialogId == -1) null else dialogId))
+        getScope().installModules(SearchInChatModule(if (dialogId == -1) null else dialogId))
         initAdapter()
         contentView.run {
             viewPager.adapter = profileAdapter

@@ -9,10 +9,14 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.tabs.TabLayoutMediator
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
+import toothpick.Scope
+import toothpick.ktp.KTP
 import uddug.com.domain.repositories.dialogs.models.ChatPreview
 import uddug.com.domain.repositories.dialogs.models.DialogType
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.FragmentChatDetailInfoBinding
+import uddug.com.naukoteka.di.DI
+import uddug.com.naukoteka.di.modules.SearchInChatModule
 import uddug.com.naukoteka.global.base.BaseFragment
 import uddug.com.naukoteka.presentation.chat_flow.profile.ChatDetailInfoPresenter
 import uddug.com.naukoteka.presentation.chat_flow.profile.ChatDetailInfoView
@@ -56,8 +60,14 @@ class ChatDetailInfoFragment : BaseFragment(R.layout.fragment_chat_detail_info),
 
     private val profileAdapter by lazy { ChatDetailInfoAdapter(this) }
 
+    override fun getScope(): Scope {
+        return super.getScope().openSubScope(DI.SEARCH_IN_CHAT_SCOPE)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        KTP.closeScope(DI.SEARCH_IN_CHAT_SCOPE)
+        getScope().installModules(SearchInChatModule(chatPreview.dialogId))
         contentView.run {
             clBack.setOnClickListener { onBackPressed() }
             viewPager.adapter = profileAdapter
