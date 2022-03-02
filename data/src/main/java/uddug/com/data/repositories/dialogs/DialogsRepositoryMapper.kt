@@ -26,7 +26,7 @@ class DialogsRepositoryMapper(
             dialogName = fillChatName(this, dialogType),
             dialogType = dialogType,
             isPinned = (isPinned as? Boolean)?.run { this } ?: (isPinned as? Int?)?.run { this == 1 } ?: (isPinned as? Double?)?.run { this == 1.0 } == true,
-            isNotificationEnabled = !((notificationsDisable as? Boolean)?.run { this } ?: (notificationsDisable as? Int?)?.run { this == 1 } ?: (notificationsDisable as? Double?)?.run { this == 1.0 } == true),
+            isNotificationEnabled = notificationsDisable?.run { this } ?: true,
             messageId = messageId,
             firstMessageId = firstMessageId,
             dialogImage = mapAttachmentToDomain(dialogImage ?: interlocutor?.image),

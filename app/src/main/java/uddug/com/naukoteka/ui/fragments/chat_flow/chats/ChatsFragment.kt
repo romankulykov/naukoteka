@@ -154,8 +154,12 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
                     DialogLongPressMenu.CLEAR_THE_HISTORY -> {
                         showSwipeClick(ChatSwipeParams(chatPreview, ChatSwipeTitleOption.CLEAR))
                     }
-                    DialogLongPressMenu.PIN_CHAT -> presenter.togglePin(chatPreview)
-                    DialogLongPressMenu.UNPIN_CHAT -> presenter.togglePin(chatPreview)
+                    DialogLongPressMenu.PIN_CHAT, DialogLongPressMenu.UNPIN_CHAT -> presenter.togglePin(
+                        chatPreview
+                    )
+                    DialogLongPressMenu.ENABLE_NOTIFICATIONS, DialogLongPressMenu.DISABLE_NOTIFICATIONS -> presenter.toggleNotifications(
+                        chatPreview
+                    )
                 }
                 popupWindow.dismiss()
             }
