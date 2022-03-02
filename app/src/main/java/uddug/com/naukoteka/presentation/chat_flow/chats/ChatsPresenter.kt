@@ -7,6 +7,7 @@ import uddug.com.domain.interactors.messages.MessagesInteractor
 import uddug.com.domain.interactors.users_search.UsersSearchInteractor
 import uddug.com.domain.repositories.dialogs.models.ChatMessageUI
 import uddug.com.domain.repositories.dialogs.models.ChatPreview
+import uddug.com.naukoteka.data.DialogLongPressMenu
 import uddug.com.naukoteka.global.SwipeRefreshLoading
 import uddug.com.naukoteka.global.base.BasePresenterImpl
 import uddug.com.naukoteka.navigation.AppRouter
@@ -88,7 +89,7 @@ class ChatsPresenter(
             .await { getDialogs(true) }
     }
 
-    fun toggleNotifications(chatListEntity: ChatPreview){
+    fun toggleNotifications(chatListEntity: ChatPreview) {
         dialogsInteractor.toggleNotifications(chatListEntity)
             .await { viewState.updateDialog(it) }
     }
@@ -97,7 +98,26 @@ class ChatsPresenter(
         dialogsInteractor.getChatDetailInfo(dialogId)
             .flatMap { dialogsInteractor.getDialogMessages(it, 50) }
             .flatMapCompletable { messagesInteractor.readMessages(dialogId, it.map { it.id }) }
-            .await {  }
+            .await { }
+    }
+
+    fun getDialogLongPressMenu(chatPreview: ChatPreview): ArrayList<DialogLongPressMenu> {
+        val items = ArrayList<DialogLongPressMenu>().apply {
+            if (chatPreview.isPinned) {
+                add(DialogLongPressMenu.UNPIN_CHAT)
+            } else {
+                add(DialogLongPressMenu.PIN_CHAT)
+            }
+            add(DialogLongPressMenu.HIDE_CHAT)
+            if (chatPreview.isNotificationEnabled) {
+                add(DialogLongPressMenu.DISABLE_NOTIFICATIONS)
+            } else {
+                add(DialogLongPressMenu.ENABLE_NOTIFICATIONS)
+            }
+            add(DialogLongPressMenu.CLEAR_THE_HISTORY)
+            add(DialogLongPressMenu.BLOCK)
+        }
+        return items
     }
 
 }

@@ -11,15 +11,17 @@ import android.widget.PopupWindow
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import uddug.com.naukoteka.R
+import uddug.com.naukoteka.data.PopupWindowMenu
 import uddug.com.naukoteka.ui.adapters.long_press_menu.LongPressMenuAdapter
 
 
 fun Activity.showPopupLongPress(
-    adapter: LongPressMenuAdapter,
+    items: List<PopupWindowMenu>,
     anchor: View,
     realTapOnScreenCoordinate: Float,
-    heightPossibleToDisplayPopup: Int
-) {
+    heightPossibleToDisplayPopup: Int,
+    itemClick: (PopupWindowMenu) -> Unit
+): PopupWindow {
     val child =
         LayoutInflater.from(this).inflate(R.layout.popup_long_press_menu, null)
     val popupWindow = PopupWindow(this)
@@ -28,8 +30,13 @@ fun Activity.showPopupLongPress(
         setBackgroundDrawable(null)
         isFocusable = true
         isOutsideTouchable = true
+
         with(child) {
-            findViewById<RecyclerView>(R.id.rv_popup_long_press_menu).adapter = adapter
+            val longPressMenuAdapter = LongPressMenuAdapter {
+                itemClick(it)
+                popupWindow.dismiss()
+            }.apply { setItems(items) }
+            findViewById<RecyclerView>(R.id.rv_popup_long_press_menu).adapter = longPressMenuAdapter
         }
 
         if (realTapOnScreenCoordinate > heightPossibleToDisplayPopup) {
@@ -40,6 +47,7 @@ fun Activity.showPopupLongPress(
         applyDim(0.6f)
         setOnDismissListener { clearDim() }
     }
+    return popupWindow
 }
 
 fun Fragment.applyDim(dimAmount: Float) = requireActivity().applyDim(dimAmount)

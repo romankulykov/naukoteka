@@ -5,14 +5,11 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Parcelable
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
-import android.widget.PopupWindow
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.request.RequestOptions
 import com.stfalcon.chatkit.commons.ImageLoader
 import com.stfalcon.chatkit.messages.MessageHolders
@@ -37,7 +34,6 @@ import uddug.com.naukoteka.di.modules.ChatDetailModule
 import uddug.com.naukoteka.global.base.BaseFragment
 import uddug.com.naukoteka.presentation.chat_flow.chat_detail.ChatDetailPresenter
 import uddug.com.naukoteka.presentation.chat_flow.chat_detail.ChatDetailView
-import uddug.com.naukoteka.ui.adapters.long_press_menu.LongPressMenuAdapter
 import uddug.com.naukoteka.ui.custom.square_toast.ToastInfo
 import uddug.com.naukoteka.ui.dialogs.chat_option.AttachmentOptionsDialog
 import uddug.com.naukoteka.ui.dialogs.chat_option.ChatOptionsDialogType
@@ -50,10 +46,7 @@ import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.outcoming.Outcomin
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.system_message.SystemMessageViewHolder
 import uddug.com.naukoteka.utils.*
 import uddug.com.naukoteka.utils.net.extractPath
-import uddug.com.naukoteka.utils.ui.TextDrawable
-import uddug.com.naukoteka.utils.ui.chooseFromStorage
-import uddug.com.naukoteka.utils.ui.load
-import uddug.com.naukoteka.utils.ui.takePhoto
+import uddug.com.naukoteka.utils.ui.*
 import java.io.File
 
 class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
@@ -61,7 +54,6 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
     InputListener,
     AttachmentsListener,
     MessagesListAdapter.OnMessageViewLongClickListener<ChatMessage>,
-    MessagesListAdapter.OnMessageViewClickListener<ChatMessage>,
     MessagesListAdapter.OnLoadMoreListener,
     MessageHolders.ContentChecker<ChatMessage> {
 
@@ -246,38 +238,36 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
         presenter.onMessageLongClick(message)
     }
 
-    override fun onMessageViewClick(view: View, message: ChatMessage) {
+    override fun showPopupLongPressMenu(something: DropInChatEvent.ClickEvent) {
         if (presenter.isMessagesSelected) {
-            presenter.onMessageClick(message)
+            presenter.onMessageClick(something.chatMessage)
         } else {
-            showPopupLongPressMenu(view, message)
+            val (realTapOnScreenCoordinate, heightPossibleToDisplayPopup) = calculatePopupAxis(something)
+            requireActivity().showPopupLongPress(
+                ChatClickMenu.values().toList(),
+                something.view,
+                realTapOnScreenCoordinate,
+                heightPossibleToDisplayPopup - 400,
+                itemClick = { menuItem ->
+                    if (menuItem == ChatClickMenu.SELECT) {
+                        presenter.onMessageLongClick(something.chatMessage)
+                    }
+                }
+            )
         }
     }
 
-    private fun showPopupLongPressMenu(v: View, message: ChatMessage) {
-        contentView.run {
-            val child =
-                LayoutInflater.from(requireContext()).inflate(R.layout.popup_long_press_menu, null)
-            val popupWindow = PopupWindow(requireContext())
-            val longPressMenuAdapter = LongPressMenuAdapter { menuItem ->
-                if (menuItem == ChatClickMenu.SELECT) {
-                    presenter.onMessageLongClick(message)
-                }
-                popupWindow.dismiss()
-            }
-            with(popupWindow) {
-                contentView = child
-                setBackgroundDrawable(null)
-                elevation = 12F
-                isFocusable = true
-                isOutsideTouchable = true
-                showAsDropDown(v, 0, 0)
-                with(child) {
-                    findViewById<RecyclerView>(R.id.rv_popup_long_press_menu).adapter =
-                        longPressMenuAdapter.apply { setItems(ChatClickMenu.values().toList()) }
-                }
-            }
-        }
+    private fun calculatePopupAxis(something: DropInChatEvent.ClickEvent): Pair<Float, Int> {
+        val screenHeight = requireActivity().getScreenHeight()
+        val coordinateY = something.view.y
+        val topBarHeight = contentView.clToolbar.height
+        val bottomBarHeight = contentView.llInput.height
+
+        val heightPossibleToDisplayPopup = screenHeight - topBarHeight - bottomBarHeight
+        val heightListItem = something.height
+        val realTapOnScreenCoordinate = coordinateY + topBarHeight + heightListItem
+
+        return realTapOnScreenCoordinate to heightPossibleToDisplayPopup
     }
 
     override fun showMessages(messages: List<ChatMessage>, needToClear: Boolean) {
@@ -375,7 +365,6 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
         messagesAdapter =
             MessagesListAdapter(senderId, holdersConfig, imageLoader)
         messagesAdapter?.setOnMessageViewLongClickListener(this)
-        messagesAdapter?.setOnMessageViewClickListener(this)
         messagesAdapter?.setLoadMoreListener(this)
     }
 

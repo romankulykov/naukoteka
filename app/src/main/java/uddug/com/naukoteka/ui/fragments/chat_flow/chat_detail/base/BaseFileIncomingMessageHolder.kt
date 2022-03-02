@@ -16,9 +16,10 @@ import uddug.com.domain.utils.logging.ILogger
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.di.DI
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.ChatSelectionStatus
+import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.DropInChatEvent
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.Payload
 
-abstract class BaseFileMessageHolder(itemView: View, open var anyPayload: Any?) :
+abstract class BaseFileIncomingMessageHolder(itemView: View, open var anyPayload: Any?) :
     MessageHolders.IncomingTextMessageViewHolder<MessageContentType>(itemView, anyPayload) {
 
     abstract val contentView: ViewBinding
@@ -54,6 +55,9 @@ abstract class BaseFileMessageHolder(itemView: View, open var anyPayload: Any?) 
 
         cbSelected?.isVisible = isSelectionMode
         cbSelected?.isChecked = message?.id == selectedMessage?.id
+        itemView.setOnClickListener {
+            (anyPayload as? Payload)?.dropInActivity?.droppedInActivity(DropInChatEvent.ClickEvent(itemView, itemView.height, data as ChatMessage))
+        }
     }
 
 

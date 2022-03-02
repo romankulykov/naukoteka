@@ -1,5 +1,6 @@
 package uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail
 
+import android.view.View
 import com.jakewharton.rxrelay2.PublishRelay
 import uddug.com.domain.repositories.dialogs.models.ChatMessage
 
@@ -36,5 +37,6 @@ interface IDropInActivity {
 }
 
 sealed class DropInChatEvent {
-    data class DownloadFileEvent(val url : String) : DropInChatEvent()
+    data class DownloadFileEvent(val url: String) : DropInChatEvent()
+    data class ClickEvent(val view: View, val height: Int, val chatMessage: ChatMessage) : DropInChatEvent()
 }

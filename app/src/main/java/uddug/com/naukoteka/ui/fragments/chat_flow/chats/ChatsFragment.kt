@@ -1,11 +1,8 @@
 package uddug.com.naukoteka.ui.fragments.chat_flow.chats
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.widget.PopupWindow
 import androidx.core.view.isVisible
-import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.rockerhieu.rvadapter.endless.EndlessRecyclerViewAdapter
 import moxy.presenter.InjectPresenter
@@ -15,19 +12,17 @@ import uddug.com.domain.repositories.dialogs.models.ChatsPreview
 import uddug.com.naukoteka.R
 import uddug.com.naukoteka.data.ChatSwipeTitleOption
 import uddug.com.naukoteka.data.ChatTitleActionDialog
-import uddug.com.naukoteka.data.DialogLongPressMenu
+import uddug.com.naukoteka.data.DialogLongPressMenu.*
 import uddug.com.naukoteka.databinding.FragmentChatsBinding
 import uddug.com.naukoteka.global.base.BaseFragment
 import uddug.com.naukoteka.presentation.chat_flow.chats.ChatsPresenter
 import uddug.com.naukoteka.presentation.chat_flow.chats.ChatsView
-import uddug.com.naukoteka.ui.adapters.long_press_menu.LongPressMenuAdapter
 import uddug.com.naukoteka.ui.dialogs.chat_option.ChatOptionsDialogType
 import uddug.com.naukoteka.ui.fragments.chat_flow.chats_list_detail.ChatsListDetailFragment
 import uddug.com.naukoteka.utils.BackButtonListener
-import uddug.com.naukoteka.utils.ui.applyDim
-import uddug.com.naukoteka.utils.ui.clearDim
 import uddug.com.naukoteka.utils.ui.getScreenHeight
 import uddug.com.naukoteka.utils.ui.px
+import uddug.com.naukoteka.utils.ui.showPopupLongPress
 import uddug.com.naukoteka.utils.viewBinding
 
 
@@ -147,75 +142,37 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
         }
     }
 
-    private fun showPopupLongPressMenu(chatPreview: ChatPreview, v: View) {
-        contentView.run {
-            val child =
-                LayoutInflater.from(requireContext()).inflate(R.layout.popup_long_press_menu, null)
-            val popupWindow = PopupWindow(requireContext())
-            val longPressMenuAdapter = LongPressMenuAdapter {
-                when (it) {
-                    DialogLongPressMenu.BLOCK -> {
-                        showSwipeClick(ChatSwipeParams(chatPreview, ChatSwipeTitleOption.BLOCK))
-                    }
-                    DialogLongPressMenu.CLEAR_THE_HISTORY -> {
-                        showSwipeClick(ChatSwipeParams(chatPreview, ChatSwipeTitleOption.CLEAR))
-                    }
-                    DialogLongPressMenu.PIN_CHAT, DialogLongPressMenu.UNPIN_CHAT -> presenter.togglePin(
-                        chatPreview
-                    )
-                    DialogLongPressMenu.ENABLE_NOTIFICATIONS, DialogLongPressMenu.DISABLE_NOTIFICATIONS -> presenter.toggleNotifications(
-                        chatPreview
-                    )
+    private fun showPopupLongPressMenu(chatPreview: ChatPreview, anchor: View) {
+        val items = presenter.getDialogLongPressMenu(chatPreview)
+
+        val (realTapOnScreenCoordinate, heightPossibleToDisplayPopup) = calculatePopupAxis(anchor)
+
+        requireActivity().showPopupLongPress(items,
+            anchor,
+            realTapOnScreenCoordinate,
+            heightPossibleToDisplayPopup,
+            itemClick = { menuItem ->
+                when (menuItem) {
+                    BLOCK -> showSwipeClick(ChatSwipeParams(chatPreview, ChatSwipeTitleOption.BLOCK))
+                    CLEAR_THE_HISTORY -> showSwipeClick(ChatSwipeParams(chatPreview, ChatSwipeTitleOption.CLEAR))
+                    PIN_CHAT, UNPIN_CHAT -> presenter.togglePin(chatPreview)
+                    ENABLE_NOTIFICATIONS, DISABLE_NOTIFICATIONS -> presenter.toggleNotifications(chatPreview)
                 }
-                popupWindow.dismiss()
-            }
-            with(popupWindow) {
-                contentView = child
-                setBackgroundDrawable(null)
-                isFocusable = true
-                isOutsideTouchable = true
-                with(child) {
-                    findViewById<RecyclerView>(R.id.rv_popup_long_press_menu).adapter =
-                        longPressMenuAdapter.apply {
-                            val items = ArrayList<DialogLongPressMenu>().apply {
-                                if (chatPreview.isPinned) {
-                                    add(DialogLongPressMenu.UNPIN_CHAT)
-                                } else {
-                                    add(DialogLongPressMenu.PIN_CHAT)
-                                }
-                                add(DialogLongPressMenu.HIDE_CHAT)
-                                if (chatPreview.isNotificationEnabled) {
-                                    add(DialogLongPressMenu.DISABLE_NOTIFICATIONS)
-                                } else {
-                                    add(DialogLongPressMenu.ENABLE_NOTIFICATIONS)
-                                }
-                                add(DialogLongPressMenu.CLEAR_THE_HISTORY)
-                                add(DialogLongPressMenu.BLOCK)
-                            }
-                            setItems(items)
-                        }
-                }
+            })
+    }
 
-                val screenHeight = requireActivity().getScreenHeight()
-                val coordinateY = v.y
-                val topBarHeight =
-                    (parentFragment as? ChatsListDetailFragment)?.getAppBarLayoutHeight() ?: 0
-                val bottomBarHeight = 87.px
+    private fun calculatePopupAxis(anchor: View): Pair<Float, Int> {
+        val screenHeight = requireActivity().getScreenHeight()
+        val coordinateY = anchor.y
+        val topBarHeight =
+            (parentFragment as? ChatsListDetailFragment)?.getAppBarLayoutHeight() ?: 0
+        val bottomBarHeight = 87.px
 
-                val heightPossibleToDisplayPopup = screenHeight - topBarHeight - bottomBarHeight
-                val heightListItem = chatsAdapter.getHeightItem()
-                val realTapOnScreenCoordinate = coordinateY + topBarHeight + heightListItem
-                if (realTapOnScreenCoordinate > heightPossibleToDisplayPopup) {
-                    val diff = realTapOnScreenCoordinate - heightPossibleToDisplayPopup
-                    showAsDropDown(v, 0, -diff.toInt())
-                } else showAsDropDown(v, 0, 0)
+        val heightPossibleToDisplayPopup = screenHeight - topBarHeight - bottomBarHeight
+        val heightListItem = chatsAdapter.getHeightItem()
+        val realTapOnScreenCoordinate = coordinateY + topBarHeight + heightListItem
 
-                applyDim(0.6f)
-                setOnDismissListener { clearDim() }
-
-
-            }
-        }
+        return realTapOnScreenCoordinate to heightPossibleToDisplayPopup
     }
 
     override fun showRefreshLoading(show: Boolean) {

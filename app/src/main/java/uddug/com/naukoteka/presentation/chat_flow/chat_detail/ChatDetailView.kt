@@ -8,6 +8,7 @@ import uddug.com.domain.repositories.dialogs.models.ChatMessage
 import uddug.com.domain.repositories.dialogs.models.ChatPreview
 import uddug.com.naukoteka.global.views.InformativeView
 import uddug.com.naukoteka.global.views.LoadingView
+import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.DropInChatEvent
 
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface ChatDetailView : MvpView, LoadingView, InformativeView {
@@ -32,5 +33,6 @@ interface ChatDetailView : MvpView, LoadingView, InformativeView {
 
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun pickFiles()
+    fun showPopupLongPressMenu(something: DropInChatEvent.ClickEvent)
 
 }

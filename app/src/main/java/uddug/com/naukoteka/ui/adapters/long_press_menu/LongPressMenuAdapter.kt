@@ -9,7 +9,7 @@ import uddug.com.naukoteka.databinding.ListItemPopupMenuBinding
 import uddug.com.naukoteka.global.base.BaseAdapter
 import uddug.com.naukoteka.global.base.BaseViewHolder
 
-class LongPressMenuAdapter(private val onItemClick: (PopupWindowMenu) -> Unit) :
+class LongPressMenuAdapter(val onItemClick: (PopupWindowMenu) -> Unit) :
     BaseAdapter<PopupWindowMenu, LongPressMenuAdapter.ViewHolder>() {
 
     override fun newViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =

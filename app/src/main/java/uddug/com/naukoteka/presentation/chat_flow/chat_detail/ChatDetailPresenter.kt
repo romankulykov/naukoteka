@@ -201,6 +201,9 @@ open class ChatDetailPresenter(
                 router.navigateTo(Screens.OpenBrowser(something.url))
                 //downloadFile(something.url)
             }
+            is DropInChatEvent.ClickEvent -> {
+                viewState.showPopupLongPressMenu(something)
+            }
         }
     }
 

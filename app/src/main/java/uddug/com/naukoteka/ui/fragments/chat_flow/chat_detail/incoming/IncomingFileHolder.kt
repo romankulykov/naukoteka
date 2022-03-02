@@ -13,10 +13,10 @@ import uddug.com.naukoteka.R
 import uddug.com.naukoteka.databinding.ItemCustomIncomingFileMessageBinding
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.DropInChatEvent
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.Payload
-import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.base.BaseFileMessageHolder
+import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.base.BaseFileIncomingMessageHolder
 import uddug.com.naukoteka.utils.ui.load
 
-class IncomingFileHolder(itemView: View, override var anyPayload: Any?) : BaseFileMessageHolder(itemView, anyPayload) {
+class IncomingFileHolder(itemView: View, override var anyPayload: Any?) : BaseFileIncomingMessageHolder(itemView, anyPayload) {
 
     override val contentView: ItemCustomIncomingFileMessageBinding =
         ItemCustomIncomingFileMessageBinding.bind(itemView)
