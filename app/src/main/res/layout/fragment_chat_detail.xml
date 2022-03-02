@@ -38,9 +38,9 @@
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_marginStart="8dp"
-                android:scaleType="centerCrop"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
+                android:scaleType="centerCrop"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
@@ -57,16 +57,35 @@
                 app:layout_constraintStart_toEndOf="@id/iv_chat_image"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/tv_chat"
-                    style="@style/TextViewStyle.Subtitle"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:fontFamily="@font/golos_text_regular"
-                    android:lines="1"
-                    android:singleLine="true"
-                    tools:text="@tools:sample/lorem/random" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_chat"
+                        style="@style/TextViewStyle.Subtitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/golos_text_regular"
+                        android:lines="1"
+                        android:singleLine="true"
+                        tools:text="@tools:sample/lorem/random" />
+
+                    <ImageView
+                        android:id="@+id/iv_label_notifications"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_name_contact"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_check_mark"
+                        app:layout_constraintTop_toTopOf="@+id/tv_name_contact"
+                        app:srcCompat="@drawable/ic_bell_off"
+                        tools:visibility="visible" />
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/tv_count_people_or_status"

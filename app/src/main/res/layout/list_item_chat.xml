@@ -249,21 +249,45 @@
             app:strokeColor="@color/text_main"
             app:strokeWidth="1dp" />
 
-        <TextView
-            android:id="@+id/tv_name_contact"
-            style="@style/TextViewStyle.Subtitle"
+        <LinearLayout
+            android:id="@+id/ll_container_title_notifications"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="7dp"
-            android:ellipsize="end"
-            android:fontFamily="@font/golos_text_regular"
-            android:lines="1"
-            android:textColor="@color/white"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toStartOf="@+id/iv_check_mark"
             app:layout_constraintStart_toEndOf="@id/iv_photo"
-            app:layout_constraintTop_toBottomOf="@id/view_top"
-            tools:text="@tools:sample/lorem/random" />
+            app:layout_constraintTop_toBottomOf="@id/view_top">
+
+            <TextView
+                android:id="@+id/tv_name_contact"
+                style="@style/TextViewStyle.Subtitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:fontFamily="@font/golos_text_regular"
+                android:lines="1"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toStartOf="@+id/barrier_title"
+                app:layout_constraintStart_toEndOf="@id/iv_photo"
+                app:layout_constraintTop_toBottomOf="@id/view_top"
+                tools:text="@tools:sample/lorem" />
+
+            <ImageView
+                android:id="@+id/iv_label_notifications"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_name_contact"
+                app:layout_constraintEnd_toStartOf="@+id/iv_check_mark"
+                app:layout_constraintTop_toTopOf="@+id/tv_name_contact"
+                app:srcCompat="@drawable/ic_bell_off"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/tv_text_of_message"
@@ -279,7 +303,7 @@
             android:textColor="@color/text_inactive"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_photo"
-            app:layout_constraintTop_toBottomOf="@id/tv_name_contact"
+            app:layout_constraintTop_toBottomOf="@id/ll_container_title_notifications"
             tools:text="@tools:sample/lorem/random" />
 
         <TextView

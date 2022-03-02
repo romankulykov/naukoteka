@@ -56,6 +56,8 @@ class ChatsAdapter(
                 item.run {
                     viewTop.isInvisible = adapterPosition == 0
 
+                    ivLabelNotifications.isVisible =
+                        (item as? ChatPreview)?.isNotificationEnabled == true
                     tvNameContact.text = dialogName
                     tvTextOfMessage.text = message
                     val lastMessageExist = messageCreatedAt != null

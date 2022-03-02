@@ -6,7 +6,6 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import com.bumptech.glide.request.RequestOptions
-import com.google.android.material.tabs.TabLayoutMediator
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import toothpick.Scope
@@ -45,20 +44,23 @@ class ChatDetailInfoFragment : BaseFragment(R.layout.fragment_chat_detail_info),
         }
     }
 
-    private val titles = arrayListOf(
-        R.string.media,
-        R.string.links,
-        R.string.files,
-        R.string.audio,
-    )
-
     private val chatPreview get() = arguments?.getParcelable<ChatPreview>(CHAT_PREVIEW)!!
 
     private val createGroupAdapter by lazy { CreateGroupAdapter(presenter::onParticipantRemove) }
 
     override val contentView by viewBinding(FragmentChatDetailInfoBinding::bind)
 
-    private val profileAdapter by lazy { ChatDetailInfoAdapter(this) }
+
+    private val profileAdapter by lazy {
+        ChatDetailInfoAdapter(
+            this, titles = arrayListOf(
+                R.string.media,
+                R.string.links,
+                R.string.files,
+                R.string.audio,
+            )
+        )
+    }
 
     override fun getScope(): Scope {
         return super.getScope().openSubScope(DI.SEARCH_IN_CHAT_SCOPE)
@@ -71,9 +73,8 @@ class ChatDetailInfoFragment : BaseFragment(R.layout.fragment_chat_detail_info),
         contentView.run {
             clBack.setOnClickListener { onBackPressed() }
             viewPager.adapter = profileAdapter
-            TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-                tab.text = getString(titles[position])
-            }.attach()
+            tabLayout.setupWithViewPager(viewPager)
+            viewPager.initScrollView(nestedScroll)
 
             if (chatPreview.dialogImage?.fullPath == null) {
                 val previewTextImage = chatPreview.dialogName.split(" ").filter { it.isNotBlank() }

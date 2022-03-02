@@ -23,6 +23,8 @@ data class ChatPreviewDto(
     val messageId: Int?,
     @SerializedName("isPinned")
     val isPinned: Any?,
+    @SerializedName("notificationsDisable")
+    val notificationsDisable: Any?,
     @SerializedName("firstMessageId")
     val firstMessageId: Int?,
     @SerializedName("dialogImage")

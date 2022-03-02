@@ -17,6 +17,4 @@ interface MediaView : MvpView, LoadingView, InformativeView {
         loadMore: Boolean
     )
 
-    fun showRefreshLoading(show: Boolean)
-
 }

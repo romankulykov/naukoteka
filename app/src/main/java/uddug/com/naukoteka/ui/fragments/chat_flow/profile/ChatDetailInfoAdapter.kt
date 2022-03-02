@@ -2,7 +2,8 @@ package uddug.com.naukoteka.ui.fragments.chat_flow.profile
 
 import android.util.Log
 import androidx.fragment.app.Fragment
-import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.fragment.app.FragmentStatePagerAdapter
+import uddug.com.naukoteka.R
 import uddug.com.naukoteka.ui.fragments.chat_flow.search_in_chapter.audio.AudioFragment
 import uddug.com.naukoteka.ui.fragments.chat_flow.search_in_chapter.files.FilesFragment
 import uddug.com.naukoteka.ui.fragments.chat_flow.search_in_chapter.links.LinksFragment
@@ -12,7 +13,8 @@ import uddug.com.naukoteka.ui.fragments.chat_flow.search_in_chapter.search_in_ch
 class ChatDetailInfoAdapter(
     private val fm: Fragment,
     private val withChatMessageSearch: Boolean = false,
-) : FragmentStateAdapter(fm) {
+    private val titles: ArrayList<Int>,
+) : FragmentStatePagerAdapter(fm.childFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     init {
         Log.d("TAG", "gag")
@@ -31,9 +33,10 @@ class ChatDetailInfoAdapter(
             .first().search(query)
     }
 
-    override fun getItemCount(): Int = fragments.size
+    override fun getPageTitle(position: Int): CharSequence = fm.getString(titles[position])
 
-    override fun createFragment(position: Int): Fragment {
-        return fragments[position]
-    }
+    override fun getCount(): Int = fragments.size
+
+    override fun getItem(position: Int): Fragment = fragments[position]
+
 }

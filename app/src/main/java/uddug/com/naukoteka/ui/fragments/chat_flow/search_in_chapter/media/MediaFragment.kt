@@ -2,7 +2,6 @@ package uddug.com.naukoteka.ui.fragments.chat_flow.search_in_chapter.media
 
 import android.os.Bundle
 import android.view.View
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.rockerhieu.rvadapter.endless.EndlessRecyclerViewAdapter
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
@@ -19,9 +18,8 @@ import uddug.com.naukoteka.presentation.chat_flow.search_in_chapter.media.MediaV
 import uddug.com.naukoteka.utils.BackButtonListener
 import uddug.com.naukoteka.utils.viewBinding
 
-class MediaFragment : BaseFragment(R.layout.fragment_media),
-    MediaView, BackButtonListener,
-    EndlessRecyclerViewAdapter.RequestToLoadMoreListener, SwipeRefreshLayout.OnRefreshListener {
+class MediaFragment : BaseFragment(R.layout.fragment_media), MediaView, BackButtonListener,
+    EndlessRecyclerViewAdapter.RequestToLoadMoreListener {
 
     @InjectPresenter
     lateinit var presenter: MediaPresenter
@@ -61,14 +59,10 @@ class MediaFragment : BaseFragment(R.layout.fragment_media),
         }
         contentView.run {
             rvMedia.adapter = endlessAdapter
-            srlList.setOnRefreshListener(this@MediaFragment)
         }
         presenter.obtainData()
     }
 
-    override fun showRefreshLoading(show: Boolean) {
-        contentView.srlList.isRefreshing = show
-    }
 
     override fun onBackPressed(): Boolean {
         presenter.exit()
@@ -86,10 +80,6 @@ class MediaFragment : BaseFragment(R.layout.fragment_media),
 
         mediaAdapter.addItems(media)
         endlessAdapter.onDataReady(loadMore)
-    }
-
-    override fun onRefresh() {
-        presenter.obtainData(false)
     }
 
     override fun onLoadMoreRequested() {

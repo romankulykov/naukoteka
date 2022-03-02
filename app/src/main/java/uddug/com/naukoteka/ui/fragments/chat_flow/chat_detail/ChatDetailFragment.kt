@@ -143,6 +143,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
             ivCopy.setOnClickListener { showMessage(ToastInfo("Your custom click handler")) }
             ivLoad.setOnClickListener { showMessage(ToastInfo("Your custom click handler")) }
             ivForward.setOnClickListener { showMessage(ToastInfo("Your custom click handler")) }
+            ivLabelNotifications.isVisible = chat.isNotificationEnabled
             messagesList.setAdapter(messagesAdapter)
             messagesList.layoutManager?.onRestoreInstanceState(messageRecyclerViewState)
         }

@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
-import com.google.android.material.tabs.TabLayoutMediator
 import toothpick.Scope
 import toothpick.ktp.KTP
 import uddug.com.naukoteka.R
@@ -58,6 +57,8 @@ class SearchInChapterFragment : BaseFragment(R.layout.fragment_search_in_chapter
         initAdapter()
         contentView.run {
             viewPager.adapter = profileAdapter
+            tabLayout.setupWithViewPager(viewPager)
+
             tvCancel.setOnClickListener { requireActivity().onBackPressed() }
             etSearchChat.afterTextChangedDelay {
                 val query = it.toString()
@@ -68,9 +69,6 @@ class SearchInChapterFragment : BaseFragment(R.layout.fragment_search_in_chapter
                 localQuery = query
             }
             ivClear.setOnClickListener { etSearchChat.setText("") }
-            TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-                tab.text = getString(titles[position])
-            }.attach()
             etSearchChat.requestFocus()
             requireContext().showKeyboard()
         }
@@ -83,7 +81,7 @@ class SearchInChapterFragment : BaseFragment(R.layout.fragment_search_in_chapter
 
     @SuppressLint("NotifyDataSetChanged")
     private fun initAdapter() {
-        profileAdapter = ChatDetailInfoAdapter(this, withChatMessageSearch = true)
+        profileAdapter = ChatDetailInfoAdapter(this, withChatMessageSearch = true, titles)
         profileAdapter.notifyDataSetChanged()
     }
 
