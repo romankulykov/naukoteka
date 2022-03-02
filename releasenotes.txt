@@ -1,1 +1,1 @@
-очистка диалога
+notifications, removed avatars in personal chats, materials of chat, opened keyboard when opened [D[Csearch, menu options, read messages, remove groups
