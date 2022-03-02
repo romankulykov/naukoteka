@@ -86,7 +86,11 @@ class ChatsPresenter(
     fun togglePin(chatListEntity: ChatPreview) {
         dialogsInteractor.togglePin(chatListEntity)
             .await { getDialogs(true) }
+    }
 
+    fun toggleNotifications(chatListEntity: ChatPreview){
+        dialogsInteractor.toggleNotifications(chatListEntity)
+            .await { viewState.updateDialog(it) }
     }
 
     fun readMessages(dialogId: Int) {

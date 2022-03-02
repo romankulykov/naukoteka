@@ -65,6 +65,14 @@ class DialogsRepositoryImpl(
         return dialogsApiService.unpinDialog(dialogId)
     }
 
+    override fun enableNotifications(dialogId: Int): Completable {
+        return dialogsApiService.enableNotifications(dialogId)
+    }
+
+    override fun disableNotifications(dialogId: Int): Completable {
+        return dialogsApiService.disableNotifications(dialogId)
+    }
+
     override fun searchDialogs(query: String, limit: Int): Single<List<SearchDialogs>> {
         return dialogsApiService.searchDialogs(query, limit)
             .onErrorReturnItem(emptyList())

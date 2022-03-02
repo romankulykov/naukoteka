@@ -92,7 +92,7 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
         chatsAdapter.removeItem(dialog)
     }
 
-    override fun updateAfterTogglePin(dialog: ChatPreview) {
+    override fun updateDialog(dialog: ChatPreview) {
         chatsAdapter.updateItem(dialog)
     }
 
@@ -163,13 +163,22 @@ class ChatsFragment : BaseFragment(R.layout.fragment_chats), ChatsView, BackButt
                 with(child) {
                     findViewById<RecyclerView>(R.id.rv_popup_long_press_menu).adapter =
                         longPressMenuAdapter.apply {
-                            setItems(
-                                DialogLongPressMenu.values().toList().filter {
-                                    (it != DialogLongPressMenu.UNPIN_CHAT && it != DialogLongPressMenu.PIN_CHAT) ||
-                                            it == DialogLongPressMenu.UNPIN_CHAT && chatPreview.isPinned ||
-                                            it == DialogLongPressMenu.PIN_CHAT && !chatPreview.isPinned
+                            val items = ArrayList<DialogLongPressMenu>().apply {
+                                if (chatPreview.isPinned) {
+                                    add(DialogLongPressMenu.UNPIN_CHAT)
+                                } else {
+                                    add(DialogLongPressMenu.PIN_CHAT)
                                 }
-                            )
+                                add(DialogLongPressMenu.HIDE_CHAT)
+                                if (chatPreview.isNotificationEnabled) {
+                                    add(DialogLongPressMenu.DISABLE_NOTIFICATIONS)
+                                } else {
+                                    add(DialogLongPressMenu.ENABLE_NOTIFICATIONS)
+                                }
+                                add(DialogLongPressMenu.CLEAR_THE_HISTORY)
+                                add(DialogLongPressMenu.BLOCK)
+                            }
+                            setItems(items)
                         }
                 }
             }

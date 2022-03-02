@@ -19,6 +19,8 @@ interface DialogsRepository {
     fun deleteDialog(dialogId: Int): Completable
     fun pinChat(dialogId: Int): Completable
     fun unPinChat(dialogId: Int): Completable
+    fun enableNotifications(dialogId: Int): Completable
+    fun disableNotifications(dialogId: Int): Completable
     fun searchDialogs(query: String, limit: Int): Single<List<SearchDialogs>>
     fun searchMediaContent(
         dialogId: Int,

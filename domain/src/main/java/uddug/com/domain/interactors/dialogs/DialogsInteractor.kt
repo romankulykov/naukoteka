@@ -90,6 +90,15 @@ class DialogsInteractor(
             .observeOn(schedulers.ui())
     }
 
+    fun toggleNotifications(chatListEntity: ChatPreview): Single<ChatPreview> {
+        return (if (chatListEntity.isNotificationEnabled) dialogsRepository.disableNotifications(chatListEntity.dialogId)
+        else dialogsRepository.enableNotifications(chatListEntity.dialogId)).toSingle {}
+            .flatMap { dialogsRepository.getChatDetailInfo(chatListEntity.dialogId) }
+            .map { chatListEntity.apply { isNotificationEnabled = it.isNotificationEnabled } }
+            .subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
+    }
+
     fun openSocket() = webSocketRepository.open()
     fun closeSocket() = webSocketRepository.close()
 

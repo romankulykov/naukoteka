@@ -13,7 +13,11 @@ sealed class BottomSheetDialog {
                 val options = ArrayList<ChatOption>().apply {
                     add(ChatOption.SEARCH_BY_CONVERSATION)
                     add(ChatOption.INTERVIEW_MATERIALS)
-                    add(ChatOption.DISABLE_NOTIFICATIONS)
+                    if (chatPreview.isNotificationEnabled) {
+                        add(ChatOption.DISABLE_NOTIFICATIONS)
+                    } else {
+                        add(ChatOption.ENABLE_NOTIFICATIONS)
+                    }
                     add(ChatOption.CLEAR_THE_HISTORY)
                     if (chatPreview.dialogType == DialogType.GROUP) {
                         add(ChatOption.ADD_PARTICIPANT)
@@ -95,6 +99,7 @@ interface BottomSheetDialogOption
 enum class ChatOption(val textResId: Int, val imageResId: Int) : BottomSheetDialogOption {
     SEARCH_BY_CONVERSATION(R.string.search_by_conversation, R.drawable.ic_fi_search),
     INTERVIEW_MATERIALS(R.string.interview_materials, R.drawable.ic_fi_inbox),
+    ENABLE_NOTIFICATIONS(R.string.enable_notifications, R.drawable.ic_bell),
     DISABLE_NOTIFICATIONS(R.string.disable_notifications, R.drawable.ic_bell),
     CLEAR_THE_HISTORY(R.string.clear_the_history, R.drawable.ic_clear_history),
     ADD_PARTICIPANT(R.string.add_participant, R.drawable.ic_u_plus),
@@ -130,6 +135,7 @@ enum class DialogLongPressMenu(override val textResId: Int, override val imageRe
     UNPIN_CHAT(R.string.unpin_chat, R.drawable.ic_pushpin),
     HIDE_CHAT(R.string.hide_chat, R.drawable.ic_fi_eye),
     DISABLE_NOTIFICATIONS(R.string.disable_notifications, R.drawable.ic_bell),
+    ENABLE_NOTIFICATIONS(R.string.enable_notifications, R.drawable.ic_bell),
     CLEAR_THE_HISTORY(R.string.clear_the_history, R.drawable.ic_clear_history),
     BLOCK(R.string.swipe_block, R.drawable.ic_arrow_down_circle)
 }

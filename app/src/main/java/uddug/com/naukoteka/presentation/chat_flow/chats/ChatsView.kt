@@ -21,7 +21,7 @@ interface ChatsView : MvpView, LoadingView, SwipeRefreshView, InformativeView {
         onlyUpdateExist: Boolean
     )
     fun deleteChat(dialog: ChatPreview)
-    fun updateAfterTogglePin(dialog: ChatPreview)
+    fun updateDialog(dialog: ChatPreview)
     fun updateOnlineStatus(onlineUsers: List<String>)
 
 }

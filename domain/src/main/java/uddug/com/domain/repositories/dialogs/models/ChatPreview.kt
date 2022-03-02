@@ -37,6 +37,7 @@ data class ChatPreview(
     override val dialogName: String,
     val dialogType: DialogType,
     var isPinned: Boolean,
+    var isNotificationEnabled: Boolean,
     override val messageId: Int?,
     val firstMessageId: Int?,
     override val dialogImage: AttachmentChatPreview?,
