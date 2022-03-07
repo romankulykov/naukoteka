@@ -93,6 +93,7 @@
     <string name="chat_change">Изм.</string>
     <string name="chat_science_chat">НауЧат</string>
     <string name="chat_search_chat">Поиск по чатам и людям</string>
+    <string name="chat_search_in_chat">Поиск в чате</string>
     <string name="chat_all">Все</string>
     <string name="chat_groups">Группы</string>
     <string name="chat_studies">Учеба</string>
@@ -191,6 +192,7 @@
     <string name="chats_you_dont_have_created_chats_or_group">У вас еще нет созданный чатов или групп.\nНо вы можете их создать. Начните искать</string>
     <string name="chats_start_new_chat"><u>Начать новый чат</u></string>
     <string name="in_order_to_start_search_input_something">Для того чтобы начать поиск начните что-то вводить</string>
+    <string name="number_of">из</string>
 
 
 </resources>

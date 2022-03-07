@@ -1,6 +1,7 @@
 package uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
@@ -9,6 +10,7 @@ import android.view.View
 import android.widget.ImageView
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import com.bumptech.glide.request.RequestOptions
 import com.stfalcon.chatkit.commons.ImageLoader
@@ -18,6 +20,7 @@ import com.stfalcon.chatkit.messages.MessageInput.InputListener
 import com.stfalcon.chatkit.messages.MessagesListAdapter
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 import toothpick.Toothpick
 import toothpick.ktp.delegate.inject
 import uddug.com.data.cache.user_uuid.UserUUIDCache
@@ -284,7 +287,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
     override fun toggleSelectionMode(messagesSelected: Boolean, message: ChatMessage?) {
         holderPayload?.publish(ChatSelectionStatus.ToggleSelectionMode(messagesSelected, message))
         contentView.run {
-            selectedMessagesOptionsLl.isVisible = messagesSelected
+            llSelectedMessagesOptions.isVisible = messagesSelected
             tvCancel.isVisible = messagesSelected
             ivCall.isGone = messagesSelected
             ivVideoChat.isGone = messagesSelected
@@ -305,6 +308,62 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
             )
         )
 
+    }
+
+    override fun toggleSearchMode(isSearchMode: Boolean) {
+        contentView.run {
+            ivClear.isVisible = isSearchMode
+            etSearchChat.isVisible = isSearchMode
+            llSearchResults.isVisible = isSearchMode
+            tvCancel.isVisible = isSearchMode
+            ivCall.isGone = isSearchMode
+            ivVideoChat.isGone = isSearchMode
+            ivMenu.isGone = isSearchMode
+            ivArrowBack.isGone = isSearchMode
+            ivChatImage.isGone = isSearchMode
+            llChatName.isGone = isSearchMode
+            llInput.isInvisible = isSearchMode
+
+            tvCancel.setOnClickListener { requireActivity().onBackPressed() }
+            etSearchChat.afterTextChangedDelay {
+                val query = it.toString()
+                ivClear.isVisible = query.isNotEmpty()
+                if (query.isNotEmpty()) {
+                    presenter.search(query)
+                }
+            }
+            ivClear.setOnClickListener { etSearchChat.setText("") }
+            if (isSearchMode) {
+                etSearchChat.requestFocus()
+                requireContext().showKeyboard()
+            } else {
+                if (KeyboardVisibilityEvent.isKeyboardVisible(requireActivity())) {
+                    requireActivity().hideKeyboard()
+                }
+            }
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    override fun showFoundedMessages(
+        position: Int,
+        messageToShow: ChatMessage,
+        foundedMessageIdToMessage: MutableMap<SearchMessagesInDialogs, ChatMessage>
+    ) {
+        contentView.run {
+            ivSearchDown.run {
+                // TODO handle enable
+                setOnClickListener { presenter.findPreviousMessage(messageToShow, foundedMessageIdToMessage) }
+            }
+            ivSearchUp.run {
+                // TODO handle enable
+                setOnClickListener { presenter.findNextMessage(messageToShow, foundedMessageIdToMessage) }
+            }
+            llSearchLabels.isVisible = foundedMessageIdToMessage.isNotEmpty()
+            tvCurrentMessageIndex.text = (foundedMessageIdToMessage.values.indexOfFirst { it.id == messageToShow.id } + 1).toString()
+            tvAllFoundedMessageCount.text = foundedMessageIdToMessage.values.size.toString()
+            messagesList.layoutManager?.scrollToPosition(position)
+        }
     }
 
     override fun initChatAdapter() {

@@ -6,6 +6,7 @@ import moxy.viewstate.strategy.OneExecutionStateStrategy
 import moxy.viewstate.strategy.StateStrategyType
 import uddug.com.domain.repositories.dialogs.models.ChatMessage
 import uddug.com.domain.repositories.dialogs.models.ChatPreview
+import uddug.com.domain.repositories.dialogs.models.SearchMessagesInDialogs
 import uddug.com.naukoteka.global.views.InformativeView
 import uddug.com.naukoteka.global.views.LoadingView
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.DropInChatEvent
@@ -34,5 +35,12 @@ interface ChatDetailView : MvpView, LoadingView, InformativeView {
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun pickFiles()
     fun showPopupLongPressMenu(something: DropInChatEvent.ClickEvent)
+
+    fun toggleSearchMode(isSearchMode: Boolean)
+    fun showFoundedMessages(
+        messagePosition: Int,
+        messageToShow: ChatMessage,
+        foundedMessageIdToMessage: MutableMap<SearchMessagesInDialogs, ChatMessage>
+    )
 
 }

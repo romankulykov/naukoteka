@@ -14,6 +14,7 @@ import uddug.com.domain.interactors.dialogs.DialogsInteractor
 import uddug.com.domain.interactors.messages.MessagesInteractor
 import uddug.com.domain.repositories.dialogs.models.ChatMessage
 import uddug.com.domain.repositories.dialogs.models.ChatPreview
+import uddug.com.domain.repositories.dialogs.models.SearchMessagesInDialogs
 import uddug.com.domain.utils.logging.ILogger
 import uddug.com.naukoteka.data.ChatAttachmentOption
 import uddug.com.naukoteka.data.ChatOption
@@ -44,6 +45,8 @@ open class ChatDetailPresenter(
     var isMessagesSelected = false
     var selectedMessages = hashSetOf<ChatMessage>()
 
+    var isSearchMode = false
+
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         viewState.initChatAdapter()
@@ -73,7 +76,7 @@ open class ChatDetailPresenter(
 
     fun onChatOptionClick(chatOption: ChatOption) {
         when (chatOption) {
-            ChatOption.SEARCH_BY_CONVERSATION -> router.navigateTo(Screens.SearchInChapterScreen(chatPreview.dialogId))
+            ChatOption.SEARCH_BY_CONVERSATION -> toggleSearchMode(true)
             ChatOption.INTERVIEW_MATERIALS -> router.navigateTo(Screens.ChatInfoScreen(chatPreview))
             ChatOption.DISABLE_NOTIFICATIONS -> {}
             ChatOption.CLEAR_THE_HISTORY -> {
@@ -133,18 +136,22 @@ open class ChatDetailPresenter(
         viewState.clearFiles()
     }
 
-    fun clearSelection() {
+    private fun clearSelection() {
         isMessagesSelected = false
         viewState.toggleSelectionMode(isMessagesSelected)
         selectedMessages.clear()
     }
 
+    private fun toggleSearchMode(flag: Boolean) {
+        isSearchMode = flag
+        viewState.toggleSearchMode(isSearchMode)
+    }
 
     fun exit() {
-        if (isMessagesSelected) {
-            clearSelection()
-        } else {
-            router.exit()
+        when {
+            isMessagesSelected -> clearSelection()
+            isSearchMode -> toggleSearchMode(false)
+            else -> router.exit()
         }
     }
 
@@ -203,6 +210,51 @@ open class ChatDetailPresenter(
             }
             is DropInChatEvent.ClickEvent -> {
                 viewState.showPopupLongPressMenu(something)
+            }
+        }
+    }
+
+    fun search(query: String) {
+        dialogsInteractor.searchMessagesInDialog(chatPreview.dialogId, query, 10)
+            .await { foundMessages ->
+                val foundedMessageIdToMessage = mutableMapOf<SearchMessagesInDialogs, ChatMessage>()
+                dialogsInteractor.messages.forEach { localMessage ->
+                    foundMessages.find { it.messageId == localMessage.id }?.let { searchMessageDialog ->
+                        foundedMessageIdToMessage[searchMessageDialog] = localMessage
+                    }
+                }
+                val foundedMessage = foundedMessageIdToMessage.values.first()
+                val messagePosition = dialogsInteractor.messages.indexOf(foundedMessage)
+                viewState.showFoundedMessages(messagePosition, foundedMessage, foundedMessageIdToMessage)
+            }
+    }
+
+    fun findNextMessage(currentMessage: ChatMessage, foundedMessageIdToMessage: MutableMap<SearchMessagesInDialogs, ChatMessage>) {
+        val messagesIterator = foundedMessageIdToMessage.values.toList().iterator()
+        var nextMessage: ChatMessage?
+        while (messagesIterator.hasNext()) {
+            if (messagesIterator.next().id == currentMessage.id) {
+                if (messagesIterator.hasNext()){
+                    nextMessage = messagesIterator.next()
+                    val messagePosition = dialogsInteractor.messages.indexOf(nextMessage)
+                    viewState.showFoundedMessages(messagePosition, nextMessage, foundedMessageIdToMessage)
+                    break
+                }
+            }
+        }
+    }
+
+    fun findPreviousMessage(currentMessage: ChatMessage, foundedMessageIdToMessage: MutableMap<SearchMessagesInDialogs, ChatMessage>) {
+        val messagesIterator = foundedMessageIdToMessage.values.toList().reversed().iterator()
+        var nextMessage: ChatMessage?
+        while (messagesIterator.hasNext()) {
+            if (messagesIterator.next().id == currentMessage.id) {
+                if (messagesIterator.hasNext()){
+                    nextMessage = messagesIterator.next()
+                    val messagePosition = dialogsInteractor.messages.indexOf(nextMessage)
+                    viewState.showFoundedMessages(messagePosition, nextMessage, foundedMessageIdToMessage)
+                    break
+                }
             }
         }
     }
