@@ -241,7 +241,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
         presenter.onMessageLongClick(message)
     }
 
-    override fun showPopupLongPressMenu(something: DropInChatEvent.ClickEvent) {
+    override fun onMessageClick(something: DropInChatEvent.ClickEvent) {
         if (presenter.isMessagesSelected) {
             presenter.onMessageClick(something.chatMessage)
         } else {
@@ -335,7 +335,7 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
             ivClear.setOnClickListener { etSearchChat.setText("") }
             if (isSearchMode) {
                 etSearchChat.requestFocus()
-                requireContext().showKeyboard()
+                etSearchChat.showKeyboard()
             } else {
                 if (KeyboardVisibilityEvent.isKeyboardVisible(requireActivity())) {
                     requireActivity().hideKeyboard()
@@ -346,23 +346,37 @@ class ChatDetailFragment : BaseFragment(R.layout.fragment_chat_detail),
 
     @SuppressLint("SetTextI18n")
     override fun showFoundedMessages(
-        position: Int,
-        messageToShow: ChatMessage,
+        messagePosition: Int,
+        messageToShow: ChatMessage?,
         foundedMessageIdToMessage: MutableMap<SearchMessagesInDialogs, ChatMessage>
     ) {
         contentView.run {
             ivSearchDown.run {
-                // TODO handle enable
-                setOnClickListener { presenter.findPreviousMessage(messageToShow, foundedMessageIdToMessage) }
+                isEnabled = !foundedMessageIdToMessage.isNullOrEmpty()
+                setOnClickListener { presenter.findPreviousMessage(messageToShow!!, foundedMessageIdToMessage) }
             }
             ivSearchUp.run {
-                // TODO handle enable
-                setOnClickListener { presenter.findNextMessage(messageToShow, foundedMessageIdToMessage) }
+                isEnabled = !foundedMessageIdToMessage.isNullOrEmpty()
+                setOnClickListener { presenter.findNextMessage(messageToShow!!, foundedMessageIdToMessage) }
             }
-            llSearchLabels.isVisible = foundedMessageIdToMessage.isNotEmpty()
-            tvCurrentMessageIndex.text = (foundedMessageIdToMessage.values.indexOfFirst { it.id == messageToShow.id } + 1).toString()
-            tvAllFoundedMessageCount.text = foundedMessageIdToMessage.values.size.toString()
-            messagesList.layoutManager?.scrollToPosition(position)
+            llSearchLabels.isVisible = true
+            tvLabelNoResults.isVisible = foundedMessageIdToMessage.isEmpty()
+            tvCurrentMessageIndex.run {
+                isVisible = foundedMessageIdToMessage.isNotEmpty()
+                text = (foundedMessageIdToMessage.values.indexOfFirst { it.id == messageToShow?.id } + 1).toString()
+            }
+            tvNumberOfLabel.isVisible = foundedMessageIdToMessage.isNotEmpty()
+            tvAllFoundedMessageCount.run {
+                isVisible = foundedMessageIdToMessage.isNotEmpty()
+                text = foundedMessageIdToMessage.values.size.toString()
+            }
+            if (messageToShow != null) {
+                holderPayload?.onMessageFound?.accept(messageToShow.id)
+            }
+            messagesList.layoutManager?.scrollToPosition(messagePosition)
+            if (KeyboardVisibilityEvent.isKeyboardVisible(requireActivity())) {
+                requireActivity().hideKeyboard()
+            }
         }
     }
 

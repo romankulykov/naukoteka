@@ -2,6 +2,8 @@ package uddug.com.naukoteka.ui.fragments.chat_flow.search_in_chapter
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
@@ -69,8 +71,10 @@ class SearchInChapterFragment : BaseFragment(R.layout.fragment_search_in_chapter
                 localQuery = query
             }
             ivClear.setOnClickListener { etSearchChat.setText("") }
-            etSearchChat.requestFocus()
-            requireContext().showKeyboard()
+            Handler(Looper.getMainLooper()).postDelayed({
+                etSearchChat.requestFocus()
+                etSearchChat.showKeyboard()
+            }, 500L)
         }
     }
 

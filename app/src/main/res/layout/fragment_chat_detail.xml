@@ -318,7 +318,9 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="start|center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="invisible"
+                    tools:visibility="visible">
 
                     <TextView
                         android:id="@+id/tv_current_message_index"
@@ -329,6 +331,7 @@
                         tools:text="1" />
 
                     <TextView
+                        android:id="@+id/tv_number_of_label"
                         style="@style/TextViewStyle.Usual.Regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -342,6 +345,14 @@
                         android:layout_height="wrap_content"
                         android:paddingStart="5dp"
                         tools:text="1" />
+
+                    <TextView
+                        android:id="@+id/tv_label_no_results"
+                        style="@style/TextViewStyle.Usual.Regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/no_results"
+                        android:visibility="gone" />
 
 
                 </LinearLayout>

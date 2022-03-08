@@ -8,6 +8,7 @@ open class Payload {
     var dropInActivity: IDropInActivity? = null
     var dropInChat: PublishRelay<ChatSelectionStatus> = PublishRelay.create()
     var lastPublishedStatus: ChatSelectionStatus? = null
+    var onMessageFound: PublishRelay<Int> = PublishRelay.create()
 
     private var selectedMessages: List<ChatMessage>? = null
 

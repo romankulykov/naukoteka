@@ -34,12 +34,12 @@ interface ChatDetailView : MvpView, LoadingView, InformativeView {
 
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun pickFiles()
-    fun showPopupLongPressMenu(something: DropInChatEvent.ClickEvent)
+    fun onMessageClick(something: DropInChatEvent.ClickEvent)
 
     fun toggleSearchMode(isSearchMode: Boolean)
     fun showFoundedMessages(
         messagePosition: Int,
-        messageToShow: ChatMessage,
+        messageToShow: ChatMessage?,
         foundedMessageIdToMessage: MutableMap<SearchMessagesInDialogs, ChatMessage>
     )
 

@@ -193,6 +193,7 @@
     <string name="chats_start_new_chat"><u>Начать новый чат</u></string>
     <string name="in_order_to_start_search_input_something">Для того чтобы начать поиск начните что-то вводить</string>
     <string name="number_of">из</string>
+    <string name="no_results">Нет результатов</string>
 
 
 </resources>

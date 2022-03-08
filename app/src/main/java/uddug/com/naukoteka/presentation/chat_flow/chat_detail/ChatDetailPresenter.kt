@@ -101,6 +101,7 @@ open class ChatDetailPresenter(
     }
 
     fun onMessageLongClick(message: ChatMessage) {
+        if (isSearchMode) return
         if (!isMessagesSelected) {
             isMessagesSelected = true
             viewState.toggleSelectionMode(isMessagesSelected, message)
@@ -209,7 +210,7 @@ open class ChatDetailPresenter(
                 //downloadFile(something.url)
             }
             is DropInChatEvent.ClickEvent -> {
-                viewState.showPopupLongPressMenu(something)
+                viewState.onMessageClick(something)
             }
         }
     }
@@ -223,7 +224,7 @@ open class ChatDetailPresenter(
                         foundedMessageIdToMessage[searchMessageDialog] = localMessage
                     }
                 }
-                val foundedMessage = foundedMessageIdToMessage.values.first()
+                val foundedMessage = foundedMessageIdToMessage.values.firstOrNull()
                 val messagePosition = dialogsInteractor.messages.indexOf(foundedMessage)
                 viewState.showFoundedMessages(messagePosition, foundedMessage, foundedMessageIdToMessage)
             }
@@ -234,7 +235,7 @@ open class ChatDetailPresenter(
         var nextMessage: ChatMessage?
         while (messagesIterator.hasNext()) {
             if (messagesIterator.next().id == currentMessage.id) {
-                if (messagesIterator.hasNext()){
+                if (messagesIterator.hasNext()) {
                     nextMessage = messagesIterator.next()
                     val messagePosition = dialogsInteractor.messages.indexOf(nextMessage)
                     viewState.showFoundedMessages(messagePosition, nextMessage, foundedMessageIdToMessage)
@@ -249,7 +250,7 @@ open class ChatDetailPresenter(
         var nextMessage: ChatMessage?
         while (messagesIterator.hasNext()) {
             if (messagesIterator.next().id == currentMessage.id) {
-                if (messagesIterator.hasNext()){
+                if (messagesIterator.hasNext()) {
                     nextMessage = messagesIterator.next()
                     val messagePosition = dialogsInteractor.messages.indexOf(nextMessage)
                     viewState.showFoundedMessages(messagePosition, nextMessage, foundedMessageIdToMessage)

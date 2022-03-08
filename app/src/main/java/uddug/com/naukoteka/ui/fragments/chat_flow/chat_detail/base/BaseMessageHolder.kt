@@ -17,6 +17,7 @@ import uddug.com.naukoteka.di.DI
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.ChatSelectionStatus
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.DropInChatEvent
 import uddug.com.naukoteka.ui.fragments.chat_flow.chat_detail.Payload
+import uddug.com.naukoteka.utils.ui.fadeInOut
 
 abstract class BaseMessageHolder(itemView: View, open var anyPayload: Any?) :
     MessageHolders.BaseMessageViewHolder<IMessage>(itemView, anyPayload) {
@@ -89,6 +90,11 @@ abstract class BaseMessageHolder(itemView: View, open var anyPayload: Any?) :
                             selectedMessage = null
                             cbSelected?.isChecked = false
                         }
+                    }
+                }
+                (payload as Payload).onMessageFound.subscribe { messageId ->
+                    if (message?.id == messageId.toString()) {
+                        itemView.fadeInOut()
                     }
                 }
                 // if need something drop in activity
