@@ -1,1 +1,1 @@
-dialog popup positioning correct
+seach in chat
