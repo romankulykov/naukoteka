@@ -95,10 +95,8 @@ class ChatsPresenter(
     }
 
     fun readMessages(dialogId: Int) {
-        dialogsInteractor.getChatDetailInfo(dialogId)
-            .flatMap { dialogsInteractor.getDialogMessages(it, 50) }
-            .flatMapCompletable { messagesInteractor.readMessages(dialogId, it.map { it.id }) }
-            .await { }
+        dialogsInteractor.readDialogMessages(dialogId)
+            .await { viewState.updateDialog(it) }
     }
 
     fun getDialogLongPressMenu(chatPreview: ChatPreview): ArrayList<DialogLongPressMenu> {

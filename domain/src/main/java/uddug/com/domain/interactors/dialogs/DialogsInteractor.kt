@@ -7,6 +7,7 @@ import io.reactivex.Single
 import toothpick.InjectConstructor
 import uddug.com.domain.SchedulersProvider
 import uddug.com.domain.entities.MediaCategory
+import uddug.com.domain.interactors.messages.MessagesInteractor
 import uddug.com.domain.repositories.dialogs.DialogsRepository
 import uddug.com.domain.repositories.dialogs.models.*
 import uddug.com.domain.repositories.files.FilesRepository
@@ -22,6 +23,7 @@ class DialogsInteractor(
     private val dialogsRepository: DialogsRepository,
     private val webSocketRepository: WebSocketRepository,
     private val filesRepository: FilesRepository,
+    private val messagesInteractor: MessagesInteractor,
     private val schedulers: SchedulersProvider
 ) {
 
@@ -212,6 +214,17 @@ class DialogsInteractor(
         limit: Int
     ): Single<List<SearchMessagesInDialogs>> {
         return dialogsRepository.searchMessagesInDialogs(dialogId, query, limit)
+            .subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
+    }
+
+    fun readDialogMessages(dialogId: Int): Single<ChatPreview> {
+        return dialogsRepository.getMessagesForRead(dialogId)
+            .flatMapCompletable { messagesInteractor.readMessages(dialogId, it.map { it.id }) }
+            .andThen(
+                dialogsRepository.getChatDetailInfo(dialogId, true)
+                    .subscribeOn(schedulers.io())
+            )
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
     }

@@ -7,7 +7,7 @@ import uddug.com.domain.repositories.dialogs.models.*
 interface DialogsRepository {
 
     fun getChatsPreview(limit: Int, lastMessageId: Int? = null): Single<ChatsPreview>
-    fun getChatDetailInfo(id: Int): Single<ChatPreview>
+    fun getChatDetailInfo(id: Int, withLastMessage : Boolean = false): Single<ChatPreview>
     fun getChatMessages(
         chatPreview: ChatPreview,
         lastMessageId: Int? = null,
@@ -34,5 +34,7 @@ interface DialogsRepository {
         query: String,
         limit: Int
     ): Single<List<SearchMessagesInDialogs>>
+
+    fun getMessagesForRead(dialogId : Int): Single<List<ChatMessage>>
 
 }

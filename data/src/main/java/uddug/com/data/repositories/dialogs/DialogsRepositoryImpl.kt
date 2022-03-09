@@ -24,8 +24,14 @@ class DialogsRepositoryImpl(
             .map { dialogsRepositoryMapper.mapChatsPreviewToDomain(it) }
     }
 
-    override fun getChatDetailInfo(id: Int): Single<ChatPreview> {
-        return dialogsApiService.getChatDetailInfo(id)
+    override fun getChatDetailInfo(id: Int, withLastMessage: Boolean): Single<ChatPreview> {
+        return if (withLastMessage) {
+            dialogsApiService.getChatDetailInfo(id).toObservable()
+                .flatMap(
+                    { getChatMessages(dialogsRepositoryMapper.mapChatPreviewToDomain(it)).toObservable() },
+                    { chatPreviewDto, messages -> dialogsRepositoryMapper.mapChatPreviewToDomain(chatPreviewDto, messages.firstOrNull()) })
+                .singleOrError()
+        } else dialogsApiService.getChatDetailInfo(id)
             .map { dialogsRepositoryMapper.mapChatPreviewToDomain(it) }
     }
 
@@ -103,6 +109,11 @@ class DialogsRepositoryImpl(
                     dialogsRepositoryMapper.mapMessageToSearchMessageDomain(message, chatInfo)
                 }
             }
+    }
+
+    override fun getMessagesForRead(dialogId: Int): Single<List<ChatMessage>> {
+        return getChatDetailInfo(dialogId)
+            .flatMap { getChatMessages(it, limit = 50) }
     }
 
 

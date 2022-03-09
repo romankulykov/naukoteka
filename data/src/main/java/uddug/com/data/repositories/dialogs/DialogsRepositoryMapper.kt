@@ -19,7 +19,7 @@ class DialogsRepositoryMapper(
         )
     }
 
-    fun mapChatPreviewToDomain(dto: ChatPreviewDto) = dto.run {
+    fun mapChatPreviewToDomain(dto: ChatPreviewDto, firstMessage: ChatMessage? = null) = dto.run {
         val dialogType = DialogType.values().find { it.type == dialogType } ?: DialogType.PERSONAL
         ChatPreview(
             dialogId = dialogId,
@@ -30,7 +30,7 @@ class DialogsRepositoryMapper(
             messageId = messageId,
             firstMessageId = firstMessageId,
             dialogImage = mapAttachmentToDomain(dialogImage ?: interlocutor?.image),
-            lastMessage = mapLastMessageChatDomain(lastMessage),
+            lastMessage = if (firstMessage != null) mapChatMessageToLastMessage(firstMessage) else mapLastMessageChatDomain(lastMessage),
             users = users?.map { mapUserChatToDomain(it)!! },
             unreadMessages = unreadMessages,
             interlocutor = mapUserChatToDomain(interlocutor),
@@ -72,7 +72,7 @@ class DialogsRepositoryMapper(
         )
     }
 
-    private fun mapLastMessageChatDomain(dto: LastMessageChatPreviewDto?) = dto?.run {
+    fun mapLastMessageChatDomain(dto: LastMessageChatPreviewDto?) = dto?.run {
         LastMessageChatPreview(
             id = id,
             text = text,
@@ -152,6 +152,10 @@ class DialogsRepositoryMapper(
                 attachment = mapAttachmentToDomain(attachment)!!
             )
         }
+
+    fun mapChatMessageToLastMessage(dto: ChatMessage?): LastMessageChatPreview? = dto?.run {
+        LastMessageChatPreview(id = id, text = text, type = type.type, files = files, ownerId = ownerId, createdAt = createdAt)
+    }
 
 
 }

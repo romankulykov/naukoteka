@@ -41,7 +41,7 @@ data class ChatPreview(
     override val messageId: Int?,
     val firstMessageId: Int?,
     override val dialogImage: AttachmentChatPreview?,
-    val lastMessage: LastMessageChatPreview?,
+    var lastMessage: LastMessageChatPreview?,
     val users: List<UserChatPreview>?,
     val unreadMessages: Int?,
     val interlocutor: UserChatPreview?,
