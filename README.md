@@ -1,4 +1,3 @@
-```mermaid
 flowchart TD
     %% Основная структура
     MA("fa:fa-mobile MainActivity") --> SF("fa:fa-spinner SplashFragment")
@@ -89,4 +88,3 @@ flowchart TD
     class CF2,CPF,FPF,OCF cartStyle
     class FF favoritesStyle
     class PF,MOF,RF,LF,PIF,NF,RWF,ENF,ODF profileStyle
-```
