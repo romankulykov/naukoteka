@@ -1,21 +1,12 @@
-Start screen
-![device-2021-06-09-183913](https://www.dropbox.com/s/816r8qht4bk1hix/device-2021-06-09-183913.png)
-Search screen
-![device-2021-06-09-183945](https://www.dropbox.com/s/lgii3bwdfa6th6d/device-2021-06-09-183945.png)
-
-Приложение для поиска лекарств. Возможность поиска по списку по симптому. Категории лекарств. Корзина. Заказы.
-
-Drug search application. The ability to search the list by symptom. Categories of drugs. Basket. Orders.
-
-Stack:
-MVP (Moxy)
-RxJava2
-Cicerone (Navigation)
-Retrofit
-Toothpick (DI)
-ViewBinding
-Room
-Glide
-Modularization: data, domain, app
-
-API: https://stage.naukotheka.ru/api/a/swagger-ui/index.html?configUrl=/api/a/api-docs/swagger-config#/custom-controller/isEmailFree
+```mermaid
+sequenceDiagram
+    participant dotcom
+    participant iframe
+    participant viewscreen
+    dotcom->>iframe: loads html w/ iframe url
+    iframe->>viewscreen: request template
+    viewscreen->>iframe: html & javascript
+    iframe->>dotcom: iframe ready
+    dotcom->>iframe: set mermaid data on iframe
+    iframe->>iframe: render mermaid
+```
