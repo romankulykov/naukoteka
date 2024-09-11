@@ -14,4 +14,4 @@ echo "$releaseNotes" > releasenotes.txt
 echo "Publishing app..."
 
 ./gradlew incrementVersionCode --console=plain
-./gradlew $appFolder:assembleProductionRelease $appFolder:appDistributionUploadProductionRelease
+./gradlew $appFolder:assembleRelease $appFolder:appDistributionUploadRelease

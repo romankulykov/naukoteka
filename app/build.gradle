@@ -2,7 +2,9 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.firebase.appdistribution'
+apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'kotlin-parcelize'
 
 android {
 
@@ -11,7 +13,7 @@ android {
     }
 
     compileSdkVersion rootProject.ext.TARGET_SDK_VERSION
-    buildToolsVersion rootProject.ext.BUILD_TOOLS_VERSION
+    //buildToolsVersion rootProject.ext.BUILD_TOOLS_VERSION
 
     defaultConfig {
         applicationId rootProject.ext.application_id
@@ -22,6 +24,7 @@ android {
 
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     signingConfigs {
@@ -43,7 +46,7 @@ android {
     buildTypes {
         debug {
             firebaseAppDistribution {
-                serviceCredentialsFile = "$project.rootDir/mypharmy-cf57735337ef.json"
+                serviceCredentialsFile = "$project.rootDir/nauchat-app-distribution.json"
                 groupsFile = "$project.rootDir/tester_groups.txt"
                 releaseNotesFile = "$project.rootDir/releasenotes.txt"
             }
@@ -53,7 +56,7 @@ android {
         }
         release {
             firebaseAppDistribution {
-                serviceCredentialsFile = "$project.rootDir/mypharmy-cf57735337ef.json"
+                serviceCredentialsFile = "$project.rootDir/nauchat-app-distribution.json"
                 groupsFile = "$project.rootDir/tester_groups.txt"
                 releaseNotesFile = "$project.rootDir/releasenotes.txt"
             }
@@ -88,25 +91,40 @@ dependencies {
     implementation ui.constraintLayout
     implementation ui.lifecycle
     implementation ui.lifecycleCommon
+    implementation ui.localeChanger
 
     implementation ui.glide
     implementation ui.glideAnnotation
+    implementation ui.glideIntegration
     kapt ui.glideProcessor
 
     implementation ui.cicerone
     implementation ui.firebaseCrashlytics
     implementation ui.dotsIndicator
+    implementation ui.recyclerView
+    implementation ui.endlessAdapter
     implementation ui.maskedEditText
     implementation ui.keyboardVisibility
 
     implementation ui.gmsPlayServicesAuth
-    implementation ui.vkontakte
-    implementation ui.facebook
+
+    implementation ui.chatkit
+
+    implementation ui.swipeLayout
+
+    implementation ui.circleimageview
+
+    implementation ui.stickyHeader
+
+    implementation ui.tedbottompicker
+    implementation ui.tedpermission
 
     implementation presentation.moxy
     implementation presentation.moxyAndroid
     implementation presentation.moxyKtx
     kapt presentation.moxyCompiler
+
+    implementation presentation.jodaTime
 
     implementation presentation.inject
     implementation presentation.toothpick
@@ -123,13 +141,22 @@ dependencies {
     implementation data.retrofitRxJava
 
     implementation presentation.rxJavaKotlin
+    implementation presentation.rxRelay
     implementation presentation.rxJava
     implementation presentation.rxJavaAndroid
-
 
     implementation lib.domain
     implementation lib.data
 
-}
+    testImplementation unitTest.junit
+    testImplementation unitTest.testCore
+    testImplementation unitTest.coreTesting
+    testImplementation unitTest.toothpickTesting
+    testImplementation unitTest.mockitoCore
+    testImplementation unitTest.mockitoInline
+    testImplementation unitTest.powerMockCore
+    testImplementation unitTest.powerMockJUnit
+    testImplementation unitTest.powerMockMockito2
+    testImplementation unitTest.robolectric
 
-apply plugin: 'com.google.gms.google-services'
+}

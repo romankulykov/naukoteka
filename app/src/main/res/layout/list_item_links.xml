@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="9dp">
+
+    <ImageView
+        android:id="@+id/iv_photo_links"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_photo_links"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_user_name"
+        style="@style/TextViewStyle.Usual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/golos_text_regular"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@id/iv_photo_links"
+        app:layout_constraintTop_toTopOf="@id/iv_photo_links"
+        tools:text="@string/user" />
+
+    <TextView
+        android:id="@+id/tv_title_link"
+        style="@style/TextViewStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="37dp"
+        android:fontFamily="@font/golos_text_regular"
+        android:textColor="@color/text_inactive"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_photo_links"
+        app:layout_constraintTop_toBottomOf="@id/tv_user_name"
+        tools:text="@string/title_link" />
+
+    <TextView
+        android:id="@+id/tvLink"
+        style="@style/TextViewStyle.Usual"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="46dp"
+        android:autoLink="web"
+        android:ellipsize="end"
+        android:fontFamily="@font/golos_text_regular"
+        android:maxLines="2"
+        android:textColor="@color/object_main"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_title_link"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_link"
+        tools:text="@string/link" />
+
+    <View
+        android:id="@+id/view_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/pin_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvLink" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

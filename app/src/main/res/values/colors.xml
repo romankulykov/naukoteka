@@ -6,16 +6,67 @@
 
     <color name="back_blue">#0C1F5D</color>
 
+    <color name="color_error">#D92E4D</color>
+
     <color name="object_main">#2E83D9</color>
+
+    <color name="object_disabled">#2D2E41</color>
 
     <color name="object_inactive">#8083A0</color>
 
-    <color name="object_disabled">#2D2E41</color>
+    <color name="back_darkgrey">#2D2E41</color>
+
+    <color name="notification_error">#D92E4D</color>
+
+    <color name="text_inactive">#8083A0</color>
+    <color name="text_active">#FFFFFFFF</color>
+
+    <color name="object_inactive_2">#4A4C67</color>
+
+    <color name="message_fon_black">#3E4057</color>
+
+    <color name="blue_grey_900">#14181B</color>
+
+    <color name="button_inactive_color">#FAEC3E</color>
 
     <color name="transparent">#00000000</color>
     <color name="manatee">#888A94</color>
     <color name="mine_shaft">#333333</color>
     <color name="ghost">#C7CBDB</color>
     <color name="background_toast">#E6333333</color>
+    <color name="background_toast_success">#63AA55</color>
+    <color name="background_toast_error">#D92E4D</color>
+    <color name="pin_color">#3F4159</color>
+
+    <color name="name_message_color">#83BAF2</color>
+
+    <color name="text_message_blue">#9CCDFF</color>
+
+    <color name="return_swipe_button_color">#D96C2E</color>
+
+    <color name="main_red">#EB5545</color>
+
+    <color name="clear_swipe_button_color">#3E4057</color>
+
+    <color name="green">#23A667</color>
+
+    <color name="abbey">#3B50555C</color>
+
+    <color name="view_dialog_color">#363850</color>
+
+    <color name="view_create_contact_color">#3D3D3F</color>
+
+    <color name="fon_space">#343549</color>
+
+    <color name="list_of_selected_contacts">#131427</color>
+
+    <color name="description_group">#121325</color>
+
+    <color name="view_band_color">#171826</color>
+
+    <color name="black_text">#10101C</color>
+
+    <color name="color_divider">#EAEAF2</color>
+    <color name="mischka">#CCD2E3</color>
 
 </resources>
